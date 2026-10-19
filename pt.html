@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>O Livro de Todos</title>
+<meta name="description" content="O Livro de Todos: por todos e para todos. Grátis para ler, compartilhar e imprimir.">
+<style>
+  :root { --bg:#faf8f3; --fg:#1d2433; --accent:#1f3358; --muted:#5b6475; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#12161f; --fg:#e8e6df; --accent:#9db4e0; --muted:#98a0b0; } }
+  body { margin:0; background:var(--bg); color:var(--fg); font:18px/1.6 Georgia,"Times New Roman",serif; }
+  main { max-width:34rem; margin:0 auto; padding:3rem 16px 4rem; text-align:center; }
+  img { width:200px; max-width:60%; height:auto; }
+  h1 { letter-spacing:.12em; margin:1rem 0 .2rem; font-size:2rem; }
+  .sub { font-style:italic; color:var(--muted); margin:0 0 2rem; }
+  .btn { display:inline-block; padding:.7rem 1.4rem; border-radius:6px; text-decoration:none; font-weight:bold; margin:.3rem; }
+  .primary { background:var(--accent); color:var(--bg); }
+  .secondary { border:2px solid var(--accent); color:var(--accent); }
+  p { margin:1.4rem 0; }
+  small { color:var(--muted); }
+  a { color:var(--accent); }
+  .lang { margin:1.4rem 0 0; }
+  .lang select { font:inherit; font-size:.9rem; padding:.35rem .6rem; border:2px solid var(--accent); border-radius:6px; background:var(--bg); color:var(--fg); }
+  .lang label { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+</style>
+</head>
+<body>
+<main>
+  <img src="emblem.png" alt="O emblema do Uróboro Infinito e Inclusivo">
+  <h1>O LIVRO DE TODOS</h1>
+  <p class="sub">Por todos e para todos</p>
+  <p>Isto é um livro, e nada mais. Ele não diz em que você deve acreditar. Leve o que ajuda. Deixe o que não ajuda.</p>
+  <p><a class="btn primary" href="O_Livro_de_Todos.pdf">Baixar o livro (PDF)</a></p>
+  <p><a class="btn secondary" href="O_Livro_de_Todos.epub">Baixar para e-reader (EPUB)</a></p>
+  <p>Grátis para ler, compartilhar e imprimir. Formato de bolso, 3&Prime; &times; 4&Prime;.<br><small>Dedicado ao domínio público sob <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.pt">CC0 1.0</a>. Nenhum direito reservado.</small></p>
+  <p>
+    <a class="btn secondary" href="https://ko-fi.com/thebookofall">Ajude a imprimir os primeiros exemplares</a><br>
+    <small>As doações financiam a primeira impressão de O Livro de Todos.</small>
+  </p>
+  <p class="lang"><label for="lang">Language</label><select id="lang" aria-label="Language" onchange="location.href=this.value"><option value="index.html" lang="en">English</option><option value="es.html" lang="es">Español</option><option value="zh.html" lang="zh">中文</option><option value="hi.html" lang="hi">हिन्दी</option><option value="ar.html" lang="ar">العربية</option><option value="fr.html" lang="fr">Français</option><option value="pt.html" lang="pt" selected>Português</option><option value="id.html" lang="id">Bahasa Indonesia</option><option value="bn.html" lang="bn">বাংলা</option><option value="ur.html" lang="ur">اردو</option></select><noscript><br><small><a href="index.html">English</a> · <a href="es.html">Español</a> · <a href="zh.html">中文</a> · <a href="hi.html">हिन्दी</a> · <a href="ar.html">العربية</a> · <a href="fr.html">Français</a> · <a href="id.html">Bahasa Indonesia</a> · <a href="bn.html">বাংলা</a> · <a href="ur.html">اردو</a></small></noscript></p>
+  <p><small>Este site conta as visitas de forma anônima e não guarda nenhum dado pessoal.</small></p>
+</main>
+<script data-goatcounter="https://thebookofall.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>كتاب الجميع</title>
+<meta name="description" content="كتاب الجميع: بالجميع وللجميع. مجاني للقراءة والمشاركة والطباعة.">
+<style>
+  :root { --bg:#faf8f3; --fg:#1d2433; --accent:#1f3358; --muted:#5b6475; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#12161f; --fg:#e8e6df; --accent:#9db4e0; --muted:#98a0b0; } }
+  body { margin:0; background:var(--bg); color:var(--fg); font:18px/1.7 Georgia,"Noto Naskh Arabic","Amiri","Traditional Arabic",serif; }
+  main { max-width:34rem; margin:0 auto; padding:3rem 16px 4rem; text-align:center; }
+  img { width:200px; max-width:60%; height:auto; }
+  h1 { letter-spacing:.12em; margin:1rem 0 .2rem; font-size:2rem; }
+  .sub { font-style:italic; color:var(--muted); margin:0 0 2rem; }
+  .btn { display:inline-block; padding:.7rem 1.4rem; border-radius:6px; text-decoration:none; font-weight:bold; margin:.3rem; }
+  .primary { background:var(--accent); color:var(--bg); }
+  .secondary { border:2px solid var(--accent); color:var(--accent); }
+  p { margin:1.4rem 0; }
+  small { color:var(--muted); }
+  a { color:var(--accent); }
+  .lang { margin:1.4rem 0 0; }
+  .lang select { font:inherit; font-size:.9rem; padding:.35rem .6rem; border:2px solid var(--accent); border-radius:6px; background:var(--bg); color:var(--fg); }
+  .lang label { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+</style>
+</head>
+<body>
+<main>
+  <img src="emblem.png" alt="شعار الأوروبوروس اللانهائي الجامع">
+  <h1>كتاب الجميع</h1>
+  <p class="sub">بالجميع وللجميع</p>
+  <p>هذا مجرد كتاب، لا أكثر. لا يخبرك بما تؤمن به. خذ ما يفيد. ودع ما لا يفيد.</p>
+  <p><a class="btn primary" href="كتاب_الجميع.pdf">حمّل الكتاب (PDF)</a></p>
+  <p><a class="btn secondary" href="كتاب_الجميع.epub">حمّل نسخة القارئ الإلكتروني (EPUB)</a></p>
+  <p>مجاني للقراءة والمشاركة والطباعة. بحجم الجيب، 3 × 4 بوصة.<br><small>مُهدى إلى الملكية العامة بموجب <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.ar">CC0 1.0</a>. لا حقوق محفوظة.</small></p>
+  <p>
+    <a class="btn secondary" href="https://ko-fi.com/thebookofall">ساعد في طباعة النسخ الأولى</a><br>
+    <small>تُخصَّص التبرعات للطبعة الأولى.</small>
+  </p>
+  <p class="lang"><label for="lang">Language</label><select id="lang" aria-label="Language" onchange="location.href=this.value"><option value="index.html" lang="en">English</option><option value="es.html" lang="es">Español</option><option value="zh.html" lang="zh">中文</option><option value="hi.html" lang="hi">हिन्दी</option><option value="ar.html" lang="ar" selected>العربية</option><option value="fr.html" lang="fr">Français</option><option value="pt.html" lang="pt">Português</option><option value="id.html" lang="id">Bahasa Indonesia</option><option value="bn.html" lang="bn">বাংলা</option><option value="ur.html" lang="ur">اردو</option></select><noscript><br><small><a href="index.html">English</a> · <a href="es.html">Español</a> · <a href="zh.html">中文</a> · <a href="hi.html">हिन्दी</a> · <a href="fr.html">Français</a> · <a href="pt.html">Português</a> · <a href="id.html">Bahasa Indonesia</a> · <a href="bn.html">বাংলা</a> · <a href="ur.html">اردو</a></small></noscript></p>
+  <p><small>يحصي هذا الموقع الزيارات دون هوية ولا يحتفظ ببيانات شخصية.</small></p>
+</main>
+<script data-goatcounter="https://thebookofall.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

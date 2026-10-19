@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>সবার বই</title>
+<meta name="description" content="সবার বই: সবার দ্বারা, সবার জন্য। পড়া, ভাগ করা ও ছাপার জন্য বিনামূল্যে।">
+<style>
+  :root { --bg:#faf8f3; --fg:#1d2433; --accent:#1f3358; --muted:#5b6475; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#12161f; --fg:#e8e6df; --accent:#9db4e0; --muted:#98a0b0; } }
+  body { margin:0; background:var(--bg); color:var(--fg); font:18px/1.7 Georgia,"Noto Serif Bengali","Noto Sans Bengali","Vrinda",serif; }
+  main { max-width:34rem; margin:0 auto; padding:3rem 16px 4rem; text-align:center; }
+  img { width:200px; max-width:60%; height:auto; }
+  h1 { letter-spacing:.12em; margin:1rem 0 .2rem; font-size:2rem; }
+  .sub { font-style:italic; color:var(--muted); margin:0 0 2rem; }
+  .btn { display:inline-block; padding:.7rem 1.4rem; border-radius:6px; text-decoration:none; font-weight:bold; margin:.3rem; }
+  .primary { background:var(--accent); color:var(--bg); }
+  .secondary { border:2px solid var(--accent); color:var(--accent); }
+  p { margin:1.4rem 0; }
+  small { color:var(--muted); }
+  a { color:var(--accent); }
+  .lang { margin:1.4rem 0 0; }
+  .lang select { font:inherit; font-size:.9rem; padding:.35rem .6rem; border:2px solid var(--accent); border-radius:6px; background:var(--bg); color:var(--fg); }
+  .lang label { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+</style>
+</head>
+<body>
+<main>
+  <img src="emblem.png" alt="সর্বব্যাপী অসীম ঊরোবোরোসের প্রতীক">
+  <h1>সবার বই</h1>
+  <p class="sub">সবার দ্বারা, সবার জন্য</p>
+  <p>এটা শুধু একটা বই, আর কিছু নয়। কী বিশ্বাস করতে হবে তা সে তোমাকে বলে না। যা কাজে লাগে নাও। যা লাগে না ছেড়ে দাও।</p>
+  <p><a class="btn primary" href="Sobar_Boi.pdf">বই ডাউনলোড করুন (PDF)</a></p>
+  <p><a class="btn secondary" href="Sobar_Boi.epub">ই-রিডারের জন্য ডাউনলোড করুন (EPUB)</a></p>
+  <p>পড়া, ভাগ করা ও ছাপার জন্য বিনামূল্যে। পকেট আকার, ৩ × ৪ ইঞ্চি।<br><small><a href="https://creativecommons.org/publicdomain/zero/1.0/deed.bn">CC0 1.0</a> -এর অধীনে পাবলিক ডোমেইনে উৎসর্গীকৃত। কোনো অধিকার সংরক্ষিত নয়।</small></p>
+  <p>
+    <a class="btn secondary" href="https://ko-fi.com/thebookofall">প্রথম কপিগুলো ছাপতে সাহায্য করুন</a><br>
+    <small>দান প্রথম ছাপার কাজে লাগবে।</small>
+  </p>
+  <p class="lang"><label for="lang">Language</label><select id="lang" aria-label="Language" onchange="location.href=this.value"><option value="index.html" lang="en">English</option><option value="es.html" lang="es">Español</option><option value="zh.html" lang="zh">中文</option><option value="hi.html" lang="hi">हिन्दी</option><option value="ar.html" lang="ar">العربية</option><option value="fr.html" lang="fr">Français</option><option value="pt.html" lang="pt">Português</option><option value="id.html" lang="id">Bahasa Indonesia</option><option value="bn.html" lang="bn" selected>বাংলা</option><option value="ur.html" lang="ur">اردو</option></select><noscript><br><small><a href="index.html">English</a> · <a href="es.html">Español</a> · <a href="zh.html">中文</a> · <a href="hi.html">हिन्दी</a> · <a href="ar.html">العربية</a> · <a href="fr.html">Français</a> · <a href="pt.html">Português</a> · <a href="id.html">Bahasa Indonesia</a> · <a href="ur.html">اردو</a></small></noscript></p>
+  <p><small>এই সাইট বেনামে ভিজিট গোনে এবং কোনো ব্যক্তিগত তথ্য রাখে না।</small></p>
+</main>
+<script data-goatcounter="https://thebookofall.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

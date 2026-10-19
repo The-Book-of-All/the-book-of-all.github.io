@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>सबकी किताब</title>
+<meta name="description" content="सबकी किताब: सबके द्वारा, सबके लिए। पढ़ने, बाँटने और छापने के लिए मुफ़्त।">
+<style>
+  :root { --bg:#faf8f3; --fg:#1d2433; --accent:#1f3358; --muted:#5b6475; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#12161f; --fg:#e8e6df; --accent:#9db4e0; --muted:#98a0b0; } }
+  body { margin:0; background:var(--bg); color:var(--fg); font:18px/1.7 Georgia,"Noto Serif Devanagari","Noto Sans Devanagari","Mangal",serif; }
+  main { max-width:34rem; margin:0 auto; padding:3rem 16px 4rem; text-align:center; }
+  img { width:200px; max-width:60%; height:auto; }
+  h1 { letter-spacing:.12em; margin:1rem 0 .2rem; font-size:2rem; }
+  .sub { font-style:italic; color:var(--muted); margin:0 0 2rem; }
+  .btn { display:inline-block; padding:.7rem 1.4rem; border-radius:6px; text-decoration:none; font-weight:bold; margin:.3rem; }
+  .primary { background:var(--accent); color:var(--bg); }
+  .secondary { border:2px solid var(--accent); color:var(--accent); }
+  p { margin:1.4rem 0; }
+  small { color:var(--muted); }
+  a { color:var(--accent); }
+  .lang { margin:1.4rem 0 0; }
+  .lang select { font:inherit; font-size:.9rem; padding:.35rem .6rem; border:2px solid var(--accent); border-radius:6px; background:var(--bg); color:var(--fg); }
+  .lang label { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+</style>
+</head>
+<body>
+<main>
+  <img src="emblem.png" alt="समावेशी अनंत उरोबोरोस का प्रतीक">
+  <h1>सबकी किताब</h1>
+  <p class="sub">सबके द्वारा, सबके लिए</p>
+  <p>यह बस एक किताब है, और कुछ नहीं। यह तुम्हें नहीं बताती कि क्या मानना है। जो काम आए, ले लो। जो न आए, छोड़ दो।</p>
+  <p><a class="btn primary" href="सबकी_किताब.pdf">किताब डाउनलोड करें (PDF)</a></p>
+  <p><a class="btn secondary" href="सबकी_किताब.epub">ई-रीडर के लिए डाउनलोड करें (EPUB)</a></p>
+  <p>पढ़ने, बाँटने और छापने के लिए मुफ़्त। जेबी आकार, 3 × 4 इंच।<br><small><a href="https://creativecommons.org/publicdomain/zero/1.0/deed.hi">CC0 1.0</a> के अंतर्गत सार्वजनिक क्षेत्र को समर्पित। कोई अधिकार सुरक्षित नहीं।</small></p>
+  <p>
+    <a class="btn secondary" href="https://ko-fi.com/thebookofall">पहली प्रतियाँ छापने में मदद करें</a><br>
+    <small>दान पहली छपाई में लगेगा।</small>
+  </p>
+  <p class="lang"><label for="lang">Language</label><select id="lang" aria-label="Language" onchange="location.href=this.value"><option value="index.html" lang="en">English</option><option value="es.html" lang="es">Español</option><option value="zh.html" lang="zh">中文</option><option value="hi.html" lang="hi" selected>हिन्दी</option><option value="ar.html" lang="ar">العربية</option><option value="fr.html" lang="fr">Français</option><option value="pt.html" lang="pt">Português</option><option value="id.html" lang="id">Bahasa Indonesia</option><option value="bn.html" lang="bn">বাংলা</option><option value="ur.html" lang="ur">اردو</option></select><noscript><br><small><a href="index.html">English</a> · <a href="es.html">Español</a> · <a href="zh.html">中文</a> · <a href="ar.html">العربية</a> · <a href="fr.html">Français</a> · <a href="pt.html">Português</a> · <a href="id.html">Bahasa Indonesia</a> · <a href="bn.html">বাংলা</a> · <a href="ur.html">اردو</a></small></noscript></p>
+  <p><small>यह साइट गुमनाम रूप से विज़िट गिनती है और कोई निजी डेटा नहीं रखती।</small></p>
+</main>
+<script data-goatcounter="https://thebookofall.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
