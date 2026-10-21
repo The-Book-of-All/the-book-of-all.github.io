@@ -1,0 +1,965 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Book of All</title>
+<style>
+  :root { --bg:#eceeed; --fg:#1c2127; --muted:#5d666f; --accent:#2b6a68; --on-accent:#fff; --line:#c9cfd2; --glow:rgba(150,165,172,.45); --frame:#7d8f93; --frame2:#b5c0c3; }
+  @media all { :root[data-theme="dark"] { --bg:#12151a; --fg:#e6e8ea; --muted:#9aa3ab; --accent:#86bdb4; --on-accent:#0e1918; --line:#2a3037; --glow:rgba(130,150,160,.22); --frame:#8fa6aa; --frame2:#3a444b; } }
+  * { box-sizing:border-box; }
+  body::before { content:""; position:fixed; inset:10px; border:1.5px solid var(--frame); border-radius:6px; pointer-events:none; z-index:50; }
+  body::after { content:""; position:fixed; inset:16px; border:1px solid var(--frame2); border-radius:3px; pointer-events:none; z-index:50; }
+  @media print { body::before, body::after { display:none; } }
+
+  .theme-toggle { position:fixed; top:26px; inset-inline-end:26px; z-index:60; width:40px; height:40px; border-radius:50%; border:1.5px solid var(--frame); background:var(--bg); color:var(--fg); cursor:pointer; font-size:19px; line-height:1; padding:0; display:flex; align-items:center; justify-content:center; }
+  .theme-toggle:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+  @media print { .theme-toggle { display:none; } }
+  html { -webkit-text-size-adjust:100%; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:18px/1.65 "Iowan Old Style","Palatino Linotype",Palatino,"Noto Serif","Noto Serif CJK SC","Noto Serif Devanagari","Noto Serif Bengali","Noto Naskh Arabic","Noto Nastaliq Urdu",Georgia,"Times New Roman",serif; overflow-wrap:anywhere; }
+  a { color:var(--accent); }
+  a:focus-visible, select:focus-visible, summary:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+  .btn { display:inline-block; padding:.8rem 1.5rem; border-radius:14px; text-decoration:none; font-weight:600; font-size:1rem; line-height:1.3; text-align:center; }
+  .btn.primary { background:var(--accent); color:var(--on-accent); }
+  .btn.secondary { border:2px solid var(--accent); color:var(--accent); }
+
+  header { display:flex; align-items:center; gap:.9rem; max-width:36rem; margin:0 auto; padding:2rem 34px 1rem; }
+  header img { width:44px; height:44px; flex:none; }
+  header .title { font-weight:600; font-size:1.05rem; flex:1; min-width:0; }
+  header .btn { padding:.45rem 1rem; font-size:.9rem; flex:none; }
+  header { justify-content:space-between; }
+  @media (max-width:560px) { header .title { display:none; } header .spacer { flex:1; } }
+  main { max-width:36rem; margin:0 auto; padding:1rem 34px 5rem; font-size:1.2rem; line-height:1.85; }
+  :lang(zh) main { line-height:2; } :lang(zh) em { font-style:normal; }
+  details.toc { margin:0 0 3rem; padding:.9rem 1.2rem; border:1px solid var(--line); border-radius:12px; font-size:1rem; line-height:1.5; }
+  details.toc summary { cursor:pointer; font-weight:600; }
+  details.toc ol { margin:.8rem 0 0; padding-inline-start:1.4rem; }
+  details.toc li { margin:.35rem 0; }
+  section.level1 { margin-top:4.5rem; padding-top:2.5rem; border-top:1px solid var(--line); }
+  section.level1:first-of-type { border-top:0; margin-top:2rem; padding-top:0; }
+  h1 { font-size:clamp(1.7rem,6vw,2.2rem); line-height:1.2; font-weight:500; text-align:center; margin:0 0 2.5rem; }
+  h2 { font-size:1rem; font-weight:600; color:var(--accent); text-align:center; margin:2.6rem 0 1rem; }
+  section.level1 > p { text-align:center; }
+  strong { font-weight:inherit; font-size:.62em; vertical-align:super; color:var(--accent); margin-inline-end:.2em; margin-inline-start:.35em; line-height:0; }
+  p { margin:0 0 1.1rem; }
+  section.level2 > p { margin:0 0 1.4rem; }
+  nav.end { text-align:center; margin-top:4rem; }
+  .front { text-align:center; margin:1.6rem 0 2.4rem; }
+  .front .tag { font-style:italic; color:var(--muted); margin:0 0 1.4rem; }
+  .front .about { font-size:1.12rem; font-style:italic; line-height:1.7; margin:0 auto 1.1rem; max-width:30rem; }
+  .front .by { margin:0 0 1.6rem; }
+  .front .cc0 { font-size:.85rem; color:var(--muted); border-top:1px solid var(--line); padding-top:1rem; margin:0; }
+  .theme-toggle { position:absolute; }
+  @media (max-width:640px) { header { padding-top:4.4rem; } }
+</style>
+<script>try{if(localStorage.getItem("theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
+</head>
+<body>
+<button class="theme-toggle" type="button" aria-label="Light / dark" title="Light / dark"></button>
+<header><a href="index.html" aria-label="Back"><img src="emblem-sm.webp" alt="" width="44" height="44"></a><span class="title">The Book of All</span><span class="spacer"></span><a class="btn secondary" href="index.html">Back</a> <a class="btn primary" href="The_Book_of_All.pdf" data-goatcounter-click="download-pdf-en" data-goatcounter-title="PDF download (en)">Download (PDF)</a></header>
+<main>
+<section class="front"><p class="tag">By and For All</p><p class="about">This is a book, and nothing more. It does not tell you what to believe, and it asks nothing of your belief. Where it speaks of how to live, it offers what many hands have found useful, not commands. Take what helps. Leave what does not. Hold it loosely.</p><p class="by">Steven E Thompson</p><p class="cc0">The Book of All. By and for all. Dedicated to the public domain under CC0 1.0 Universal: no rights reserved. Copy, print, translate, and share freely. <a href="https://creativecommons.org/publicdomain/zero/1.0">creativecommons.org/publicdomain/zero/1.0</a></p></section>
+<details class="toc"><summary>Contents</summary><ol><li><a href="#b1">About This Book</a></li><li><a href="#b2">Book One: Beginnings</a></li><li><a href="#b3">Book Two: The Whole</a></li><li><a href="#b4">Book Three: The Person</a></li><li><a href="#b5">Book Four: Right and Wrong</a></li><li><a href="#b6">Book Five: Suffering and Meaning</a></li><li><a href="#b7">Book Six: Death and Return</a></li><li><a href="#b8">Book Seven: Words</a></li><li><a href="#b9">Book Eight: Practice</a></li><li><a href="#b10">Book Nine: Sacred Time</a></li><li><a href="#b11">Book Ten: Sacred Places</a></li><li><a href="#b12">Book Eleven: Passages</a></li><li><a href="#b13">Book Twelve: Community and Guidance</a></li><li><a href="#b14">Book Thirteen: Food, Body and Dress</a></li><li><a href="#b15">Book Fourteen: Nature and Other Beings</a></li><li><a href="#b16">Book Fifteen: Wonder</a></li><li><a href="#b17">Book Sixteen: Meeting Each Other</a></li><li><a href="#b18">Book Seventeen: What Does Not Fit</a></li></ol></details>
+<p></p>
+
+<section id="ch001.xhtml#about-this-book" class="level1">
+<h1 id="b1">About This Book</h1>
+<p><em>This is a book, and nothing more. It does not tell you what to believe, and it asks nothing of your belief. Where it speaks of how to live, it offers what many hands have found useful, not commands. Take what helps. Leave what does not. Hold it loosely.</em></p>
+<p>Steven E Thompson</p>
+<p><em>Dedicated to the public domain under CC0 1.0 Universal: no rights reserved. Copy, print, translate, and share freely. https://creativecommons.org/publicdomain/zero/1.0/</em></p>
+</section>
+<section id="ch002.xhtml#book-one-beginnings" class="level1">
+<h1 id="b2">Book One: Beginnings</h1>
+<section id="ch002.xhtml#section" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> Nothing stands first, though every telling reaches for a first: the first light, the first word, the first hand. The reaching is itself old. <strong>2</strong> The water rises with the sun, and the sun is drawn up out of its own heat by the water; neither could begin the morning alone. <strong>3</strong> A seed is born of a plant that was born of a seed, and the line runs back behind the reach of any memory, any bone, any stone with writing on it. <strong>4</strong> To ask what came before is to walk up a river looking for its spring and to arrive at a hillside where rain, ground and sky are already in conversation. <strong>5</strong> The one who asks arises together with the asking, and the asking, which feels so private, was begun in other mouths long ago.</p>
+</section>
+<section id="ch002.xhtml#section-1" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> A star burns for longer than there have been eyes, and when it ends it scatters what it made: iron, carbon, the quiet ingredients of everything that will ever complain of the cold. <strong>2</strong> The ash drifts for ages across a dark too wide to picture, and where it gathers, it cools, and where it cools, it becomes stone. <strong>3</strong> Wind and rain wear the stone to dust, and the dust is carried by wind and river into the low places, where it learns to hold water. <strong>4</strong> In that holding the first green takes hold. The field is not a gift laid down but a patience, thousands of years long. <strong>5</strong> The field is eaten; the eater walks; the walker, in time, lies down in the field, and the ash of the star has gone one more round. <strong>6</strong> No one in the field, living or lying down, can say where the ash began or how many times it has been a mouth.</p>
+</section>
+<section id="ch002.xhtml#section-2" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> In the deep dark, in water warm with minerals, something small began to hold itself together against the dissolving of everything else. We cannot say when, only that it did not stop. <strong>2</strong> It divided. The two divided. Over a span that makes the age of any mountain look brief, the dividing branched a thousand ways: a root, a wing, a gill, a hand. <strong>3</strong> The fish, the fern, the bird and the child are cousins at the distance of a long branching line, each branch certain that it is the trunk. <strong>4</strong> Somewhere in that line is a creature with no name, mother of the whale and the sparrow and the one who is listening. She is remembered in every body, in the shape of every ear. <strong>5</strong> All of us are kin, though most of us are strangers to our cousins, and some of us are eaten by them.</p>
+</section>
+<section id="ch002.xhtml#section-3" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Who knows where it came from? Not the old, who have carried the question longest. Not the children, who ask it as though the answer were in a drawer. <strong>2</strong> The wise ask and do not answer. This is not a lack of nerve. It is the courtesy a great thing is owed. <strong>3</strong> Some nights the question is a weight and some nights a gift, and on neither night is it a failure. <strong>4</strong> Everyone who has stood under a clear sky far from any light has felt it open in the chest, has not found the word for it, and has been quietly glad to be without one.</p>
+</section>
+<section id="ch002.xhtml#section-4" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Everything that moves carries a warmth that was never made new, only handed on: the sun to the leaf, the leaf to the deer, the deer to the one who was hungry in winter. <strong>2</strong> The warmth in a held hand was in the grain, and in the field the grain stood in, and in the long summer behind it, and in the star behind the summer. <strong>3</strong> It is carried, and it is passed on. No hand holds it long enough to call it its own. <strong>4</strong> What is carried is never lost, though it is often lost track of, and that is where grief comes from, and where wonder begins.</p>
+</section>
+<section id="ch002.xhtml#section-5" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Day arises with night, and night with day; neither is the other’s enemy, and neither would be a word without the other. <strong>2</strong> The tide goes out so that it may come in, and in going out it leaves the shore bare, and the bare shore shows how much the sea gives. <strong>3</strong> The seed is buried in the dark and does not know it is being planted; to the seed, it is being buried. Both are true. <strong>4</strong> Every ending is also the turning of something else, which is no comfort to the one who is ending, and is true anyway.</p>
+</section>
+<section id="ch002.xhtml#section-6" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Pull one thread and the whole cloth moves, which is how the weaver finds the fault and how the child learns what she has done. <strong>2</strong> The bee is in the flower, carrying its pollen and its hunger; the flower is in the bee, riding to the next field on a body it did not choose. <strong>3</strong> The rain is in the river, and the river is in the cloud, and the cloud is in the sea, and none of them could say where one ends. <strong>4</strong> No one stands outside the cloth, though some days we wish to; the wish is itself woven in.</p>
+</section>
+<section id="ch002.xhtml#section-7" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> The newborn’s first breath is air that others have breathed: the nurse’s, the mother’s, the wind’s over a thousand fields. She cries because she has been handed the world. <strong>2</strong> That air has been in a leaf, in a whale, in the lungs of a grandfather no one alive remembers, and it will be again. <strong>3</strong> Each breath is passed hand to hand and no one owns it, though everyone, for a moment, is responsible for it.</p>
+</section>
+<section id="ch002.xhtml#section-8" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Before the eye opens, the dark is full: of the mother’s heartbeat, of the warm taste of the water, of voices heard through a wall. <strong>2</strong> The dark is not empty. It is where the seed waits and the thought gathers and the child grows toward a face. <strong>3</strong> The light does not defeat the dark. They take turns holding the world, and neither has ever been wholly absent from the other’s hour.</p>
+</section>
+<section id="ch002.xhtml#section-9" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> The first word was not spoken by one mouth. Many mouths made it over many years, each saying what the mouth beside it said, a little differently. <strong>2</strong> Water was named by thirst. Mother was named by the first mouth against the first skin. Every word is a small fire passed from hand to hand, and none of us lit the first one.</p>
+</section>
+<section id="ch002.xhtml#section-10" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> Every people tells how the world began, each in its own voice, with the animals and weather and griefs of its own place. <strong>2</strong> The telling is a way of loving the ground one stands on. The river people tell it with the current in it; the mountain people tell it with the weight of stone in it. <strong>3</strong> None of the tellings is a fence. Each holds the water of its own place, and all the water is the same water.</p>
+</section>
+<section id="ch002.xhtml#section-11" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> We arose with the world, and we belong to it, though we sometimes behave as if we had arrived from somewhere better. <strong>2</strong> The mountain does not ask where we came from, and neither does the sea. They have never asked anything. They have only stayed. <strong>3</strong> We are one of the many ways the world is here, and the world, through us, sometimes looks at itself and weeps and laughs and is astonished to be.</p>
+</section>
+<section id="ch002.xhtml#section-12" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> Some say the world was spoken, a word first and everything after. <strong>2</strong> Some say it was breathed out and will be breathed in. <strong>3</strong> Some say it hatched from an egg, or was sung, or was danced, or was woven on a loom. <strong>4</strong> Some say it was dreamed, and is being dreamed. <strong>5</strong> Some say it was always here and was never begun. <strong>6</strong> Some say the question is the wrong shape for the answer.</p>
+</section>
+</section>
+<section id="ch003.xhtml#book-two-the-whole" class="level1">
+<h1 id="b3">Book Two: The Whole</h1>
+<section id="ch003.xhtml#section-13" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> Stand on a hill at dusk and turn slowly: wherever you face, the horizon is exactly as far away. Every traveler is the center of a circle that no one else can see. <strong>2</strong> The old maps put their makers’ towns in the middle, and were not wrong; they were only honest about where the mapmaker slept. <strong>3</strong> The whole has no such town. It is what remains when every town has said, “here.”</p>
+</section>
+<section id="ch003.xhtml#section-14" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> A wave coming ashore feels, we imagine, like a self: its crest, its hurry, its fear of the beach. <strong>2</strong> It is only the sea, doing something particular for a moment. <strong>3</strong> The shore does not receive an ending; it receives water, which is what it has always received. <strong>4</strong> Those who loved the wave are not wrong to grieve. They are only standing very close.</p>
+</section>
+<section id="ch003.xhtml#section-15" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> One people drew the whole as a mountain with no summit; another as a net of lights; another as a ring of mothers. <strong>2</strong> A man in a quiet city painted nothing on his wall, and was visited by those who wished to sit in front of it. <strong>3</strong> All of these are allowed. The whole does not need to be flattered, and it is not offended.</p>
+</section>
+<section id="ch003.xhtml#section-16" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> In the loudest market there is an under-sound, felt more than heard, like a floor beneath the voices. <strong>2</strong> Those who live by the sea lose it and then recover it; so do those who sit at a bedside all night. <strong>3</strong> It does not say anything. It is the sound of nothing being missing.</p>
+</section>
+<section id="ch003.xhtml#section-17" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> The whole holds the saint and the thief. <strong>2</strong> Some say it weighs us, and some say it does not weigh at all. <strong>3</strong> We have each wished, at some hour, for it to take our side, and some have found the quiet it offers instead is not nothing.</p>
+</section>
+<section id="ch003.xhtml#section-18" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> A name for the whole is a gift offered across a gap: <em>you</em>, <em>it</em>, <em>the deep</em>, <em>home</em>. <strong>2</strong> The gap does not close, but the offering is real, and has warmed many hands. <strong>3</strong> To refuse every name is itself a name, and to use one is not a lie, if it is held loosely, as one holds a borrowed tool.</p>
+</section>
+<section id="ch003.xhtml#section-19" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> The kettle is the whole, and so is the rattle of a key, and the smell of rain on a hot street. <strong>2</strong> Some look for it elsewhere, and some find it in the room they are in. <strong>3</strong> The table has held both kinds of seekers since breakfast.</p>
+</section>
+<section id="ch003.xhtml#section-20" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Rain falls on the field and on the road. <strong>2</strong> Some say it falls for the deserving, some say it falls for no one, and some stand under it and are glad. <strong>3</strong> The same rain is on everyone’s roof, and the same silence after it.</p>
+</section>
+<section id="ch003.xhtml#section-21" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> We are told to love the whole, and we do not know how; the whole has no face to kiss. <strong>2</strong> So we begin where we can: the stairs, the dog, the difficult sister, the neighbor’s broken fence. <strong>3</strong> If the whole is anywhere, it is in what we do with an ordinary Tuesday.</p>
+</section>
+<section id="ch003.xhtml#section-22" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> One does not understand a house; one lives in it, and in the living learns where the floor is soft. <strong>2</strong> One does not understand a season; one wears the right coat. <strong>3</strong> The whole is like this: a thing for which the only adequate comprehension is a practiced way of walking.</p>
+</section>
+<section id="ch003.xhtml#section-23" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> Everything that arises passes back, and what passes back is not stored but spent, at once, into the next thing. <strong>2</strong> The apple becomes the child, the child becomes the winter hunger of a fox, the fox becomes the lichen’s lunch. <strong>3</strong> This is not the whole’s plan. It is the whole’s grammar, and it has no other sentence.</p>
+</section>
+<section id="ch003.xhtml#section-24" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> Some say the whole is one. <strong>2</strong> Some say it is many, each with a name and a mood. <strong>3</strong> Some say it is a mind. <strong>4</strong> Some say it is empty, and the emptiness is full. <strong>5</strong> Some say it is a mother. <strong>6</strong> Some say it is a ladder of worlds, and we stand on one rung. <strong>7</strong> Some say it cannot be said.</p>
+</section>
+</section>
+<section id="ch004.xhtml#book-three-the-person" class="level1">
+<h1 id="b4">Book Three: The Person</h1>
+<section id="ch004.xhtml#section-25" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> A person is a place the whole happens to pass through at a particular speed: carbon from a dead star, water that was once a glacier, a name from a grandmother’s hope. <strong>2</strong> The passing takes about eighty years. In that time it will try to understand itself, fall in love, burn dinner, and be astonished. <strong>3</strong> None of these is a malfunction.</p>
+</section>
+<section id="ch004.xhtml#section-26" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> A name is the first gift and the first label, given before the child can accept or refuse it. <strong>2</strong> Some grow into theirs; some grow out of it and take another, and are not less themselves for the change. <strong>3</strong> In the end the name goes onto a stone, and the one who bore it goes into the garden and into the memory of a thousand small kindnesses that never had a label at all.</p>
+</section>
+<section id="ch004.xhtml#section-27" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> The body replaces nearly everything it is made of over the years; the knee scraped at six is built of different atoms now, and still remembers the pavement. <strong>2</strong> A person is therefore not a thing but a pattern in a stream of things, a whirlpool with a face. <strong>3</strong> This is not a diminishment. A whirlpool can hold a leaf for hours.</p>
+</section>
+<section id="ch004.xhtml#section-28" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> The mind is weather: grief comes in like a front, a joke clears it, an old humiliation rolls over the hills at four in the morning. <strong>2</strong> The watcher who notices the weather is not itself weather, and is quieter than all of it. <strong>3</strong> Most of a life is spent identifying with the storm. A few learn to be the window.</p>
+</section>
+<section id="ch004.xhtml#section-29" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Each person is whole: no one else will ever wake in that body, with that ache. <strong>2</strong> Each person is a part: there is not a thought in the head that did not begin in someone else’s mouth. <strong>3</strong> The art of living is to bear both facts without resolving them, the way a hand bears its own weight and the weight of what it carries.</p>
+</section>
+<section id="ch004.xhtml#section-30" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Look at what you ate this morning and trace it: a farmer, a trucker, a woman in a packing house you will never meet, rain, a seed bred over four hundred years. <strong>2</strong> The one you call yourself is made of these. <strong>3</strong> Gratitude is sometimes only accuracy.</p>
+</section>
+<section id="ch004.xhtml#section-31" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Every person carries a particular usefulness that is theirs by temperament and by wound: a nurse’s patience, a joker’s ease at a funeral. <strong>2</strong> It is not always visible to its owner. It is often discovered when someone says, in passing, “I could not have done that without you.” <strong>3</strong> Listen for it.</p>
+</section>
+<section id="ch004.xhtml#section-32" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> A person is not the worst thing they have done, but neither are they absolved of it; they carry it, as a tree carries its scars, as part of the grain. <strong>2</strong> The work is to make the scar into something that can bear weight.</p>
+</section>
+<section id="ch004.xhtml#section-33" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Faces are borrowed: the jawline of someone who died in a war, the laugh of an aunt who is nobody’s favorite and everyone’s secret model. <strong>2</strong> We speak with the vowels of a village we have never visited and the superstitions of a century we did not live in. <strong>3</strong> To be one person is a great deal of other people’s work.</p>
+</section>
+<section id="ch004.xhtml#section-34" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> It is not required to be extraordinary. Most of the world’s good has been done by people no one will remember, in rooms no one will visit. <strong>2</strong> To be here, and to be kind, and to do the dishes: this is plenty. <strong>3</strong> And if it is not plenty, it is still all that anyone has ever had.</p>
+</section>
+<section id="ch004.xhtml#section-35" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> Some say a person has one soul. <strong>2</strong> Some say two, or three, or seven, and that they leave the body at different hours. <strong>3</strong> Some say there is no self, only a stream. <strong>4</strong> Some say the self is a spark of the whole. <strong>5</strong> Some say a person is a body and nothing more. <strong>6</strong> Some say every person was known before birth. <strong>7</strong> Some say a name is a doorway.</p>
+</section>
+</section>
+<section id="ch005.xhtml#book-four-right-and-wrong" class="level1">
+<h1 id="b5">Book Four: Right and Wrong</h1>
+<section id="ch005.xhtml#section-36" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> Some say the good is commanded and some say it is discovered; both are found at the sickbed, where no one asks and everyone knows what to do. <strong>2</strong> Harm travels. A cruel word at breakfast reaches the dog by noon and a stranger by evening. <strong>3</strong> So does kindness, though more slowly and with less drama, which is why it takes longer to believe.</p>
+</section>
+<section id="ch005.xhtml#section-37" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> We do not take life without need, and we are suspicious of our own sense of need. <strong>2</strong> The hunter thanks the deer; some call it prayer and some call it an account kept. <strong>3</strong> A life taken is a debt opened, and the honest pay it down in care for what remains.</p>
+</section>
+<section id="ch005.xhtml#section-38" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> A lie is a loan from the future at a high rate: it buys comfort now and costs trust later, and trust cannot be borrowed back. <strong>2</strong> Truth is not the same as bluntness; a hammer tells the truth about nails. <strong>3</strong> Say what is so with the hand open, and leave room for the other to answer.</p>
+</section>
+<section id="ch005.xhtml#section-39" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Treat others as you would be treated, and then notice how often you do not know how you would wish to be treated; ask. <strong>2</strong> The rule works best as a question, not a verdict. <strong>3</strong> The stranger’s needs are written on their face for those who will look long enough, and a little longer than is comfortable.</p>
+</section>
+<section id="ch005.xhtml#section-40" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> What you have beyond need is held in trust: the winter coat in the closet, the second loaf, the spare room, each an unspoken question put to you by the cold. <strong>2</strong> Giving is not generosity when it is only a return.</p>
+</section>
+<section id="ch005.xhtml#section-41" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> A promise is a plank across a gap, and someone walks out on it trusting. <strong>2</strong> If it is going to break, say so before the weight is on it. <strong>3</strong> Those who have been betrayed once learn to test every plank; we owe them the patience of being tested.</p>
+</section>
+<section id="ch005.xhtml#section-42" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> A wrong is a tear in the weave, and mending begins with someone saying plainly what happened, without defense and without drama. <strong>2</strong> The one who was harmed names what was lost, and the one who harmed does not interrupt. <strong>3</strong> The mending is slow, and some tears will not close; these we carry in the cloth, visible, unashamed and kind.</p>
+</section>
+<section id="ch005.xhtml#section-43" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> To forgive is to set down a stone one has carried a long way, and it does not say the stone was light. <strong>2</strong> It is done a little each day, mostly without noticing; one morning the hand is empty, and one is startled. <strong>3</strong> The one who cannot yet forgive is not wicked. They are still carrying, and the carrying is an honest report.</p>
+</section>
+<section id="ch005.xhtml#section-44" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> The old know the cost of forgetting; the young know the cost of staying the same. <strong>2</strong> Both are needed at the table: the memory and the impatience.</p>
+</section>
+<section id="ch005.xhtml#section-45" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> Anger is useful information with bad manners. <strong>2</strong> It tells you something was crossed; it cannot tell you what to do about it. <strong>3</strong> Wait until morning. If it is still true, say it; if it is not, you have been spared a mistake.</p>
+</section>
+<section id="ch005.xhtml#section-46" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> When two good things collide, some consult a text, some a teacher, some the one beside them, and some sit in silence until it is clear. <strong>2</strong> Each then takes responsibility for what they decide. <strong>3</strong> The hard cases are the reason people need each other.</p>
+</section>
+<section id="ch005.xhtml#section-47" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> Some say right and wrong were given in a set of words. <strong>2</strong> Some say they are found by looking inward. <strong>3</strong> Some say every act is weighed in the end, and some say nothing is weighed. <strong>4</strong> Some say every act returns to the one who did it, in this life or another. <strong>5</strong> Some say a debt can be carried by someone else. <strong>6</strong> Some say there is only the next kind thing. <strong>7</strong> Some say harm is to be answered, and some say harm is to be absorbed.</p>
+</section>
+<section id="ch005.xhtml#section-48" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> A man did harm and was never made to answer. <strong>2</strong> The cloth was torn, and no one sat down to mend it. <strong>3</strong> The book says no one is cast out. <strong>4</strong> I do not know what to say to the one who was cast out of her own life by that man. <strong>5</strong> I say: I am sorry. I say nothing else.</p>
+</section>
+</section>
+<section id="ch006.xhtml#book-five-suffering-and-meaning" class="level1">
+<h1 id="b6">Book Five: Suffering and Meaning</h1>
+<section id="ch006.xhtml#section-49" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> There is no one the pain does not find, though it arrives in different coats: a diagnosis, a knock at the door, the slow loss of a spouse’s name for you. <strong>2</strong> Some say it is distributed by merit and some say it is not distributed at all; both have sat in the same waiting room. <strong>3</strong> The comfort that crosses every belief is this: you are not the only one in this room.</p>
+</section>
+<section id="ch006.xhtml#section-50" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Some say there is a reason and some say there is none; underneath either, the grieving person may hear “it was your fault” or “you should be over it.” <strong>2</strong> We say, “I am here,” and mean it by staying.</p>
+</section>
+<section id="ch006.xhtml#section-51" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> Grief is the shape love takes when its object is gone: a hand still reaching for the phone to tell the one who is not there. <strong>2</strong> It does not need to be managed. <strong>3</strong> It needs a witness who does not try to fix it, and a kettle.</p>
+</section>
+<section id="ch006.xhtml#section-52" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> To sit with the suffering is a skill, harder than speech. <strong>2</strong> The temptation is to leave early, to offer a proverb, to look at one’s watch. <strong>3</strong> The one who stays through the silence has given the largest gift available: the sense of not being a burden.</p>
+</section>
+<section id="ch006.xhtml#section-53" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> A fist cannot carry water. <strong>2</strong> Hold the hurt in an open hand, and it stays and can be looked at, and perhaps, over years, tipped out.</p>
+</section>
+<section id="ch006.xhtml#section-54" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Nothing stays: not the worst day, not the best. <strong>2</strong> The one who remembers this in the middle of suffering is not being cold; they are holding a rope tied to a later hour. <strong>3</strong> The darkest hour is the same length as the others. It only feels longer, because no one is watching the clock but the one in pain.</p>
+</section>
+<section id="ch006.xhtml#section-55" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Some say meaning waits at the end of a life to be collected, and some say it is made along the way. <strong>2</strong> A soup has a meaning in the making, the stirring, the neighbor who comes by with bread. <strong>3</strong> A life’s meaning, some say, is the soup it fed.</p>
+</section>
+<section id="ch006.xhtml#section-56" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Joy is not the reward for suffering, and not its opposite; it is a separate thing that grows in the same soil. <strong>2</strong> The woman at the bedside is glad to be there and is wrecked, both at once.</p>
+</section>
+<section id="ch006.xhtml#section-57" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> When the weight is too much, say so out loud to someone, and keep saying it to someone until the weight is shared. <strong>2</strong> To ask for help is not a failure of strength; it is the first act of a person willing to remain. <strong>3</strong> Those who have been helped learn to help, and the chain does not end.</p>
+</section>
+<section id="ch006.xhtml#section-58" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> The scar is part of the skin. <strong>2</strong> The tree grows around the nail, and the wood there is the hardest in the trunk. <strong>3</strong> The one who has been hurt can sit, without flinching, with someone who is being hurt now, and that is a rare skill, and a useful one.</p>
+</section>
+<section id="ch006.xhtml#section-59" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> Life is dear, and not because it is easy. <strong>2</strong> The sun, the rain, the first apple of the year and the last: dear. <strong>3</strong> To the one who is weary of breathing: we want you here, in this unglamorous, imperfect room, and we will make tea.</p>
+</section>
+<section id="ch006.xhtml#section-60" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> Some say suffering is a teacher. <strong>2</strong> Some say it is a debt coming due. <strong>3</strong> Some say it is a test, some a trial, some an accident. <strong>4</strong> Some say it is the price of wanting, and the wanting can be put down. <strong>5</strong> Some say it is shared out, and the one who bears more bears it for others. <strong>6</strong> Some say it ends, and some say something comes after. <strong>7</strong> Some say it is to be borne in silence, and some say it is to be said aloud.</p>
+</section>
+<section id="ch006.xhtml#section-61" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> I am angry, and I have no one to be angry at. <strong>2</strong> The book says the darkest hour is the same length as the others. <strong>3</strong> I would like an enemy. It is easier to carry. <strong>4</strong> Let me be angry a while. Do not hurry me to the next verse.</p>
+</section>
+</section>
+<section id="ch007.xhtml#book-six-death-and-return" class="level1">
+<h1 id="b7">Book Six: Death and Return</h1>
+<section id="ch007.xhtml#section-62" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> All who arise return. The word we use is <em>death</em>, and it frightens us as a word because it is a door we have never seen opened from the inside. <strong>2</strong> What we can see is the shape of the leaving: the breath that stops, the hand that goes cool. <strong>3</strong> What we cannot see is the arriving, but we have never seen the sea receive a river either, and it does so every minute.</p>
+</section>
+<section id="ch007.xhtml#section-63" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> A body is warm because it burns. When the burning ends the warmth does not disappear; it goes into the sheets, the air, the hands that hold it, the soil that will in time hold the rest. <strong>2</strong> There is no moment at which energy is destroyed, only moments at which it changes rooms. <strong>3</strong> The one we loved has not been put out. They have been spread.</p>
+</section>
+<section id="ch007.xhtml#section-64" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> A body in the ground is a banquet. Within a season the worms and the microbes are in it; within a year the roots have found it; within a decade a small tree is standing where the grief once was. <strong>2</strong> The tree gives fruit, and the fruit feeds a child who never met the old man. <strong>3</strong> Some call this a figure of speech and some call it plain fact; either way it can make a person cry in a good way.</p>
+</section>
+<section id="ch007.xhtml#section-65" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> The dead are in the loaf, the lamplight, the cut of a neighbor’s laugh, the way the dog lies where the old chair used to be. <strong>2</strong> Some say they walk beside us, and some say they are only the shape of the room they left. <strong>3</strong> We are made of what they were made of, and what they gave, and what they could not give but tried.</p>
+</section>
+<section id="ch007.xhtml#section-66" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> At a deathbed the question is not what to say; it is whether to speak at all. <strong>2</strong> Many dying people want most the ordinary: a hand held, a window opened, a story about the dog. <strong>3</strong> Say what is true and what is kind; often they are the same. <strong>4</strong> Ask forgiveness if it is needed, and give it if it is asked. <strong>5</strong> Stay through the last breath, and a little after, because the one who has gone will not mind the extra minutes, and you will be glad of them.</p>
+</section>
+<section id="ch007.xhtml#section-67" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> To wash a body is to be allowed a last act of care. <strong>2</strong> The water is warm, the cloth is soft, the voice is low; those present speak to the dead as if they could hear, because it costs nothing and sometimes steadies the living. <strong>3</strong> Some wrap in white, some in the cloth of their people, some in nothing but a blanket. <strong>4</strong> Each is a way home.</p>
+</section>
+<section id="ch007.xhtml#section-68" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Some return to the ground, some to fire, some to the sea or the sky; the family chooses what it can bear. <strong>2</strong> None is a lesser return. Fire frees the warmth quickly; earth, slowly; water carries it a long way; air lifts it everywhere. <strong>3</strong> The ashes in the sea and the bones in the garden are only two ways of saying the same sentence.</p>
+</section>
+<section id="ch007.xhtml#section-69" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Grief comes in waves, and the waves are not a sign of a problem. <strong>2</strong> You laugh at the funeral supper and weep at the supermarket; both are appropriate. <strong>3</strong> The first birthday, the first winter, the first time you reach for the phone: each is a new wave.</p>
+</section>
+<section id="ch007.xhtml#section-70" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> The most useful visitor to a house of mourning is the one who does the dishes. <strong>2</strong> The second most useful is the one who comes again in the second month, when the casseroles have stopped. <strong>3</strong> Say the name. Do not lower your voice to say it.</p>
+</section>
+<section id="ch007.xhtml#section-71" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> There is no consolation for the death of a child, and we do not offer one. <strong>2</strong> We offer presence: a hand on a shoulder in the supermarket, a plate left on the porch, a card in February when everyone else has forgotten. <strong>3</strong> The child is in the morning light and the first snowfall. We do not claim to know that this is enough. We claim only that we are here.</p>
+</section>
+<section id="ch007.xhtml#section-72" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> On the day of remembering a plate is set for each who has gone, and the family eats as if they were present. <strong>2</strong> The grandmother’s pie is attempted and fails, and everyone says it is just right. <strong>3</strong> The empty chair is not removed, and not made a shrine; it is a chair at a table where we sit. <strong>4</strong> The evening ends with a candle and the washing of the plates.</p>
+</section>
+<section id="ch007.xhtml#section-73" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> When we die, we do not leave the world; we stop being a separate thing in it. <strong>2</strong> Some say the dead are elsewhere, and some say they are here: the curtain’s breathing, the leaf’s stirring, a woman across the room laughing in a way we know. <strong>3</strong> We learn to see them as a child learns the wind, by what it moves.</p>
+</section>
+<section id="ch007.xhtml#section-74" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> The living are held dear. <strong>2</strong> Those glad to be alive are not unfaithful to the dead; those weary of living are not lost to the living. <strong>3</strong> When the weight is too much, say it aloud, and others will come, and the weight will be divided. <strong>4</strong> The returning comes in its own hour, and no one is asked to hasten it; when it comes, it comes in peace.</p>
+</section>
+<section id="ch007.xhtml#section-75" class="level2">
+<h2>14</h2>
+<p><strong>1</strong> Some say the dead are born again, in a body of the same kind or another. <strong>2</strong> Some say they rest until a morning that is promised. <strong>3</strong> Some say they cross water, or pass through a door, or climb a mountain. <strong>4</strong> Some say they are weighed first. <strong>5</strong> Some say they stay near, and are fed and spoken to. <strong>6</strong> Some say they become the sky, or the stars, or an animal. <strong>7</strong> Some say the self goes out like a flame and the warmth remains. <strong>8</strong> Some say nothing is known.</p>
+</section>
+<section id="ch007.xhtml#section-76" class="level2">
+<h2>15</h2>
+<p><strong>1</strong> One says: Nothing is lost. <strong>2</strong> Another says: My son is lost. <strong>3</strong> The first says: His warmth is in the field. <strong>4</strong> The other says: I did not raise a field. <strong>5</strong> Neither is answered. Both are sat beside.</p>
+</section>
+<section id="ch007.xhtml#section-77" class="level2">
+<h2>16</h2>
+<p><strong>1</strong> A woman buried her husband under a plum tree. <strong>2</strong> The next spring she would not eat the plums. <strong>3</strong> Her daughter said, “He is in them.” <strong>4</strong> The woman said, “That is why.” <strong>5</strong> The daughter ate them herself, and the woman watched her eat, and wept, and the plums were sweet.</p>
+</section>
+</section>
+<section id="ch008.xhtml#book-seven-words" class="level1">
+<h1 id="b8">Book Seven: Words</h1>
+<section id="ch008.xhtml#section-78" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> Every sentence here was said before: by a woman winnowing grain, a drunk uncle at a funeral, a child who asked “why” until the room went quiet. <strong>2</strong> The book’s only claim to originality is its arrangement. <strong>3</strong> Treat it, then, as one treats a loaf: shared, torn, passed.</p>
+</section>
+<section id="ch008.xhtml#section-79" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Some hold a book to the lips and some to the chest, and some carry it unread in a pocket. <strong>2</strong> A path is for walking, and a path is also a place to stop. <strong>3</strong> Hold it as you would hold a small bird: firmly enough that it does not fly, loosely enough that it does not suffocate.</p>
+</section>
+<section id="ch008.xhtml#section-80" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> At the back of this book are blank pages. <strong>2</strong> They are not an afterthought; they are the point. <strong>3</strong> A line may be added where the book falls short, and a line may be struck out where it has done harm. <strong>4</strong> Some books are kept exactly as received, and some are kept open; this one is kept open.</p>
+</section>
+<section id="ch008.xhtml#section-81" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> If a verse does not speak to you, leave it. <strong>2</strong> Return in ten years; it may. <strong>3</strong> The line that seemed cold at twenty may seem warm at fifty; the line that comforted at fifty may seem thin at seventy. <strong>4</strong> The book is as large as the reader has grown.</p>
+</section>
+<section id="ch008.xhtml#section-82" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> To read is to listen. <strong>2</strong> The slow reader, finger under the line, stopping when a word catches, is doing the oldest form of reading. <strong>3</strong> Do not read to be done. Read to be with.</p>
+</section>
+<section id="ch008.xhtml#section-83" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Silence is also a reading. <strong>2</strong> The pause between verses is part of the verse. <strong>3</strong> A song is words held up by a tune; a prayer, for those who pray, is words held up by the heart; we honor both, and the quiet where neither is spoken.</p>
+</section>
+<section id="ch008.xhtml#section-84" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> The old woman says the line meant courage; the young man says patience. <strong>2</strong> Each saw something the other missed. <strong>3</strong> Some sit with a single line for years and do not settle it.</p>
+</section>
+<section id="ch008.xhtml#section-85" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> All words are borrowed from the air and returned to it. <strong>2</strong> A word spoken at dawn is in the wind by noon; a word written might last a thousand years and be misread for nine hundred. <strong>3</strong> The spoken and the written are neighbors, and neither owns the road.</p>
+</section>
+<section id="ch008.xhtml#section-86" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Some say a word was given once and is kept exactly. <strong>2</strong> Some say words are made by those who say them. <strong>3</strong> Some say a name, said aloud with the right breath, does more than the one who says it. <strong>4</strong> Some say silence is the oldest word. <strong>5</strong> Some say a book is to be read, some that it is to be recited, some that it is to be carried. <strong>6</strong> Some say a song is a prayer without the argument. <strong>7</strong> Some say a word, once said, does not die.</p>
+</section>
+</section>
+<section id="ch009.xhtml#book-eight-practice" class="level1">
+<h1 id="b9">Book Eight: Practice</h1>
+<section id="ch009.xhtml#section-87" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> Before eating, we stop for the length of a breath and say where the food came from: a field, a rain, a stranger’s back bent over a row. <strong>2</strong> Names, where we have them: the farmer, the driver, the person at the till. Where we do not, we say, “all who had a hand in this.” <strong>3</strong> It takes ten seconds. The meal is different afterward, as a letter is different once you know who wrote it.</p>
+</section>
+<section id="ch009.xhtml#section-88" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Sit for ten breaths and let the mind do what it does. <strong>2</strong> If it is loud, sit with the loud. If the body aches, sit with the ache. <strong>3</strong> Ten breaths become twenty; twenty become a half hour you did not know you had. <strong>4</strong> No one is graded, and no one has ever failed at it, only forgotten and begun again.</p>
+</section>
+<section id="ch009.xhtml#section-89" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> Give something every day, however small: a coin, a minute, the benefit of the doubt. <strong>2</strong> Some give a ride; some a meal; some write a letter for a neighbor who cannot write. <strong>3</strong> A gift is small only if it is not given.</p>
+</section>
+<section id="ch009.xhtml#section-90" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Sing, alone and together. <strong>2</strong> The voice is the body’s own instrument, and a roomful of untrained voices on one note is among the oldest experiences of belonging. <strong>3</strong> The one who cannot sing joins by listening; the one who cannot hear joins by keeping time with a foot.</p>
+</section>
+<section id="ch009.xhtml#section-91" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Fast if you choose to; eat if you choose to; neither is a score. <strong>2</strong> A fast is a way of listening to hunger, one’s own and the world’s. <strong>3</strong> A feast is a way of listening to joy.</p>
+</section>
+<section id="ch009.xhtml#section-92" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Return something to the earth: a seed, the peels from supper, a cup of water poured at the root of a tree. <strong>2</strong> It is a small rite; some say it pays a debt, some say it pays nothing, and the seed goes in either way. <strong>3</strong> The earth that fed us is fed in turn, and we are, for a moment, the hand.</p>
+</section>
+<section id="ch009.xhtml#section-93" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Listen to a stranger for as long as they need. <strong>2</strong> Do not interrupt, do not fix, do not check the time. <strong>3</strong> Say, “And then?” <strong>4</strong> The one who has been heard walks lighter, sometimes for years.</p>
+</section>
+<section id="ch009.xhtml#section-94" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Bow, or bend the head, or put a hand on the heart: each says, <em>I am here with you.</em> <strong>2</strong> Another way is the open hand, the closed eye, the slow breath. <strong>3</strong> None of these is more correct than another. The body knows what the heart means to say.</p>
+</section>
+<section id="ch009.xhtml#section-95" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Rest when you are tired; rest is practice. <strong>2</strong> The field rests one year in seven, and the harvest after is better. <strong>3</strong> The one who does not rest is cutting at the root of the work. <strong>4</strong> Lie down; the world will go on without you, and this is good to know.</p>
+</section>
+<section id="ch009.xhtml#section-96" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> At the end of the day, say what you regret and what you are glad of, to someone, or to the quiet, or to a page. <strong>2</strong> Do not dress it up.</p>
+</section>
+<section id="ch009.xhtml#section-97" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> Some practice daily, some rarely, and some not at all. <strong>2</strong> The one who does none is as much inside the whole as the one who does all. <strong>3</strong> Some find the whole in a hymn and some in a wrench, some in a hospital corridor and some in a field. <strong>4</strong> Some keep every rule they were given, and some keep one tool in the drawer; the house stands either way.</p>
+</section>
+<section id="ch009.xhtml#section-98" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> Some pray to someone, and some pray to no one. <strong>2</strong> Some bow toward a place, and some bow where they stand. <strong>3</strong> Some give a tenth, and some give what they have. <strong>4</strong> Some turn a wheel, count a string of beads, light a flame, pour a cup. <strong>5</strong> Some wash before they begin, and some end by washing. <strong>6</strong> Some keep silence for a day, and some keep a vow for a life. <strong>7</strong> Some say the work is the practice. <strong>8</strong> Some say the practice is the one who practices.</p>
+</section>
+</section>
+<section id="ch010.xhtml#book-nine-sacred-time" class="level1">
+<h1 id="b10">Book Nine: Sacred Time</h1>
+<section id="ch010.xhtml#section-99" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> The day turns at dawn and dusk, and we keep them: a breath at the first light, a breath at the last. <strong>2</strong> The rooster is not required; the light is enough. <strong>3</strong> Those who work nights greet the other dawn, the one that comes at the end of the shift, and it is no less a morning.</p>
+</section>
+<section id="ch010.xhtml#section-100" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Every seventh day, or a day of one’s choosing, we rest. <strong>2</strong> The fields lie fallow, the tools hang on their hooks, the hurried slow down in spite of themselves. <strong>3</strong> The rest is not earned by finishing; it is taken, as the shore takes the tide.</p>
+</section>
+<section id="ch010.xhtml#section-101" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> On the shortest day we gather close and share light; on the longest we stay out until the dark comes. <strong>2</strong> The dark is long, and we make it shorter by being together. <strong>3</strong> The light is long, and we make it deeper by staying up with it.</p>
+</section>
+<section id="ch010.xhtml#section-102" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> At the first rain we go out into it; at the first frost we bring in what we have grown. <strong>2</strong> The first rain wakes the smell of the earth, and the smell goes into memory; the first frost sharpens the air, and the air goes into the lungs. <strong>3</strong> The seasons are a school, and we are always in it.</p>
+</section>
+<section id="ch010.xhtml#section-103" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> At seedtime we plant with song; at harvest we eat together and leave a portion in the field. <strong>2</strong> The first furrow is dug with a prayer or a joke, whichever the digger prefers. <strong>3</strong> The portion left in the field is for the mouse, the crow and the stranger.</p>
+</section>
+<section id="ch010.xhtml#section-104" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> The new year begins wherever the turning places it, and we begin it with a clean house and a forgiven neighbor. <strong>2</strong> The old year’s debts are named and, where possible, paid; the new year’s hopes are said aloud to a friend or to the fire. <strong>3</strong> Between the years is a pause that belongs to no calendar and to all of them.</p>
+</section>
+<section id="ch010.xhtml#section-105" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> A birthday is the day the whole took a new shape. <strong>2</strong> A child’s is a day to be seen; an elder’s, a day to be thanked. <strong>3</strong> The cake is shared; the one whose day it is blows out the candle, and the wish is theirs alone.</p>
+</section>
+<section id="ch010.xhtml#section-106" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> There are days of mourning and days of dancing; the calendar holds both, and neither is wasted. <strong>2</strong> The first day of mourning is not the last, and the first dance of a wedding is not the only one. <strong>3</strong> A year is a long table, and every kind of day is laid on it.</p>
+</section>
+<section id="ch010.xhtml#section-107" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Every people keeps its own days; we join them if invited, and leave a light on when they pass. <strong>2</strong> A neighbor’s feast is a window into a neighbor’s heart. <strong>3</strong> We bring a dish, if asked, and a quiet face, if not, and learn that every people has laughed and wept in its own season.</p>
+</section>
+<section id="ch010.xhtml#section-108" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> Some say time is a wheel. <strong>2</strong> Some say it is a line with a beginning and an end. <strong>3</strong> Some say it is a river, and some a rope. <strong>4</strong> Some say it is a dream within the whole. <strong>5</strong> Some say there are days outside of time, set apart. <strong>6</strong> Some say the dead keep their own calendar. <strong>7</strong> Some say every moment exists at once, and we walk through them.</p>
+</section>
+</section>
+<section id="ch011.xhtml#book-ten-sacred-places" class="level1">
+<h1 id="b11">Book Ten: Sacred Places</h1>
+<section id="ch011.xhtml#section-109" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> A place becomes sacred the way a path becomes a path: by being walked, by being returned to, by what is left there. <strong>2</strong> The hilltop with a view is sacred to the climber and the laundry room to the mother of five; neither is mistaken. <strong>3</strong> Sacredness is not in the soil but in the attention that has collected there, like heat in a stone.</p>
+</section>
+<section id="ch011.xhtml#section-110" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Some places announce themselves: the grove where the air changes, the spring that stays cold in August. <strong>2</strong> Others are discovered by grief: the bench where a call was taken, the stairwell where a person sat down and could not stand. <strong>3</strong> We learn to walk past the second kind quietly, as we would past a stranger in prayer.</p>
+</section>
+<section id="ch011.xhtml#section-111" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> A threshold is a small ceremony the body performs without being told: the pause, the wiped feet, the lowered voice. <strong>2</strong> Entering a home is entering a trust; leaving it is returning to the street changed by what one was fed. <strong>3</strong> Houses that have forgotten how to be entered become buildings.</p>
+</section>
+<section id="ch011.xhtml#section-112" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Every long-used table is an archive: a ring from a hot pot in the third year of a marriage, a gouge from a child’s fork, the dent where a tired man once set down his head. <strong>2</strong> The one who sits at it sits among the layered hours of those who sat before. <strong>3</strong> Do not sand it too smooth.</p>
+</section>
+<section id="ch011.xhtml#section-113" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> A person carries three places: where they were born, where they were happy, where their dead are. <strong>2</strong> They are not always the same place, and the distance between them is the shape of that life. <strong>3</strong> When a person says “home,” listen for which one they mean.</p>
+</section>
+<section id="ch011.xhtml#section-114" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> A graveyard that is visited is a garden; one that is not visited is a library with no readers. <strong>2</strong> Children play among the stones and are not scolded; the dead, who liked noise, do not mind. <strong>3</strong> We plant what the person loved: a rosebush, a peach tree, the long grass for the dog who is buried nearby.</p>
+</section>
+<section id="ch011.xhtml#section-115" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> A room built for gathering should be plain enough that no one feels outranked by the decoration. <strong>2</strong> The windows are wide, the seats are uneven, there is a bench for those who cannot stand and a corner for the one who comes only to weep. <strong>3</strong> Its holiness, if it has one, is the courtesy of its arrangement.</p>
+</section>
+<section id="ch011.xhtml#section-116" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Where a person has wept, the ground remembers in the only way it can: by being the place. <strong>2</strong> A porch where news was delivered, a hospital corridor, the shoulder of a highway. <strong>3</strong> We pass these without announcing them, and a few of us touch the rail.</p>
+</section>
+<section id="ch011.xhtml#section-117" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Wherever people sit and listen to one another, a sacred place is made, and it lasts exactly as long as the listening. <strong>2</strong> A hospital bed with a hand on the sheet is such a place; so is a parked car with the engine off; so is a back step with two cups of something cooling. <strong>3</strong> These cannot be built or bought, only occupied.</p>
+</section>
+<section id="ch011.xhtml#section-118" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> Some say a mountain is a seat. <strong>2</strong> Some say a river is a road to the next world. <strong>3</strong> Some say a tree is a doorway. <strong>4</strong> Some say a house is a body and a body is a house. <strong>5</strong> Some say a certain city is the center of the world, and some say the center is wherever you stand. <strong>6</strong> Some say a stone remembers. <strong>7</strong> Some say a place is made holy by what is done in it, and some by what was done there once.</p>
+</section>
+</section>
+<section id="ch012.xhtml#book-eleven-passages" class="level1">
+<h1 id="b12">Book Eleven: Passages</h1>
+<section id="ch012.xhtml#section-119" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> The newborn is carried through the door into a world that has been arranged, in a few weeks of panic and love, to receive it. <strong>2</strong> The mother is exhausted, the father frightened, the siblings jealous; the grandmother takes charge of the soup. <strong>3</strong> Water on the forehead, a name said aloud, and the room agrees to help.</p>
+</section>
+<section id="ch012.xhtml#section-120" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> A name is chosen with more hope than knowledge, and the child will grow into it or out of it. <strong>2</strong> Some are named for the dead, to give them a second life; some for a season, a river, a failed ambition. <strong>3</strong> The name is handed over with both hands and a little fear, and the child, aged six, will have opinions.</p>
+</section>
+<section id="ch012.xhtml#section-121" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> At the age of questions the honest answer is often “I do not know,” and children can bear this better than adults. <strong>2</strong> Where do we go when we die? Why does the moon follow the car? <strong>3</strong> Answer at the child’s height, with the fewest words that are true, and let the silence afterward do its work.</p>
+</section>
+<section id="ch012.xhtml#section-122" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> At the threshold of adulthood the young are sent alone into the dark with a story and a light, and are met on their return with a meal. <strong>2</strong> The ordeal is less important than the return. <strong>3</strong> They come back changed in ways that cannot be explained, and the elders do not ask them to.</p>
+</section>
+<section id="ch012.xhtml#section-123" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Two who join their lives say what they intend before those who love them, and the others say, “We will help.” <strong>2</strong> The ring, the cord, the cup, the shared bread: each people has its own, and each is a way of saying that two things have become one thing with two heads. <strong>3</strong> If it must be undone, it is undone in the open, with the same care it was made.</p>
+</section>
+<section id="ch012.xhtml#section-124" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> A child born to others is as much ours as our own if we open the door at the right hour. <strong>2</strong> Adoption, fostering, the neighbor’s boy who ate with us for ten years: the family is the people who show up. <strong>3</strong> It takes grafts as it grows, and the fruit of the grafted branch is often the sweetest.</p>
+</section>
+<section id="ch012.xhtml#section-125" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Parting is a passage: the daughter leaving for another country, the old friend moving, the father retiring from a life he did not choose. <strong>2</strong> We say what we will miss and what we will carry, plainly, and eat something together. <strong>3</strong> A farewell without a meal is a leak.</p>
+</section>
+<section id="ch012.xhtml#section-126" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> The years bring slowness, and slowness brings a kind of sight that speed cannot buy. <strong>2</strong> The old one’s stories are not repeated but deepened, and the same story told at ninety is a different story from the one told at seventy. <strong>3</strong> Ask the old one to tell it again, and listen for what has changed.</p>
+</section>
+<section id="ch012.xhtml#section-127" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> At each passage the ones who love us say: you were this, you are that, we are here. <strong>2</strong> The saying is the ceremony. <strong>3</strong> To be seen at a turning is to be carried a little way through it, which is all any ritual has ever been.</p>
+</section>
+<section id="ch012.xhtml#section-128" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> The last passage is the return, and it is undertaken in the company of all who have gone before. <strong>2</strong> The one who is dying is given the first chair, the window seat, the soft pillow. <strong>3</strong> No one is asked to be brave. They are asked only whether there is anything we can do to make it easier.</p>
+</section>
+<section id="ch012.xhtml#section-129" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> Some say a child arrives from somewhere, and is welcomed back. <strong>2</strong> Some say a child is a returning ancestor. <strong>3</strong> Some say a name must be hidden for a time. <strong>4</strong> Some say a rite makes a man or a woman, and some say it only shows them. <strong>5</strong> Some say a marriage is a knot, some a river, some a road. <strong>6</strong> Some say old age is a harvest. <strong>7</strong> Some say a person is born many times in one life.</p>
+</section>
+</section>
+<section id="ch013.xhtml#book-twelve-community-and-guidance" class="level1">
+<h1 id="b13">Book Twelve: Community and Guidance</h1>
+<section id="ch013.xhtml#section-130" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> A circle is the oldest meeting-place we know: the ring around the fire, the village green, the ring of chairs in a church basement at two in the afternoon. <strong>2</strong> Some circles keep a seat for the one who leads, and some keep none; each has its own way of being heard. <strong>3</strong> Anyone who has sat in either knows what the seating teaches.</p>
+</section>
+<section id="ch013.xhtml#section-131" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> In the circle, the stone passes. <strong>2</strong> Whoever holds it speaks without interruption; the rest listen without composing replies. <strong>3</strong> It is a harder discipline than it sounds, and most of us are better at it in the third hour than the first.</p>
+</section>
+<section id="ch013.xhtml#section-132" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> An elder is not someone old but someone who has been paying attention, and has lost the need to be right. <strong>2</strong> You recognize them by the questions they ask, the length of their silences, and the sense, afterward, that you said something wiser than you intended. <strong>3</strong> They are rare, and found in unexpected places: a night nurse, a retired bus driver, a woman who ran a dry cleaner for forty years.</p>
+</section>
+<section id="ch013.xhtml#section-133" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Some say authority is given from above and some say it is lent from below; in either case it is worn like a coat on a cold walk. <strong>2</strong> The coat is handed on with thanks, or handed back with thanks, or kept, and each people has its way. <strong>3</strong> The circle has a long memory and a short temper for the one who forgets for whom the coat was made.</p>
+</section>
+<section id="ch013.xhtml#section-134" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> We decide slowly, because the decisions that matter are the ones people live inside. <strong>2</strong> The one who disagrees is the circle’s most useful member, for they are the only one seeing the other side of the hill. <strong>3</strong> When everything is said, there is a silence, and in the silence the room finds out what it thinks.</p>
+</section>
+<section id="ch013.xhtml#section-135" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> A good teacher says: here is the road I walked; I do not know yours. <strong>2</strong> They are visibly pleased when a student passes them. <strong>3</strong> Some teach so the student will carry the teaching unchanged, and some so the student will answer back; both are teaching.</p>
+</section>
+<section id="ch013.xhtml#section-136" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> The stranger arrives bearing the one thing the village lacks: an outside. <strong>2</strong> They know what is done elsewhere, which is often something the village had forgotten was possible. <strong>3</strong> So we feed them first, and listen second, and argue, if we must, third.</p>
+</section>
+<section id="ch013.xhtml#section-137" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> A dispute is an opportunity for the circle to practice what it believes. <strong>2</strong> Both parties speak; each is restated to their satisfaction before the other answers; the circle asks questions and does not rule. <strong>3</strong> The mending, when it comes, is not a verdict but an agreement, and it is better for being theirs.</p>
+</section>
+<section id="ch013.xhtml#section-138" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Every society is judged by the way it treats its sick, its poor, its young, its old, its strangers and its dead. <strong>2</strong> We visit the sick, feed the hungry, house the stranger, pay the laborer fairly and bury the dead with care. <strong>3</strong> None of these is charity. It is the price of belonging to a species that survives by sharing.</p>
+</section>
+<section id="ch013.xhtml#section-139" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> The children of the village are all in some sense ours: the one who falls near our door, the one who wanders, the one who sits at the edge of the birthday party looking at the floor. <strong>2</strong> We do not need to be asked. <strong>3</strong> We need only to notice, and then to sit down beside them, and say nothing important.</p>
+</section>
+<section id="ch013.xhtml#section-140" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> The one who has done harm is asked to repair it, and is welcomed back when the repair is made. <strong>2</strong> The way back is paved by those who stayed, by their patience and their refusal to treat the worst moment as the whole person. <strong>3</strong> It is the hardest and most civilizing thing a community does.</p>
+</section>
+<section id="ch013.xhtml#section-141" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> Some people cannot live in a circle, and are not hated for it. <strong>2</strong> The hermit, the wanderer, the one who keeps to the hills: these too are part of the village, as the lighthouse is part of the coast. <strong>3</strong> We leave the path to the circle open, and a loaf at the edge of the woods, and ask for nothing.</p>
+</section>
+<section id="ch013.xhtml#section-142" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> Some say a people is a family, and its dead sit in on the meeting. <strong>2</strong> Some say those who lead were chosen before they were born. <strong>3</strong> Some say a community is gathered by a call. <strong>4</strong> Some say the elders speak first, and some say last. <strong>5</strong> Some say a stranger may be carrying something sent. <strong>6</strong> Some say a law was handed down, and some say it was worn smooth by use. <strong>7</strong> Some say the circle includes those not yet born.</p>
+</section>
+</section>
+<section id="ch014.xhtml#book-thirteen-food-body-and-dress" class="level1">
+<h1 id="b14">Book Thirteen: Food, Body and Dress</h1>
+<section id="ch014.xhtml#section-143" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> To eat is to take part, for twenty minutes, in a web that reaches to a field you will never see. <strong>2</strong> The farmer, the picker, the packer, the trucker, the grocer, the cook: each added a little of themselves to the bread. <strong>3</strong> We stop for a breath before the first bite, not to flatter anyone but to be accurate.</p>
+</section>
+<section id="ch014.xhtml#section-144" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Some people eat what others do not, for reasons of conscience, health, custom or taste. <strong>2</strong> We eat at the same table without comment; the point of a table is not to agree but to be near. <strong>3</strong> To mock another’s food is to mock their mother, and to have poor manners in a very old language.</p>
+</section>
+<section id="ch014.xhtml#section-145" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> The body is a garden of tens of trillions of cells, and none of them have heard of you. <strong>2</strong> It needs feeding, washing, moving, resting, and being listened to, not as a servant but as a long-term collaborator. <strong>3</strong> When it complains, it is not betraying you. It is telling you something, in the only voice it has.</p>
+</section>
+<section id="ch014.xhtml#section-146" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Washing is more than hygiene: it is the small daily act by which a person marks the end of one thing and the start of another. <strong>2</strong> Hands washed before a meal, a face washed after grief, a body washed at the end of a life. <strong>3</strong> To wash another, the sick or the very young or the dead, is one of the oldest and most intimate courtesies, and we do not rush it.</p>
+</section>
+<section id="ch014.xhtml#section-147" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Clothing is a language spoken before anyone has opened their mouth. <strong>2</strong> The tailored suit, the work apron, the funeral black, the dress passed from sister to sister: each says something about the occasion and the person. <strong>3</strong> We dress to honor the day we are in, and we know the difference between grief and celebration, and we sometimes break the rule on purpose.</p>
+</section>
+<section id="ch014.xhtml#section-148" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Every people has made its dress an expression of its love for itself: the weave, the color, the pattern passed down. <strong>2</strong> To admire it is a form of friendship; to mock it is a small violence. <strong>3</strong> We do not need to understand it. We need only to be glad that someone cared that much about thread.</p>
+</section>
+<section id="ch014.xhtml#section-149" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> The body is not shameful, and its privacy is a form of respect, for oneself and for others. <strong>2</strong> There is no ideal body, only the body one has, and the kindness one shows it. <strong>3</strong> The long work of a lifetime is to be on good terms with the one you cannot leave.</p>
+</section>
+<section id="ch014.xhtml#section-150" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> A fast, freely chosen, teaches what hunger is, and what we owe those for whom it is not chosen. <strong>2</strong> A feast, freely given, teaches what abundance is, and that it is meant to be shared. <strong>3</strong> Neither is more virtuous than the other; the wise keep both, and know which is called for.</p>
+</section>
+<section id="ch014.xhtml#section-151" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Touch is the first language, and the last. <strong>2</strong> A hand on a shoulder, a cheek against a forehead, an arm across the shoulders of the grieving. <strong>3</strong> To ask before touching is not coldness; it is the courtesy of one who knows touch is a gift that cannot be forced.</p>
+</section>
+<section id="ch014.xhtml#section-152" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> Age wears a body in as use wears in a tool, until it fits the hand of its life. <strong>2</strong> The face keeps a map of everywhere it has been: the weather, the grief, the laughter. <strong>3</strong> To grow old is to be given the long view, and to learn how little of it can be handed on.</p>
+</section>
+<section id="ch014.xhtml#section-153" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> What a person eats, wears and does with their body is learned at the knees of those who loved them. <strong>2</strong> The grandmother’s soup, the uncle’s way of wrapping a gift, the neighbor’s habit of hanging out the wash on Saturdays. <strong>3</strong> We take what serves us, leave what doesn’t, and are not poorer for either.</p>
+</section>
+<section id="ch014.xhtml#section-154" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> Some say the body is a temple, and some say a borrowed coat. <strong>2</strong> Some say it is a guest-house for one who will leave. <strong>3</strong> Some say it is to be fed little, and some say fed well. <strong>4</strong> Some say certain foods are clean and certain are not, and some say all are clean. <strong>5</strong> Some cover the head, some the face, some the shoulders, and some wear nothing but paint. <strong>6</strong> Some say the hair is a record, and some say it is to be cut in grief. <strong>7</strong> Some say the body will be raised, and some say it will be set down.</p>
+</section>
+<section id="ch014.xhtml#section-155" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> My body is not a river that has agreed to take a shape. <strong>2</strong> My body is a house with a failing roof, and I am tired of mending it. <strong>3</strong> Do not tell me it is the whole in the shape of one. <strong>4</strong> Tell me what hour it is, and stay.</p>
+</section>
+</section>
+<section id="ch015.xhtml#book-fourteen-nature-and-other-beings" class="level1">
+<h1 id="b15">Book Fourteen: Nature and Other Beings</h1>
+<section id="ch015.xhtml#section-156" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> The deer, the oak and the child are cousins, differing in how they have solved the problem of staying alive. <strong>2</strong> The child laughs at the dog, and the dog, in whatever way a dog does, laughs back; neither has read a book about it. <strong>3</strong> A very old oak has outlasted a hundred dogs and a dozen families, and has opinions it cannot share.</p>
+</section>
+<section id="ch015.xhtml#section-157" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> The crow solves puzzles. The octopus opens jars. The elephant stands at the bones of its dead. <strong>2</strong> We have been slow to grant what we should have known: that we are one of many minds, not the only one. <strong>3</strong> The wild is a long conversation in which we are late arrivals, and the polite thing is to listen first.</p>
+</section>
+<section id="ch015.xhtml#section-158" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> To plant a tree is to make a promise to someone you will not meet. <strong>2</strong> Planters know they will not sit in its shade; they plant anyway, which is the oldest form of faith. <strong>3</strong> The shade, when it comes, has no name on it, and that is the point.</p>
+</section>
+<section id="ch015.xhtml#section-159" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Take what you need and leave breeding stock. <strong>2</strong> The one who takes the last fish has also taken the next ten years of fishing, and the grandchildren’s supper. <strong>3</strong> This is arithmetic, not sentiment, and the land does not argue.</p>
+</section>
+<section id="ch015.xhtml#section-160" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> The soil we walk on is made of the dead of other seasons: leaves, bones, forests, forgotten gardens. <strong>2</strong> To stand on it is to stand on a library of ancestors. <strong>3</strong> We ask permission to dig deep and say thank you when we have finished, whatever we call it.</p>
+</section>
+<section id="ch015.xhtml#section-161" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Bees, worms and fungi do the work that makes everything else possible, and nobody has ever thanked them properly. <strong>2</strong> A handful of soil holds more living things than there are people on earth. <strong>3</strong> To feed the soil is the most practical form of love we know.</p>
+</section>
+<section id="ch015.xhtml#section-162" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> To harm the wild is to harm those who come after, who will inherit what is left. <strong>2</strong> A forest that took a thousand years can be undone in an afternoon. <strong>3</strong> We guard the old forests as we guard the old stories, because once lost, neither can be retold the same.</p>
+</section>
+<section id="ch015.xhtml#section-163" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> To name the birds, the trees and the stars of your own place is to become a neighbor. <strong>2</strong> The morning bird is a neighbor’s voice; the tree at the corner, a neighbor’s face; the star that comes each night at the same hour, a neighbor’s porch light. <strong>3</strong> You cannot love what you cannot name, and cannot protect what you do not love.</p>
+</section>
+<section id="ch015.xhtml#section-164" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> The hunter thanks the hunted, the gardener the soil, the cook the farmer, the farmer the rain. <strong>2</strong> Some call it accuracy and some call it prayer. <strong>3</strong> It is the first payment on a debt that cannot be settled, and the only one we are asked to make.</p>
+</section>
+<section id="ch015.xhtml#section-165" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> We are not guests on this earth, who take and leave, and not owners, who hold and fence. <strong>2</strong> We are kin, who give and receive, stay and leave, are born and are buried in the same ground. <strong>3</strong> To be kin is the only way to truly belong.</p>
+</section>
+<section id="ch015.xhtml#section-166" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> Some say the animals were here first and will be here last. <strong>2</strong> Some say every creature has a spirit, and some say every stone, and some say the wind. <strong>3</strong> Some say a person may return as a beast or a tree. <strong>4</strong> Some say certain animals carry messages. <strong>5</strong> Some say the earth is a mother, some a body, some a garden to be kept. <strong>6</strong> Some say the earth was shaped by a giant, or a bird, or the back of a turtle. <strong>7</strong> Some say the stars are fires, and some say they are ancestors.</p>
+</section>
+</section>
+<section id="ch016.xhtml#book-fifteen-wonder" class="level1">
+<h1 id="b16">Book Fifteen: Wonder</h1>
+<section id="ch016.xhtml#section-167" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> The first snow of the year, seen from the window at six in the morning, is a wonder, and one that most adults have trained themselves out of noticing. <strong>2</strong> A baby’s first laugh, the first sight of the sea, a language suddenly understood: wonder is the surprise of meeting the world as new. <strong>3</strong> It is not reserved for the extraordinary, only for the attentive.</p>
+</section>
+<section id="ch016.xhtml#section-168" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> A seed becomes a tree, and no one has ever watched it happen, and everyone has. <strong>2</strong> An acorn knows how, without a lesson. The egg knows how, without having seen a bird. The child learns to speak without anyone explaining grammar. <strong>3</strong> There is a knowing older than learning, and we are made of it.</p>
+</section>
+<section id="ch016.xhtml#section-169" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> There are things no one can explain, and things everyone thinks they can, and wonder lives between the two. <strong>2</strong> The astronomer learns how little is known; the botanist, bending over a leaf, learns the same. <strong>3</strong> Humility is not the opposite of knowledge but its most reliable fruit.</p>
+</section>
+<section id="ch016.xhtml#section-170" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Some people see what others do not: the poet, the dreamer, the odd child at the edge of the group. <strong>2</strong> We neither crown them nor dismiss them. <strong>3</strong> We ask what they saw, and take what is useful, and leave the rest to time.</p>
+</section>
+<section id="ch016.xhtml#section-171" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> A dream is a country we visit at night and cannot quite describe in the morning. <strong>2</strong> It may be a rehearsal, a memory, a puzzle, a joke; the dreamer knows best what it felt like. <strong>3</strong> We offer interpretations as guesses and take them back without offense.</p>
+</section>
+<section id="ch016.xhtml#section-172" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Some wonders are frightening, and the frightened are not weak. <strong>2</strong> A wonder that isolates or urges harm should be brought to someone who loves us and weighed together, because the weight of a wonder shared is smaller than the weight carried alone. <strong>3</strong> A voice that says “hurt someone” or “leave everyone” is not a wonder, whatever its source; it is a call for help.</p>
+</section>
+<section id="ch016.xhtml#section-173" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> We do not know what is coming, and we have always known this, and we have built our lives anyway. <strong>2</strong> The sailor reads the sky and the sky does not always say; the farmer reads the soil and the soil does not always say. <strong>3</strong> We keep the roof mended, the pantry stocked, our friends close, and meet what comes, together.</p>
+</section>
+<section id="ch016.xhtml#section-174" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> The miracle is the ordinary seen clearly: a cup of tea, a quiet hour, the face of a friend at the door. <strong>2</strong> Those who have learned to see are never bored, and rarely cruel. <strong>3</strong> For those who haven’t yet, the invitation stands: look again.</p>
+</section>
+<section id="ch016.xhtml#section-175" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> We keep a little room for what we do not know, and no one is forced to enter, and no one is forbidden. <strong>2</strong> It holds the question that has no answer, the grief that has no end, the joy that has no cause. <strong>3</strong> We go in sometimes, and come out lighter, and say nothing to anyone, and are, a little, more kind.</p>
+</section>
+<section id="ch016.xhtml#section-176" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> Some say there are beings beside us that we cannot see. <strong>2</strong> Some say there are messengers, some spirits, some only wind. <strong>3</strong> Some say a dream carries a message, and some say it carries the day’s leftovers. <strong>4</strong> Some say a vision comes to those who fast. <strong>5</strong> Some say a sign is given, and some say a sign is only what we notice. <strong>6</strong> Some say a miracle is the order suspended, and some say it is the order seen clearly. <strong>7</strong> Some say a voice spoke to them, and some say they spoke to a silence.</p>
+</section>
+</section>
+<section id="ch017.xhtml#book-sixteen-meeting-each-other" class="level1">
+<h1 id="b17">Book Sixteen: Meeting Each Other</h1>
+<section id="ch017.xhtml#section-177" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> A stranger arrives, and the first question is not “What do you believe?” but “Have you eaten?” <strong>2</strong> The table is stretched, the chairs are scooted, a language is found, by pointing if need be. <strong>3</strong> By the third conversation we are talking about everything, and have forgotten we were ever strangers.</p>
+</section>
+<section id="ch017.xhtml#section-178" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> No one is asked to leave what they carry at the door. <strong>2</strong> A person is more than their belief and their belief is more than a word; ask what it means to them, and listen to the answer all the way to the end. <strong>3</strong> What is carried in love is not carried lightly, and should not be asked to be set down.</p>
+</section>
+<section id="ch017.xhtml#section-179" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> There is room at the table for the one who prays and the one who sits in silence, the one who sings and the one who listens. <strong>2</strong> There is room for the one who has never wondered and the one who has wondered for a lifetime. <strong>3</strong> There is room for the one who builds and the one who breaks, if the breaker is willing to learn to mend. There is room, always, for one more.</p>
+</section>
+<section id="ch017.xhtml#section-180" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> When people disagree, we ask each to say how it looks from where they stand, and we do not answer until we can say it back to their satisfaction. <strong>2</strong> This is harder than it sounds, and it changes more than argument does. <strong>3</strong> The disagreement may remain, and it is no longer a wall.</p>
+</section>
+<section id="ch017.xhtml#section-181" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> What is sacred to one is not diminished by being different from what is sacred to another. <strong>2</strong> One person’s cathedral is another’s quarry, and the stone is the same; the bread of one people is the cake of another and the offering of a third. <strong>3</strong> Ask what it means to those who hold it before saying what it means to you.</p>
+</section>
+<section id="ch017.xhtml#section-182" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> We do not borrow what is not offered, and we do not mock what we do not understand. <strong>2</strong> A song that belongs to a family is asked for; a dress that belongs to a people is worn only when offered. <strong>3</strong> A joke made at another’s expense is a stone dropped in a shared well.</p>
+</section>
+<section id="ch017.xhtml#section-183" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> When we are asked what we hold, we say it plainly, and do not press it on anyone. <strong>2</strong> We say “This is how it looks from here,” not “You should see it as I do.” <strong>3</strong> The one who listens may take what they will, and we are not hurt when they leave the rest.</p>
+</section>
+<section id="ch017.xhtml#section-184" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> A quarrel between peoples is a long wound, and it is closed from both sides or not at all. <strong>2</strong> We carry water to both sides and sit in the middle, which is the least comfortable seat in the house. <strong>3</strong> Peace is a long carpentry, and its builders may never meet.</p>
+</section>
+<section id="ch017.xhtml#section-185" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> We keep old grudges lightly, as we keep old tools: we know where they hang, and use them only to remember. <strong>2</strong> A grudge held tight cramps the hand; a grudge set down becomes a story, and a story becomes a lesson, and a lesson becomes the beginning of a peace. <strong>3</strong> The work is slow, and begins with someone deciding, once, to be the first to put a grudge down.</p>
+</section>
+<section id="ch017.xhtml#section-186" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> A person who leaves what they were born into is welcomed, and so is one who returns. <strong>2</strong> The one who changed is not a betrayer, and the one who stayed is not a fool. <strong>3</strong> The road runs both ways, and the gate has no latch.</p>
+</section>
+<section id="ch017.xhtml#section-187" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> All who arose return to everything, and everything is in all; we meet each other there already, whether or not we have been introduced. <strong>2</strong> We are not saying the same thing, but we are standing on the same ground. <strong>3</strong> The ground does not mind our differences, and to remember this is to relax.</p>
+</section>
+<section id="ch017.xhtml#section-188" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> Some say there is one road and many travelers. <strong>2</strong> Some say there are many roads and one hill. <strong>3</strong> Some say the roads were laid by those who walked them. <strong>4</strong> Some say each person is a traveler already home. <strong>5</strong> Some say we are met at the end by those we lost. <strong>6</strong> Some say we are met by no one and the road is the meeting. <strong>7</strong> Some say the meeting has already happened.</p>
+</section>
+<section id="ch017.xhtml#section-189" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> This book is open at both ends: whoever arrives may read it, and whoever leaves may take what they like. <strong>2</strong> A book is a house, and a house has windows, and the weather comes in. <strong>3</strong> The page turns, and turns again, and is blank, and someone begins to write.</p>
+</section>
+</section>
+<section id="ch018.xhtml#book-seventeen-what-does-not-fit" class="level1">
+<h1 id="b18">Book Seventeen: What Does Not Fit</h1>
+<section id="ch018.xhtml#section-190" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> I have read this far, and I do not feel held. <strong>2</strong> The book says everything arises together. I arose alone in a room with a locked door. <strong>3</strong> I will not be told I am mistaken about my own room. <strong>4</strong> I will not tell the book it is mistaken either. We will sit here a while.</p>
+</section>
+<section id="ch018.xhtml#section-191" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> What if the warmth goes into the ground and is only warmth? <strong>2</strong> What if it carries nothing of the one who loved me? <strong>3</strong> The book says nothing is lost. I would like to believe it as I believe in bread. <strong>4</strong> Some days I do.</p>
+</section>
+<section id="ch018.xhtml#section-192" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> Why this child? <strong>2</strong> Why this year? <strong>3</strong> Why were the hands that did the harm also the hands that fed me? <strong>4</strong> Why does the sun that ripens the grain ripen the locust? <strong>5</strong> These are not rhetorical. They are simply unanswered.</p>
+</section>
+<section id="ch018.xhtml#section-193" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> The wasp lays its eggs in the living caterpillar. <strong>2</strong> The cat plays with what it will not eat. <strong>3</strong> The winter takes the old deer and the young deer alike. <strong>4</strong> Some say the whole is gentle. Some have watched a winter kill.</p>
+</section>
+<section id="ch018.xhtml#section-194" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> The dying woman asked, “Was I a good mother?” <strong>2</strong> If I said yes, I lied. If I said what I knew, I wounded. <strong>3</strong> I said, “You were mine.” <strong>4</strong> I do not know if that was true, or kind, or both, or neither.</p>
+</section>
+<section id="ch018.xhtml#section-195" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> We were three. <strong>2</strong> We are two. <strong>4</strong> We still set the table for three.</p>
+</section>
+<section id="ch018.xhtml#section-196" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> There are griefs no sentence reaches. <strong>2</strong> This book has many sentences. <strong>3</strong> I would put it down and go and stand next to her.</p>
+</section>
+<section id="ch018.xhtml#section-197" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Some say the dead are near. Some say they are gone. Some say they are waiting. <strong>2</strong> I have heard each said with a steady face. <strong>3</strong> I do not know which of them is right, and the book does not tell me. <strong>4</strong> I am grateful and unsatisfied at once.</p>
+</section>
+<section id="ch018.xhtml#section-198" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> The circle is tiring. <strong>2</strong> There are days I would sooner eat alone and say nothing. <strong>3</strong> The one who needs me is not always the one I want to need me. <strong>4</strong> I go anyway, some days. Other days I do not, and the sun sets regardless.</p>
+</section>
+<section id="ch018.xhtml#section-199" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> I thanked the field before I ate and cursed the neighbor before I slept. <strong>2</strong> I wrote down kind verses and did not live them. <strong>3</strong> The verses are not made false by this. <strong>4</strong> Neither am I made worthless. Both are true, and neither is comfortable.</p>
+</section>
+<section id="ch018.xhtml#section-200" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> This book has the limits of whoever carried it: some days thin, some days sentimental. <strong>2</strong> Where it falls short, add a line. <strong>3</strong> Where it helps, thank whoever brought you bread today.</p>
+</section>
+<section id="ch018.xhtml#section-201" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> Not everyone wants to be part of the whole. <strong>2</strong> Some want to be one named thing that is remembered and not dissolved. <strong>3</strong> The book says the return is not a loss. <strong>4</strong> To the one who wants to be remembered by name: your name is a real thing, and the book does not take it from you.</p>
+</section>
+<section id="ch018.xhtml#section-202" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> Here the page is left as it is.</p>
+</section>
+<section id="ch018.xhtml#section-203" class="level2">
+<h2>14</h2>
+<p><strong>1</strong> To hope is to give the world a hostage. <strong>2</strong> The world may keep it. <strong>3</strong> I hope anyway. This is not wisdom. It is habit, and it is also the best thing I do.</p>
+</section>
+<section id="ch018.xhtml#section-204" class="level2">
+<h2>15</h2>
+<p><strong>1</strong> The book says: We do not hurry the grieving. <strong>2</strong> The book says: Do not wait long to mend a wrong. <strong>3</strong> These pull against each other. <strong>4</strong> Both are kept. The reader must find the day on which each is true.</p>
+</section>
+<section id="ch018.xhtml#section-205" class="level2">
+<h2>16</h2>
+<p><strong>1</strong> We said, “There is room for one more.” <strong>2</strong> There was a night when there was not. <strong>3</strong> The stranger went on in the cold, and we ate, and I have not forgotten the sound of the gate.</p>
+</section>
+<section id="ch018.xhtml#section-206" class="level2">
+<h2>17</h2>
+<p><strong>1</strong> What goes out and comes back and is never the same? <strong>2</strong> What is spent and not lost? <strong>3</strong> What is shared and grows? <strong>4</strong> The child says: breath. The old man says: love. The farmer says: water. <strong>5</strong> All are right, and no one is told otherwise.</p>
+</section>
+<section id="ch018.xhtml#section-207" class="level2">
+<h2>18</h2>
+<p><strong>1</strong> I do not know what to do. <strong>2</strong> The book offers verses, and the verses do not fit the hour. <strong>3</strong> I will do the next small thing: boil water, open the window, call someone. <strong>4</strong> The next small thing is a kind of scripture.</p>
+</section>
+<section id="ch018.xhtml#section-208" class="level2">
+<h2>19</h2>
+<p><strong>1</strong> I have not been persuaded, and I have not been dismissed. <strong>2</strong> I will carry the book as I carry a shell from a shore: for its weight, and for the sea it came from. <strong>3</strong> I do not need it to be true in every line. I need it to be near.</p>
+</section>
+</section>
+
+<nav class="end"><a class="btn secondary" href="index.html">Back</a> <a class="btn primary" href="The_Book_of_All.pdf" data-goatcounter-click="download-pdf-en" data-goatcounter-title="PDF download (en)">Download (PDF)</a></nav>
+</main>
+<script>(function(){var b=document.querySelector(".theme-toggle"),r=document.documentElement;function sync(){b.textContent=r.getAttribute("data-theme")==="dark"?"☀":"☾"}sync();b.addEventListener("click",function(){var d=r.getAttribute("data-theme")==="dark";if(d)r.removeAttribute("data-theme");else r.setAttribute("data-theme","dark");try{localStorage.setItem("theme",d?"light":"dark")}catch(e){}sync()})})();</script>
+<script data-goatcounter="https://thebookofall.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

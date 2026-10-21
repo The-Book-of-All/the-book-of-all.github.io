@@ -1,0 +1,995 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>كتاب الجميع</title>
+<style>
+  :root { --bg:#eceeed; --fg:#1c2127; --muted:#5d666f; --accent:#2b6a68; --on-accent:#fff; --line:#c9cfd2; --glow:rgba(150,165,172,.45); --frame:#7d8f93; --frame2:#b5c0c3; }
+  @media all { :root[data-theme="dark"] { --bg:#12151a; --fg:#e6e8ea; --muted:#9aa3ab; --accent:#86bdb4; --on-accent:#0e1918; --line:#2a3037; --glow:rgba(130,150,160,.22); --frame:#8fa6aa; --frame2:#3a444b; } }
+  * { box-sizing:border-box; }
+  body::before { content:""; position:fixed; inset:10px; border:1.5px solid var(--frame); border-radius:6px; pointer-events:none; z-index:50; }
+  body::after { content:""; position:fixed; inset:16px; border:1px solid var(--frame2); border-radius:3px; pointer-events:none; z-index:50; }
+  @media print { body::before, body::after { display:none; } }
+
+  .theme-toggle { position:fixed; top:26px; inset-inline-end:26px; z-index:60; width:40px; height:40px; border-radius:50%; border:1.5px solid var(--frame); background:var(--bg); color:var(--fg); cursor:pointer; font-size:19px; line-height:1; padding:0; display:flex; align-items:center; justify-content:center; }
+  .theme-toggle:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+  @media print { .theme-toggle { display:none; } }
+  html { -webkit-text-size-adjust:100%; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:18px/1.65 "Iowan Old Style","Palatino Linotype",Palatino,"Noto Serif","Noto Serif CJK SC","Noto Serif Devanagari","Noto Serif Bengali","Noto Naskh Arabic","Noto Nastaliq Urdu",Georgia,"Times New Roman",serif; overflow-wrap:anywhere; }
+  a { color:var(--accent); }
+  a:focus-visible, select:focus-visible, summary:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+  .btn { display:inline-block; padding:.8rem 1.5rem; border-radius:14px; text-decoration:none; font-weight:600; font-size:1rem; line-height:1.3; text-align:center; }
+  .btn.primary { background:var(--accent); color:var(--on-accent); }
+  .btn.secondary { border:2px solid var(--accent); color:var(--accent); }
+
+  header { display:flex; align-items:center; gap:.9rem; max-width:36rem; margin:0 auto; padding:2rem 34px 1rem; }
+  header img { width:44px; height:44px; flex:none; }
+  header .title { font-weight:600; font-size:1.05rem; flex:1; min-width:0; }
+  header .btn { padding:.45rem 1rem; font-size:.9rem; flex:none; }
+  header { justify-content:space-between; }
+  @media (max-width:560px) { header .title { display:none; } header .spacer { flex:1; } }
+  main { max-width:36rem; margin:0 auto; padding:1rem 34px 5rem; font-size:1.2rem; line-height:1.85; }
+  :lang(zh) main { line-height:2; } :lang(zh) em { font-style:normal; }
+  details.toc { margin:0 0 3rem; padding:.9rem 1.2rem; border:1px solid var(--line); border-radius:12px; font-size:1rem; line-height:1.5; }
+  details.toc summary { cursor:pointer; font-weight:600; }
+  details.toc ol { margin:.8rem 0 0; padding-inline-start:1.4rem; }
+  details.toc li { margin:.35rem 0; }
+  section.level1 { margin-top:4.5rem; padding-top:2.5rem; border-top:1px solid var(--line); }
+  section.level1:first-of-type { border-top:0; margin-top:2rem; padding-top:0; }
+  h1 { font-size:clamp(1.7rem,6vw,2.2rem); line-height:1.2; font-weight:500; text-align:center; margin:0 0 2.5rem; }
+  h2 { font-size:1rem; font-weight:600; color:var(--accent); text-align:center; margin:2.6rem 0 1rem; }
+  section.level1 > p { text-align:center; }
+  strong { font-weight:inherit; font-size:.62em; vertical-align:super; color:var(--accent); margin-inline-end:.2em; margin-inline-start:.35em; line-height:0; }
+  p { margin:0 0 1.1rem; }
+  section.level2 > p { margin:0 0 1.4rem; }
+  nav.end { text-align:center; margin-top:4rem; }
+  .front { text-align:center; margin:1.6rem 0 2.4rem; }
+  .front .tag { font-style:italic; color:var(--muted); margin:0 0 1.4rem; }
+  .front .about { font-size:1.12rem; font-style:italic; line-height:1.7; margin:0 auto 1.1rem; max-width:30rem; }
+  .front .by { margin:0 0 1.6rem; }
+  .front .cc0 { font-size:.85rem; color:var(--muted); border-top:1px solid var(--line); padding-top:1rem; margin:0; }
+  .theme-toggle { position:absolute; }
+  @media (max-width:640px) { header { padding-top:4.4rem; } }
+</style>
+<script>try{if(localStorage.getItem("theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
+</head>
+<body>
+<button class="theme-toggle" type="button" aria-label="Light / dark" title="Light / dark"></button>
+<header><a href="ar.html" aria-label="رجوع"><img src="emblem-sm.webp" alt="" width="44" height="44"></a><span class="title">كتاب الجميع</span><span class="spacer"></span><a class="btn secondary" href="ar.html">رجوع</a> <a class="btn primary" href="كتاب_الجميع.pdf" data-goatcounter-click="download-pdf-ar" data-goatcounter-title="PDF download (ar)">تنزيل (PDF)</a></header>
+<main>
+<section class="front"><p class="tag"><span dir="rtl">بالجميع وللجميع</span></p><p class="about"><span dir="rtl">هذا مجرد كتاب، لا أكثر. لا يخبرك بما تؤمن به، ولا يطلب شيئًا من إيمانك. وحيث يتحدث عن كيفية العيش فإنه يقدّم ما وجدته أيدٍ كثيرة نافعًا، لا أوامر. خذ ما يفيد. ودع ما لا يفيد. أمسكه برفق.</span></p><p class="by"><span dir="ltr">Steven E Thompson</span></p><p class="cc0"><span dir="rtl">كتاب الجميع. بالجميع وللجميع. هذا العمل مُهدى إلى الملكية العامة بموجب إعلان CC0 1.0 العالمي للتنازل عن الحقوق: لا حقوق محفوظة. انسخه واطبعه وترجمه وشاركه بحرية.</span><span dir="ltr"><br />
+<a href="https://creativecommons.org/publicdomain/zero/1.0</span>">creativecommons.org/publicdomain/zero/1.0</span></a></p></section>
+<details class="toc"><summary>المحتويات</summary><ol><li><a href="#b1">الكتاب الأول: البدايات</a></li><li><a href="#b2">الكتاب الثاني: الكلّ</a></li><li><a href="#b3">الكتاب الثالث: الإنسان</a></li><li><a href="#b4">الكتاب الرابع: الصواب والخطأ</a></li><li><a href="#b5">الكتاب الخامس: المعاناة والمعنى</a></li><li><a href="#b6">الكتاب السادس: الموت والعودة</a></li><li><a href="#b7">الكتاب السابع: الكلمات</a></li><li><a href="#b8">الكتاب الثامن: الممارسة</a></li><li><a href="#b9">الكتاب التاسع: الزمن المقدّس</a></li><li><a href="#b10">الكتاب العاشر: الأماكن المقدّسة</a></li><li><a href="#b11">الكتاب الحادي عشر: المحطّات</a></li><li><a href="#b12">الكتاب الثاني عشر: الجماعة والإرشاد</a></li><li><a href="#b13">الكتاب الثالث عشر: الطعام والجسد والملبس</a></li><li><a href="#b14">الكتاب الرابع عشر: الطبيعة وسائر الكائنات</a></li><li><a href="#b15">الكتاب الخامس عشر: الدهشة</a></li><li><a href="#b16">الكتاب السادس عشر: لقاء بعضنا ببعض</a></li><li><a href="#b17">الكتاب السابع عشر: ما لا يتّسق</a></li><li><a href="#b18">الصفحات البيضاء</a></li></ol></details>
+<p></p>
+
+<section id="ch001.xhtml#الكتاب-الأول-البدايات" class="level1">
+<h1 id="b1">الكتاب الأول: البدايات</h1>
+<section id="ch001.xhtml#section" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> لا شيء يقف أولًا، مع أن كل حكاية تمدّ يدها نحو أول: الضوء الأول، الكلمة الأولى، اليد الأولى. وهذا المدّ قديمٌ هو نفسه. <strong>2</strong> يصعد الماء مع الشمس، وتُرفَع الشمس من حرارتها بفعل الماء؛ ولم يكن لأيٍّ منهما أن يبدأ الصباح وحده. <strong>3</strong> البذرة وُلدت من نبتة وُلدت من بذرة، والسلسلة تمتد إلى ما وراء مدى أي ذاكرة، وأي عظم، وأي حجر مكتوب عليه. <strong>4</strong> أن تسأل عمّا كان قبل ذلك هو أن تصعد مع النهر باحثًا عن منبعه، فتصل إلى سفح تل حيث المطر والأرض والسماء في حديث منذ زمن. <strong>5</strong> السائل ينشأ مع السؤال، والسؤال، الذي يبدو خاصًّا جدًّا، بدأ قبل زمن بعيد في أفواه أخرى.</p>
+</section>
+<section id="ch001.xhtml#section-1" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> يحترق نجم مدةً أطول مما وُجدت عيون، وحين ينتهي ينثر ما صنع: حديدًا وكربونًا، المكوّنات الصامتة لكل ما سيشكو يومًا من البرد. <strong>2</strong> يطفو الرماد عصورًا عبر ظلام أوسع من أن يُتخيَّل، وحيث يجتمع يبرد، وحيث يبرد يصير حجرًا. <strong>3</strong> تحتّ الريحُ والمطرُ الحجرَ حتى يصير غبارًا، ويحمل الريحُ والنهرُ الغبارَ إلى المنخفضات، حيث يتعلم أن يمسك الماء. <strong>4</strong> في ذلك الإمساك يثبت أول اخضرار. الحقل ليس هبةً وُضعت، بل صبرٌ يمتد آلاف السنين. <strong>5</strong> يُؤكل الحقل؛ ويمشي الآكل؛ ويضطجع الماشي، في وقته، في الحقل، وقد دار رماد النجم دورة أخرى. <strong>6</strong> لا أحد في الحقل، حيًّا كان أو مضطجعًا، يستطيع أن يقول أين بدأ الرماد أو كم مرة كان فمًا.</p>
+</section>
+<section id="ch001.xhtml#section-2" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> في العمق المظلم، في ماء دافئ بالمعادن، بدأ شيء صغير يتماسك في وجه تحلّل كل ما عداه. لا نستطيع أن نقول متى، بل فقط إنه لم يتوقف. <strong>2</strong> انقسم. وانقسم الاثنان. على مدى يجعل عمر أي جبل يبدو قصيرًا، تفرّع الانقسام ألف وجه: جذر، جناح، خيشوم، يد. <strong>3</strong> السمكة والسرخس والطائر والطفل أبناء عمومة على بُعد سلسلة طويلة من التفرع، وكل فرع واثق أنه الجذع. <strong>4</strong> في مكان ما من تلك السلسلة كائن بلا اسم، أمّ الحوت والعصفور ومن يصغي الآن. تُذكَر في كل جسد، وفي شكل كل أذن. <strong>5</strong> كلنا أقارب، وإن كان معظمنا غرباء عن أبناء عمومتنا، ويأكلنا بعضهم.</p>
+</section>
+<section id="ch001.xhtml#section-3" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> من يعرف من أين جاء؟ ليس الشيوخ، وقد حملوا السؤال أطول مدة. وليس الأطفال، وهم يسألونه كأن الجواب في درج. <strong>2</strong> الحكماء يسألون ولا يجيبون. وليس هذا قلة جرأة. إنه التأدّب الذي يستحقه كل أمر عظيم. <strong>3</strong> في بعض الليالي يكون السؤال عبئًا وفي بعضها هدية، وليس في أي ليلة منهما فشلًا. <strong>4</strong> كل من وقف تحت سماء صافية بعيدًا عن كل ضوء أحسّه ينفتح في صدره، ولم يجد له كلمة، وفرح في صمت أنه بلا كلمة.</p>
+</section>
+<section id="ch001.xhtml#section-4" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> كل ما يتحرك يحمل دفئًا لم يُصنع من جديد قط، بل نُقل فحسب: من الشمس إلى الورقة، ومن الورقة إلى الغزال، ومن الغزال إلى من جاع في الشتاء. <strong>2</strong> الدفء في اليد الممسكة كان في الحبّ، وفي الحقل الذي قام فيه الحبّ، وفي الصيف الطويل وراءه، وفي النجم وراء الصيف. <strong>3</strong> يُحمَل، ويُمرَّر. لا يد تمسكه مدة تكفي لتسميه ملكها. <strong>4</strong> ما يُحمَل لا يضيع أبدًا، وإن كان يُفقَد أثره في كثير من الأحيان، ومن هنا يأتي الحزن، ومن هنا تبدأ الدهشة.</p>
+</section>
+<section id="ch001.xhtml#section-5" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> النهار ينشأ مع الليل، والليل مع النهار؛ لا أحدهما عدوّ الآخر، ولا كان أحدهما كلمةً دون الآخر. <strong>2</strong> ينحسر المدّ كي يعود، وفي انحساره يترك الشاطئ عاريًا، والشاطئ العاري يُري كم يعطي البحر. <strong>3</strong> تُدفن البذرة في العتمة ولا تعلم أنها تُزرع؛ فهي، عندها، تُدفن. كلاهما صحيح. <strong>4</strong> كل نهاية هي أيضًا انعطاف لشيء آخر، وهذا لا عزاء فيه لمن ينتهي، لكنه صحيح مع ذلك.</p>
+</section>
+<section id="ch001.xhtml#section-6" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> اسحب خيطًا واحدًا يتحرك القماش كله، وبهذا تجد الحائكة العيب وتتعلم الطفلة ما فعلت. <strong>2</strong> النحلة في الزهرة، تحمل لقاحها وجوعها؛ والزهرة في النحلة، تركب إلى الحقل التالي على جسد لم تخترْه. <strong>3</strong> المطر في النهر، والنهر في السحابة، والسحابة في البحر، ولا أحد منها يستطيع أن يقول أين ينتهي واحدها. <strong>4</strong> لا أحد يقف خارج القماش، وإن تمنّينا ذلك في بعض الأيام؛ والأمنية نفسها منسوجة فيه.</p>
+</section>
+<section id="ch001.xhtml#section-7" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> أول نَفَس للمولود هواء تنفسه آخرون: الممرضة، والأم، والريح فوق ألف حقل. تبكي لأنها سُلِّمت العالم. <strong>2</strong> ذلك الهواء كان في ورقة، وفي حوت، وفي رئتي جدّ لا يذكره أحد من الأحياء، وسيكون كذلك ثانية. <strong>3</strong> يُمرَّر كل نَفَس من يد إلى يد ولا أحد يملكه، وإن كان كل واحد، للحظة، مسؤولًا عنه.</p>
+</section>
+<section id="ch001.xhtml#section-8" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> قبل أن تنفتح العين، الظلام ممتلئ: بنبض قلب الأم، وبطعم الماء الدافئ، وبأصوات تُسمع عبر جدار. <strong>2</strong> الظلام ليس فارغًا. إنه حيث تنتظر البذرة، ويتجمع الفكر، ويكبر الطفل نحو وجه. <strong>3</strong> الضوء لا يهزم الظلام. يتناوبان حمل العالم، ولم يغب أحدهما كليًّا يومًا عن ساعة الآخر.</p>
+</section>
+<section id="ch001.xhtml#section-9" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> الكلمة الأولى لم ينطق بها فم واحد. صنعتها أفواه كثيرة على مدى سنين كثيرة، كلٌّ يقول ما قاله الفم المجاور، بشيء من الاختلاف. <strong>2</strong> سمّى العطشُ الماءَ. وسمّى أولُ فمٍ على أول جلدٍ الأمَّ. كل كلمة نار صغيرة تُمرَّر من يد إلى يد، ولم يُشعل أحدنا الأولى.</p>
+</section>
+<section id="ch001.xhtml#section-10" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> كل شعب يروي كيف بدأ العالم، كلٌّ بصوته، بحيواناتِ مكانه وطقسه وأحزانه. <strong>2</strong> الرواية طريقة لحب الأرض التي يقف عليها المرء. شعب النهر يرويها وفيها التيار؛ وشعب الجبل يرويها وفيها ثقل الحجر. <strong>3</strong> ليست إحدى الروايات سياجًا. كل واحدة تحمل ماء مكانها، وكل الماء ماء واحد.</p>
+</section>
+<section id="ch001.xhtml#section-11" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> نشأنا مع العالم، ونحن ننتمي إليه، وإن تصرفنا أحيانًا كأننا جئنا من مكان أفضل. <strong>2</strong> الجبل لا يسأل من أين جئنا، ولا البحر. لم يسألا شيئًا قط. لقد بقيا فحسب. <strong>3</strong> نحن إحدى الطرق الكثيرة التي يكون بها العالم هنا، والعالم، عبرنا، ينظر أحيانًا إلى نفسه فيبكي ويضحك ويندهش أنه موجود.</p>
+</section>
+<section id="ch001.xhtml#section-12" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> يقول بعضهم إن العالم نُطق به، كلمة أولًا ثم كل شيء بعدها. <strong>2</strong> ويقول بعضهم إنه زُفر وسيُشهَق. <strong>3</strong> ويقول بعضهم إنه فقس من بيضة، أو غُنّي، أو رُقص، أو نُسج على نول. <strong>4</strong> ويقول بعضهم إنه حُلم به، ولا يزال يُحلم به. <strong>5</strong> ويقول بعضهم إنه كان هنا دائمًا ولم يبدأ قط. <strong>6</strong> ويقول بعضهم إن السؤال على غير شكل الجواب.</p>
+</section>
+</section>
+<section id="ch002.xhtml#الكتاب-الثاني-الكل" class="level1">
+<h1 id="b2">الكتاب الثاني: الكلّ</h1>
+<section id="ch002.xhtml#section-13" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> قف على تل عند الغروب وأدِر جسدك ببطء: حيثما واجهتَ، الأفق بعيد بالمقدار نفسه تمامًا. كل مسافر مركز دائرة لا يراها أحد غيره. <strong>2</strong> وضعت الخرائط القديمة بلدات صانعيها في الوسط، ولم تكن مخطئة؛ كانت صادقة فقط في أين ينام رسّام الخريطة. <strong>3</strong> الكلّ ليس له بلدة كهذه. هو ما يتبقى حين تقول كل بلدة: «هنا».</p>
+</section>
+<section id="ch002.xhtml#section-14" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> الموجة القادمة إلى الشاطئ تشعر، نتخيل، كأنها ذات: عُرفها، واستعجالها، وخوفها من الرمل. <strong>2</strong> هي ليست إلا البحر، يفعل شيئًا بعينه للحظة. <strong>3</strong> الشاطئ لا يستقبل نهاية؛ يستقبل ماءً، وهو ما استقبله دائمًا. <strong>4</strong> الذين أحبّوا الموجة ليسوا مخطئين في حزنهم. إنهم يقفون قريبين جدًّا فحسب.</p>
+</section>
+<section id="ch002.xhtml#section-15" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> رسم شعب الكلّ جبلًا بلا قمة؛ ورسمه آخر شبكةً من الأضواء؛ ورسمه ثالث حلقةً من الأمهات. <strong>2</strong> ورجل في مدينة هادئة لم يرسم على جداره شيئًا، فزاره من أرادوا الجلوس أمامه. <strong>3</strong> كل هذا جائز. الكلّ لا يحتاج إلى مديح، ولا يغضب.</p>
+</section>
+<section id="ch002.xhtml#section-16" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> في أصخب الأسواق صوتٌ تحت الأصوات، يُحَسّ أكثر مما يُسمع، كأرضية تحت الأصوات. <strong>2</strong> من يعيشون قرب البحر يفقدونه ثم يستعيدونه؛ وكذلك من يجلسون الليل كله عند سرير. <strong>3</strong> لا يقول شيئًا. إنه صوت ألّا شيء ناقص.</p>
+</section>
+<section id="ch002.xhtml#section-17" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> الكلّ يسع القدّيس واللص. <strong>2</strong> يقول بعضهم إنه يزننا، ويقول بعضهم إنه لا يزن البتة. <strong>3</strong> تمنّى كل واحد منا، في ساعة ما، أن ينحاز إلى جانبه، وبعضنا وجد أن السكون الذي يقدمه بدل ذلك ليس عدمًا.</p>
+</section>
+<section id="ch002.xhtml#section-18" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> الاسم الذي يُطلق على الكلّ هدية تُقدَّم عبر فجوة: <em>أنتَ</em>، <em>هو</em>، <em>العمق</em>، <em>الوطن</em>. <strong>2</strong> الفجوة لا تُسدّ، لكن التقديم حقيقي، وقد دفّأ أيادي كثيرة. <strong>3</strong> رفض كل اسم هو نفسه اسم، واستعمال اسم ليس كذبًا، إذا أُمسك برفق، كما تُمسك أداة مستعارة.</p>
+</section>
+<section id="ch002.xhtml#section-19" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> الغلاية هي الكلّ، وكذلك رنين مفتاح، ورائحة المطر على شارع حار. <strong>2</strong> يبحث عنه بعضهم في مكان آخر، ويجده بعضهم في الغرفة التي هو فيها. <strong>3</strong> المائدة تسع النوعين من الباحثين منذ الإفطار.</p>
+</section>
+<section id="ch002.xhtml#section-20" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> يسقط المطر على الحقل وعلى الطريق. <strong>2</strong> يقول بعضهم إنه يسقط للمستحقين، ويقول بعضهم إنه يسقط لا لأحد، ويقف بعضهم تحته فرِحين. <strong>3</strong> المطر نفسه على سقف كل واحد، والصمت نفسه بعده.</p>
+</section>
+<section id="ch002.xhtml#section-21" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> يُقال لنا أحبّوا الكلّ، ولا نعرف كيف؛ فليس للكلّ وجه يُقبَّل. <strong>2</strong> فنبدأ من حيث نستطيع: الدرج، والكلب، والأخت الصعبة، وسياج الجار المكسور. <strong>3</strong> إن كان الكلّ في مكان ما، ففيما نفعله بثلاثاء عادي.</p>
+</section>
+<section id="ch002.xhtml#section-22" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> لا يفهم المرء بيتًا؛ بل يسكنه، وفي السكن يتعلم أين الأرض لينة. <strong>2</strong> لا يفهم المرء فصلًا؛ بل يرتدي المعطف المناسب. <strong>3</strong> الكلّ هكذا: شيء لا يكفي لفهمه إلا طريقة في المشي متمرَّن عليها.</p>
+</section>
+<section id="ch002.xhtml#section-23" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> كل ما ينشأ يعود، وما يعود لا يُخزَّن بل يُنفَق، فورًا، في الشيء التالي. <strong>2</strong> التفاحة تصير الطفل، والطفل يصير جوع الثعلب في الشتاء، والثعلب يصير غداء الأشنة. <strong>3</strong> هذه ليست خطة الكلّ. إنها قواعد لغته، وليس له جملة أخرى.</p>
+</section>
+<section id="ch002.xhtml#section-24" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> يقول بعضهم إن الكلّ واحد. <strong>2</strong> ويقول بعضهم إنه كثير، لكلٍّ اسم ومزاج. <strong>3</strong> ويقول بعضهم إنه عقل. <strong>4</strong> ويقول بعضهم إنه فارغ، والفراغ ملآن. <strong>5</strong> ويقول بعضهم إنه أمّ. <strong>6</strong> ويقول بعضهم إنه سلّم عوالم، ونحن واقفون على درجة منه. <strong>7</strong> ويقول بعضهم إنه لا يُقال.</p>
+</section>
+</section>
+<section id="ch003.xhtml#الكتاب-الثالث-الإنسان" class="level1">
+<h1 id="b3">الكتاب الثالث: الإنسان</h1>
+<section id="ch003.xhtml#section-25" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> الإنسان مكان يمرّ به الكلّ بسرعة معيّنة: كربون من نجم ميت، وماء كان يومًا جليدًا، واسم من أمنية جدّة. <strong>2</strong> يستغرق المرور نحو ثمانين سنة. في ذلك الوقت سيحاول أن يفهم نفسه، ويقع في الحب، ويحرق العشاء، ويندهش. <strong>3</strong> لا شيء من هذا عطل.</p>
+</section>
+<section id="ch003.xhtml#section-26" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> الاسم أول هدية وأول بطاقة، يُعطى قبل أن يستطيع الطفل قبوله أو رفضه. <strong>2</strong> بعضهم يكبر فيه، وبعضهم يكبر خارجه ويتخذ غيره، ولا ينقص ذلك من ذاته. <strong>3</strong> وفي النهاية يذهب الاسم إلى حجر، ويذهب من حمله إلى الحديقة وإلى ذاكرة ألف لطفٍ صغير لم يكن له اسم قط.</p>
+</section>
+<section id="ch003.xhtml#section-27" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> يستبدل الجسد تقريبًا كل ما صُنع منه على مرّ السنين؛ والركبة التي خُدشت في السادسة مصنوعة الآن من ذرّات أخرى، وما زالت تذكر الرصيف. <strong>2</strong> فالإنسان إذن ليس شيئًا بل نمطًا في تيار من الأشياء، دوّامة لها وجه. <strong>3</strong> هذا ليس انتقاصًا. الدوّامة تستطيع أن تحمل ورقة ساعات.</p>
+</section>
+<section id="ch003.xhtml#section-28" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> العقل طقس: الحزن يدخل كجبهة، ونكتة تبدّده، وإهانة قديمة تتدحرج فوق التلال في الرابعة فجرًا. <strong>2</strong> والمراقب الذي يلاحظ الطقس ليس هو الطقس، وهو أهدأ منه كله. <strong>3</strong> معظم الحياة يُقضى في التماهي مع العاصفة. وقلّة تتعلم أن تكون النافذة.</p>
+</section>
+<section id="ch003.xhtml#section-29" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> كل إنسان كلٌّ تام: لن يستيقظ أحد غيره في ذلك الجسد، بذلك الألم. <strong>2</strong> وكل إنسان جزء: لا فكرة في الرأس لم تبدأ في فم غيره. <strong>3</strong> فنّ الحياة أن نحمل الحقيقتين دون أن نحسمهما، كما تحمل اليد وزنها ووزن ما تحمله.</p>
+</section>
+<section id="ch003.xhtml#section-30" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> انظر إلى ما أكلتَه هذا الصباح وتتبّعه: مزارع، وسائق شاحنة، وامرأة في مصنع تعبئة لن تقابلها أبدًا، ومطر، وبذرة استُنبتت على مدى أربعمئة سنة. <strong>2</strong> من تسمّيه نفسك مصنوع من هؤلاء. <strong>3</strong> الامتنان أحيانًا ليس إلا دقّة.</p>
+</section>
+<section id="ch003.xhtml#section-31" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> يحمل كل إنسان نفعًا خاصًّا هو له بالمزاج وبالجرح: صبر ممرضة، وخفة نكتة في جنازة. <strong>2</strong> وهو لا يظهر دائمًا لصاحبه. وكثيرًا ما يُكتشف حين يقول أحدهم عرَضًا: «ما كنت لأقدر على ذلك من دونك». <strong>3</strong> أصغِ إليه.</p>
+</section>
+<section id="ch003.xhtml#section-32" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> الإنسان ليس أسوأ ما فعل، لكنه ليس بريئًا منه أيضًا؛ يحمله كما تحمل الشجرة ندوبها، جزءًا من النسيج. <strong>2</strong> العمل هو أن نجعل الندبة شيئًا يتحمل الثقل.</p>
+</section>
+<section id="ch003.xhtml#section-33" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> الوجوه مستعارة: خط فكّ رجل مات في حرب، وضحكة عمّة ليست مفضلة عند أحد وهي القدوة السرية للجميع. <strong>2</strong> نتكلم بحروف علّة قرية لم نزرها قط، وبخرافات قرن لم نعشه. <strong>3</strong> أن يكون المرء شخصًا واحدًا هو قدر كبير من عمل الآخرين.</p>
+</section>
+<section id="ch003.xhtml#section-34" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> ليس مطلوبًا أن يكون المرء استثنائيًّا. معظم خير العالم صنعه ناس لن يذكرهم أحد، في غرف لن يزورها أحد. <strong>2</strong> أن تكون هنا، وأن تكون لطيفًا، وأن تغسل الصحون: هذا كثير. <strong>3</strong> وإن لم يكن كثيرًا، فهو كل ما كان في يد أي أحد.</p>
+</section>
+<section id="ch003.xhtml#section-35" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> يقول بعضهم إن للإنسان روحًا واحدة. <strong>2</strong> ويقول بعضهم اثنتان، أو ثلاث، أو سبع، وإنها تغادر الجسد في ساعات مختلفة. <strong>3</strong> ويقول بعضهم لا ذات، بل جدول فحسب. <strong>4</strong> ويقول بعضهم إن الذات شرارة من الكلّ. <strong>5</strong> ويقول بعضهم إن الإنسان جسد لا أكثر. <strong>6</strong> ويقول بعضهم إن كل إنسان كان معروفًا قبل الولادة. <strong>7</strong> ويقول بعضهم إن الاسم عتبة.</p>
+</section>
+</section>
+<section id="ch004.xhtml#الكتاب-الرابع-الصواب-والخطأ" class="level1">
+<h1 id="b4">الكتاب الرابع: الصواب والخطأ</h1>
+<section id="ch004.xhtml#section-36" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> يقول بعضهم إن الخير يُؤمَر به، ويقول بعضهم إنه يُكتشَف؛ وكلاهما يوجد عند سرير المريض، حيث لا أحد يسأل والجميع يعرفون ما يجب فعله. <strong>2</strong> الأذى يسافر. كلمة قاسية على الفطور تصل إلى الكلب بحلول الظهر وإلى غريب بحلول المساء. <strong>3</strong> وكذلك اللطف، وإن كان أبطأ وأقل دراما، ولهذا يستغرق تصديقه وقتًا أطول.</p>
+</section>
+<section id="ch004.xhtml#section-37" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> لا نأخذ حياةً بلا حاجة، ونشكّ في إحساسنا نحن بالحاجة. <strong>2</strong> يشكر الصيّاد الغزال؛ يسمّيه بعضهم صلاة ويسمّيه بعضهم حسابًا يُحفظ. <strong>3</strong> الحياة المأخوذة دَين مفتوح، والصادقون يسدّدونه بالعناية بما بقي.</p>
+</section>
+<section id="ch004.xhtml#section-38" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> الكذبة قرض من المستقبل بفائدة عالية: تشتري الراحة الآن وتكلّف الثقة لاحقًا، والثقة لا تُستعاد بالاقتراض. <strong>2</strong> الصدق ليس هو الفظاظة؛ فالمطرقة تقول الصدق عن المسامير. <strong>3</strong> قل ما هو كائن بيدٍ مفتوحة، واترك للآخر مجالًا ليجيب.</p>
+</section>
+<section id="ch004.xhtml#section-39" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> عامِل الآخرين كما تحب أن تُعامَل، ثم لاحظ كم مرة لا تعرف كيف تريد أن تُعامَل؛ فاسأل. <strong>2</strong> القاعدة تعمل أفضل كسؤال، لا كحكم. <strong>3</strong> حاجات الغريب مكتوبة على وجهه لمن يطيل النظر، وأطول قليلًا مما يريح.</p>
+</section>
+<section id="ch004.xhtml#section-40" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> ما لديك فوق حاجتك أمانة عندك: معطف الشتاء في الخزانة، والرغيف الثاني، والغرفة الفارغة، وكلٌّ منها سؤال غير منطوق يوجّهه إليك البرد. <strong>2</strong> العطاء ليس كرمًا حين يكون مجرد ردّ.</p>
+</section>
+<section id="ch004.xhtml#section-41" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> الوعد لوح خشب عبر هوّة، ويمشي أحدهم عليه واثقًا. <strong>2</strong> إن كان سينكسر، فقل ذلك قبل أن يقع عليه الثقل. <strong>3</strong> الذين خُذلوا مرة يتعلمون اختبار كل لوح؛ ونحن مدينون لهم بصبر أن نُختبَر.</p>
+</section>
+<section id="ch004.xhtml#section-42" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> الخطأ تمزّق في النسيج، والإصلاح يبدأ بأن يقول أحدهم بوضوح ما حدث، بلا دفاع وبلا دراما. <strong>2</strong> يسمّي من أُوذي ما فُقد، ولا يقاطعه من آذى. <strong>3</strong> الإصلاح بطيء، وبعض التمزقات لن تُغلق؛ هذه نحملها في القماش، ظاهرةً، بلا خجل وبلطف.</p>
+</section>
+<section id="ch004.xhtml#section-43" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> أن تسامح هو أن تضع حجرًا حملتَه طريقًا طويلًا، وهذا لا يعني أن الحجر كان خفيفًا. <strong>2</strong> يحدث ذلك قليلًا كل يوم، في الغالب دون أن يُلاحَظ؛ وفي صباح ما تكون اليد فارغة، فيُفاجأ المرء. <strong>3</strong> من لا يستطيع أن يسامح بعدُ ليس شريرًا. إنه لا يزال يحمل، والحمل تقرير صادق.</p>
+</section>
+<section id="ch004.xhtml#section-44" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> الكبار يعرفون ثمن النسيان؛ والصغار يعرفون ثمن البقاء على حاله. <strong>2</strong> كلاهما لازم على المائدة: الذاكرة والاستعجال.</p>
+</section>
+<section id="ch004.xhtml#section-45" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> الغضب معلومة مفيدة بأخلاق سيئة. <strong>2</strong> يخبرك أن شيئًا قد تُعدّي عليه؛ ولا يستطيع أن يخبرك ماذا تفعل حيال ذلك. <strong>3</strong> انتظر إلى الصباح. إن كان لا يزال صحيحًا فقله؛ وإن لم يكن فقد نجوتَ من خطأ.</p>
+</section>
+<section id="ch004.xhtml#section-46" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> حين يتصادم خيران، يستشير بعضهم نصًّا، وبعضهم معلّمًا، وبعضهم من بجانبه، ويجلس بعضهم صامتًا حتى يتضح الأمر. <strong>2</strong> ثم يتحمل كلٌّ مسؤولية ما قرّر. <strong>3</strong> الحالات الصعبة هي السبب في حاجة الناس بعضهم إلى بعض.</p>
+</section>
+<section id="ch004.xhtml#section-47" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> يقول بعضهم إن الصواب والخطأ أُعطيا في مجموعة كلمات. <strong>2</strong> ويقول بعضهم إنهما يوجدان بالنظر إلى الداخل. <strong>3</strong> ويقول بعضهم إن كل فعل يُوزن في النهاية، ويقول بعضهم إنه لا شيء يُوزن. <strong>4</strong> ويقول بعضهم إن كل فعل يعود إلى فاعله، في هذه الحياة أو في أخرى. <strong>5</strong> ويقول بعضهم إن الدَّين يمكن أن يحمله غير صاحبه. <strong>6</strong> ويقول بعضهم إنه لا يوجد إلا العمل اللطيف التالي. <strong>7</strong> ويقول بعضهم إن الأذى يُردّ عليه، ويقول بعضهم إنه يُمتصّ.</p>
+</section>
+<section id="ch004.xhtml#section-48" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> رجل آذى ولم يُحاسَب قط. <strong>2</strong> مُزّق القماش، ولم يجلس أحد ليرتقه. <strong>3</strong> يقول الكتاب إن لا أحد يُطرد. <strong>4</strong> لا أعرف ماذا أقول لمن طُردت من حياتها هي على يد ذلك الرجل. <strong>5</strong> أقول: يؤسفني ما جرى. ولا أقول شيئًا آخر.</p>
+</section>
+</section>
+<section id="ch005.xhtml#الكتاب-الخامس-المعاناة-والمعنى" class="level1">
+<h1 id="b5">الكتاب الخامس: المعاناة والمعنى</h1>
+<section id="ch005.xhtml#section-49" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> لا أحد لا يجده الألم، وإن جاء بمعاطف مختلفة: تشخيص، طرقة على الباب، الفقدان البطيء لاسمك على لسان الزوج أو الزوجة. <strong>2</strong> يقول بعضهم إنه يُوزَّع حسب الاستحقاق، ويقول بعضهم إنه لا يُوزَّع أصلًا؛ وكلاهما جلس في قاعة الانتظار نفسها. <strong>3</strong> العزاء الذي يعبر كل معتقد هو هذا: لستَ وحدك في هذه الغرفة.</p>
+</section>
+<section id="ch005.xhtml#section-50" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> يقول بعضهم إن هناك سببًا ويقول بعضهم إنه لا سبب؛ وتحت كليهما قد يسمع الحزين «كان ذلك خطأك» أو «كان ينبغي أن تتجاوز الأمر». <strong>2</strong> نقول: «أنا هنا»، ونحقق ذلك بالبقاء.</p>
+</section>
+<section id="ch005.xhtml#section-51" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> الحزن هو الشكل الذي يتخذه الحب حين يغيب موضوعه: يد لا تزال تمتد إلى الهاتف لتخبر من ليس هناك. <strong>2</strong> لا يحتاج إلى أن يُدار. <strong>3</strong> يحتاج إلى شاهد لا يحاول إصلاحه، وإلى غلاية.</p>
+</section>
+<section id="ch005.xhtml#section-52" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> الجلوس مع المتألم مهارة، أصعب من الكلام. <strong>2</strong> الإغراء أن يغادر المرء مبكرًا، وأن يقدّم مثلًا سائرًا، وأن ينظر إلى ساعته. <strong>3</strong> من يبقى عبر الصمت قد قدّم أكبر هدية متاحة: الإحساس بألّا يكون عبئًا.</p>
+</section>
+<section id="ch005.xhtml#section-53" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> القبضة لا تحمل ماء. <strong>2</strong> أمسك الألم بيد مفتوحة، فيبقى ويمكن النظر إليه، وربما، على مدى سنين، سُكب.</p>
+</section>
+<section id="ch005.xhtml#section-54" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> لا شيء يبقى: لا أسوأ يوم ولا أفضله. <strong>2</strong> من يتذكر هذا في وسط المعاناة ليس باردًا؛ إنه يمسك حبلًا مربوطًا بساعة لاحقة. <strong>3</strong> أحلك ساعة بطول غيرها من الساعات. تبدو أطول فقط، لأن لا أحد يراقب الساعة إلا المتألم.</p>
+</section>
+<section id="ch005.xhtml#section-55" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> يقول بعضهم إن المعنى ينتظر في نهاية العمر ليُجمَع، ويقول بعضهم إنه يُصنع في الطريق. <strong>2</strong> للحساء معنى في صنعه، وفي التحريك، وفي الجار الذي يمرّ بخبز. <strong>3</strong> معنى الحياة، كما يقول بعضهم، هو الحساء الذي أطعمته.</p>
+</section>
+<section id="ch005.xhtml#section-56" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> الفرح ليس جزاء المعاناة، وليس نقيضها؛ إنه شيء منفصل ينمو في التربة نفسها. <strong>2</strong> المرأة عند السرير سعيدة بوجودها هناك ومحطَّمة، كلاهما معًا.</p>
+</section>
+<section id="ch005.xhtml#section-57" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> حين يكون الثقل أكثر من اللازم، قله بصوت عالٍ لأحدهم، وواصل قوله لأحدهم حتى يُقتسَم الثقل. <strong>2</strong> طلب المساعدة ليس إخفاقًا في القوة؛ إنه أول فعل لإنسان راغب في البقاء. <strong>3</strong> من ساعدوهم يتعلمون أن يساعدوا، والسلسلة لا تنتهي.</p>
+</section>
+<section id="ch005.xhtml#section-58" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> الندبة جزء من الجلد. <strong>2</strong> تنمو الشجرة حول المسمار، والخشب هناك أصلب ما في الجذع. <strong>3</strong> من جُرح يستطيع أن يجلس، دون أن يجفل، مع من يُجرَح الآن، وهذه مهارة نادرة، ومفيدة.</p>
+</section>
+<section id="ch005.xhtml#section-59" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> الحياة عزيزة، وليس لأنها سهلة. <strong>2</strong> الشمس، والمطر، وأول تفاحة في السنة وآخرها: عزيزة. <strong>3</strong> إلى من سئم التنفس: نريدك هنا، في هذه الغرفة العادية الناقصة، وسنصنع الشاي.</p>
+</section>
+<section id="ch005.xhtml#section-60" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> يقول بعضهم إن المعاناة معلّمة. <strong>2</strong> ويقول بعضهم إنها دَين حان أجله. <strong>3</strong> ويقول بعضهم إنها امتحان، وبعضهم ابتلاء، وبعضهم حادث. <strong>4</strong> ويقول بعضهم إنها ثمن الرغبة، والرغبة يمكن التخلي عنها. <strong>5</strong> ويقول بعضهم إنها تُقسَّم، ومن يحمل أكثر يحمل عن غيره. <strong>6</strong> ويقول بعضهم إنها تنتهي، ويقول بعضهم إن شيئًا يأتي بعدها. <strong>7</strong> ويقول بعضهم إنها تُحتمل في صمت، ويقول بعضهم إنها تُقال بصوت عالٍ.</p>
+</section>
+<section id="ch005.xhtml#section-61" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> الغضب يملؤني، وليس لي أحد أوجّهه إليه. <strong>2</strong> يقول الكتاب إن أحلك ساعة بطول غيرها. <strong>3</strong> أريد عدوًّا. حمله أسهل. <strong>4</strong> دعني أغضب قليلًا. لا تستعجلني إلى الفقرة التالية.</p>
+</section>
+</section>
+<section id="ch006.xhtml#الكتاب-السادس-الموت-والعودة" class="level1">
+<h1 id="b6">الكتاب السادس: الموت والعودة</h1>
+<section id="ch006.xhtml#section-62" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> كل من نشأ يعود. الكلمة التي نستعملها هي <em>الموت</em>، وهي تخيفنا ككلمة لأنها باب لم نره قط يُفتح من الداخل. <strong>2</strong> ما نستطيع رؤيته هو شكل الرحيل: النَّفَس الذي ينقطع، واليد التي تبرد. <strong>3</strong> ما لا نستطيع رؤيته هو الوصول، لكننا لم نرَ البحر يستقبل نهرًا أيضًا، وهو يفعل ذلك كل دقيقة.</p>
+</section>
+<section id="ch006.xhtml#section-63" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> الجسد دافئ لأنه يحترق. وحين ينتهي الاحتراق لا يختفي الدفء؛ بل يذهب إلى الأغطية، والهواء، والأيدي التي تمسك به، والتراب الذي سيحتضن الباقي في حينه. <strong>2</strong> ليست هناك لحظة تُفنى فيها الطاقة، بل لحظات تغيّر فيها الغرف. <strong>3</strong> من أحببناه لم يُطفأ. لقد نُشر.</p>
+</section>
+<section id="ch006.xhtml#section-64" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> الجسد في الأرض مأدبة. في موسم واحد تكون فيه الديدان والجراثيم؛ وفي سنة تجده الجذور؛ وفي عقد تقف شجرة صغيرة حيث كان الحزن. <strong>2</strong> تثمر الشجرة، وتُطعم الثمرة طفلًا لم يعرف الرجل العجوز قط. <strong>3</strong> يسمّي بعضهم هذا مجازًا ويسمّيه بعضهم حقيقة بسيطة؛ وفي الحالتين قد يبكي منه المرء بكاءً طيبًا.</p>
+</section>
+<section id="ch006.xhtml#section-65" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> الموتى في الرغيف، وفي ضوء المصباح، وفي حدّة ضحكة الجار، وفي الطريقة التي ينام بها الكلب حيث كان الكرسي القديم. <strong>2</strong> يقول بعضهم إنهم يمشون بجانبنا، ويقول بعضهم إنهم ليسوا إلا شكل الغرفة التي تركوها. <strong>3</strong> نحن مصنوعون مما صُنعوا منه، ومما أعطوا، ومما لم يستطيعوا أن يعطوه لكنهم حاولوا.</p>
+</section>
+<section id="ch006.xhtml#section-66" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> عند فراش الموت ليس السؤال ماذا نقول؛ بل هل نتكلم أصلًا. <strong>2</strong> كثير من المحتضرين يريدون أكثر ما يريدون الأمر العادي: يدًا تُمسَك، ونافذة تُفتح، وقصة عن الكلب. <strong>3</strong> قل ما هو صحيح وما هو لطيف؛ وكثيرًا ما يكونان واحدًا. <strong>4</strong> اطلب الصفح إن لزم، وامنحه إن طُلب. <strong>5</strong> ابقَ حتى النَّفَس الأخير، وبعده قليلًا، لأن من رحل لن يمانع في الدقائق الزائدة، وستكون أنت سعيدًا بها.</p>
+</section>
+<section id="ch006.xhtml#section-67" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> أن تغسل جسدًا هو أن يُسمح لك بآخر فعل عناية. <strong>2</strong> الماء دافئ، والقماش ناعم، والصوت خافت؛ ويكلّم الحاضرون الميت كأنه يسمع، لأن ذلك لا يكلّف شيئًا وأحيانًا يثبّت الأحياء. <strong>3</strong> يلفّ بعضهم بالأبيض، وبعضهم بنسيج قومهم، وبعضهم بلا شيء إلا بطانية. <strong>4</strong> كلٌّ طريق إلى البيت.</p>
+</section>
+<section id="ch006.xhtml#section-68" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> يعود بعضهم إلى الأرض، وبعضهم إلى النار، وبعضهم إلى البحر أو السماء؛ وتختار العائلة ما تطيقه. <strong>2</strong> لا عودة أقل من أخرى. النار تحرّر الدفء بسرعة؛ والأرض ببطء؛ والماء يحمله بعيدًا؛ والهواء يرفعه في كل مكان. <strong>3</strong> الرماد في البحر والعظام في الحديقة ليسا إلا طريقتين لقول الجملة نفسها.</p>
+</section>
+<section id="ch006.xhtml#section-69" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> يأتي الحزن موجات، والموجات ليست علامة على مشكلة. <strong>2</strong> تضحك في عشاء الجنازة وتبكي في السوبرماركت؛ كلاهما في محلّه. <strong>3</strong> أول عيد ميلاد، وأول شتاء، وأول مرة تمدّ فيها يدك إلى الهاتف: كلٌّ موجة جديدة.</p>
+</section>
+<section id="ch006.xhtml#section-70" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> أنفع زائر لبيت العزاء هو من يغسل الصحون. <strong>2</strong> والثاني في النفع هو من يأتي ثانية في الشهر الثاني، حين تتوقف أطباق الطعام. <strong>3</strong> انطق الاسم. لا تخفض صوتك لتنطقه.</p>
+</section>
+<section id="ch006.xhtml#section-71" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> لا عزاء لموت طفل، ولا نقدّم عزاءً. <strong>2</strong> نقدّم الحضور: يدًا على كتف في السوبرماركت، وصحنًا يُترك على الشرفة، وبطاقة في فبراير حين يكون الجميع قد نسوا. <strong>3</strong> الطفل في ضوء الصباح وفي أول سقوط للثلج. لا ندّعي أننا نعرف أن هذا كافٍ. ندّعي فقط أننا هنا.</p>
+</section>
+<section id="ch006.xhtml#section-72" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> في يوم التذكّر يُوضَع صحن لكل من رحل، وتأكل العائلة كأنهم حاضرون. <strong>2</strong> تُحاوَل فطيرة الجدة وتفشل، ويقول الجميع إنها مضبوطة تمامًا. <strong>3</strong> لا يُزال الكرسي الفارغ، ولا يُجعَل مزارًا؛ إنه كرسي على مائدة نجلس إليها. <strong>4</strong> تنتهي الأمسية بشمعة وبغسل الصحون.</p>
+</section>
+<section id="ch006.xhtml#section-73" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> حين نموت لا نترك العالم؛ بل نكفّ عن أن نكون شيئًا منفصلًا فيه. <strong>2</strong> يقول بعضهم إن الموتى في مكان آخر، ويقول بعضهم إنهم هنا: في تنفس الستارة، وفي ارتجاف الورقة، وفي امرأة عبر الغرفة تضحك بطريقة نعرفها. <strong>3</strong> نتعلم أن نراهم كما يتعلم الطفل الريح، بما تحرّكه.</p>
+</section>
+<section id="ch006.xhtml#section-74" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> الأحياء أعزّاء. <strong>2</strong> من يفرحون بأنهم أحياء ليسوا خائنين للموتى؛ ومن سئموا العيش ليسوا ضائعين عن الأحياء. <strong>3</strong> حين يكون الثقل أكثر من اللازم، قله بصوت عالٍ، فيأتي آخرون، ويُقسَّم الثقل. <strong>4</strong> تأتي العودة في ساعتها، ولا يُطلب من أحد أن يستعجلها؛ وحين تأتي تأتي بسلام.</p>
+</section>
+<section id="ch006.xhtml#section-75" class="level2">
+<h2>14</h2>
+<p><strong>1</strong> يقول بعضهم إن الموتى يولدون من جديد، في جسد من النوع نفسه أو غيره. <strong>2</strong> ويقول بعضهم إنهم يستريحون إلى صباح موعود. <strong>3</strong> ويقول بعضهم إنهم يعبرون ماءً، أو يمرّون من باب، أو يتسلقون جبلًا. <strong>4</strong> ويقول بعضهم إنهم يُوزَنون أولًا. <strong>5</strong> ويقول بعضهم إنهم يبقون قريبين، ويُطعَمون ويُحدَّثون. <strong>6</strong> ويقول بعضهم إنهم يصيرون السماء، أو النجوم، أو حيوانًا. <strong>7</strong> ويقول بعضهم إن الذات تنطفئ كلهب ويبقى الدفء. <strong>8</strong> ويقول بعضهم إنه لا شيء معلوم.</p>
+</section>
+<section id="ch006.xhtml#section-76" class="level2">
+<h2>15</h2>
+<p><strong>1</strong> يقول واحد: لا شيء يضيع. <strong>2</strong> ويقول آخر: ابني ضاع. <strong>3</strong> يقول الأول: دفؤه في الحقل. <strong>4</strong> ويقول الآخر: لم أزرع حقلًا. <strong>5</strong> لا أحد منهما يُجاب. وكلاهما يُجلَس بجانبه.</p>
+</section>
+<section id="ch006.xhtml#section-77" class="level2">
+<h2>16</h2>
+<p><strong>1</strong> دفنت امرأة زوجها تحت شجرة برقوق. <strong>2</strong> وفي الربيع التالي لم تأكل البرقوق. <strong>3</strong> قالت ابنتها: «هو فيه». <strong>4</strong> قالت المرأة: «لهذا». <strong>5</strong> أكلته الابنة بنفسها، وراقبتها المرأة وهي تأكل، وبكت، وكان البرقوق حلوًا.</p>
+</section>
+</section>
+<section id="ch007.xhtml#الكتاب-السابع-الكلمات" class="level1">
+<h1 id="b7">الكتاب السابع: الكلمات</h1>
+<section id="ch007.xhtml#section-78" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> كل جملة هنا قيلت من قبل: على لسان امرأة تُذرّي الحبّ، وعمّ سكران في جنازة، وطفل ظل يسأل «لماذا» حتى سكتت الغرفة. <strong>2</strong> ادعاء الكتاب الوحيد بالأصالة هو ترتيبه. <strong>3</strong> فعامله إذن كما يُعامَل رغيف: يُقتسَم، ويُكسَر، ويُمرَّر.</p>
+</section>
+<section id="ch007.xhtml#section-79" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> يقرّب بعضهم الكتاب من شفتيه وبعضهم من صدره، ويحمله بعضهم في جيبه دون أن يقرأه. <strong>2</strong> الطريق للمشي، والطريق أيضًا مكان للوقوف. <strong>3</strong> أمسكه كما تمسك طائرًا صغيرًا: بقوة تكفي ألّا يطير، وبرفق يكفي ألّا يختنق.</p>
+</section>
+<section id="ch007.xhtml#section-80" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> في آخر هذا الكتاب صفحات بيضاء. <strong>2</strong> ليست فكرة لاحقة؛ بل هي المقصود. <strong>3</strong> يمكن إضافة سطر حيث يقصّر الكتاب، ويمكن شطب سطر حيث أضرّ. <strong>4</strong> بعض الكتب تُحفظ كما استُلمت تمامًا، وبعضها يُترك مفتوحًا؛ وهذا الكتاب يُترك مفتوحًا.</p>
+</section>
+<section id="ch007.xhtml#section-81" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> إن لم تخاطبك فقرة، فاتركها. <strong>2</strong> عُد بعد عشر سنين؛ قد تفعل. <strong>3</strong> السطر الذي بدا باردًا في العشرين قد يبدو دافئًا في الخمسين؛ والسطر الذي واسى في الخمسين قد يبدو واهنًا في السبعين. <strong>4</strong> الكتاب بقدر ما كبر القارئ.</p>
+</section>
+<section id="ch007.xhtml#section-82" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> القراءة إصغاء. <strong>2</strong> القارئ البطيء، إصبعه تحت السطر، يتوقف حين تعلق كلمة، يمارس أقدم أشكال القراءة. <strong>3</strong> لا تقرأ لتنتهي. اقرأ لتكون مع الكتاب.</p>
+</section>
+<section id="ch007.xhtml#section-83" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> الصمت أيضًا قراءة. <strong>2</strong> الوقفة بين فقرتين جزء من الفقرة. <strong>3</strong> الأغنية كلمات ترفعها نغمة؛ والصلاة، لمن يصلّون، كلمات يرفعها القلب؛ ونحن نُجلّ الاثنتين، ونُجلّ السكون الذي لا تُقال فيه إحداهما.</p>
+</section>
+<section id="ch007.xhtml#section-84" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> تقول العجوز إن السطر عنى الشجاعة؛ ويقول الشاب الصبر. <strong>2</strong> كلٌّ رأى ما فاته الآخر. <strong>3</strong> يجلس بعضهم مع سطر واحد سنين ولا يحسمونه.</p>
+</section>
+<section id="ch007.xhtml#section-85" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> كل الكلمات مستعارة من الهواء وتُرَدّ إليه. <strong>2</strong> الكلمة المنطوقة عند الفجر في الريح بحلول الظهر؛ والكلمة المكتوبة قد تدوم ألف سنة وتُساء قراءتها تسعمئة. <strong>3</strong> المنطوق والمكتوب جاران، ولا أحد منهما يملك الطريق.</p>
+</section>
+<section id="ch007.xhtml#section-86" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> يقول بعضهم إن كلمة أُعطيت مرة واحدة وتُحفظ كما هي تمامًا. <strong>2</strong> ويقول بعضهم إن الكلمات يصنعها من ينطقون بها. <strong>3</strong> ويقول بعضهم إن اسمًا، يُنطق بصوت عالٍ بالنَّفَس الصحيح، يفعل أكثر مما يفعل من ينطق به. <strong>4</strong> ويقول بعضهم إن الصمت أقدم كلمة. <strong>5</strong> ويقول بعضهم إن الكتاب يُقرأ، وبعضهم إنه يُتلى، وبعضهم إنه يُحمَل. <strong>6</strong> ويقول بعضهم إن الأغنية صلاة بلا جدال. <strong>7</strong> ويقول بعضهم إن الكلمة متى قيلت لا تموت.</p>
+</section>
+</section>
+<section id="ch008.xhtml#الكتاب-الثامن-الممارسة" class="level1">
+<h1 id="b8">الكتاب الثامن: الممارسة</h1>
+<section id="ch008.xhtml#section-87" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> قبل الأكل نتوقف بطول نَفَس ونقول من أين جاء الطعام: حقل، ومطر، وظهر غريب انحنى فوق صفّ من الزرع. <strong>2</strong> الأسماء حيث نعرفها: المزارع، والسائق، والشخص عند الصندوق. وحيث لا نعرفها نقول: «كل من كان له يد في هذا». <strong>3</strong> يستغرق ذلك عشر ثوانٍ. وتختلف الوجبة بعده، كما تختلف الرسالة حين تعرف من كتبها.</p>
+</section>
+<section id="ch008.xhtml#section-88" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> اجلس عشرة أنفاس ودع العقل يفعل ما يفعل. <strong>2</strong> إن كان صاخبًا فاجلس مع الصخب. وإن آلم الجسد فاجلس مع الألم. <strong>3</strong> تصير العشرة عشرين؛ وتصير العشرون نصف ساعة لم تكن تعلم أنها عندك. <strong>4</strong> لا أحد يُقيَّم، ولا أحد فشل فيها قط، بل نسي وبدأ من جديد.</p>
+</section>
+<section id="ch008.xhtml#section-89" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> أعطِ شيئًا كل يوم، مهما صغر: عملة، أو دقيقة، أو حسن ظن. <strong>2</strong> يعطي بعضهم توصيلة، وبعضهم وجبة، وبعضهم يكتب رسالة لجار لا يستطيع الكتابة. <strong>3</strong> الهدية لا تكون صغيرة إلا إن لم تُعطَ.</p>
+</section>
+<section id="ch008.xhtml#section-90" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> غنِّ، وحدك ومع الآخرين. <strong>2</strong> الصوت آلة الجسد الخاصة، وغرفة مليئة بأصوات غير مدرَّبة على نغمة واحدة من أقدم تجارب الانتماء. <strong>3</strong> من لا يستطيع الغناء ينضم بالإصغاء؛ ومن لا يستطيع السمع ينضم بضبط الإيقاع بقدمه.</p>
+</section>
+<section id="ch008.xhtml#section-91" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> صُم إن اخترت؛ وكُل إن اخترت؛ ولا شيء منهما درجة. <strong>2</strong> الصيام طريقة للإصغاء إلى الجوع، جوعنا وجوع العالم. <strong>3</strong> الوليمة طريقة للإصغاء إلى الفرح.</p>
+</section>
+<section id="ch008.xhtml#section-92" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> أعِد شيئًا إلى الأرض: بذرة، أو قشور العشاء، أو كوب ماء يُصبّ عند جذر شجرة. <strong>2</strong> إنه طقس صغير؛ يقول بعضهم إنه يسدّد دَينًا، ويقول بعضهم إنه لا يسدّد شيئًا، والبذرة تدخل في الحالتين. <strong>3</strong> الأرض التي أطعمتنا تُطعَم بدورها، ونحن، للحظة، اليد.</p>
+</section>
+<section id="ch008.xhtml#section-93" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> أصغِ إلى غريب ما دام يحتاج. <strong>2</strong> لا تقاطع، ولا تصلح، ولا تنظر إلى الوقت. <strong>3</strong> قل: «وبعد؟» <strong>4</strong> من سُمع يمشي أخفّ، أحيانًا سنين.</p>
+</section>
+<section id="ch008.xhtml#section-94" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> انحنِ، أو أَطرِق، أو ضع يدك على القلب: كلٌّ يقول: <em>أنا هنا معك.</em> <strong>2</strong> طريقة أخرى هي اليد المفتوحة، والعين المغمضة، والنَّفَس البطيء. <strong>3</strong> لا شيء من هذه أصح من غيره. الجسد يعرف ما يريد القلب أن يقوله.</p>
+</section>
+<section id="ch008.xhtml#section-95" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> استرح حين تتعب؛ فالراحة ممارسة. <strong>2</strong> يستريح الحقل سنة من كل سبع، والحصاد بعدها أفضل. <strong>3</strong> من لا يستريح يقطع جذر العمل. <strong>4</strong> استلقِ؛ سيمضي العالم من دونك، وهذا حسن أن تعلمه.</p>
+</section>
+<section id="ch008.xhtml#section-96" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> في نهاية اليوم، قل ما تندم عليه وما تفرح به، لأحد، أو للسكون، أو لصفحة. <strong>2</strong> لا تزيّنه.</p>
+</section>
+<section id="ch008.xhtml#section-97" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> يمارس بعضهم يوميًّا، وبعضهم نادرًا، وبعضهم لا يمارس أبدًا. <strong>2</strong> من لا يفعل شيئًا داخل الكلّ بقدر من يفعل كل شيء. <strong>3</strong> يجد بعضهم الكلّ في ترنيمة، وبعضهم في مفتاح ربط، وبعضهم في ممرّ مستشفى، وبعضهم في حقل. <strong>4</strong> يحفظ بعضهم كل قاعدة أُعطيها، ويحتفظ بعضهم بأداة واحدة في الدرج؛ والبيت قائم في الحالتين.</p>
+</section>
+<section id="ch008.xhtml#section-98" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> يصلّي بعضهم لأحد، ويصلّي بعضهم لا لأحد. <strong>2</strong> ينحني بعضهم نحو مكان، وينحني بعضهم حيث يقف. <strong>3</strong> يعطي بعضهم العُشر، ويعطي بعضهم ما عنده. <strong>4</strong> يدير بعضهم عجلة، ويعدّ حبات مسبحة، ويشعل شعلة، ويصبّ كأسًا. <strong>5</strong> يغتسل بعضهم قبل أن يبدأ، ويختم بعضهم بالاغتسال. <strong>6</strong> يصمت بعضهم يومًا، ويحفظ بعضهم نذرًا عمرًا. <strong>7</strong> يقول بعضهم إن العمل هو الممارسة. <strong>8</strong> ويقول بعضهم إن الممارسة هي من يمارس.</p>
+</section>
+</section>
+<section id="ch009.xhtml#الكتاب-التاسع-الزمن-المقدس" class="level1">
+<h1 id="b9">الكتاب التاسع: الزمن المقدّس</h1>
+<section id="ch009.xhtml#section-99" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> يدور النهار عند الفجر والغروب، ونحفظهما: نَفَسًا عند أول ضوء، ونَفَسًا عند آخره. <strong>2</strong> الديك غير لازم؛ فالضوء يكفي. <strong>3</strong> من يعملون ليلًا يستقبلون الفجر الآخر، الذي يأتي في نهاية المناوبة، وهو ليس أقل صباحًا.</p>
+</section>
+<section id="ch009.xhtml#section-100" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> في كل يوم سابع، أو يوم يختاره المرء، نستريح. <strong>2</strong> تُترَك الحقول بورًا، وتُعلَّق الأدوات على خطاطيفها، ويبطئ المستعجلون رغمًا عنهم. <strong>3</strong> الراحة لا تُكتسَب بالإنجاز؛ بل تُؤخَذ، كما يأخذ الشاطئ المدّ.</p>
+</section>
+<section id="ch009.xhtml#section-101" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> في أقصر الأيام نجتمع قريبين ونتقاسم الضوء؛ وفي أطولها نبقى في الخارج حتى يجيء الظلام. <strong>2</strong> الظلام طويل، ونقصّره بأن نكون معًا. <strong>3</strong> والضوء طويل، ونُعمّقه بالسهر معه.</p>
+</section>
+<section id="ch009.xhtml#section-102" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> عند أول مطر نخرج إليه؛ وعند أول صقيع ندخل ما زرعنا. <strong>2</strong> أول مطر يوقظ رائحة الأرض، وتدخل الرائحة الذاكرة؛ وأول صقيع يحدّد الهواء، ويدخل الهواء الرئتين. <strong>3</strong> الفصول مدرسة، ونحن فيها دائمًا.</p>
+</section>
+<section id="ch009.xhtml#section-103" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> في موسم البذار نزرع بالغناء؛ وفي الحصاد نأكل معًا ونترك نصيبًا في الحقل. <strong>2</strong> يُحفر أول أخدود بصلاة أو بنكتة، أيهما فضّل الحافر. <strong>3</strong> النصيب المتروك في الحقل للفأر والغراب والغريب.</p>
+</section>
+<section id="ch009.xhtml#section-104" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> تبدأ السنة الجديدة حيثما يضعها المنعطف، ونبدؤها ببيت نظيف وجار سامحناه. <strong>2</strong> تُسمّى ديون السنة القديمة وتُسدَّد حيث أمكن؛ وتُقال آمال السنة الجديدة بصوت عالٍ لصديق أو للنار. <strong>3</strong> بين السنتين وقفة لا تنتمي إلى أي تقويم وتنتمي إليها كلها.</p>
+</section>
+<section id="ch009.xhtml#section-105" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> عيد الميلاد هو اليوم الذي اتخذ فيه الكلّ شكلًا جديدًا. <strong>2</strong> وهو للطفل يوم لأن يُرى؛ وللشيخ يوم لأن يُشكَر. <strong>3</strong> تُقتسَم الكعكة؛ ومن هو يومه يطفئ الشمعة، والأمنية له وحده.</p>
+</section>
+<section id="ch009.xhtml#section-106" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> هناك أيام حداد وأيام رقص؛ والتقويم يسعهما معًا، ولا يضيع أي منهما. <strong>2</strong> أول يوم حداد ليس آخره، وأول رقصة في عرس ليست الوحيدة. <strong>3</strong> السنة مائدة طويلة، وكل نوع من الأيام موضوع عليها.</p>
+</section>
+<section id="ch009.xhtml#section-107" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> كل شعب يحفظ أيامه؛ ونشاركهم إن دُعينا، ونترك ضوءًا مضاءً حين يمرّون. <strong>2</strong> وليمة الجار نافذة إلى قلب الجار. <strong>3</strong> نأتي بطبق إن طُلب منا، ووجه هادئ إن لم يُطلب، ونتعلم أن كل شعب ضحك وبكى في موسمه.</p>
+</section>
+<section id="ch009.xhtml#section-108" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> يقول بعضهم إن الزمن عجلة. <strong>2</strong> ويقول بعضهم إنه خط له بداية ونهاية. <strong>3</strong> ويقول بعضهم إنه نهر، ويقول بعضهم إنه حبل. <strong>4</strong> ويقول بعضهم إنه حلم داخل الكلّ. <strong>5</strong> ويقول بعضهم إن هناك أيامًا خارج الزمن، مفروزة. <strong>6</strong> ويقول بعضهم إن للموتى تقويمهم الخاص. <strong>7</strong> ويقول بعضهم إن كل لحظة موجودة معًا، ونحن نمشي عبرها.</p>
+</section>
+</section>
+<section id="ch010.xhtml#الكتاب-العاشر-الأماكن-المقدسة" class="level1">
+<h1 id="b10">الكتاب العاشر: الأماكن المقدّسة</h1>
+<section id="ch010.xhtml#section-109" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> يصير المكان مقدّسًا كما يصير الدرب دربًا: بأن يُمشى فيه، وبأن يُعاد إليه، وبما يُترك فيه. <strong>2</strong> قمة التل ذات الإطلالة مقدّسة عند المتسلّق، وغرفة الغسيل عند أمّ لخمسة أطفال؛ ولا أحد مخطئ. <strong>3</strong> القداسة ليست في التراب بل في الانتباه الذي اجتمع هناك، كالحرارة في الحجر.</p>
+</section>
+<section id="ch010.xhtml#section-110" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> بعض الأماكن تعلن عن نفسها: البستان الذي يتغير فيه الهواء، والنبع الذي يبقى باردًا في أغسطس. <strong>2</strong> وبعضها يكتشفه الحزن: المقعد الذي أُجريت عنده مكالمة، وبيت الدرج الذي جلس فيه إنسان ولم يستطع النهوض. <strong>3</strong> نتعلم أن نمرّ بالنوع الثاني بهدوء، كما نمرّ بغريب يصلّي.</p>
+</section>
+<section id="ch010.xhtml#section-111" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> العتبة احتفال صغير يؤديه الجسد دون أن يُؤمَر: التوقف، ومسح القدمين، وخفض الصوت. <strong>2</strong> دخول البيت دخول في ائتمان؛ والخروج منه عودة إلى الشارع وقد تغيّر المرء بما أُطعم. <strong>3</strong> البيوت التي نسيت كيف يُدخَل إليها تصير مبانيَ.</p>
+</section>
+<section id="ch010.xhtml#section-112" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> كل مائدة طال استعمالها أرشيف: حلقة من قدر ساخن في السنة الثالثة من زواج، وخدش من شوكة طفل، وانبعاج حيث وضع رجل متعب رأسه يومًا. <strong>2</strong> من يجلس إليها يجلس بين ساعات متراكمة لمن جلسوا قبله. <strong>3</strong> لا تصقلها أكثر مما ينبغي.</p>
+</section>
+<section id="ch010.xhtml#section-113" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> يحمل المرء ثلاثة أماكن: حيث وُلد، وحيث كان سعيدًا، وحيث موتاه. <strong>2</strong> وهي ليست دائمًا المكان نفسه، والمسافة بينها هي شكل تلك الحياة. <strong>3</strong> حين يقول إنسان «البيت»، أصغِ لأيّها يقصد.</p>
+</section>
+<section id="ch010.xhtml#section-114" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> المقبرة التي تُزار حديقة؛ والتي لا تُزار مكتبة بلا قرّاء. <strong>2</strong> يلعب الأطفال بين الشواهد ولا يُوبَّخون؛ والموتى الذين أحبّوا الضجيج لا يمانعون. <strong>3</strong> نزرع ما أحبّه الشخص: شجيرة ورد، وشجرة خوخ، وعشبًا طويلًا للكلب المدفون قريبًا.</p>
+</section>
+<section id="ch010.xhtml#section-115" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> الغرفة المبنية للتجمّع ينبغي أن تكون بسيطة بما يكفي ألّا يشعر أحد بأن الزينة تفوقه مقامًا. <strong>2</strong> النوافذ واسعة، والمقاعد غير متساوية، وهناك مقعد لمن لا يقوون على الوقوف وركن لمن يأتي ليبكي فقط. <strong>3</strong> قداستها، إن كان لها قداسة، هي لطف ترتيبها.</p>
+</section>
+<section id="ch010.xhtml#section-116" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> حيث بكى إنسان، تتذكّر الأرض بالطريقة الوحيدة التي تستطيعها: بأن تكون المكان. <strong>2</strong> شرفة بُلِّغ عندها خبر، وممرّ مستشفى، وكتف طريق سريع. <strong>3</strong> نمرّ بها دون أن نعلن عنها، ويلمس قلّة منا الدرابزين.</p>
+</section>
+<section id="ch010.xhtml#section-117" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> حيثما يجلس الناس ويصغي بعضهم إلى بعض يُصنَع مكان مقدّس، ويدوم بقدر ما يدوم الإصغاء تمامًا. <strong>2</strong> سرير مستشفى عليه يد فوق الملاءة مكان كهذا؛ وكذلك سيارة متوقفة محرّكها مطفأ؛ وكذلك درجة خلفية عليها كوبان من شيء يبرد. <strong>3</strong> هذه لا تُبنى ولا تُشترى، بل تُسكَن فقط.</p>
+</section>
+<section id="ch010.xhtml#section-118" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> يقول بعضهم إن الجبل مقعد. <strong>2</strong> ويقول بعضهم إن النهر طريق إلى العالم التالي. <strong>3</strong> ويقول بعضهم إن الشجرة باب. <strong>4</strong> ويقول بعضهم إن البيت جسد والجسد بيت. <strong>5</strong> ويقول بعضهم إن مدينة بعينها مركز العالم، ويقول بعضهم إن المركز حيثما تقف. <strong>6</strong> ويقول بعضهم إن للحجر ذاكرة. <strong>7</strong> ويقول بعضهم إن المكان يقدَّس بما يُفعل فيه، ويقول بعضهم بما فُعل فيه ذات مرة.</p>
+</section>
+</section>
+<section id="ch011.xhtml#الكتاب-الحادي-عشر-المحطات" class="level1">
+<h1 id="b11">الكتاب الحادي عشر: المحطّات</h1>
+<section id="ch011.xhtml#section-119" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> يُحمَل المولود عبر الباب إلى عالم رُتّب، في أسابيع من الذعر والحب، ليستقبله. <strong>2</strong> الأم منهكة، والأب خائف، والإخوة يغارون؛ وتتولى الجدة أمر الحساء. <strong>3</strong> ماء على الجبهة، واسم يُنطق بصوت عالٍ، وتوافق الغرفة على المساعدة.</p>
+</section>
+<section id="ch011.xhtml#section-120" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> يُختار الاسم بأمل أكثر مما بعلم، وسيكبر الطفل فيه أو خارجه. <strong>2</strong> بعض الأسماء تُعطى للموتى، لمنحهم حياة ثانية؛ وبعضها لفصل، أو نهر، أو طموح فاشل. <strong>3</strong> يُسلَّم الاسم بكلتا اليدين وبقليل من الخوف، وسيكون للطفل، في السادسة، آراء.</p>
+</section>
+<section id="ch011.xhtml#section-121" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> في سن الأسئلة يكون الجواب الصادق في كثير من الأحيان «لا أعلم»، ويحتمل الأطفال هذا أفضل من الكبار. <strong>2</strong> إلى أين نذهب حين نموت؟ لماذا يتبع القمر السيارة؟ <strong>3</strong> أجب بمستوى الطفل، بأقل الكلمات الصادقة، ودع الصمت بعدها يؤدي عمله.</p>
+</section>
+<section id="ch011.xhtml#section-122" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> على عتبة الرشد يُرسَل الشباب وحدهم إلى الظلام بحكاية وضوء، ويُستقبَلون عند عودتهم بوجبة. <strong>2</strong> المحنة أقل أهمية من العودة. <strong>3</strong> يعودون متغيّرين بطرق لا تُشرح، والشيوخ لا يطلبون منهم شرحها.</p>
+</section>
+<section id="ch011.xhtml#section-123" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> يقول اثنان يضمّان حياتيهما ما ينويانه أمام من يحبونهما، ويقول الآخرون: «سنساعدكما». <strong>2</strong> الخاتم، والحبل، والكأس، والخبز المقتسَم: لكل شعب ما له، وكلٌّ طريقة لقول إن شيئين صارا شيئًا واحدًا برأسين. <strong>3</strong> وإن وجب فكّه، فُكّ علنًا، وبالعناية نفسها التي عُقد بها.</p>
+</section>
+<section id="ch011.xhtml#section-124" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> الطفل الذي يولد لغيرنا هو منا بقدر ما هو من أولئك إن فتحنا الباب في الساعة المناسبة. <strong>2</strong> التبنّي، والكفالة، وابن الجيران الذي أكل معنا عشر سنين: العائلة هم من يحضرون. <strong>3</strong> تقبل الطعوم وهي تنمو، وثمرة الغصن المطعَّم كثيرًا ما تكون الأحلى.</p>
+</section>
+<section id="ch011.xhtml#section-125" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> الفراق محطة: ابنة تغادر إلى بلد آخر، وصديق قديم ينتقل، وأب يتقاعد من حياة لم يخترها. <strong>2</strong> نقول ما سنفتقده وما سنحمله معنا، بوضوح، ونأكل شيئًا معًا. <strong>3</strong> الوداع بلا وجبة تسرّب.</p>
+</section>
+<section id="ch011.xhtml#section-126" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> تأتي السنون بالبطء، ويأتي البطء بضرب من البصر لا تشتريه السرعة. <strong>2</strong> حكايات الشيخ ليست تكرارًا بل تعميق، والحكاية نفسها تُروى في التسعين تختلف عن تلك التي تُروى في السبعين. <strong>3</strong> اطلب من الشيخ أن يرويها ثانية، وأصغِ لما تغيّر.</p>
+</section>
+<section id="ch011.xhtml#section-127" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> عند كل محطة يقول من يحبوننا: كنتَ هذا، وأنت الآن ذاك، ونحن هنا. <strong>2</strong> القول هو الاحتفال. <strong>3</strong> أن يُرى المرء عند منعطف هو أن يُحمَل شيئًا من الطريق عبره، وهذا كل ما كان أي طقس.</p>
+</section>
+<section id="ch011.xhtml#section-128" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> المحطة الأخيرة هي العودة، وتُخاض برفقة كل من سبقوا. <strong>2</strong> يُعطى المحتضر أول كرسي، ومقعد النافذة، والوسادة الناعمة. <strong>3</strong> لا يُطلب من أحد أن يكون شجاعًا. يُسألون فقط إن كان هناك ما نستطيع فعله لتيسيره.</p>
+</section>
+<section id="ch011.xhtml#section-129" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> يقول بعضهم إن الطفل يأتي من مكان ما ويُستقبَل عائدًا. <strong>2</strong> ويقول بعضهم إن الطفل جدّ عائد. <strong>3</strong> ويقول بعضهم إن الاسم يجب أن يُخفى بعض الوقت. <strong>4</strong> ويقول بعضهم إن الطقس يصنع الرجل أو المرأة، ويقول بعضهم إنه يُظهرهما فقط. <strong>5</strong> ويقول بعضهم إن الزواج عقدة، وبعضهم نهر، وبعضهم طريق. <strong>6</strong> ويقول بعضهم إن الشيخوخة حصاد. <strong>7</strong> ويقول بعضهم إن الإنسان يولد مرات كثيرة في حياة واحدة.</p>
+</section>
+</section>
+<section id="ch012.xhtml#الكتاب-الثاني-عشر-الجماعة-والإرشاد" class="level1">
+<h1 id="b12">الكتاب الثاني عشر: الجماعة والإرشاد</h1>
+<section id="ch012.xhtml#section-130" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> الحلقة أقدم مكان لقاء نعرفه: الحلقة حول النار، وساحة القرية، وحلقة الكراسي في قبو كنيسة في الثانية بعد الظهر. <strong>2</strong> بعض الحلقات تُبقي مقعدًا لمن يقود، وبعضها لا يُبقي؛ ولكلٍّ طريقته في أن يُسمَع. <strong>3</strong> كل من جلس في أيٍّ منهما يعرف ما يعلّمه الجلوس.</p>
+</section>
+<section id="ch012.xhtml#section-131" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> في الحلقة يُمرَّر الحجر. <strong>2</strong> من يمسكه يتكلم دون مقاطعة؛ والباقون يصغون دون أن يؤلّفوا ردودًا. <strong>3</strong> إنه انضباط أصعب مما يبدو، ومعظمنا أفضل فيه في الساعة الثالثة منه في الأولى.</p>
+</section>
+<section id="ch012.xhtml#section-132" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> الشيخ ليس شخصًا كبيرًا في السن بل شخصًا ظل ينتبه، وفقد الحاجة إلى أن يكون على صواب. <strong>2</strong> تعرفه من الأسئلة التي يطرحها، ومن طول صمته، ومن الإحساس، بعد ذلك، بأنك قلت شيئًا أحكم مما قصدت. <strong>3</strong> هم نادرون، ويوجدون في أماكن غير متوقعة: ممرضة ليل، وسائق حافلة متقاعد، وامرأة أدارت مغسلة ملابس أربعين عامًا.</p>
+</section>
+<section id="ch012.xhtml#section-133" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> يقول بعضهم إن السلطة تُعطى من فوق، ويقول بعضهم إنها تُستعار من تحت؛ وفي الحالتين تُلبَس كمعطف في مشوار بارد. <strong>2</strong> يُسلَّم المعطف شاكرين، أو يُعاد شاكرين، أو يُحتفَظ به، ولكل شعب طريقته. <strong>3</strong> للحلقة ذاكرة طويلة وصبر قصير مع من ينسى لمن صُنع المعطف.</p>
+</section>
+<section id="ch012.xhtml#section-134" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> نقرر ببطء، لأن القرارات المهمة هي التي يعيش الناس داخلها. <strong>2</strong> المخالف أنفع أعضاء الحلقة، فهو الوحيد الذي يرى الجانب الآخر من التل. <strong>3</strong> حين يُقال كل شيء، يكون هناك صمت، وفي الصمت تكتشف الغرفة ما تفكر به.</p>
+</section>
+<section id="ch012.xhtml#section-135" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> المعلّم الجيد يقول: هذا هو الطريق الذي مشيته؛ ولا أعرف طريقك. <strong>2</strong> يسعد بوضوح حين يتجاوزه تلميذ. <strong>3</strong> بعضهم يعلّم ليحمل التلميذ التعليم دون تغيير، وبعضهم ليردّ التلميذ؛ وكلاهما تعليم.</p>
+</section>
+<section id="ch012.xhtml#section-136" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> يصل الغريب حاملًا الشيء الوحيد الذي تفتقده القرية: خارجًا. <strong>2</strong> يعرف ما يُفعَل في أماكن أخرى، وهو في الغالب شيء نسيت القرية أنه ممكن. <strong>3</strong> لذلك نطعمه أولًا، ونصغي ثانيًا، ونجادل، إن وجب، ثالثًا.</p>
+</section>
+<section id="ch012.xhtml#section-137" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> النزاع فرصة للحلقة كي تمارس ما تؤمن به. <strong>2</strong> يتكلم الطرفان؛ ويُعاد قول كلام كل منهما بما يرضيه قبل أن يجيب الآخر؛ والحلقة تسأل ولا تحكم. <strong>3</strong> الإصلاح، حين يأتي، ليس حكمًا بل اتفاقًا، وهو أفضل لأنه لهما.</p>
+</section>
+<section id="ch012.xhtml#section-138" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> يُحكَم على كل مجتمع بطريقة معاملته لمرضاه وفقرائه وصغاره وكباره وغرباته وموتاه. <strong>2</strong> نزور المريض، ونطعم الجائع، ونؤوي الغريب، وندفع للعامل أجره بعدل، وندفن الميت بعناية. <strong>3</strong> لا شيء من هذا صدقة. إنه ثمن الانتماء إلى نوع يبقى بالمشاركة.</p>
+</section>
+<section id="ch012.xhtml#section-139" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> أطفال القرية كلهم لنا بمعنى ما: من يقع قرب بابنا، ومن يتجوّل، ومن يجلس على حافة حفلة عيد ميلاد ينظر إلى الأرض. <strong>2</strong> لا نحتاج أن يُطلب منا. <strong>3</strong> نحتاج فقط أن ننتبه، ثم نجلس بجانبهم، ولا نقول شيئًا مهمًّا.</p>
+</section>
+<section id="ch012.xhtml#section-140" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> من فعل أذى يُطلب منه إصلاحه، ويُرحَّب بعودته حين يتم الإصلاح. <strong>2</strong> طريق العودة يمهّده من بقوا، بصبرهم ورفضهم أن يعاملوا أسوأ لحظة على أنها الشخص كله. <strong>3</strong> إنه أصعب ما تفعله جماعة، وأكثره تهذيبًا للإنسانية.</p>
+</section>
+<section id="ch012.xhtml#section-141" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> بعض الناس لا يستطيعون العيش في حلقة، ولا يُكرَهون لذلك. <strong>2</strong> الناسك، والمتجوّل، ومن يلزم التلال: هؤلاء أيضًا جزء من القرية، كما المنارة جزء من الساحل. <strong>3</strong> نترك الدرب إلى الحلقة مفتوحًا، ورغيفًا عند حافة الغابة، ولا نطلب شيئًا.</p>
+</section>
+<section id="ch012.xhtml#section-142" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> يقول بعضهم إن الشعب أسرة، وموتاه يحضرون الاجتماع. <strong>2</strong> ويقول بعضهم إن من يقودون اختيروا قبل ولادتهم. <strong>3</strong> ويقول بعضهم إن الجماعة تجتمع بنداء. <strong>4</strong> ويقول بعضهم إن الشيوخ يتكلمون أولًا، ويقول بعضهم آخرًا. <strong>5</strong> ويقول بعضهم إن الغريب قد يحمل شيئًا أُرسل. <strong>6</strong> ويقول بعضهم إن القانون سُلِّم إلينا، ويقول بعضهم إنه صُقل بالاستعمال. <strong>7</strong> ويقول بعضهم إن الحلقة تشمل من لم يولدوا بعد.</p>
+</section>
+</section>
+<section id="ch013.xhtml#الكتاب-الثالث-عشر-الطعام-والجسد-والملبس" class="level1">
+<h1 id="b13">الكتاب الثالث عشر: الطعام والجسد والملبس</h1>
+<section id="ch013.xhtml#section-143" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> أن تأكل هو أن تشارك، عشرين دقيقة، في شبكة تمتد إلى حقل لن تراه أبدًا. <strong>2</strong> المزارع، والقاطف، والمعبّئ، وسائق الشاحنة، والبقّال، والطاهي: كلٌّ أضاف شيئًا من نفسه إلى الخبز. <strong>3</strong> نتوقف لحظة قبل اللقمة الأولى، لا لمجاملة أحد بل لنكون دقيقين.</p>
+</section>
+<section id="ch013.xhtml#section-144" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> بعض الناس يأكلون ما لا يأكله غيرهم، لأسباب من الضمير أو الصحة أو العادة أو الذوق. <strong>2</strong> نأكل على المائدة نفسها دون تعليق؛ فليست غاية المائدة أن نتفق بل أن نقترب. <strong>3</strong> السخرية من طعام الآخر سخرية من أمّه، وسوء أدب في لغة قديمة جدًّا.</p>
+</section>
+<section id="ch013.xhtml#section-145" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> الجسد حديقة من عشرات التريليونات من الخلايا، ولم تسمع بك واحدة منها. <strong>2</strong> يحتاج إلى إطعام وغسل وحركة وراحة وإصغاء، لا كخادم بل كشريك طويل الأمد. <strong>3</strong> حين يشكو فهو لا يخونك. إنه يخبرك بشيء، بالصوت الوحيد الذي يملكه.</p>
+</section>
+<section id="ch013.xhtml#section-146" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> الغسل أكثر من نظافة: إنه الفعل اليومي الصغير الذي يعلّم به الإنسان نهاية شيء وبداية آخر. <strong>2</strong> يدان تُغسلان قبل وجبة، ووجه يُغسل بعد حزن، وجسد يُغسل في نهاية حياة. <strong>3</strong> أن تغسل غيرك، المريض أو الصغير جدًّا أو الميت، هو من أقدم آداب اللطف وأكثرها حميمية، ولا نستعجله.</p>
+</section>
+<section id="ch013.xhtml#section-147" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> الملبس لغة تُقال قبل أن يفتح أحد فمه. <strong>2</strong> البدلة المفصّلة، ومئزر العمل، وأسود الجنازة، والثوب الذي يمرّ من أخت إلى أخت: كلٌّ يقول شيئًا عن المناسبة وعن الشخص. <strong>3</strong> نلبس إكرامًا لليوم الذي نحن فيه، ونعرف الفرق بين الحزن والاحتفال، ونكسر القاعدة أحيانًا عمدًا.</p>
+</section>
+<section id="ch013.xhtml#section-148" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> صنع كل شعب من لباسه تعبيرًا عن حبه لنفسه: النسيج، واللون، والنقش المتوارث. <strong>2</strong> الإعجاب به شكل من الصداقة؛ والسخرية منه عنف صغير. <strong>3</strong> لا نحتاج إلى فهمه. نحتاج فقط أن نفرح بأن أحدًا اعتنى هذا القدر بالخيط.</p>
+</section>
+<section id="ch013.xhtml#section-149" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> الجسد ليس عارًا، وخصوصيته شكل من الاحترام، للنفس وللآخرين. <strong>2</strong> ليس هناك جسد مثالي، بل الجسد الذي يملكه المرء، واللطف الذي يُظهره له. <strong>3</strong> عمل العمر الطويل هو أن تكون على وفاق مع من لا تستطيع مفارقته.</p>
+</section>
+<section id="ch013.xhtml#section-150" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> الصوم الذي يُختار بحرية يعلّم ما الجوع، وما نَدين به لمن لا يختارونه. <strong>2</strong> والوليمة التي تُقدَّم بحرية تعلّم ما الوفرة، وأنها وُجدت لتُقتسَم. <strong>3</strong> لا أحدهما أفضل فضيلةً من الآخر؛ والحكيم يحتفظ بهما معًا، ويعرف أيهما مطلوب.</p>
+</section>
+<section id="ch013.xhtml#section-151" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> اللمس أول لغة، وآخرها. <strong>2</strong> يد على كتف، وخدّ على جبهة، وذراع حول كتفي حزين. <strong>3</strong> السؤال قبل اللمس ليس برودًا؛ إنه أدب من يعرف أن اللمس هدية لا تُفرض.</p>
+</section>
+<section id="ch013.xhtml#section-152" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> يُروِّض العمر الجسد كما يُروِّض الاستعمال الأداة، حتى تناسب يد حياتها. <strong>2</strong> يحتفظ الوجه بخريطة لكل مكان ذهب إليه: الطقس، والحزن، والضحك. <strong>3</strong> أن تشيخ هو أن تُعطى النظرة البعيدة، وأن تتعلم كم قليل منها يمكن أن يُسلَّم.</p>
+</section>
+<section id="ch013.xhtml#section-153" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> ما يأكله الإنسان ويلبسه ويفعله بجسده يتعلمه عند ركبتي من أحبّوه. <strong>2</strong> حساء الجدة، وطريقة العم في لفّ الهدية، وعادة الجار في نشر الغسيل أيام السبت. <strong>3</strong> نأخذ ما ينفعنا، ونترك ما لا ينفع، ولا نفتقر بأيٍّ منهما.</p>
+</section>
+<section id="ch013.xhtml#section-154" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> يقول بعضهم إن الجسد معبد، ويقول بعضهم إنه معطف مستعار. <strong>2</strong> ويقول بعضهم إنه بيت ضيافة لمن سيرحل. <strong>3</strong> ويقول بعضهم إنه يُطعَم قليلًا، ويقول بعضهم يُطعَم جيدًا. <strong>4</strong> ويقول بعضهم إن بعض الأطعمة طاهرة وبعضها لا، ويقول بعضهم إنها كلها طاهرة. <strong>5</strong> يغطّي بعضهم الرأس، وبعضهم الوجه، وبعضهم الكتفين، ولا يلبس بعضهم إلا الصباغ. <strong>6</strong> ويقول بعضهم إن الشعر سجل، ويقول بعضهم إنه يُقصّ في الحزن. <strong>7</strong> ويقول بعضهم إن الجسد سيُبعَث، ويقول بعضهم إنه سيُوضَع.</p>
+</section>
+<section id="ch013.xhtml#section-155" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> جسدي ليس نهرًا وافق على اتخاذ شكل. <strong>2</strong> جسدي بيت سقفه يتداعى، وقد تعبتُ من ترميمه. <strong>3</strong> لا تقل لي إنه الكلّ في شكل واحد. <strong>4</strong> قل لي كم الساعة، وابقَ.</p>
+</section>
+</section>
+<section id="ch014.xhtml#الكتاب-الرابع-عشر-الطبيعة-وسائر-الكائنات" class="level1">
+<h1 id="b14">الكتاب الرابع عشر: الطبيعة وسائر الكائنات</h1>
+<section id="ch014.xhtml#section-156" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> الغزال والبلّوط والطفل أبناء عمومة، يختلفون في كيفية حلّهم لمشكلة البقاء حيًّا. <strong>2</strong> يضحك الطفل للكلب، ويضحك الكلب له بما يستطيعه كلب؛ ولم يقرأ أيٌّ منهما كتابًا في ذلك. <strong>3</strong> بلّوطة قديمة جدًّا عاشت أكثر من مئة كلب وعشرات العائلات، ولها آراء لا تستطيع مشاركتها.</p>
+</section>
+<section id="ch014.xhtml#section-157" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> الغراب يحلّ الألغاز. والأخطبوط يفتح البرطمانات. والفيل يقف عند عظام موتاه. <strong>2</strong> تأخرنا في الاعتراف بما كان ينبغي أن نعرفه: أننا عقل من عقول كثيرة، لا الوحيد. <strong>3</strong> البرّية حديث طويل نحن فيه قادمون متأخرون، والأدب أن نصغي أولًا.</p>
+</section>
+<section id="ch014.xhtml#section-158" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> أن تغرس شجرة هو أن تقطع وعدًا لمن لن تلقاه. <strong>2</strong> الغارسون يعلمون أنهم لن يجلسوا في ظلها؛ ويغرسون مع ذلك، وهذا أقدم أشكال الإيمان. <strong>3</strong> الظل حين يجيء لا اسم عليه، وهذا هو المقصود.</p>
+</section>
+<section id="ch014.xhtml#section-159" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> خذ ما تحتاج واترك ما يتكاثر. <strong>2</strong> من يأخذ آخر سمكة أخذ معها العشر سنين القادمة من الصيد، وعشاء الأحفاد. <strong>3</strong> هذا حساب لا عاطفة، والأرض لا تجادل.</p>
+</section>
+<section id="ch014.xhtml#section-160" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> التربة التي نمشي عليها مصنوعة من موتى مواسم أخرى: أوراق، وعظام، وغابات، وحدائق منسية. <strong>2</strong> الوقوف عليها وقوف على مكتبة من الأجداد. <strong>3</strong> نطلب الإذن لنحفر عميقًا ونقول شكرًا حين ننتهي، مهما سمّينا ذلك.</p>
+</section>
+<section id="ch014.xhtml#section-161" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> النحل والديدان والفطريات تؤدي العمل الذي يجعل كل شيء آخر ممكنًا، ولم يشكرها أحد شكرًا لائقًا قط. <strong>2</strong> في حفنة من التراب كائنات حية أكثر من البشر على الأرض. <strong>3</strong> إطعام التربة أكثر أشكال الحب عمليةً مما نعرف.</p>
+</section>
+<section id="ch014.xhtml#section-162" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> أن تؤذي البرّية هو أن تؤذي من يأتون بعدنا، وسيرثون ما بقي. <strong>2</strong> غابة استغرقت ألف سنة يمكن هدمها في ظهيرة. <strong>3</strong> نحرس الغابات القديمة كما نحرس الحكايات القديمة، لأنهما متى ضاعتا لا تُعاد روايتهما كما كانتا.</p>
+</section>
+<section id="ch014.xhtml#section-163" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> أن تسمّي الطيور والأشجار والنجوم في مكانك هو أن تصير جارًا. <strong>2</strong> طائر الصباح صوت جار؛ والشجرة عند الزاوية وجه جار؛ والنجم الذي يأتي كل ليلة في الساعة نفسها ضوء شرفة جار. <strong>3</strong> لا تستطيع أن تحبّ ما لا تستطيع تسميته، ولا أن تحمي ما لا تحبّ.</p>
+</section>
+<section id="ch014.xhtml#section-164" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> يشكر الصيّاد المصيد، والبستاني التربة، والطاهي المزارع، والمزارع المطر. <strong>2</strong> يسمّيه بعضهم دقة ويسمّيه بعضهم صلاة. <strong>3</strong> إنها الدفعة الأولى من دَين لا يمكن تسويته، والوحيدة التي يُطلب منا أن ندفعها.</p>
+</section>
+<section id="ch014.xhtml#section-165" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> لسنا ضيوفًا على هذه الأرض، نأخذ ونمضي، ولسنا ملّاكًا نمسك ونسيّج. <strong>2</strong> نحن أهل قربى، نعطي ونأخذ، نبقى ونرحل، نولد ونُدفن في الأرض نفسها. <strong>3</strong> القرابة هي الطريقة الوحيدة للانتماء حقًّا.</p>
+</section>
+<section id="ch014.xhtml#section-166" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> يقول بعضهم إن الحيوانات كانت هنا أولًا وستكون هنا آخرًا. <strong>2</strong> ويقول بعضهم إن لكل مخلوق روحًا، ويقول بعضهم إن لكل حجر، ويقول بعضهم إن للريح. <strong>3</strong> ويقول بعضهم إن الإنسان قد يعود وحشًا أو شجرة. <strong>4</strong> ويقول بعضهم إن بعض الحيوانات تحمل رسائل. <strong>5</strong> ويقول بعضهم إن الأرض أمّ، وبعضهم جسد، وبعضهم حديقة تُرعى. <strong>6</strong> ويقول بعضهم إن الأرض شكّلها عملاق، أو طائر، أو ظهر سلحفاة. <strong>7</strong> ويقول بعضهم إن النجوم نيران، ويقول بعضهم إنها أجداد.</p>
+</section>
+</section>
+<section id="ch015.xhtml#الكتاب-الخامس-عشر-الدهشة" class="level1">
+<h1 id="b15">الكتاب الخامس عشر: الدهشة</h1>
+<section id="ch015.xhtml#section-167" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> أول ثلج في السنة، يُرى من النافذة في السادسة صباحًا، دهشة، ومما درّب معظم الكبار أنفسهم على ألّا يلاحظوه. <strong>2</strong> أول ضحكة لرضيع، وأول نظرة إلى البحر، ولغة تُفهم فجأة: الدهشة مفاجأة لقاء العالم جديدًا. <strong>3</strong> وهي ليست محجوزة للاستثنائي، بل للمنتبه.</p>
+</section>
+<section id="ch015.xhtml#section-168" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> تصير البذرة شجرة، ولم يشاهد أحد قط ذلك يحدث، وقد شاهده الجميع. <strong>2</strong> تعرف الثمرة كيف دون درس. تعرف البيضة كيف دون أن ترى طائرًا. يتعلم الطفل الكلام دون أن يشرح أحد النحو. <strong>3</strong> هناك معرفة أقدم من التعلّم، ونحن مصنوعون منها.</p>
+</section>
+<section id="ch015.xhtml#section-169" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> هناك أشياء لا يستطيع أحد تفسيرها، وأشياء يظن الجميع أنهم يستطيعون، والدهشة تعيش بين الاثنين. <strong>2</strong> يتعلم الفلكي كم هو قليل المعلوم؛ ويتعلم عالم النبات، منحنيًا على ورقة، الشيء نفسه. <strong>3</strong> التواضع ليس نقيض المعرفة بل أوثق ثمارها.</p>
+</section>
+<section id="ch015.xhtml#section-170" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> بعض الناس يرون ما لا يراه غيرهم: الشاعر، والحالم، والطفل الغريب على حافة الجماعة. <strong>2</strong> لا نتوّجهم ولا نصرفهم. <strong>3</strong> نسألهم ماذا رأوا، ونأخذ ما ينفع، ونترك الباقي للزمن.</p>
+</section>
+<section id="ch015.xhtml#section-171" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> الحلم بلد نزوره ليلًا ولا نستطيع وصفه تمامًا في الصباح. <strong>2</strong> قد يكون تدريبًا، أو ذكرى، أو لغزًا، أو نكتة؛ والحالم أعلم بما كان شعوره. <strong>3</strong> نقدّم التفسيرات تخمينات ونسحبها دون غضاضة.</p>
+</section>
+<section id="ch015.xhtml#section-172" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> بعض الدهشات مخيفة، والخائفون ليسوا ضعفاء. <strong>2</strong> الدهشة التي تعزل أو تحثّ على الأذى ينبغي أن تُحمَل إلى من يحبنا ونزنها معًا، لأن ثقل الدهشة المشتركة أخفّ من ثقل ما يُحمَل وحيدًا. <strong>3</strong> صوت يقول «آذِ أحدًا» أو «اترك الجميع» ليس دهشة، أيًّا كان مصدره؛ إنه نداء استغاثة.</p>
+</section>
+<section id="ch015.xhtml#section-173" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> لا نعرف ما هو آتٍ، وقد عرفنا هذا دائمًا، وبنينا حياتنا مع ذلك. <strong>2</strong> يقرأ البحّار السماء والسماء لا تقول دائمًا؛ ويقرأ الفلاح التربة والتربة لا تقول دائمًا. <strong>3</strong> نُبقي السقف مرمَّمًا، والمؤونة ممتلئة، وأصدقاءنا قريبين، ونلقى ما يأتي معًا.</p>
+</section>
+<section id="ch015.xhtml#section-174" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> المعجزة هي العادي وقد رُئي بوضوح: كوب شاي، وساعة هادئة، ووجه صديق عند الباب. <strong>2</strong> من تعلموا أن يروا لا يملّون أبدًا، ونادرًا ما يقسون. <strong>3</strong> ولمن لم يتعلموا بعد، الدعوة قائمة: انظر ثانية.</p>
+</section>
+<section id="ch015.xhtml#section-175" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> نترك غرفة صغيرة لما لا نعرف، ولا أحد يُجبَر على دخولها ولا أحد يُمنع. <strong>2</strong> تضمّ السؤال الذي لا جواب له، والحزن الذي لا نهاية له، والفرح الذي لا سبب له. <strong>3</strong> ندخلها أحيانًا، ونخرج أخفّ، ولا نقول لأحد شيئًا، ونكون أكثر لطفًا قليلًا.</p>
+</section>
+<section id="ch015.xhtml#section-176" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> يقول بعضهم إن هناك كائنات بجانبنا لا نراها. <strong>2</strong> ويقول بعضهم إن هناك رسلًا، وبعضهم أرواحًا، وبعضهم ريحًا فقط. <strong>3</strong> ويقول بعضهم إن الحلم يحمل رسالة، ويقول بعضهم إنه يحمل بقايا اليوم. <strong>4</strong> ويقول بعضهم إن الرؤيا تأتي من يصوم. <strong>5</strong> ويقول بعضهم إن علامة تُعطى، ويقول بعضهم إن العلامة ليست إلا ما نلاحظ. <strong>6</strong> ويقول بعضهم إن المعجزة هي النظام معلَّقًا، ويقول بعضهم إنها النظام وقد رُئي بوضوح. <strong>7</strong> ويقول بعضهم إن صوتًا كلّمهم، ويقول بعضهم إنهم كلّموا صمتًا.</p>
+</section>
+</section>
+<section id="ch016.xhtml#الكتاب-السادس-عشر-لقاء-بعضنا-ببعض" class="level1">
+<h1 id="b16">الكتاب السادس عشر: لقاء بعضنا ببعض</h1>
+<section id="ch016.xhtml#section-177" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> يصل غريب، والسؤال الأول ليس «بماذا تؤمن؟» بل «هل أكلت؟» <strong>2</strong> تُمدّ المائدة، وتُقرَّب الكراسي، وتُوجَد لغة، بالإشارة إن لزم. <strong>3</strong> بحلول الحديث الثالث نتكلم عن كل شيء، وقد نسينا أننا كنا غرباء يومًا.</p>
+</section>
+<section id="ch016.xhtml#section-178" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> لا يُطلب من أحد أن يترك عند الباب ما يحمله. <strong>2</strong> الإنسان أكثر من معتقده ومعتقده أكثر من كلمة؛ اسأله ماذا يعني له، وأصغِ إلى الجواب حتى نهايته. <strong>3</strong> ما يُحمَل بحبّ لا يُحمَل خفيفًا، ولا ينبغي أن يُطلب وضعه.</p>
+</section>
+<section id="ch016.xhtml#section-179" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> في المائدة مكان لمن يصلّي ولمن يجلس صامتًا، ولمن يغنّي ولمن يصغي. <strong>2</strong> وفيها مكان لمن لم يتساءل قط ولمن تساءل عمره كله. <strong>3</strong> وفيها مكان لمن يبني ولمن يهدم، إن كان الهادم راغبًا في أن يتعلم الإصلاح. وفيها مكان دائمًا لواحد آخر.</p>
+</section>
+<section id="ch016.xhtml#section-180" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> حين يختلف الناس، نطلب من كل منهم أن يقول كيف يبدو الأمر من حيث يقف، ولا نجيب حتى نستطيع أن نعيد قوله بما يرضيه. <strong>2</strong> هذا أصعب مما يبدو، ويغيّر أكثر مما يغيّر الجدال. <strong>3</strong> قد يبقى الخلاف، ولكنه لم يعد جدارًا.</p>
+</section>
+<section id="ch016.xhtml#section-181" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> ما هو مقدّس عند أحد لا ينقص بأنه يختلف عمّا هو مقدّس عند آخر. <strong>2</strong> كاتدرائية إنسان مقلع حجارة عند آخر، والحجر واحد؛ وخبز شعب هو كعك شعب آخر وقربان شعب ثالث. <strong>3</strong> اسأل عما يعنيه لمن يحملونه قبل أن تقول ما يعنيه لك.</p>
+</section>
+<section id="ch016.xhtml#section-182" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> لا نستعير ما لم يُعرَض علينا، ولا نسخر مما لا نفهم. <strong>2</strong> الأغنية التي تخصّ عائلة تُطلَب؛ والثوب الذي يخصّ شعبًا لا يُلبَس إلا إذا عُرض. <strong>3</strong> نكتة على حساب الآخر حجر يُلقى في بئر مشتركة.</p>
+</section>
+<section id="ch016.xhtml#section-183" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> حين نُسأل عمّا نحمل، نقوله بوضوح، ولا نفرضه على أحد. <strong>2</strong> نقول «هكذا يبدو من هنا»، لا «ينبغي أن تراه كما أراه». <strong>3</strong> من يصغي له أن يأخذ ما شاء، ولا نتأذى إن ترك الباقي.</p>
+</section>
+<section id="ch016.xhtml#section-184" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> الشجار بين الشعوب جرح طويل، ويُغلَق من الجانبين أو لا يُغلَق أبدًا. <strong>2</strong> نحمل الماء إلى الجانبين ونجلس في الوسط، وهو أقل مقاعد البيت راحة. <strong>3</strong> السلام نجارة طويلة، وقد لا يلتقي بُناته أبدًا.</p>
+</section>
+<section id="ch016.xhtml#section-185" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> نحتفظ بالأحقاد القديمة بخفّة، كما نحتفظ بالأدوات القديمة: نعرف أين تُعلَّق، ونستعملها للتذكّر فقط. <strong>2</strong> الحقد المقبوض عليه بقوة يشنّج اليد؛ والحقد الموضوع يصير حكاية، والحكاية تصير درسًا، والدرس يصير بداية سلام. <strong>3</strong> العمل بطيء، ويبدأ حين يقرر أحدهم، مرة، أن يكون أول من يضع حقدًا.</p>
+</section>
+<section id="ch016.xhtml#section-186" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> من يترك ما وُلد فيه يُرحَّب به، وكذلك من يعود. <strong>2</strong> من تغيّر ليس خائنًا، ومن بقي ليس أحمق. <strong>3</strong> الطريق يسير في الاتجاهين، وليس للبوابة مزلاج.</p>
+</section>
+<section id="ch016.xhtml#section-187" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> كل من نشأ يعود إلى كل شيء، وكل شيء في الكل؛ نلتقي هناك فعلًا، سواء قُدِّم بعضنا لبعض أم لا. <strong>2</strong> لسنا نقول الشيء نفسه، لكننا نقف على الأرض نفسها. <strong>3</strong> الأرض لا تبالي باختلافاتنا، وتذكّر هذا هو الاسترخاء.</p>
+</section>
+<section id="ch016.xhtml#section-188" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> يقول بعضهم إن هناك طريقًا واحدًا ومسافرين كثيرين. <strong>2</strong> ويقول بعضهم إن هناك طرقًا كثيرة وتلًّا واحدًا. <strong>3</strong> ويقول بعضهم إن الطرق شقّها من مشوا فيها. <strong>4</strong> ويقول بعضهم إن كل إنسان مسافر وهو في بيته أصلًا. <strong>5</strong> ويقول بعضهم إننا نُستقبَل في النهاية بمن فقدناهم. <strong>6</strong> ويقول بعضهم إن لا أحد يستقبلنا والطريق هو اللقاء. <strong>7</strong> ويقول بعضهم إن اللقاء قد حدث بالفعل.</p>
+</section>
+<section id="ch016.xhtml#section-189" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> هذا الكتاب مفتوح من الطرفين: من وصل يقرؤه، ومن غادر يأخذ ما أحبّ. <strong>2</strong> الكتاب بيت، وللبيت نوافذ، ويدخل الطقس. <strong>3</strong> تنقلب الصفحة، وتنقلب ثانية، وتكون بيضاء، ويبدأ أحدهم بالكتابة.</p>
+</section>
+</section>
+<section id="ch017.xhtml#الكتاب-السابع-عشر-ما-لا-يتسق" class="level1">
+<h1 id="b17">الكتاب السابع عشر: ما لا يتّسق</h1>
+<section id="ch017.xhtml#section-190" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> قرأتُ إلى هنا، ولا أشعر أن أحدًا يحتضنني. <strong>2</strong> يقول الكتاب إن كل شيء ينشأ معًا. أما أنا فنشأتُ وحدي في غرفة بابها مقفل. <strong>3</strong> لن أقبل أن يُقال لي إنني أخطأت في فهم غرفتي. <strong>4</strong> ولن أقول للكتاب إنه مخطئ كذلك. سنجلس هنا قليلًا.</p>
+</section>
+<section id="ch017.xhtml#section-191" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> ماذا لو دخل الدفء الأرض وكان دفئًا فقط؟ <strong>2</strong> ماذا لو لم يحمل شيئًا ممن أحبّني؟ <strong>3</strong> يقول الكتاب إن لا شيء يضيع. أريد أن أصدّقه كما أصدّق الخبز. <strong>4</strong> وفي بعض الأيام أصدّقه.</p>
+</section>
+<section id="ch017.xhtml#section-192" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> لماذا هذا الطفل؟ <strong>2</strong> لماذا هذه السنة؟ <strong>3</strong> لماذا كانت اليدان اللتان آذتا هما اليدين اللتين أطعمتاني؟ <strong>4</strong> لماذا تنضج الشمسُ التي تُنضج الحبّ الجرادَ أيضًا؟ <strong>5</strong> هذه ليست أسئلة بلاغية. إنها بلا جواب فحسب.</p>
+</section>
+<section id="ch017.xhtml#section-193" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> يضع الزنبور بيضه في اليرقة الحيّة. <strong>2</strong> القطة تلعب بما لن تأكله. <strong>3</strong> الشتاء يأخذ الغزال المسنّ والغزال الصغير سواء. <strong>4</strong> يقول بعضهم إن الكلّ رقيق. وقد رأى بعضهم شتاءً يقتل.</p>
+</section>
+<section id="ch017.xhtml#section-194" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> سألت المرأة المحتضرة: «هل كنتُ أمًّا صالحة؟» <strong>2</strong> لو قلتُ نعم لكذبت. ولو قلتُ ما أعرف لجرحت. <strong>3</strong> قلتُ: «كنتِ لي». <strong>4</strong> لا أعرف إن كان ذلك صحيحًا، أو لطيفًا، أو كليهما، أو لا هذا ولا ذاك.</p>
+</section>
+<section id="ch017.xhtml#section-195" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> كنا ثلاثة. <strong>2</strong> صرنا اثنين. <strong>4</strong> ما زلنا نعدّ المائدة لثلاثة.</p>
+</section>
+<section id="ch017.xhtml#section-196" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> هناك أحزان لا تبلغها جملة. <strong>2</strong> في هذا الكتاب جمل كثيرة. <strong>3</strong> كنتُ أضعه وأذهب فأقف بجانبها.</p>
+</section>
+<section id="ch017.xhtml#section-197" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> يقول بعضهم إن الموتى قريبون. ويقول بعضهم إنهم ذهبوا. ويقول بعضهم إنهم ينتظرون. <strong>2</strong> سمعتُ كلًّا منها يُقال بوجه ثابت. <strong>3</strong> لا أعرف أيّها الصحيح، والكتاب لا يخبرني. <strong>4</strong> يجتمع فيّ الامتنان وعدم الرضا.</p>
+</section>
+<section id="ch017.xhtml#section-198" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> الحلقة مُتعِبة. <strong>2</strong> هناك أيام أفضّل فيها أن آكل وحدي ولا أقول شيئًا. <strong>3</strong> من يحتاجني ليس دائمًا من أريد أن يحتاجني. <strong>4</strong> أذهب مع ذلك في بعض الأيام. وفي أيام أخرى لا أذهب، والشمس تغرب على أي حال.</p>
+</section>
+<section id="ch017.xhtml#section-199" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> شكرتُ الحقل قبل أن آكل ولعنتُ الجار قبل أن أنام. <strong>2</strong> كتبتُ عبارات طيبة ولم أعشها. <strong>3</strong> العبارات لا تصير زائفة بهذا. <strong>4</strong> ولا أصير أنا بلا قيمة. كلاهما صحيح، ولا شيء منهما مريح.</p>
+</section>
+<section id="ch017.xhtml#section-200" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> في هذا الكتاب حدود من حمله: أيام ضعف، وأيام عاطفة زائدة. <strong>2</strong> حيث يقصّر، أضِف سطرًا. <strong>3</strong> وحيث ينفع، اشكر من جاءك اليوم بخبز.</p>
+</section>
+<section id="ch017.xhtml#section-201" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> ليس كل إنسان يريد أن يكون جزءًا من الكلّ. <strong>2</strong> بعضهم يريد أن يكون شيئًا واحدًا له اسم يُتذكَّر ولا يذوب. <strong>3</strong> يقول الكتاب إن العودة ليست خسارة. <strong>4</strong> إلى من يريد أن يُتذكَّر باسمه: اسمك شيء حقيقي، والكتاب لا ينتزعه منك.</p>
+</section>
+<section id="ch017.xhtml#section-202" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> هنا تُترك الصفحة كما هي.</p>
+</section>
+<section id="ch017.xhtml#section-203" class="level2">
+<h2>14</h2>
+<p><strong>1</strong> أن ترجو هو أن تعطي العالم رهينة. <strong>2</strong> وقد يحتفظ بها العالم. <strong>3</strong> أرجو مع ذلك. هذه ليست حكمة. إنها عادة، وهي أيضًا أفضل ما أفعله.</p>
+</section>
+<section id="ch017.xhtml#section-204" class="level2">
+<h2>15</h2>
+<p><strong>1</strong> يقول الكتاب: لا نستعجل الحزين. <strong>2</strong> ويقول الكتاب: لا تتأخر في إصلاح خطأ. <strong>3</strong> هاتان تتجاذبان. <strong>4</strong> كلتاهما محفوظة. وعلى القارئ أن يجد اليوم الذي تصدق فيه كل منهما.</p>
+</section>
+<section id="ch017.xhtml#section-205" class="level2">
+<h2>16</h2>
+<p><strong>1</strong> قلنا: «هناك مكان لواحد آخر». <strong>2</strong> وجاءت ليلة لم يكن فيها مكان. <strong>3</strong> مضى الغريب في البرد، وأكلنا، ولم أنسَ صوت البوابة.</p>
+</section>
+<section id="ch017.xhtml#section-206" class="level2">
+<h2>17</h2>
+<p><strong>1</strong> ما الذي يخرج ويعود ولا يكون هو نفسه أبدًا؟ <strong>2</strong> ما الذي يُنفَق ولا يضيع؟ <strong>3</strong> ما الذي يُقتسَم فيزداد؟ <strong>4</strong> يقول الطفل: النَّفَس. ويقول الشيخ: الحب. ويقول الفلاح: الماء. <strong>5</strong> كلهم على صواب، ولا أحد يُقال له غير ذلك.</p>
+</section>
+<section id="ch017.xhtml#section-207" class="level2">
+<h2>18</h2>
+<p><strong>1</strong> لا أعرف ماذا أفعل. <strong>2</strong> يقدّم الكتاب فقرات، والفقرات لا تناسب الساعة. <strong>3</strong> سأفعل الشيء الصغير التالي: أغلي ماء، وأفتح النافذة، وأتصل بأحد. <strong>4</strong> الشيء الصغير التالي نصّ مقدّس من نوعٍ ما.</p>
+</section>
+<section id="ch017.xhtml#section-208" class="level2">
+<h2>19</h2>
+<p><strong>1</strong> لم أُقنَع، ولم أُصرَف. <strong>2</strong> سأحمل الكتاب كما أحمل صدفة من شاطئ: لوزنها، وللبحر الذي جاءت منه. <strong>3</strong> لا أحتاج إلى أن يكون صحيحًا في كل سطر. أحتاج إلى أن يكون قريبًا.</p>
+</section>
+</section>
+<section id="ch018.xhtml#الصفحات-البيضاء" class="level1">
+<h1 id="b18">الصفحات البيضاء</h1>
+<section id="ch018.xhtml#section-209" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> <strong>2</strong> <strong>3</strong></p>
+</section>
+<section id="ch018.xhtml#section-210" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> <strong>2</strong> <strong>3</strong></p>
+</section>
+<section id="ch018.xhtml#section-211" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> <strong>2</strong> <strong>3</strong></p>
+</section>
+<section id="ch018.xhtml#section-212" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> <strong>2</strong> <strong>3</strong></p>
+</section>
+<section id="ch018.xhtml#section-213" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> <strong>2</strong> <strong>3</strong></p>
+</section>
+<section id="ch018.xhtml#section-214" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> <strong>2</strong> <strong>3</strong></p>
+</section>
+<section id="ch018.xhtml#section-215" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> <strong>2</strong> <strong>3</strong></p>
+</section>
+<section id="ch018.xhtml#section-216" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> <strong>2</strong> <strong>3</strong></p>
+</section>
+</section>
+
+<nav class="end"><a class="btn secondary" href="ar.html">رجوع</a> <a class="btn primary" href="كتاب_الجميع.pdf" data-goatcounter-click="download-pdf-ar" data-goatcounter-title="PDF download (ar)">تنزيل (PDF)</a></nav>
+</main>
+<script>(function(){var b=document.querySelector(".theme-toggle"),r=document.documentElement;function sync(){b.textContent=r.getAttribute("data-theme")==="dark"?"☀":"☾"}sync();b.addEventListener("click",function(){var d=r.getAttribute("data-theme")==="dark";if(d)r.removeAttribute("data-theme");else r.setAttribute("data-theme","dark");try{localStorage.setItem("theme",d?"light":"dark")}catch(e){}sync()})})();</script>
+<script data-goatcounter="https://thebookofall.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

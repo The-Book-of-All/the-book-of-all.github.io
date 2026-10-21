@@ -1,0 +1,994 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El Libro de Todos</title>
+<style>
+  :root { --bg:#eceeed; --fg:#1c2127; --muted:#5d666f; --accent:#2b6a68; --on-accent:#fff; --line:#c9cfd2; --glow:rgba(150,165,172,.45); --frame:#7d8f93; --frame2:#b5c0c3; }
+  @media all { :root[data-theme="dark"] { --bg:#12151a; --fg:#e6e8ea; --muted:#9aa3ab; --accent:#86bdb4; --on-accent:#0e1918; --line:#2a3037; --glow:rgba(130,150,160,.22); --frame:#8fa6aa; --frame2:#3a444b; } }
+  * { box-sizing:border-box; }
+  body::before { content:""; position:fixed; inset:10px; border:1.5px solid var(--frame); border-radius:6px; pointer-events:none; z-index:50; }
+  body::after { content:""; position:fixed; inset:16px; border:1px solid var(--frame2); border-radius:3px; pointer-events:none; z-index:50; }
+  @media print { body::before, body::after { display:none; } }
+
+  .theme-toggle { position:fixed; top:26px; inset-inline-end:26px; z-index:60; width:40px; height:40px; border-radius:50%; border:1.5px solid var(--frame); background:var(--bg); color:var(--fg); cursor:pointer; font-size:19px; line-height:1; padding:0; display:flex; align-items:center; justify-content:center; }
+  .theme-toggle:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+  @media print { .theme-toggle { display:none; } }
+  html { -webkit-text-size-adjust:100%; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:18px/1.65 "Iowan Old Style","Palatino Linotype",Palatino,"Noto Serif","Noto Serif CJK SC","Noto Serif Devanagari","Noto Serif Bengali","Noto Naskh Arabic","Noto Nastaliq Urdu",Georgia,"Times New Roman",serif; overflow-wrap:anywhere; }
+  a { color:var(--accent); }
+  a:focus-visible, select:focus-visible, summary:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+  .btn { display:inline-block; padding:.8rem 1.5rem; border-radius:14px; text-decoration:none; font-weight:600; font-size:1rem; line-height:1.3; text-align:center; }
+  .btn.primary { background:var(--accent); color:var(--on-accent); }
+  .btn.secondary { border:2px solid var(--accent); color:var(--accent); }
+
+  header { display:flex; align-items:center; gap:.9rem; max-width:36rem; margin:0 auto; padding:2rem 34px 1rem; }
+  header img { width:44px; height:44px; flex:none; }
+  header .title { font-weight:600; font-size:1.05rem; flex:1; min-width:0; }
+  header .btn { padding:.45rem 1rem; font-size:.9rem; flex:none; }
+  header { justify-content:space-between; }
+  @media (max-width:560px) { header .title { display:none; } header .spacer { flex:1; } }
+  main { max-width:36rem; margin:0 auto; padding:1rem 34px 5rem; font-size:1.2rem; line-height:1.85; }
+  :lang(zh) main { line-height:2; } :lang(zh) em { font-style:normal; }
+  details.toc { margin:0 0 3rem; padding:.9rem 1.2rem; border:1px solid var(--line); border-radius:12px; font-size:1rem; line-height:1.5; }
+  details.toc summary { cursor:pointer; font-weight:600; }
+  details.toc ol { margin:.8rem 0 0; padding-inline-start:1.4rem; }
+  details.toc li { margin:.35rem 0; }
+  section.level1 { margin-top:4.5rem; padding-top:2.5rem; border-top:1px solid var(--line); }
+  section.level1:first-of-type { border-top:0; margin-top:2rem; padding-top:0; }
+  h1 { font-size:clamp(1.7rem,6vw,2.2rem); line-height:1.2; font-weight:500; text-align:center; margin:0 0 2.5rem; }
+  h2 { font-size:1rem; font-weight:600; color:var(--accent); text-align:center; margin:2.6rem 0 1rem; }
+  section.level1 > p { text-align:center; }
+  strong { font-weight:inherit; font-size:.62em; vertical-align:super; color:var(--accent); margin-inline-end:.2em; margin-inline-start:.35em; line-height:0; }
+  p { margin:0 0 1.1rem; }
+  section.level2 > p { margin:0 0 1.4rem; }
+  nav.end { text-align:center; margin-top:4rem; }
+  .front { text-align:center; margin:1.6rem 0 2.4rem; }
+  .front .tag { font-style:italic; color:var(--muted); margin:0 0 1.4rem; }
+  .front .about { font-size:1.12rem; font-style:italic; line-height:1.7; margin:0 auto 1.1rem; max-width:30rem; }
+  .front .by { margin:0 0 1.6rem; }
+  .front .cc0 { font-size:.85rem; color:var(--muted); border-top:1px solid var(--line); padding-top:1rem; margin:0; }
+  .theme-toggle { position:absolute; }
+  @media (max-width:640px) { header { padding-top:4.4rem; } }
+</style>
+<script>try{if(localStorage.getItem("theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
+</head>
+<body>
+<button class="theme-toggle" type="button" aria-label="Light / dark" title="Light / dark"></button>
+<header><a href="es.html" aria-label="Volver"><img src="emblem-sm.webp" alt="" width="44" height="44"></a><span class="title">El Libro de Todos</span><span class="spacer"></span><a class="btn secondary" href="es.html">Volver</a> <a class="btn primary" href="El_Libro_de_Todos.pdf" data-goatcounter-click="download-pdf-es" data-goatcounter-title="PDF download (es)">Descargar (PDF)</a></header>
+<main>
+<section class="front"><p class="tag">Por todos y para todos</p><p class="about">Esto es un libro, y nada más. No te dice qué creer, y no le pide nada a tu creencia. Donde habla de cómo vivir, ofrece lo que muchas manos han hallado útil, no mandatos. Toma lo que ayuda. Deja lo que no. Sujétalo sin apretar.</p><p class="by">Steven E Thompson</p><p class="cc0">El Libro de Todos. Por todos y para todos. Dedicado al dominio público bajo CC0 1.0 Universal: sin derechos reservados. Copia, imprime, traduce y comparte libremente. <a href="https://creativecommons.org/publicdomain/zero/1.0">creativecommons.org/publicdomain/zero/1.0</a></p></section>
+<details class="toc"><summary>Índice</summary><ol><li><a href="#b1">Libro Uno: Comienzos</a></li><li><a href="#b2">Libro Dos: El Todo</a></li><li><a href="#b3">Libro Tres: La Persona</a></li><li><a href="#b4">Libro Cuatro: El Bien y el Mal</a></li><li><a href="#b5">Libro Cinco: El Sufrimiento y el Sentido</a></li><li><a href="#b6">Libro Seis: La Muerte y el Regreso</a></li><li><a href="#b7">Libro Siete: Las Palabras</a></li><li><a href="#b8">Libro Ocho: La Práctica</a></li><li><a href="#b9">Libro Nueve: El Tiempo Sagrado</a></li><li><a href="#b10">Libro Diez: Los Lugares Sagrados</a></li><li><a href="#b11">Libro Once: Los Umbrales</a></li><li><a href="#b12">Libro Doce: La Comunidad y la Guía</a></li><li><a href="#b13">Libro Trece: El Alimento, el Cuerpo y el Vestido</a></li><li><a href="#b14">Libro Catorce: La Naturaleza y los Otros Seres</a></li><li><a href="#b15">Libro Quince: El Asombro</a></li><li><a href="#b16">Libro Dieciséis: El Encuentro</a></li><li><a href="#b17">Libro Diecisiete: Lo Que No Encaja</a></li><li><a href="#b18">Las Páginas en Blanco</a></li></ol></details>
+<p></p>
+
+<section id="ch001.xhtml#libro-uno-comienzos" class="level1">
+<h1 id="b1">Libro Uno: Comienzos</h1>
+<section id="ch001.xhtml#section" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> Nada está primero, aunque todo relato se estira hacia un primero: la primera luz, la primera palabra, la primera mano. Ese estirarse es en sí mismo antiguo. <strong>2</strong> El agua sube con el sol, y el sol es alzado de su propio calor por el agua; ninguno de los dos podría empezar solo la mañana. <strong>3</strong> Una semilla nace de una planta que nació de una semilla, y la línea retrocede más allá del alcance de cualquier memoria, de cualquier hueso, de cualquier piedra con escritura. <strong>4</strong> Preguntar qué hubo antes es remontar un río en busca de su manantial y llegar a una ladera donde la lluvia, la tierra y el cielo ya están conversando. <strong>5</strong> Quien pregunta surge junto con la pregunta, y la pregunta, que se siente tan íntima, fue comenzada hace mucho en otras bocas.</p>
+</section>
+<section id="ch001.xhtml#section-1" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Una estrella arde durante más tiempo del que ha habido ojos, y cuando termina esparce lo que hizo: hierro, carbono, los ingredientes callados de todo lo que alguna vez se quejará del frío. <strong>2</strong> La ceniza flota durante eras por una oscuridad demasiado ancha para imaginarla, y donde se junta, se enfría, y donde se enfría, se vuelve piedra. <strong>3</strong> El viento y la lluvia desgastan la piedra hasta hacerla polvo, y el polvo lo llevan el viento y el río hasta los lugares bajos, donde aprende a retener el agua. <strong>4</strong> En ese retener echa raíz el primer verdor. El campo no es un regalo que alguien dejó, sino una paciencia de miles de años. <strong>5</strong> El campo es comido; el que come camina; el caminante, con el tiempo, se tiende en el campo, y la ceniza de la estrella ha dado una vuelta más. <strong>6</strong> Nadie en el campo, vivo o tendido, puede decir dónde empezó la ceniza ni cuántas veces ha sido una boca.</p>
+</section>
+<section id="ch001.xhtml#section-2" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> En la hondura oscura, en agua tibia de minerales, algo pequeño empezó a mantenerse unido frente a la disolución de todo lo demás. No podemos decir cuándo, solo que no se detuvo. <strong>2</strong> Se dividió. Las dos se dividieron. A lo largo de un lapso que hace parecer breve la edad de cualquier montaña, el dividirse se ramificó de mil maneras: una raíz, un ala, una branquia, una mano. <strong>3</strong> El pez, el helecho, el ave y el niño son primos a la distancia de una larga línea de ramas, y cada rama está segura de que ella es el tronco. <strong>4</strong> En algún punto de esa línea hay una criatura sin nombre, madre de la ballena y del gorrión y de quien escucha. Se la recuerda en cada cuerpo, en la forma de cada oreja. <strong>5</strong> Todos somos parientes, aunque la mayoría seamos extraños para nuestros primos, y algunos de nosotros seamos comidos por ellos.</p>
+</section>
+<section id="ch001.xhtml#section-3" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> ¿Quién sabe de dónde vino? No los viejos, que han cargado la pregunta más tiempo. No los niños, que la hacen como si la respuesta estuviera en un cajón. <strong>2</strong> Los sabios preguntan y no responden. No es falta de valor. Es la cortesía que se le debe a una cosa grande. <strong>3</strong> Algunas noches la pregunta es un peso y otras un regalo, y en ninguna es un fracaso. <strong>4</strong> Todo el que ha estado bajo un cielo claro, lejos de cualquier luz, la ha sentido abrirse en el pecho, no ha encontrado la palabra para ella y se ha alegrado en silencio de no tenerla.</p>
+</section>
+<section id="ch001.xhtml#section-4" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Todo lo que se mueve lleva un calor que nunca fue hecho de nuevo, solo transmitido: el sol a la hoja, la hoja al venado, el venado a quien tenía hambre en invierno. <strong>2</strong> El calor de una mano que sostiene estuvo en el grano, y en el campo donde el grano se alzaba, y en el largo verano que lo precedió, y en la estrella detrás del verano. <strong>3</strong> Se lleva, y se pasa. Ninguna mano lo sostiene el tiempo suficiente para llamarlo suyo. <strong>4</strong> Lo que se lleva nunca se pierde, aunque a menudo se le pierde el rastro, y de ahí viene el duelo, y de ahí empieza el asombro.</p>
+</section>
+<section id="ch001.xhtml#section-5" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> El día surge con la noche, y la noche con el día; ninguno es enemigo del otro, y ninguno sería una palabra sin el otro. <strong>2</strong> La marea se retira para poder volver, y al retirarse deja la orilla desnuda, y la orilla desnuda muestra cuánto da el mar. <strong>3</strong> La semilla es enterrada en la oscuridad y no sabe que la están sembrando; para la semilla, la están enterrando. Ambas cosas son verdad. <strong>4</strong> Todo final es también el giro de algo más, lo cual no es consuelo para quien termina, y es cierto de todos modos.</p>
+</section>
+<section id="ch001.xhtml#section-6" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Tira de un hilo y se mueve toda la tela, que es como la tejedora encuentra el defecto y como la niña aprende lo que ha hecho. <strong>2</strong> La abeja está en la flor, llevando su polen y su hambre; la flor está en la abeja, viajando hacia el próximo campo en un cuerpo que no eligió. <strong>3</strong> La lluvia está en el río, y el río está en la nube, y la nube está en el mar, y ninguno podría decir dónde termina uno. <strong>4</strong> Nadie está fuera de la tela, aunque algunos días quisiéramos; ese deseo también está tejido en ella.</p>
+</section>
+<section id="ch001.xhtml#section-7" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> El primer aliento del recién nacido es aire que otros han respirado: el de la enfermera, el de la madre, el del viento sobre mil campos. Llora porque se le ha entregado el mundo. <strong>2</strong> Ese aire ha estado en una hoja, en una ballena, en los pulmones de un abuelo que ningún vivo recuerda, y volverá a estarlo. <strong>3</strong> Cada aliento se pasa de mano en mano y nadie lo posee, aunque todos, por un momento, son responsables de él.</p>
+</section>
+<section id="ch001.xhtml#section-8" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Antes de que el ojo se abra, la oscuridad está llena: del latido de la madre, del sabor tibio del agua, de voces oídas a través de una pared. <strong>2</strong> La oscuridad no está vacía. Es donde la semilla espera, y el pensamiento se reúne, y el niño crece hacia un rostro. <strong>3</strong> La luz no vence a la oscuridad. Se turnan para sostener el mundo, y ninguna ha estado nunca del todo ausente de la hora de la otra.</p>
+</section>
+<section id="ch001.xhtml#section-9" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> La primera palabra no la dijo una sola boca. Muchas bocas la hicieron a lo largo de muchos años, cada una diciendo lo que decía la boca de al lado, un poco distinto. <strong>2</strong> El agua fue nombrada por la sed. Madre fue nombrada por la primera boca contra la primera piel. Toda palabra es un pequeño fuego que se pasa de mano en mano, y ninguno de nosotros encendió el primero.</p>
+</section>
+<section id="ch001.xhtml#section-10" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> Todo pueblo cuenta cómo empezó el mundo, cada uno con su propia voz, con los animales y el clima y las penas de su propio lugar. <strong>2</strong> El relato es una manera de amar la tierra que se pisa. La gente del río lo cuenta con la corriente adentro; la gente de la montaña lo cuenta con el peso de la piedra adentro. <strong>3</strong> Ninguno de los relatos es una cerca. Cada uno guarda el agua de su propio lugar, y toda el agua es la misma agua.</p>
+</section>
+<section id="ch001.xhtml#section-11" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> Surgimos con el mundo, y le pertenecemos, aunque a veces nos portamos como si hubiéramos llegado de un lugar mejor. <strong>2</strong> La montaña no pregunta de dónde venimos, ni tampoco el mar. Nunca han preguntado nada. Solo se han quedado. <strong>3</strong> Somos una de las muchas maneras en que el mundo está aquí, y el mundo, a través de nosotros, a veces se mira a sí mismo y llora y ríe y se asombra de ser.</p>
+</section>
+<section id="ch001.xhtml#section-12" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> Algunos dicen que el mundo fue dicho, primero una palabra y después todo lo demás. <strong>2</strong> Algunos dicen que fue exhalado y será inhalado. <strong>3</strong> Algunos dicen que nació de un huevo, o fue cantado, o fue bailado, o fue tejido en un telar. <strong>4</strong> Algunos dicen que fue soñado, y se lo sigue soñando. <strong>5</strong> Algunos dicen que siempre estuvo aquí y nunca tuvo comienzo. <strong>6</strong> Algunos dicen que la pregunta tiene la forma equivocada para la respuesta.</p>
+</section>
+</section>
+<section id="ch002.xhtml#libro-dos-el-todo" class="level1">
+<h1 id="b2">Libro Dos: El Todo</h1>
+<section id="ch002.xhtml#section-13" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> Párate en una colina al atardecer y gira despacio: hacia donde mires, el horizonte está exactamente igual de lejos. Todo viajero es el centro de un círculo que nadie más puede ver. <strong>2</strong> Los mapas antiguos ponían en el centro el pueblo de sus autores, y no se equivocaban; solo eran sinceros sobre dónde dormía quien dibujaba el mapa. <strong>3</strong> El Todo no tiene tal pueblo. Es lo que queda cuando todos los pueblos han dicho: «aquí».</p>
+</section>
+<section id="ch002.xhtml#section-14" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Una ola que llega a la orilla se siente, imaginamos, como un yo: su cresta, su prisa, su miedo a la playa. <strong>2</strong> Es solo el mar, haciendo algo particular por un instante. <strong>3</strong> La orilla no recibe un final; recibe agua, que es lo que siempre ha recibido. <strong>4</strong> Quienes amaron a la ola no se equivocan al llorarla. Solo están parados muy cerca.</p>
+</section>
+<section id="ch002.xhtml#section-15" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> Un pueblo dibujó el Todo como una montaña sin cumbre; otro, como una red de luces; otro, como un círculo de madres. <strong>2</strong> Un hombre en una ciudad tranquila no pintó nada en su pared, y lo visitaron quienes querían sentarse frente a ella. <strong>3</strong> Todo esto está permitido. El Todo no necesita ser halagado, y no se ofende.</p>
+</section>
+<section id="ch002.xhtml#section-16" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> En el mercado más ruidoso hay un sonido de fondo, sentido más que oído, como un suelo bajo las voces. <strong>2</strong> Quienes viven junto al mar lo pierden y luego lo recobran; también quienes velan junto a una cama toda la noche. <strong>3</strong> No dice nada. Es el sonido de que no falta nada.</p>
+</section>
+<section id="ch002.xhtml#section-17" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> El Todo contiene al santo y al ladrón. <strong>2</strong> Algunos dicen que nos pesa, y otros dicen que no pesa en absoluto. <strong>3</strong> Todos hemos deseado, a alguna hora, que se pusiera de nuestro lado, y algunos han descubierto que la quietud que ofrece en su lugar no es poca cosa.</p>
+</section>
+<section id="ch002.xhtml#section-18" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Un nombre para el Todo es un regalo ofrecido a través de un abismo: <em>tú</em>, <em>ello</em>, <em>lo profundo</em>, <em>hogar</em>. <strong>2</strong> El abismo no se cierra, pero la ofrenda es real, y ha calentado muchas manos. <strong>3</strong> Rehusar todo nombre es ya un nombre, y usar uno no es mentir, si se sostiene sin apretar, como se sostiene una herramienta prestada.</p>
+</section>
+<section id="ch002.xhtml#section-19" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> La tetera es el Todo, y también lo es el tintineo de una llave, y el olor de la lluvia sobre una calle caliente. <strong>2</strong> Algunos lo buscan en otra parte, y otros lo encuentran en el cuarto donde están. <strong>3</strong> La mesa ha sostenido a los dos tipos de buscadores desde el desayuno.</p>
+</section>
+<section id="ch002.xhtml#section-20" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> La lluvia cae sobre el campo y sobre el camino. <strong>2</strong> Algunos dicen que cae para los merecedores, otros dicen que no cae para nadie, y otros se paran bajo ella y se alegran. <strong>3</strong> La misma lluvia está en el techo de todos, y el mismo silencio después de ella.</p>
+</section>
+<section id="ch002.xhtml#section-21" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Se nos dice que amemos al Todo, y no sabemos cómo; el Todo no tiene rostro que besar. <strong>2</strong> Así que empezamos por donde podemos: la escalera, el perro, la hermana difícil, la cerca rota del vecino. <strong>3</strong> Si el Todo está en alguna parte, está en lo que hacemos con un martes cualquiera.</p>
+</section>
+<section id="ch002.xhtml#section-22" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> Una casa no se entiende; se vive en ella, y viviéndola se aprende dónde el piso está blando. <strong>2</strong> Una estación no se entiende; uno se pone el abrigo adecuado. <strong>3</strong> El Todo es así: algo para lo cual la única comprensión posible es una manera practicada de caminar.</p>
+</section>
+<section id="ch002.xhtml#section-23" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> Todo lo que surge vuelve, y lo que vuelve no se guarda sino que se gasta, enseguida, en lo siguiente. <strong>2</strong> La manzana se vuelve el niño, el niño se vuelve el hambre invernal de un zorro, el zorro se vuelve el almuerzo del liquen. <strong>3</strong> Este no es el plan del Todo. Es su gramática, y no tiene otra frase.</p>
+</section>
+<section id="ch002.xhtml#section-24" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> Algunos dicen que el Todo es uno. <strong>2</strong> Algunos dicen que es muchos, cada uno con un nombre y un humor. <strong>3</strong> Algunos dicen que es una mente. <strong>4</strong> Algunos dicen que está vacío, y el vacío está lleno. <strong>5</strong> Algunos dicen que es una madre. <strong>6</strong> Algunos dicen que es una escalera de mundos, y estamos parados en un peldaño. <strong>7</strong> Algunos dicen que no se puede decir.</p>
+</section>
+</section>
+<section id="ch003.xhtml#libro-tres-la-persona" class="level1">
+<h1 id="b3">Libro Tres: La Persona</h1>
+<section id="ch003.xhtml#section-25" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> Una persona es un lugar por donde el Todo pasa a una velocidad particular: carbono de una estrella muerta, agua que alguna vez fue glaciar, un nombre nacido de la esperanza de una abuela. <strong>2</strong> El paso dura unos ochenta años. En ese tiempo intentará comprenderse, enamorarse, quemar la cena y asombrarse. <strong>3</strong> Nada de esto es una falla.</p>
+</section>
+<section id="ch003.xhtml#section-26" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Un nombre es el primer regalo y la primera etiqueta, dado antes de que el niño pueda aceptarlo o rechazarlo. <strong>2</strong> Algunos crecen hasta caber en el suyo; otros lo dejan atrás y toman otro, y no son menos ellos mismos por el cambio. <strong>3</strong> Al final el nombre va a una piedra, y quien lo llevó va al jardín y a la memoria de mil pequeñas bondades que nunca tuvieron etiqueta alguna.</p>
+</section>
+<section id="ch003.xhtml#section-27" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> El cuerpo reemplaza casi todo de lo que está hecho a lo largo de los años; la rodilla raspada a los seis está hecha ahora de otros átomos, y aun así recuerda el pavimento. <strong>2</strong> Una persona no es, entonces, una cosa sino un patrón en una corriente de cosas, un remolino con rostro. <strong>3</strong> Esto no es una disminución. Un remolino puede sostener una hoja durante horas.</p>
+</section>
+<section id="ch003.xhtml#section-28" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> La mente es clima: la pena llega como un frente, un chiste lo despeja, una vieja humillación rueda sobre las colinas a las cuatro de la mañana. <strong>2</strong> Quien observa el clima no es él mismo clima, y es más callado que todo eso. <strong>3</strong> La mayor parte de una vida se pasa identificándose con la tormenta. Unos pocos aprenden a ser la ventana.</p>
+</section>
+<section id="ch003.xhtml#section-29" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Cada persona es entera: nadie más despertará jamás en ese cuerpo, con ese dolor. <strong>2</strong> Cada persona es una parte: no hay un pensamiento en la cabeza que no haya comenzado en la boca de alguien más. <strong>3</strong> El arte de vivir es sobrellevar ambos hechos sin resolverlos, como una mano sobrelleva su propio peso y el peso de lo que carga.</p>
+</section>
+<section id="ch003.xhtml#section-30" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Mira lo que comiste esta mañana y síguele el rastro: un agricultor, un camionero, una mujer en una empacadora a quien nunca conocerás, lluvia, una semilla mejorada durante cuatrocientos años. <strong>2</strong> Eso a lo que llamas «yo» está hecho de todo esto. <strong>3</strong> La gratitud a veces es solo exactitud.</p>
+</section>
+<section id="ch003.xhtml#section-31" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Cada persona lleva una utilidad particular que es suya por temperamento y por herida: la paciencia de una enfermera, la soltura de un bromista en un funeral. <strong>2</strong> No siempre es visible para su dueño. A menudo se descubre cuando alguien dice, de pasada: «No habría podido hacerlo sin ti». <strong>3</strong> Escúchala.</p>
+</section>
+<section id="ch003.xhtml#section-32" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Una persona no es lo peor que ha hecho, pero tampoco está absuelta de ello; lo lleva, como un árbol lleva sus cicatrices, como parte de la veta. <strong>2</strong> La tarea es convertir la cicatriz en algo que pueda sostener peso.</p>
+</section>
+<section id="ch003.xhtml#section-33" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Los rostros son prestados: la mandíbula de alguien que murió en una guerra, la risa de una tía que no es la favorita de nadie y es el modelo secreto de todos. <strong>2</strong> Hablamos con las vocales de un pueblo que nunca hemos visitado y con las supersticiones de un siglo que no vivimos. <strong>3</strong> Ser una persona es mucho trabajo de otras personas.</p>
+</section>
+<section id="ch003.xhtml#section-34" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> No se nos exige ser extraordinarios. La mayor parte del bien del mundo lo han hecho personas que nadie recordará, en cuartos que nadie visitará. <strong>2</strong> Estar aquí, y ser amable, y lavar los platos: esto es bastante. <strong>3</strong> Y si no es bastante, es de todos modos todo lo que alguien ha tenido jamás.</p>
+</section>
+<section id="ch003.xhtml#section-35" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> Algunos dicen que una persona tiene un alma. <strong>2</strong> Algunos dicen que dos, o tres, o siete, y que salen del cuerpo a horas distintas. <strong>3</strong> Algunos dicen que no hay yo, solo una corriente. <strong>4</strong> Algunos dicen que el yo es una chispa del Todo. <strong>5</strong> Algunos dicen que una persona es un cuerpo y nada más. <strong>6</strong> Algunos dicen que cada persona fue conocida antes de nacer. <strong>7</strong> Algunos dicen que un nombre es una puerta.</p>
+</section>
+</section>
+<section id="ch004.xhtml#libro-cuatro-el-bien-y-el-mal" class="level1">
+<h1 id="b4">Libro Cuatro: El Bien y el Mal</h1>
+<section id="ch004.xhtml#section-36" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> Algunos dicen que el bien se ordena y otros que se descubre; ambos se hallan junto al lecho del enfermo, donde nadie pregunta y todos saben qué hacer. <strong>2</strong> El daño viaja. Una palabra cruel en el desayuno llega al perro al mediodía y a un desconocido por la tarde. <strong>3</strong> Lo mismo la bondad, aunque más despacio y con menos drama, y por eso cuesta más creerla.</p>
+</section>
+<section id="ch004.xhtml#section-37" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> No quitamos una vida sin necesidad, y desconfiamos de nuestra propia noción de necesidad. <strong>2</strong> El cazador le da gracias al venado; unos lo llaman oración y otros lo llaman una cuenta que se lleva. <strong>3</strong> Una vida quitada es una deuda abierta, y los honestos la van pagando con cuidado por lo que queda.</p>
+</section>
+<section id="ch004.xhtml#section-38" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> Una mentira es un préstamo del futuro a un interés alto: compra consuelo ahora y cuesta confianza después, y la confianza no se puede pedir prestada de vuelta. <strong>2</strong> La verdad no es lo mismo que la brusquedad; un martillo dice la verdad sobre los clavos. <strong>3</strong> Di lo que es así con la mano abierta, y deja lugar para que el otro responda.</p>
+</section>
+<section id="ch004.xhtml#section-39" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Trata a los demás como quisieras que te trataran, y luego advierte cuántas veces no sabes cómo quisieras que te trataran; pregunta. <strong>2</strong> La regla funciona mejor como una pregunta, no como un veredicto. <strong>3</strong> Las necesidades del desconocido están escritas en su rostro para quienes miren lo bastante, y un poco más de lo que resulta cómodo.</p>
+</section>
+<section id="ch004.xhtml#section-40" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Lo que tienes más allá de la necesidad te ha sido confiado: el abrigo de invierno en el armario, el segundo pan, el cuarto de sobra, cada uno una pregunta no dicha que te hace el frío. <strong>2</strong> Dar no es generosidad cuando es solo una devolución.</p>
+</section>
+<section id="ch004.xhtml#section-41" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Una promesa es una tabla tendida sobre un vacío, y alguien camina por ella confiado. <strong>2</strong> Si se va a romper, dilo antes de que el peso esté sobre ella. <strong>3</strong> Quienes han sido traicionados una vez aprenden a probar cada tabla; les debemos la paciencia de ser puestos a prueba.</p>
+</section>
+<section id="ch004.xhtml#section-42" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Un agravio es un desgarro en el tejido, y el remiendo empieza cuando alguien dice con claridad lo que pasó, sin defensa y sin drama. <strong>2</strong> Quien fue dañado nombra lo que perdió, y quien dañó no interrumpe. <strong>3</strong> El remiendo es lento, y algunos desgarros no cerrarán; esos los llevamos en la tela, visibles, sin vergüenza y con bondad.</p>
+</section>
+<section id="ch004.xhtml#section-43" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Perdonar es dejar en el suelo una piedra que se ha cargado un largo camino, y no dice que la piedra fuera ligera. <strong>2</strong> Se hace un poco cada día, casi sin darse cuenta; una mañana la mano está vacía, y uno se sorprende. <strong>3</strong> Quien aún no puede perdonar no es malvado. Todavía sigue cargando, y el cargar es un informe honesto.</p>
+</section>
+<section id="ch004.xhtml#section-44" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Los viejos saben el costo de olvidar; los jóvenes saben el costo de seguir igual. <strong>2</strong> Ambos hacen falta en la mesa: la memoria y la impaciencia.</p>
+</section>
+<section id="ch004.xhtml#section-45" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> La ira es información útil con malos modales. <strong>2</strong> Te dice que algo fue cruzado; no puede decirte qué hacer al respecto. <strong>3</strong> Espera hasta la mañana. Si sigue siendo verdad, dilo; si no, te has ahorrado un error.</p>
+</section>
+<section id="ch004.xhtml#section-46" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> Cuando chocan dos cosas buenas, unos consultan un texto, otros a un maestro, otros a quien tienen al lado, y otros se sientan en silencio hasta que se aclara. <strong>2</strong> Luego cada uno asume la responsabilidad de lo que decide. <strong>3</strong> Los casos difíciles son la razón por la que las personas se necesitan unas a otras.</p>
+</section>
+<section id="ch004.xhtml#section-47" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> Algunos dicen que el bien y el mal fueron dados en un conjunto de palabras. <strong>2</strong> Algunos dicen que se hallan mirando hacia adentro. <strong>3</strong> Algunos dicen que cada acto se pesa al final, y otros dicen que nada se pesa. <strong>4</strong> Algunos dicen que cada acto vuelve a quien lo hizo, en esta vida o en otra. <strong>5</strong> Algunos dicen que una deuda puede cargarla otro. <strong>6</strong> Algunos dicen que solo existe el siguiente acto amable. <strong>7</strong> Algunos dicen que el daño debe ser respondido, y otros dicen que el daño debe ser absorbido.</p>
+</section>
+<section id="ch004.xhtml#section-48" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> Un hombre hizo daño y nunca tuvo que responder. <strong>2</strong> La tela se desgarró, y nadie se sentó a remendarla. <strong>3</strong> El libro dice que nadie es expulsado. <strong>4</strong> No sé qué decirle a la que fue expulsada de su propia vida por ese hombre. <strong>5</strong> Digo: lo siento. No digo nada más.</p>
+</section>
+</section>
+<section id="ch005.xhtml#libro-cinco-el-sufrimiento-y-el-sentido" class="level1">
+<h1 id="b5">Libro Cinco: El Sufrimiento y el Sentido</h1>
+<section id="ch005.xhtml#section-49" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> No hay nadie a quien el dolor no encuentre, aunque llega con distintos abrigos: un diagnóstico, un golpe en la puerta, la lenta pérdida del nombre con que te llamaba tu pareja. <strong>2</strong> Unos dicen que se reparte según el mérito y otros que no se reparte en absoluto; ambos han estado en la misma sala de espera. <strong>3</strong> El consuelo que cruza todas las creencias es este: no eres la única persona en esta sala.</p>
+</section>
+<section id="ch005.xhtml#section-50" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Algunos dicen que hay una razón y otros que no la hay; debajo de cualquiera de las dos, la persona en duelo puede oír «fue tu culpa» o «ya deberías haberlo superado». <strong>2</strong> Nosotros decimos: «Aquí estoy», y lo decimos de verdad quedándonos.</p>
+</section>
+<section id="ch005.xhtml#section-51" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> El duelo es la forma que toma el amor cuando su objeto se ha ido: una mano que aún alcanza el teléfono para contarle algo a quien ya no está. <strong>2</strong> No necesita ser manejado. <strong>3</strong> Necesita un testigo que no intente arreglarlo, y una tetera.</p>
+</section>
+<section id="ch005.xhtml#section-52" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Quedarse junto a quien sufre es una destreza, más difícil que hablar. <strong>2</strong> La tentación es irse temprano, ofrecer un refrán, mirar el reloj. <strong>3</strong> Quien se queda a través del silencio ha dado el mayor regalo posible: la sensación de no ser una carga.</p>
+</section>
+<section id="ch005.xhtml#section-53" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Un puño no puede cargar agua. <strong>2</strong> Sostén la herida en la mano abierta, y se queda y se la puede mirar, y quizá, con los años, vaciarla.</p>
+</section>
+<section id="ch005.xhtml#section-54" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Nada permanece: ni el peor día, ni el mejor. <strong>2</strong> Quien lo recuerda en medio del sufrimiento no es frío; sostiene una cuerda atada a una hora posterior. <strong>3</strong> La hora más oscura dura lo mismo que las demás. Solo parece más larga, porque nadie vigila el reloj salvo quien sufre.</p>
+</section>
+<section id="ch005.xhtml#section-55" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Algunos dicen que el sentido espera al final de una vida para ser recogido, y otros que se hace por el camino. <strong>2</strong> Una sopa tiene su sentido en el hacerse, en el revolver, en el vecino que pasa con pan. <strong>3</strong> El sentido de una vida, dicen algunos, es la sopa que dio de comer.</p>
+</section>
+<section id="ch005.xhtml#section-56" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> La alegría no es la recompensa del sufrimiento, ni su opuesto; es otra cosa que crece en la misma tierra. <strong>2</strong> La mujer junto a la cama está contenta de estar ahí y está destrozada, las dos cosas a la vez.</p>
+</section>
+<section id="ch005.xhtml#section-57" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Cuando el peso es demasiado, dilo en voz alta a alguien, y sigue diciéndolo a alguien hasta que el peso se comparta. <strong>2</strong> Pedir ayuda no es una falta de fortaleza; es el primer acto de una persona dispuesta a quedarse. <strong>3</strong> Quienes han recibido ayuda aprenden a ayudar, y la cadena no termina.</p>
+</section>
+<section id="ch005.xhtml#section-58" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> La cicatriz es parte de la piel. <strong>2</strong> El árbol crece alrededor del clavo, y la madera ahí es la más dura del tronco. <strong>3</strong> Quien ha sido herido puede sentarse, sin retroceder, junto a alguien que está herido ahora, y esa es una destreza rara, y útil.</p>
+</section>
+<section id="ch005.xhtml#section-59" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> La vida es preciosa, y no porque sea fácil. <strong>2</strong> El sol, la lluvia, la primera manzana del año y la última: preciosos. <strong>3</strong> A quien está cansado de respirar: te queremos aquí, en este cuarto sin brillo e imperfecto, y haremos té.</p>
+</section>
+<section id="ch005.xhtml#section-60" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> Algunos dicen que el sufrimiento es un maestro. <strong>2</strong> Algunos dicen que es una deuda que vence. <strong>3</strong> Algunos dicen que es una prueba, otros una tribulación, otros un accidente. <strong>4</strong> Algunos dicen que es el precio del desear, y el deseo puede soltarse. <strong>5</strong> Algunos dicen que se reparte, y que quien carga más carga por otros. <strong>6</strong> Algunos dicen que termina, y otros que algo viene después. <strong>7</strong> Algunos dicen que debe soportarse en silencio, y otros que debe decirse en voz alta.</p>
+</section>
+<section id="ch005.xhtml#section-61" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> Siento rabia, y no tengo contra quién sentirla. <strong>2</strong> El libro dice que la hora más oscura dura lo mismo que las demás. <strong>3</strong> Quisiera un enemigo. Es más fácil de cargar. <strong>4</strong> Déjame sentir rabia un rato. No me apures hacia el siguiente versículo.</p>
+</section>
+</section>
+<section id="ch006.xhtml#libro-seis-la-muerte-y-el-regreso" class="level1">
+<h1 id="b6">Libro Seis: La Muerte y el Regreso</h1>
+<section id="ch006.xhtml#section-62" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> Todo lo que surge, vuelve. La palabra que usamos es <em>muerte</em>, y nos asusta como palabra porque es una puerta que nunca hemos visto abrirse desde adentro. <strong>2</strong> Lo que podemos ver es la forma de la partida: el aliento que se detiene, la mano que se enfría. <strong>3</strong> Lo que no podemos ver es la llegada, pero tampoco hemos visto jamás al mar recibir un río, y lo hace cada minuto.</p>
+</section>
+<section id="ch006.xhtml#section-63" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Un cuerpo está tibio porque arde. Cuando el arder termina, el calor no desaparece; pasa a las sábanas, al aire, a las manos que lo sostienen, a la tierra que con el tiempo sostendrá el resto. <strong>2</strong> No hay un momento en que la energía se destruya, solo momentos en que cambia de cuarto. <strong>3</strong> Quien amamos no se ha apagado. Se ha esparcido.</p>
+</section>
+<section id="ch006.xhtml#section-64" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> Un cuerpo en la tierra es un banquete. En una estación ya están en él los gusanos y los microbios; en un año las raíces lo han encontrado; en una década un arbolito se alza donde estuvo la pena. <strong>2</strong> El árbol da fruto, y el fruto alimenta a un niño que nunca conoció al viejo. <strong>3</strong> Algunos lo llaman una figura retórica y otros un hecho simple; de cualquier modo, puede hacer llorar a una persona, y llorar para bien.</p>
+</section>
+<section id="ch006.xhtml#section-65" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Los muertos están en el pan, en la luz de la lámpara, en el modo de reír de un vecino, en la manera en que el perro se tiende donde estaba la vieja silla. <strong>2</strong> Algunos dicen que caminan a nuestro lado, y otros que son solo la forma del cuarto que dejaron. <strong>3</strong> Estamos hechos de lo que ellos estuvieron hechos, y de lo que dieron, y de lo que no pudieron dar pero intentaron.</p>
+</section>
+<section id="ch006.xhtml#section-66" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Junto a un lecho de muerte la cuestión no es qué decir; es si hablar siquiera. <strong>2</strong> Muchas personas moribundas desean sobre todo lo ordinario: una mano que las sostenga, una ventana abierta, una historia sobre el perro. <strong>3</strong> Di lo que es verdad y lo que es amable; a menudo son lo mismo. <strong>4</strong> Pide perdón si hace falta, y concédelo si te lo piden. <strong>5</strong> Quédate hasta el último aliento, y un poco después, porque quien se fue no se molestará por los minutos de más, y tú los agradecerás.</p>
+</section>
+<section id="ch006.xhtml#section-67" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Lavar un cuerpo es recibir el permiso de un último acto de cuidado. <strong>2</strong> El agua está tibia, el paño es suave, la voz es baja; los presentes le hablan al muerto como si pudiera oír, porque no cuesta nada y a veces serena a los vivos. <strong>3</strong> Unos envuelven en blanco, otros en la tela de su pueblo, otros en nada más que una manta. <strong>4</strong> Cada una es una manera de volver a casa.</p>
+</section>
+<section id="ch006.xhtml#section-68" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Unos vuelven a la tierra, otros al fuego, al mar o al cielo; la familia elige lo que puede soportar. <strong>2</strong> Ninguno es un regreso menor. El fuego libera el calor pronto; la tierra, despacio; el agua lo lleva lejos; el aire lo alza por todas partes. <strong>3</strong> Las cenizas en el mar y los huesos en el jardín son solo dos maneras de decir la misma frase.</p>
+</section>
+<section id="ch006.xhtml#section-69" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> El duelo viene en olas, y las olas no son señal de un problema. <strong>2</strong> Te ríes en la comida tras el funeral y lloras en el supermercado; ambas cosas son apropiadas. <strong>3</strong> El primer cumpleaños, el primer invierno, la primera vez que buscas el teléfono: cada uno es una ola nueva.</p>
+</section>
+<section id="ch006.xhtml#section-70" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> El visitante más útil en una casa de duelo es quien lava los platos. <strong>2</strong> El segundo más útil es quien vuelve en el segundo mes, cuando ya han dejado de llegar los guisos. <strong>3</strong> Di el nombre. No bajes la voz para decirlo.</p>
+</section>
+<section id="ch006.xhtml#section-71" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> No hay consuelo para la muerte de un hijo, y no ofrecemos ninguno. <strong>2</strong> Ofrecemos presencia: una mano en un hombro en el supermercado, un plato dejado en el porche, una tarjeta en febrero cuando todos los demás ya han olvidado. <strong>3</strong> La criatura está en la luz de la mañana y en la primera nevada. No afirmamos saber que esto basta. Afirmamos solo que estamos aquí.</p>
+</section>
+<section id="ch006.xhtml#section-72" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> El día de recordar se pone un plato por cada uno que se ha ido, y la familia come como si estuvieran presentes. <strong>2</strong> Se intenta la tarta de la abuela y sale mal, y todos dicen que está perfecta. <strong>3</strong> La silla vacía no se quita, ni se convierte en un santuario; es una silla en una mesa donde nos sentamos. <strong>4</strong> La velada termina con una vela y el lavado de los platos.</p>
+</section>
+<section id="ch006.xhtml#section-73" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> Cuando morimos, no abandonamos el mundo; dejamos de ser una cosa separada en él. <strong>2</strong> Algunos dicen que los muertos están en otra parte, y otros que están aquí: en el respirar de la cortina, en el agitarse de la hoja, en una mujer al otro lado del cuarto que ríe de una manera que conocemos. <strong>3</strong> Aprendemos a verlos como un niño aprende el viento, por lo que mueve.</p>
+</section>
+<section id="ch006.xhtml#section-74" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> A los vivos se los tiene en estima. <strong>2</strong> Quienes están contentos de estar vivos no son infieles a los muertos; quienes están cansados de vivir no están perdidos para los vivos. <strong>3</strong> Cuando el peso es demasiado, dilo en voz alta, y otros vendrán, y el peso se dividirá. <strong>4</strong> El regreso llega a su propia hora, y a nadie se le pide apresurarlo; cuando llega, llega en paz.</p>
+</section>
+<section id="ch006.xhtml#section-75" class="level2">
+<h2>14</h2>
+<p><strong>1</strong> Algunos dicen que los muertos nacen de nuevo, en un cuerpo de la misma clase o de otra. <strong>2</strong> Algunos dicen que descansan hasta una mañana que está prometida. <strong>3</strong> Algunos dicen que cruzan agua, o atraviesan una puerta, o escalan una montaña. <strong>4</strong> Algunos dicen que antes los pesan. <strong>5</strong> Algunos dicen que se quedan cerca, y se los alimenta y se les habla. <strong>6</strong> Algunos dicen que se vuelven el cielo, o las estrellas, o un animal. <strong>7</strong> Algunos dicen que el yo se apaga como una llama y el calor permanece. <strong>8</strong> Algunos dicen que no se sabe nada.</p>
+</section>
+<section id="ch006.xhtml#section-76" class="level2">
+<h2>15</h2>
+<p><strong>1</strong> Uno dice: Nada se pierde. <strong>2</strong> Otro dice: Mi hijo está perdido. <strong>3</strong> El primero dice: Su calor está en el campo. <strong>4</strong> El otro dice: Yo no crié un campo. <strong>5</strong> Ninguno recibe respuesta. A ambos se les acompaña, sentándose a su lado.</p>
+</section>
+<section id="ch006.xhtml#section-77" class="level2">
+<h2>16</h2>
+<p><strong>1</strong> Una mujer enterró a su marido bajo un ciruelo. <strong>2</strong> La primavera siguiente no quiso comer las ciruelas. <strong>3</strong> Su hija dijo: «Él está en ellas». <strong>4</strong> La mujer dijo: «Por eso». <strong>5</strong> La hija se las comió ella misma, y la mujer la miró comer, y lloró, y las ciruelas estaban dulces.</p>
+</section>
+</section>
+<section id="ch007.xhtml#libro-siete-las-palabras" class="level1">
+<h1 id="b7">Libro Siete: Las Palabras</h1>
+<section id="ch007.xhtml#section-78" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> Cada frase de aquí fue dicha antes: por una mujer aventando el grano, por un tío borracho en un funeral, por un niño que preguntó «¿por qué?» hasta que el cuarto se quedó callado. <strong>2</strong> La única pretensión de originalidad de este libro es la manera en que está dispuesto. <strong>3</strong> Trátalo, entonces, como se trata un pan: compartido, partido, pasado.</p>
+</section>
+<section id="ch007.xhtml#section-79" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Unos sostienen un libro contra los labios y otros contra el pecho, y otros lo llevan sin leer en el bolsillo. <strong>2</strong> Un camino es para caminarlo, y un camino también es un lugar donde detenerse. <strong>3</strong> Sostenlo como sostendrías a un pajarito: con la firmeza justa para que no se escape volando, con la suavidad justa para que no se asfixie.</p>
+</section>
+<section id="ch007.xhtml#section-80" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> Al final de este libro hay páginas en blanco. <strong>2</strong> No son un agregado de último momento; son el punto. <strong>3</strong> Puede añadirse una línea donde el libro se quede corto, y puede tacharse una línea donde haya hecho daño. <strong>4</strong> Algunos libros se guardan exactamente como se recibieron, y otros se guardan abiertos; este se guarda abierto.</p>
+</section>
+<section id="ch007.xhtml#section-81" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Si un versículo no te habla, déjalo. <strong>2</strong> Vuelve dentro de diez años; quizá te hable. <strong>3</strong> La línea que parecía fría a los veinte puede parecer cálida a los cincuenta; la que consolaba a los cincuenta puede parecer delgada a los setenta. <strong>4</strong> El libro es tan grande como haya crecido quien lo lee.</p>
+</section>
+<section id="ch007.xhtml#section-82" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Leer es escuchar. <strong>2</strong> El lector lento, con el dedo bajo la línea, deteniéndose cuando una palabra lo atrapa, practica la forma más antigua de leer. <strong>3</strong> No leas para terminar. Lee para estar con lo que lees.</p>
+</section>
+<section id="ch007.xhtml#section-83" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> El silencio también es una lectura. <strong>2</strong> La pausa entre versículos es parte del versículo. <strong>3</strong> Una canción son palabras sostenidas por una melodía; una oración, para quienes oran, son palabras sostenidas por el corazón; honramos ambas, y la quietud donde ninguna de las dos se dice.</p>
+</section>
+<section id="ch007.xhtml#section-84" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> La anciana dice que la línea significaba valor; el joven dice que paciencia. <strong>2</strong> Cada uno vio algo que el otro pasó por alto. <strong>3</strong> Algunos se sientan con una sola línea durante años y no la resuelven.</p>
+</section>
+<section id="ch007.xhtml#section-85" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Todas las palabras se toman prestadas del aire y se le devuelven. <strong>2</strong> Una palabra dicha al amanecer está en el viento al mediodía; una palabra escrita puede durar mil años y ser malentendida durante novecientos. <strong>3</strong> Lo hablado y lo escrito son vecinos, y ninguno es dueño del camino.</p>
+</section>
+<section id="ch007.xhtml#section-86" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Algunos dicen que una palabra fue dada una vez y se guarda exactamente. <strong>2</strong> Algunos dicen que las palabras las hacen quienes las dicen. <strong>3</strong> Algunos dicen que un nombre, dicho en voz alta con el aliento justo, hace más que quien lo dice. <strong>4</strong> Algunos dicen que el silencio es la palabra más antigua. <strong>5</strong> Algunos dicen que un libro es para leerse, otros que para recitarse, otros que para llevarse. <strong>6</strong> Algunos dicen que una canción es una oración sin la discusión. <strong>7</strong> Algunos dicen que una palabra, una vez dicha, no muere.</p>
+</section>
+</section>
+<section id="ch008.xhtml#libro-ocho-la-práctica" class="level1">
+<h1 id="b8">Libro Ocho: La Práctica</h1>
+<section id="ch008.xhtml#section-87" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> Antes de comer, nos detenemos el largo de un aliento y decimos de dónde vino la comida: un campo, una lluvia, la espalda de un desconocido doblada sobre un surco. <strong>2</strong> Nombres, donde los tenemos: el agricultor, el conductor, la persona de la caja. Donde no, decimos: «todos los que pusieron una mano en esto». <strong>3</strong> Toma diez segundos. La comida es distinta después, como una carta es distinta cuando sabes quién la escribió.</p>
+</section>
+<section id="ch008.xhtml#section-88" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Siéntate durante diez respiraciones y deja que la mente haga lo que hace. <strong>2</strong> Si hay ruido, siéntate con el ruido. Si el cuerpo duele, siéntate con el dolor. <strong>3</strong> Diez respiraciones se vuelven veinte; veinte se vuelven media hora que no sabías que tenías. <strong>4</strong> Nadie recibe calificación, y nadie ha fracasado jamás en esto, solo olvidado y vuelto a empezar.</p>
+</section>
+<section id="ch008.xhtml#section-89" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> Da algo todos los días, por pequeño que sea: una moneda, un minuto, el beneficio de la duda. <strong>2</strong> Unos llevan a alguien en el auto; otros dan una comida; otros escriben una carta para un vecino que no sabe escribir. <strong>3</strong> Un regalo solo es pequeño si no se da.</p>
+</section>
+<section id="ch008.xhtml#section-90" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Canta, a solas y en compañía. <strong>2</strong> La voz es el instrumento propio del cuerpo, y un cuarto lleno de voces sin entrenar en una sola nota es una de las experiencias más antiguas de pertenencia. <strong>3</strong> Quien no puede cantar se une escuchando; quien no puede oír se une marcando el compás con el pie.</p>
+</section>
+<section id="ch008.xhtml#section-91" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Ayuna si así lo eliges; come si así lo eliges; ninguna de las dos cosas es una puntuación. <strong>2</strong> Un ayuno es una manera de escuchar el hambre, la propia y la del mundo. <strong>3</strong> Un festín es una manera de escuchar la alegría.</p>
+</section>
+<section id="ch008.xhtml#section-92" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Devuelve algo a la tierra: una semilla, las cáscaras de la cena, una taza de agua vertida en la raíz de un árbol. <strong>2</strong> Es un pequeño rito; algunos dicen que paga una deuda, otros dicen que no paga nada, y la semilla entra de todos modos. <strong>3</strong> La tierra que nos alimentó es alimentada a su vez, y somos, por un momento, la mano.</p>
+</section>
+<section id="ch008.xhtml#section-93" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Escucha a un desconocido todo el tiempo que necesite. <strong>2</strong> No interrumpas, no arregles, no mires la hora. <strong>3</strong> Di: «¿Y luego?». <strong>4</strong> Quien ha sido escuchado camina más ligero, a veces durante años.</p>
+</section>
+<section id="ch008.xhtml#section-94" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Inclínate, o baja la cabeza, o pon una mano en el corazón: cada gesto dice <em>estoy aquí contigo</em>. <strong>2</strong> Otra manera es la mano abierta, el ojo cerrado, el aliento lento. <strong>3</strong> Ninguno es más correcto que otro. El cuerpo sabe lo que el corazón quiere decir.</p>
+</section>
+<section id="ch008.xhtml#section-95" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Descansa cuando el cansancio llegue; descansar es una práctica. <strong>2</strong> El campo descansa un año de cada siete, y la cosecha que sigue es mejor. <strong>3</strong> Quien no descansa está cortando la raíz del trabajo. <strong>4</strong> Acuéstate; el mundo seguirá sin ti, y es bueno saberlo.</p>
+</section>
+<section id="ch008.xhtml#section-96" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> Al final del día, di de qué te arrepientes y de qué te alegras, a alguien, o a la quietud, o a una página. <strong>2</strong> No lo adornes.</p>
+</section>
+<section id="ch008.xhtml#section-97" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> Algunos practican a diario, otros rara vez, y otros nunca. <strong>2</strong> Quien no hace nada está tanto dentro del Todo como quien lo hace todo. <strong>3</strong> Algunos encuentran el Todo en un himno y otros en una llave inglesa, unos en un pasillo de hospital y otros en un campo. <strong>4</strong> Algunos guardan cada regla que les dieron, y otros guardan una sola herramienta en el cajón; la casa se mantiene en pie de cualquier modo.</p>
+</section>
+<section id="ch008.xhtml#section-98" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> Algunos rezan a alguien, y otros rezan a nadie. <strong>2</strong> Algunos se inclinan hacia un lugar, y otros se inclinan donde están parados. <strong>3</strong> Algunos dan una décima parte, y otros dan lo que tienen. <strong>4</strong> Algunos giran una rueda, recorren un hilo de cuentas, encienden una llama, vierten una taza. <strong>5</strong> Algunos se lavan antes de empezar, y otros terminan lavándose. <strong>6</strong> Algunos guardan silencio un día, y otros guardan un voto toda la vida. <strong>7</strong> Algunos dicen que el trabajo es la práctica. <strong>8</strong> Algunos dicen que la práctica es quien la practica.</p>
+</section>
+</section>
+<section id="ch009.xhtml#libro-nueve-el-tiempo-sagrado" class="level1">
+<h1 id="b9">Libro Nueve: El Tiempo Sagrado</h1>
+<section id="ch009.xhtml#section-99" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> El día gira al alba y al ocaso, y los guardamos: un aliento a la primera luz, un aliento a la última. <strong>2</strong> El gallo no es necesario; la luz basta. <strong>3</strong> Quienes trabajan de noche saludan al otro amanecer, el que llega al final del turno, y no es menos mañana.</p>
+</section>
+<section id="ch009.xhtml#section-100" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Cada séptimo día, o un día de nuestra elección, descansamos. <strong>2</strong> Los campos quedan en barbecho, las herramientas cuelgan de sus ganchos, los apurados se frenan a pesar de sí mismos. <strong>3</strong> El descanso no se gana terminando; se toma, como la orilla toma la marea.</p>
+</section>
+<section id="ch009.xhtml#section-101" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> En el día más corto nos juntamos y compartimos la luz; en el más largo nos quedamos afuera hasta que llega la oscuridad. <strong>2</strong> La oscuridad es larga, y la acortamos estando juntos. <strong>3</strong> La luz es larga, y la profundizamos quedándonos despiertos con ella.</p>
+</section>
+<section id="ch009.xhtml#section-102" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> A la primera lluvia salimos a ella; a la primera helada recogemos lo que hemos cultivado. <strong>2</strong> La primera lluvia despierta el olor de la tierra, y el olor entra en la memoria; la primera helada afila el aire, y el aire entra en los pulmones. <strong>3</strong> Las estaciones son una escuela, y siempre estamos en ella.</p>
+</section>
+<section id="ch009.xhtml#section-103" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> En la siembra plantamos con canto; en la cosecha comemos juntos y dejamos una porción en el campo. <strong>2</strong> El primer surco se abre con una oración o un chiste, lo que prefiera quien cava. <strong>3</strong> La porción que queda en el campo es para el ratón, el cuervo y el forastero.</p>
+</section>
+<section id="ch009.xhtml#section-104" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> El año nuevo empieza donde lo ponga el giro, y lo empezamos con la casa limpia y el vecino perdonado. <strong>2</strong> Las deudas del año viejo se nombran y, donde se puede, se pagan; las esperanzas del año nuevo se dicen en voz alta a un amigo o al fuego. <strong>3</strong> Entre los años hay una pausa que no pertenece a ningún calendario y pertenece a todos.</p>
+</section>
+<section id="ch009.xhtml#section-105" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Un cumpleaños es el día en que el Todo tomó una forma nueva. <strong>2</strong> El de un niño es un día para ser visto; el de un anciano, un día para ser agradecido. <strong>3</strong> El pastel se comparte; a quien le toca el día apaga la vela, y el deseo es solo suyo.</p>
+</section>
+<section id="ch009.xhtml#section-106" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Hay días de duelo y días de baile; el calendario guarda ambos, y ninguno se desperdicia. <strong>2</strong> El primer día de duelo no es el último, y el primer baile de una boda no es el único. <strong>3</strong> Un año es una mesa larga, y toda clase de día está servida en ella.</p>
+</section>
+<section id="ch009.xhtml#section-107" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Cada pueblo guarda sus propios días; nos unimos si nos invitan, y dejamos una luz encendida cuando pasan. <strong>2</strong> La fiesta de un vecino es una ventana al corazón del vecino. <strong>3</strong> Llevamos un plato, si nos lo piden, y un rostro callado, si no, y aprendemos que todo pueblo ha reído y llorado en su propia estación.</p>
+</section>
+<section id="ch009.xhtml#section-108" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> Algunos dicen que el tiempo es una rueda. <strong>2</strong> Algunos dicen que es una línea con un principio y un fin. <strong>3</strong> Algunos dicen que es un río, y otros una cuerda. <strong>4</strong> Algunos dicen que es un sueño dentro del Todo. <strong>5</strong> Algunos dicen que hay días fuera del tiempo, apartados. <strong>6</strong> Algunos dicen que los muertos guardan su propio calendario. <strong>7</strong> Algunos dicen que cada momento existe a la vez, y los atravesamos caminando.</p>
+</section>
+</section>
+<section id="ch010.xhtml#libro-diez-los-lugares-sagrados" class="level1">
+<h1 id="b10">Libro Diez: Los Lugares Sagrados</h1>
+<section id="ch010.xhtml#section-109" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> Un lugar se vuelve sagrado como un sendero se vuelve sendero: de tanto caminarlo, de tanto volver a él, por lo que se deja allí. <strong>2</strong> La cima con vista es sagrada para quien escala y el cuarto de lavado para la madre de cinco; ninguno se equivoca. <strong>3</strong> La sacralidad no está en el suelo sino en la atención que se ha juntado allí, como el calor en una piedra.</p>
+</section>
+<section id="ch010.xhtml#section-110" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Algunos lugares se anuncian solos: la arboleda donde el aire cambia, el manantial que sigue frío en agosto. <strong>2</strong> Otros los descubre el duelo: la banca donde se recibió una llamada, la escalera donde una persona se sentó y no pudo levantarse. <strong>3</strong> Aprendemos a pasar junto a los del segundo tipo en silencio, como pasaríamos junto a un desconocido que reza.</p>
+</section>
+<section id="ch010.xhtml#section-111" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> Un umbral es una pequeña ceremonia que el cuerpo realiza sin que se la pidan: la pausa, los pies limpiados, la voz baja. <strong>2</strong> Entrar a una casa es entrar a una confianza; salir de ella es volver a la calle distintos por lo que se nos dio de comer. <strong>3</strong> Las casas que han olvidado cómo ser entradas se vuelven edificios.</p>
+</section>
+<section id="ch010.xhtml#section-112" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Toda mesa de largo uso es un archivo: un aro de una olla caliente en el tercer año de un matrimonio, una muesca del tenedor de un niño, la hendidura donde un hombre cansado apoyó una vez la cabeza. <strong>2</strong> Quien se sienta a ella se sienta entre las horas apiladas de quienes se sentaron antes. <strong>3</strong> No la lijes demasiado lisa.</p>
+</section>
+<section id="ch010.xhtml#section-113" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Una persona lleva tres lugares: donde nació, donde fue feliz, donde están sus muertos. <strong>2</strong> No siempre son el mismo lugar, y la distancia entre ellos es la forma de esa vida. <strong>3</strong> Cuando una persona dice «hogar», escucha a cuál se refiere.</p>
+</section>
+<section id="ch010.xhtml#section-114" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Un cementerio al que se visita es un jardín; uno al que no se visita es una biblioteca sin lectores. <strong>2</strong> Los niños juegan entre las lápidas y nadie los regaña; los muertos, a quienes les gustaba el ruido, no se molestan. <strong>3</strong> Plantamos lo que la persona amaba: un rosal, un duraznero, el pasto alto para el perro enterrado cerca.</p>
+</section>
+<section id="ch010.xhtml#section-115" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Una sala construida para reunirse debe ser lo bastante sencilla para que nadie se sienta superado por la decoración. <strong>2</strong> Las ventanas son anchas, los asientos desparejos, hay una banca para quienes no pueden estar de pie y un rincón para quien viene solo a llorar. <strong>3</strong> Su santidad, si la tiene, es la cortesía de su disposición.</p>
+</section>
+<section id="ch010.xhtml#section-116" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Donde una persona ha llorado, la tierra recuerda de la única manera que puede: siendo el lugar. <strong>2</strong> Un porche donde se dio una noticia, un pasillo de hospital, la orilla de una carretera. <strong>3</strong> Pasamos junto a estos sin anunciarlos, y unos pocos tocamos la baranda.</p>
+</section>
+<section id="ch010.xhtml#section-117" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Dondequiera que las personas se sientan y se escuchan unas a otras, se hace un lugar sagrado, y dura exactamente lo que dura la escucha. <strong>2</strong> Una cama de hospital con una mano sobre la sábana es un lugar así; también un auto estacionado con el motor apagado; también un escalón trasero con dos tazas de algo que se enfría. <strong>3</strong> Estos no se pueden construir ni comprar, solo ocupar.</p>
+</section>
+<section id="ch010.xhtml#section-118" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> Algunos dicen que una montaña es un asiento. <strong>2</strong> Algunos dicen que un río es un camino al otro mundo. <strong>3</strong> Algunos dicen que un árbol es una puerta. <strong>4</strong> Algunos dicen que una casa es un cuerpo y un cuerpo es una casa. <strong>5</strong> Algunos dicen que cierta ciudad es el centro del mundo, y otros dicen que el centro está donde uno se para. <strong>6</strong> Algunos dicen que una piedra recuerda. <strong>7</strong> Algunos dicen que un lugar se hace santo por lo que se hace en él, y otros por lo que se hizo allí una vez.</p>
+</section>
+</section>
+<section id="ch011.xhtml#libro-once-los-umbrales" class="level1">
+<h1 id="b11">Libro Once: Los Umbrales</h1>
+<section id="ch011.xhtml#section-119" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> El recién nacido es llevado en brazos por la puerta hacia un mundo que ha sido dispuesto, en unas pocas semanas de pánico y amor, para recibirlo. <strong>2</strong> La madre está exhausta, el padre asustado, los hermanos celosos; la abuela se encarga de la sopa. <strong>3</strong> Agua en la frente, un nombre dicho en voz alta, y la sala acuerda ayudar.</p>
+</section>
+<section id="ch011.xhtml#section-120" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Un nombre se elige con más esperanza que conocimiento, y el niño crecerá para llenarlo o para salirse de él. <strong>2</strong> Algunos se nombran por los muertos, para darles una segunda vida; otros por una estación, un río, una ambición fallida. <strong>3</strong> El nombre se entrega con ambas manos y un poco de miedo, y el niño, a los seis años, tendrá opiniones.</p>
+</section>
+<section id="ch011.xhtml#section-121" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> En la edad de las preguntas la respuesta honesta suele ser «no sé», y los niños lo soportan mejor que los adultos. <strong>2</strong> ¿Adónde vamos cuando morimos? ¿Por qué la luna sigue al auto? <strong>3</strong> Responde a la altura del niño, con las menos palabras que sean verdad, y deja que el silencio de después haga su trabajo.</p>
+</section>
+<section id="ch011.xhtml#section-122" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> En el umbral de la adultez se manda a los jóvenes solos a la oscuridad con un relato y una luz, y se los recibe a su regreso con una comida. <strong>2</strong> La prueba importa menos que el regreso. <strong>3</strong> Vuelven cambiados de maneras que no se pueden explicar, y los mayores no les piden que las expliquen.</p>
+</section>
+<section id="ch011.xhtml#section-123" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Dos que unen sus vidas dicen lo que se proponen ante quienes los quieren, y los demás dicen: «Los ayudaremos». <strong>2</strong> El anillo, el cordón, la copa, el pan compartido: cada pueblo tiene los suyos, y cada uno es una manera de decir que dos cosas se han vuelto una sola cosa con dos cabezas. <strong>3</strong> Si hay que deshacerlo, se deshace a la vista de todos, con el mismo cuidado con que se hizo.</p>
+</section>
+<section id="ch011.xhtml#section-124" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Un hijo nacido de otros es tan nuestro como el propio si abrimos la puerta a la hora justa. <strong>2</strong> Adopción, acogida, el muchacho del vecino que comió con nosotros diez años: la familia es la gente que se presenta. <strong>3</strong> Acepta injertos a medida que crece, y el fruto de la rama injertada suele ser el más dulce.</p>
+</section>
+<section id="ch011.xhtml#section-125" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> La despedida también es un umbral: la hija que se va a otro país, el viejo amigo que se muda, el padre que se retira de una vida que no eligió. <strong>2</strong> Decimos lo que extrañaremos y lo que llevaremos, con sencillez, y comemos algo juntos. <strong>3</strong> Una despedida sin comida es una gotera.</p>
+</section>
+<section id="ch011.xhtml#section-126" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Los años traen lentitud, y la lentitud trae una clase de visión que la prisa no puede comprar. <strong>2</strong> Las historias de la persona mayor no se repiten sino que se ahondan, y la misma historia contada a los noventa es distinta de la contada a los setenta. <strong>3</strong> Pídele que la cuente otra vez, y escucha lo que ha cambiado.</p>
+</section>
+<section id="ch011.xhtml#section-127" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> En cada umbral quienes nos aman dicen: eras esto, eres aquello, aquí estamos. <strong>2</strong> El decirlo es la ceremonia. <strong>3</strong> Que te vean en un giro es que te lleven un trecho a través de él, que es todo lo que ha sido jamás un ritual.</p>
+</section>
+<section id="ch011.xhtml#section-128" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> El último umbral es el regreso, y se emprende en compañía de todos los que se fueron antes. <strong>2</strong> A quien muere se le da la primera silla, el asiento junto a la ventana, la almohada blanda. <strong>3</strong> A nadie se le pide ser valiente. Solo se le pregunta si hay algo que podamos hacer para que sea más fácil.</p>
+</section>
+<section id="ch011.xhtml#section-129" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> Algunos dicen que un niño llega de alguna parte, y se le da la bienvenida de vuelta. <strong>2</strong> Algunos dicen que un niño es un antepasado que regresa. <strong>3</strong> Algunos dicen que un nombre debe ocultarse por un tiempo. <strong>4</strong> Algunos dicen que un rito hace a un hombre o a una mujer, y otros que solo lo muestra. <strong>5</strong> Algunos dicen que un matrimonio es un nudo, otros un río, otros un camino. <strong>6</strong> Algunos dicen que la vejez es una cosecha. <strong>7</strong> Algunos dicen que una persona nace muchas veces en una sola vida.</p>
+</section>
+</section>
+<section id="ch012.xhtml#libro-doce-la-comunidad-y-la-guía" class="level1">
+<h1 id="b12">Libro Doce: La Comunidad y la Guía</h1>
+<section id="ch012.xhtml#section-130" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> Un círculo es el lugar de reunión más antiguo que conocemos: el anillo alrededor del fuego, la plaza del pueblo, el círculo de sillas en el sótano de una iglesia a las dos de la tarde. <strong>2</strong> Algunos círculos reservan un asiento para quien guía, y otros no reservan ninguno; cada uno tiene su propia manera de ser escuchado. <strong>3</strong> Quien se ha sentado en cualquiera de los dos sabe lo que enseña la disposición de los asientos.</p>
+</section>
+<section id="ch012.xhtml#section-131" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> En el círculo, la piedra pasa. <strong>2</strong> Quien la sostiene habla sin interrupciones; los demás escuchan sin componer respuestas. <strong>3</strong> Es una disciplina más difícil de lo que suena, y la mayoría lo hacemos mejor en la tercera hora que en la primera.</p>
+</section>
+<section id="ch012.xhtml#section-132" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> Un anciano no es alguien viejo sino alguien que ha estado prestando atención, y ha perdido la necesidad de tener razón. <strong>2</strong> Se lo reconoce por las preguntas que hace, la duración de sus silencios, y la sensación, después, de que dijiste algo más sabio de lo que pensabas. <strong>3</strong> Son raros, y se encuentran en lugares inesperados: una enfermera del turno de noche, un conductor de autobús jubilado, una mujer que atendió una tintorería durante cuarenta años.</p>
+</section>
+<section id="ch012.xhtml#section-133" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Algunos dicen que la autoridad se da desde arriba y otros que se presta desde abajo; en ambos casos se lleva como un abrigo en una caminata fría. <strong>2</strong> El abrigo se pasa con gratitud, o se devuelve con gratitud, o se conserva, y cada pueblo tiene su manera. <strong>3</strong> El círculo tiene larga memoria y poca paciencia con quien olvida para quién se hizo el abrigo.</p>
+</section>
+<section id="ch012.xhtml#section-134" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Decidimos despacio, porque las decisiones que importan son aquellas dentro de las cuales vive la gente. <strong>2</strong> Quien discrepa es el miembro más útil del círculo, pues es el único que ve el otro lado de la colina. <strong>3</strong> Cuando todo está dicho, hay un silencio, y en el silencio la sala descubre lo que piensa.</p>
+</section>
+<section id="ch012.xhtml#section-135" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Un buen maestro dice: este es el camino que yo anduve; no conozco el tuyo. <strong>2</strong> Se alegra visiblemente cuando un alumno lo supera. <strong>3</strong> Algunos enseñan para que el alumno lleve la enseñanza sin cambiarla, y otros para que el alumno responda; ambos están enseñando.</p>
+</section>
+<section id="ch012.xhtml#section-136" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> El forastero llega trayendo lo único que le falta al pueblo: un afuera. <strong>2</strong> Sabe lo que se hace en otros lugares, que suele ser algo que el pueblo había olvidado que era posible. <strong>3</strong> Así que lo alimentamos primero, lo escuchamos segundo, y discutimos, si hace falta, tercero.</p>
+</section>
+<section id="ch012.xhtml#section-137" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Una disputa es una oportunidad para que el círculo practique lo que cree. <strong>2</strong> Hablan ambas partes; cada una es reformulada a su satisfacción antes de que la otra responda; el círculo hace preguntas y no dicta sentencia. <strong>3</strong> El remiendo, cuando llega, no es un veredicto sino un acuerdo, y es mejor por ser de ellos.</p>
+</section>
+<section id="ch012.xhtml#section-138" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Toda sociedad se juzga por cómo trata a sus enfermos, sus pobres, sus jóvenes, sus viejos, sus forasteros y sus muertos. <strong>2</strong> Visitamos al enfermo, alimentamos al hambriento, damos casa al forastero, pagamos justamente al trabajador y enterramos a los muertos con cuidado. <strong>3</strong> Nada de esto es caridad. Es el precio de pertenecer a una especie que sobrevive compartiendo.</p>
+</section>
+<section id="ch012.xhtml#section-139" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> Los niños del pueblo son todos, en cierto sentido, nuestros: el que se cae cerca de nuestra puerta, el que anda sin rumbo, el que se sienta al borde de la fiesta de cumpleaños mirando el suelo. <strong>2</strong> No necesitamos que nos lo pidan. <strong>3</strong> Solo necesitamos darnos cuenta, y luego sentarnos junto a ellos, y no decir nada importante.</p>
+</section>
+<section id="ch012.xhtml#section-140" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> A quien ha hecho daño se le pide que lo repare, y se le da la bienvenida de vuelta cuando la reparación está hecha. <strong>2</strong> El camino de regreso lo pavimentan quienes se quedaron, con su paciencia y su negativa a tratar el peor momento como la persona entera. <strong>3</strong> Es lo más difícil y lo más civilizador que hace una comunidad.</p>
+</section>
+<section id="ch012.xhtml#section-141" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> Algunas personas no pueden vivir en un círculo, y no se las odia por ello. <strong>2</strong> El ermitaño, el caminante, el que se queda en las colinas: también ellos son parte del pueblo, como el faro es parte de la costa. <strong>3</strong> Dejamos abierto el camino al círculo, y un pan en el borde del bosque, y no pedimos nada.</p>
+</section>
+<section id="ch012.xhtml#section-142" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> Algunos dicen que un pueblo es una familia, y que sus muertos asisten a la reunión. <strong>2</strong> Algunos dicen que quienes guían fueron elegidos antes de nacer. <strong>3</strong> Algunos dicen que una comunidad es reunida por un llamado. <strong>4</strong> Algunos dicen que los ancianos hablan primero, y otros que último. <strong>5</strong> Algunos dicen que un forastero puede estar trayendo algo que ha sido enviado. <strong>6</strong> Algunos dicen que una ley fue entregada, y otros que fue pulida por el uso. <strong>7</strong> Algunos dicen que el círculo incluye a quienes aún no han nacido.</p>
+</section>
+</section>
+<section id="ch013.xhtml#libro-trece-el-alimento-el-cuerpo-y-el-vestido" class="level1">
+<h1 id="b13">Libro Trece: El Alimento, el Cuerpo y el Vestido</h1>
+<section id="ch013.xhtml#section-143" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> Comer es participar, durante veinte minutos, en una red que llega hasta un campo que nunca verás. <strong>2</strong> El agricultor, el recolector, el empacador, el camionero, el tendero, el cocinero: cada uno añadió un poco de sí mismo al pan. <strong>3</strong> Nos detenemos un aliento antes del primer bocado, no para halagar a nadie sino para ser exactos.</p>
+</section>
+<section id="ch013.xhtml#section-144" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Algunas personas comen lo que otras no, por razones de conciencia, salud, costumbre o gusto. <strong>2</strong> Comemos a la misma mesa sin comentarios; el sentido de una mesa no es estar de acuerdo sino estar cerca. <strong>3</strong> Burlarse de la comida de otro es burlarse de su madre, y tener malos modales en un idioma muy antiguo.</p>
+</section>
+<section id="ch013.xhtml#section-145" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> El cuerpo es un jardín de decenas de billones de células, y ninguna ha oído hablar de ti. <strong>2</strong> Necesita alimento, aseo, movimiento, descanso y que se lo escuche, no como a un sirviente sino como a un colaborador de largo plazo. <strong>3</strong> Cuando se queja, no te traiciona. Te está diciendo algo, con la única voz que tiene.</p>
+</section>
+<section id="ch013.xhtml#section-146" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Lavarse es más que higiene: es el pequeño acto diario con el que una persona marca el fin de una cosa y el comienzo de otra. <strong>2</strong> Las manos lavadas antes de una comida, un rostro lavado después del duelo, un cuerpo lavado al final de una vida. <strong>3</strong> Lavar a otro, al enfermo o al muy pequeño o al muerto, es una de las cortesías más antiguas e íntimas, y no la apuramos.</p>
+</section>
+<section id="ch013.xhtml#section-147" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> La ropa es un idioma que se habla antes de que nadie abra la boca. <strong>2</strong> El traje a la medida, el delantal de trabajo, el negro del funeral, el vestido que pasa de hermana a hermana: cada uno dice algo sobre la ocasión y la persona. <strong>3</strong> Nos vestimos para honrar el día en que estamos, y sabemos la diferencia entre el duelo y la celebración, y a veces rompemos la regla a propósito.</p>
+</section>
+<section id="ch013.xhtml#section-148" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Todo pueblo ha hecho de su vestimenta una expresión de su amor por sí mismo: el tejido, el color, el dibujo heredado. <strong>2</strong> Admirarla es una forma de amistad; burlarse de ella es una pequeña violencia. <strong>3</strong> No necesitamos entenderla. Solo necesitamos alegrarnos de que a alguien le haya importado tanto el hilo.</p>
+</section>
+<section id="ch013.xhtml#section-149" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> El cuerpo no es vergonzoso, y su intimidad es una forma de respeto, hacia uno mismo y hacia los demás. <strong>2</strong> No existe el cuerpo ideal, solo el cuerpo que se tiene, y la bondad con que se lo trata. <strong>3</strong> La larga tarea de una vida es llevarte bien con aquello que no puedes dejar.</p>
+</section>
+<section id="ch013.xhtml#section-150" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Un ayuno, libremente elegido, enseña qué es el hambre, y qué les debemos a quienes no la eligieron. <strong>2</strong> Un festín, libremente dado, enseña qué es la abundancia, y que está hecha para compartirse. <strong>3</strong> Ninguno es más virtuoso que el otro; los sabios guardan ambos, y saben cuál hace falta.</p>
+</section>
+<section id="ch013.xhtml#section-151" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> El tacto es el primer idioma, y el último. <strong>2</strong> Una mano en un hombro, una mejilla contra una frente, un brazo sobre los hombros de quien está de duelo. <strong>3</strong> Preguntar antes de tocar no es frialdad; es la cortesía de quien sabe que el tacto es un regalo que no se puede forzar.</p>
+</section>
+<section id="ch013.xhtml#section-152" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> La edad desgasta un cuerpo para ajustarlo, como el uso ajusta una herramienta, hasta que encaja en la mano de su vida. <strong>2</strong> El rostro guarda un mapa de todos los lugares donde ha estado: el clima, la pena, la risa. <strong>3</strong> Envejecer es recibir la vista larga, y aprender cuán poco de ella se puede transmitir.</p>
+</section>
+<section id="ch013.xhtml#section-153" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> Lo que una persona come, viste y hace con su cuerpo se aprende en las rodillas de quienes la quisieron. <strong>2</strong> La sopa de la abuela, la manera en que el tío envuelve un regalo, la costumbre de la vecina de tender la ropa los sábados. <strong>3</strong> Tomamos lo que nos ayuda, dejamos lo que no, y no somos más pobres por ninguna de las dos cosas.</p>
+</section>
+<section id="ch013.xhtml#section-154" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> Algunos dicen que el cuerpo es un templo, y otros que un abrigo prestado. <strong>2</strong> Algunos dicen que es una casa de huéspedes para quien se irá. <strong>3</strong> Algunos dicen que debe alimentarse poco, y otros que bien. <strong>4</strong> Algunos dicen que ciertos alimentos son puros y otros no, y otros dicen que todos son puros. <strong>5</strong> Algunos se cubren la cabeza, otros el rostro, otros los hombros, y otros no llevan nada más que pintura. <strong>6</strong> Algunos dicen que el cabello es un registro, y otros que debe cortarse en el duelo. <strong>7</strong> Algunos dicen que el cuerpo será levantado, y otros que será dejado.</p>
+</section>
+<section id="ch013.xhtml#section-155" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> Mi cuerpo no es un río que haya aceptado tomar una forma. <strong>2</strong> Mi cuerpo es una casa con el techo fallando, y ya me cansé de remendarlo. <strong>3</strong> No me digas que es el Todo con la forma de uno. <strong>4</strong> Dime qué hora es, y quédate.</p>
+</section>
+</section>
+<section id="ch014.xhtml#libro-catorce-la-naturaleza-y-los-otros-seres" class="level1">
+<h1 id="b14">Libro Catorce: La Naturaleza y los Otros Seres</h1>
+<section id="ch014.xhtml#section-156" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> El venado, el roble y el niño son primos, y se diferencian en cómo han resuelto el problema de seguir vivos. <strong>2</strong> El niño se ríe del perro, y el perro, a la manera en que lo hace un perro, se ríe de vuelta; ninguno ha leído un libro sobre eso. <strong>3</strong> Un roble muy viejo ha durado más que cien perros y que una docena de familias, y tiene opiniones que no puede compartir.</p>
+</section>
+<section id="ch014.xhtml#section-157" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> El cuervo resuelve acertijos. El pulpo abre frascos. El elefante se queda de pie ante los huesos de sus muertos. <strong>2</strong> Hemos tardado en conceder lo que debimos haber sabido: que somos una de muchas mentes, no la única. <strong>3</strong> Lo salvaje es una larga conversación a la que llegamos tarde, y lo cortés es escuchar primero.</p>
+</section>
+<section id="ch014.xhtml#section-158" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> Plantar un árbol es hacer una promesa a alguien a quien no conocerás. <strong>2</strong> Quienes plantan saben que no se sentarán a su sombra; plantan de todos modos, que es la forma más antigua de fe. <strong>3</strong> La sombra, cuando llega, no lleva ningún nombre, y ese es el punto.</p>
+</section>
+<section id="ch014.xhtml#section-159" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Toma lo que necesites y deja lo que se reproduce. <strong>2</strong> Quien toma el último pez también se ha llevado los próximos diez años de pesca, y la cena de los nietos. <strong>3</strong> Esto es aritmética, no sentimentalismo, y la tierra no discute.</p>
+</section>
+<section id="ch014.xhtml#section-160" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> El suelo que pisamos está hecho de los muertos de otras estaciones: hojas, huesos, bosques, jardines olvidados. <strong>2</strong> Estar de pie sobre él es estar de pie sobre una biblioteca de antepasados. <strong>3</strong> Pedimos permiso para cavar hondo y damos las gracias cuando terminamos, como quiera que lo llamemos.</p>
+</section>
+<section id="ch014.xhtml#section-161" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Las abejas, las lombrices y los hongos hacen el trabajo que hace posible todo lo demás, y nadie les ha dado nunca las gracias como se debe. <strong>2</strong> Un puñado de tierra contiene más seres vivos que personas hay en la tierra. <strong>3</strong> Alimentar el suelo es la forma más práctica de amor que conocemos.</p>
+</section>
+<section id="ch014.xhtml#section-162" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Dañar lo salvaje es dañar a quienes vienen después, que heredarán lo que quede. <strong>2</strong> Un bosque que tardó mil años puede deshacerse en una tarde. <strong>3</strong> Cuidamos los bosques viejos como cuidamos las historias viejas, porque una vez perdidos, ninguno puede volver a contarse igual.</p>
+</section>
+<section id="ch014.xhtml#section-163" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Nombrar las aves, los árboles y las estrellas de tu propio lugar es volverte vecino. <strong>2</strong> El pájaro de la mañana es la voz de un vecino; el árbol de la esquina, el rostro de un vecino; la estrella que llega cada noche a la misma hora, la luz del porche de un vecino. <strong>3</strong> No puedes amar lo que no puedes nombrar, y no puedes proteger lo que no amas.</p>
+</section>
+<section id="ch014.xhtml#section-164" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> El cazador agradece a la presa, el jardinero a la tierra, el cocinero al agricultor, el agricultor a la lluvia. <strong>2</strong> Algunos lo llaman exactitud y otros lo llaman oración. <strong>3</strong> Es el primer pago de una deuda que no se puede saldar, y el único que se nos pide.</p>
+</section>
+<section id="ch014.xhtml#section-165" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> No somos huéspedes en esta tierra, que toman y se van, ni dueños, que poseen y cercan. <strong>2</strong> Somos parientes, que dan y reciben, se quedan y se van, nacen y son enterrados en el mismo suelo. <strong>3</strong> Ser parientes es la única manera de pertenecer de verdad.</p>
+</section>
+<section id="ch014.xhtml#section-166" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> Algunos dicen que los animales estuvieron aquí primero y estarán aquí al último. <strong>2</strong> Algunos dicen que toda criatura tiene un espíritu, y otros que toda piedra, y otros que el viento. <strong>3</strong> Algunos dicen que una persona puede volver como una bestia o un árbol. <strong>4</strong> Algunos dicen que ciertos animales llevan mensajes. <strong>5</strong> Algunos dicen que la tierra es una madre, otros un cuerpo, otros un jardín que cuidar. <strong>6</strong> Algunos dicen que la tierra fue modelada por un gigante, o un pájaro, o el lomo de una tortuga. <strong>7</strong> Algunos dicen que las estrellas son fuegos, y otros que son antepasados.</p>
+</section>
+</section>
+<section id="ch015.xhtml#libro-quince-el-asombro" class="level1">
+<h1 id="b15">Libro Quince: El Asombro</h1>
+<section id="ch015.xhtml#section-167" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> La primera nieve del año, vista desde la ventana a las seis de la mañana, es una maravilla, y una que la mayoría de los adultos se han entrenado para no notar. <strong>2</strong> La primera risa de un bebé, la primera vista del mar, un idioma entendido de pronto: el asombro es la sorpresa de encontrar el mundo como nuevo. <strong>3</strong> No está reservado a lo extraordinario, sino a quienes prestan atención.</p>
+</section>
+<section id="ch015.xhtml#section-168" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Una semilla se vuelve árbol, y nadie lo ha visto suceder jamás, y todos lo han visto. <strong>2</strong> Una bellota sabe cómo, sin una lección. El huevo sabe cómo, sin haber visto un ave. El niño aprende a hablar sin que nadie le explique la gramática. <strong>3</strong> Hay un saber más antiguo que el aprender, y estamos hechos de él.</p>
+</section>
+<section id="ch015.xhtml#section-169" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> Hay cosas que nadie puede explicar, y cosas que todos creen poder explicar, y el asombro vive entre ambas. <strong>2</strong> El astrónomo aprende cuán poco se sabe; la botánica, inclinada sobre una hoja, aprende lo mismo. <strong>3</strong> La humildad no es lo opuesto del conocimiento sino su fruto más seguro.</p>
+</section>
+<section id="ch015.xhtml#section-170" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Algunas personas ven lo que otras no: el poeta, el soñador, el niño raro al borde del grupo. <strong>2</strong> No los coronamos ni los descartamos. <strong>3</strong> Preguntamos qué vieron, y tomamos lo que ayuda, y dejamos el resto al tiempo.</p>
+</section>
+<section id="ch015.xhtml#section-171" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Un sueño es un país que visitamos de noche y que no podemos describir del todo por la mañana. <strong>2</strong> Puede ser un ensayo, un recuerdo, un acertijo, un chiste; quien sueña sabe mejor cómo se sintió. <strong>3</strong> Ofrecemos interpretaciones como conjeturas y las retiramos sin ofensa.</p>
+</section>
+<section id="ch015.xhtml#section-172" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Algunas maravillas dan miedo, y quienes tienen miedo no son débiles. <strong>2</strong> Una maravilla que aísla o que incita a hacer daño debe llevarse a alguien que nos quiera y sopesarse juntos, porque el peso de una maravilla compartida es menor que el peso cargado a solas. <strong>3</strong> Una voz que dice «lastima a alguien» o «abandona a todos» no es una maravilla, venga de donde venga; es un grito de auxilio.</p>
+</section>
+<section id="ch015.xhtml#section-173" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> No sabemos lo que viene, y siempre lo hemos sabido, y aun así hemos construido nuestras vidas. <strong>2</strong> El marinero lee el cielo y el cielo no siempre responde; el agricultor lee el suelo y el suelo no siempre responde. <strong>3</strong> Mantenemos el techo reparado, la despensa surtida, a nuestros amigos cerca, y recibimos lo que venga, juntos.</p>
+</section>
+<section id="ch015.xhtml#section-174" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> El milagro es lo ordinario visto con claridad: una taza de té, una hora tranquila, el rostro de un amigo en la puerta. <strong>2</strong> Quienes han aprendido a ver nunca se aburren, y rara vez son crueles. <strong>3</strong> Para quienes aún no, la invitación sigue en pie: mira otra vez.</p>
+</section>
+<section id="ch015.xhtml#section-175" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Guardamos un pequeño cuarto para lo que no sabemos, y nadie está obligado a entrar, y a nadie se le prohíbe. <strong>2</strong> Contiene la pregunta que no tiene respuesta, el duelo que no tiene fin, la alegría que no tiene causa. <strong>3</strong> A veces entramos, y salimos más ligeros, y no le decimos nada a nadie, y somos, un poco, más amables.</p>
+</section>
+<section id="ch015.xhtml#section-176" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> Algunos dicen que hay seres a nuestro lado que no podemos ver. <strong>2</strong> Algunos dicen que hay mensajeros, otros espíritus, otros solo viento. <strong>3</strong> Algunos dicen que un sueño lleva un mensaje, y otros que lleva las sobras del día. <strong>4</strong> Algunos dicen que una visión viene a quienes ayunan. <strong>5</strong> Algunos dicen que se da una señal, y otros que una señal es solo lo que notamos. <strong>6</strong> Algunos dicen que un milagro es el orden suspendido, y otros que es el orden visto con claridad. <strong>7</strong> Algunos dicen que una voz les habló, y otros que le hablaron a un silencio.</p>
+</section>
+</section>
+<section id="ch016.xhtml#libro-dieciséis-el-encuentro" class="level1">
+<h1 id="b16">Libro Dieciséis: El Encuentro</h1>
+<section id="ch016.xhtml#section-177" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> Llega un desconocido, y la primera pregunta no es «¿En qué crees?» sino «¿Ya comiste?». <strong>2</strong> Se alarga la mesa, se arriman las sillas, se encuentra un idioma, señalando si hace falta. <strong>3</strong> Hacia la tercera conversación hablamos de todo, y hemos olvidado que alguna vez fuimos extraños.</p>
+</section>
+<section id="ch016.xhtml#section-178" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> A nadie se le pide dejar en la puerta lo que carga. <strong>2</strong> Una persona es más que su creencia y su creencia es más que una palabra; pregunta qué significa para ella, y escucha la respuesta hasta el final. <strong>3</strong> Lo que se lleva con amor no se lleva a la ligera, y no se debe pedir que se deje.</p>
+</section>
+<section id="ch016.xhtml#section-179" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> Hay lugar en la mesa para quien reza y para quien se sienta en silencio, para quien canta y para quien escucha. <strong>2</strong> Hay lugar para quien nunca se ha preguntado nada y para quien se ha preguntado toda la vida. <strong>3</strong> Hay lugar para quien construye y para quien destruye, si quien destruye está dispuesto a aprender a remendar. Hay lugar, siempre, para uno más.</p>
+</section>
+<section id="ch016.xhtml#section-180" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Cuando las personas discrepan, le pedimos a cada una que diga cómo se ve desde donde está parada, y no respondemos hasta que podamos repetirlo a su satisfacción. <strong>2</strong> Esto es más difícil de lo que suena, y cambia más que la discusión. <strong>3</strong> El desacuerdo puede quedarse, y ya no es un muro.</p>
+</section>
+<section id="ch016.xhtml#section-181" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Lo que es sagrado para uno no disminuye por ser distinto de lo que es sagrado para otro. <strong>2</strong> La catedral de uno es la cantera de otro, y la piedra es la misma; el pan de un pueblo es el pastel de otro y la ofrenda de un tercero. <strong>3</strong> Pregunta qué significa para quienes lo tienen antes de decir qué significa para ti.</p>
+</section>
+<section id="ch016.xhtml#section-182" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> No tomamos prestado lo que no se ofrece, y no nos burlamos de lo que no entendemos. <strong>2</strong> Una canción que pertenece a una familia se pide; una vestimenta que pertenece a un pueblo solo se lleva cuando se ofrece. <strong>3</strong> Una broma hecha a costa de otro es una piedra arrojada a un pozo compartido.</p>
+</section>
+<section id="ch016.xhtml#section-183" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Cuando nos preguntan qué sostenemos, lo decimos con sencillez, y no se lo imponemos a nadie. <strong>2</strong> Decimos «Así se ve desde aquí», no «Deberías verlo como yo». <strong>3</strong> Quien escucha puede tomar lo que quiera, y no nos duele que deje el resto.</p>
+</section>
+<section id="ch016.xhtml#section-184" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Una riña entre pueblos es una larga herida, y se cierra desde ambos lados o no se cierra. <strong>2</strong> Llevamos agua a ambos lados y nos sentamos en el medio, que es el asiento más incómodo de la casa. <strong>3</strong> La paz es una larga carpintería, y sus constructores quizá nunca se conozcan.</p>
+</section>
+<section id="ch016.xhtml#section-185" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Guardamos los viejos rencores con ligereza, como guardamos las viejas herramientas: sabemos dónde cuelgan, y las usamos solo para recordar. <strong>2</strong> Un rencor apretado acalambra la mano; un rencor soltado se vuelve un cuento, y un cuento se vuelve una lección, y una lección se vuelve el comienzo de una paz. <strong>3</strong> La tarea es lenta, y empieza con alguien que decide, una vez, ser el primero en soltar un rencor.</p>
+</section>
+<section id="ch016.xhtml#section-186" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> A quien deja aquello en lo que nació se le da la bienvenida, y también a quien vuelve. <strong>2</strong> Quien cambió no es un traidor, y quien se quedó no es un necio. <strong>3</strong> El camino va en ambos sentidos, y el portón no tiene cerrojo.</p>
+</section>
+<section id="ch016.xhtml#section-187" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> Todos los que surgieron vuelven a todo, y todo está en todos; nos encontramos allí ya, hayamos sido presentados o no. <strong>2</strong> No estamos diciendo lo mismo, pero estamos parados en el mismo suelo. <strong>3</strong> Al suelo no le importan nuestras diferencias, y recordarlo es relajarse.</p>
+</section>
+<section id="ch016.xhtml#section-188" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> Algunos dicen que hay un camino y muchos viajeros. <strong>2</strong> Algunos dicen que hay muchos caminos y una sola colina. <strong>3</strong> Algunos dicen que los caminos los trazaron quienes los anduvieron. <strong>4</strong> Algunos dicen que cada persona es un viajero que ya está en casa. <strong>5</strong> Algunos dicen que al final nos reciben quienes perdimos. <strong>6</strong> Algunos dicen que no nos recibe nadie y que el camino es el encuentro. <strong>7</strong> Algunos dicen que el encuentro ya ocurrió.</p>
+</section>
+<section id="ch016.xhtml#section-189" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> Este libro está abierto por ambos extremos: quien llega puede leerlo, y quien se va puede llevarse lo que quiera. <strong>2</strong> Un libro es una casa, y una casa tiene ventanas, y entra el clima. <strong>3</strong> La página se vuelve, y se vuelve otra vez, y está en blanco, y alguien empieza a escribir.</p>
+</section>
+</section>
+<section id="ch017.xhtml#libro-diecisiete-lo-que-no-encaja" class="level1">
+<h1 id="b17">Libro Diecisiete: Lo Que No Encaja</h1>
+<section id="ch017.xhtml#section-190" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> He leído hasta aquí, y no siento que nadie me sostenga. <strong>2</strong> El libro dice que todo surge junto. Yo surgí solo en un cuarto con la puerta cerrada con llave. <strong>3</strong> No aceptaré que me digan que me equivoco sobre mi propio cuarto. <strong>4</strong> Tampoco le diré al libro que se equivoca. Nos quedaremos aquí un rato.</p>
+</section>
+<section id="ch017.xhtml#section-191" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> ¿Y si el calor se va a la tierra y es solo calor? <strong>2</strong> ¿Y si no lleva nada de quien me amó? <strong>3</strong> El libro dice que nada se pierde. Quisiera creerlo como creo en el pan. <strong>4</strong> Algunos días lo creo.</p>
+</section>
+<section id="ch017.xhtml#section-192" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> ¿Por qué esta criatura? <strong>2</strong> ¿Por qué este año? <strong>3</strong> ¿Por qué las manos que hicieron el daño fueron también las manos que me dieron de comer? <strong>4</strong> ¿Por qué el sol que madura el grano madura también a la langosta? <strong>5</strong> Estas no son preguntas retóricas. Simplemente no tienen respuesta.</p>
+</section>
+<section id="ch017.xhtml#section-193" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> La avispa pone sus huevos en la oruga viva. <strong>2</strong> El gato juega con lo que no se va a comer. <strong>3</strong> El invierno se lleva al venado viejo y al joven por igual. <strong>4</strong> Algunos dicen que el Todo es bondadoso. Algunos han visto a un invierno matar.</p>
+</section>
+<section id="ch017.xhtml#section-194" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> La mujer moribunda preguntó: «¿Fui una buena madre?». <strong>2</strong> Si decía que sí, mentía. Si decía lo que sabía, hería. <strong>3</strong> Dije: «Fuiste la mía». <strong>4</strong> No sé si eso fue verdad, o amable, o ambas cosas, o ninguna.</p>
+</section>
+<section id="ch017.xhtml#section-195" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Éramos tres. <strong>2</strong> Somos dos. <strong>4</strong> Todavía ponemos la mesa para tres.</p>
+</section>
+<section id="ch017.xhtml#section-196" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Hay duelos que ninguna frase alcanza. <strong>2</strong> Este libro tiene muchas frases. <strong>3</strong> Lo dejaría a un lado y me iría a poner junto a ella.</p>
+</section>
+<section id="ch017.xhtml#section-197" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Algunos dicen que los muertos están cerca. Algunos dicen que se han ido. Algunos dicen que esperan. <strong>2</strong> He oído cada una dicha con rostro sereno. <strong>3</strong> No sé cuál de ellas tiene razón, y el libro no me lo dice. <strong>4</strong> Siento gratitud y, a la vez, insatisfacción.</p>
+</section>
+<section id="ch017.xhtml#section-198" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> El círculo cansa. <strong>2</strong> Hay días en que preferiría comer a solas y no decir nada. <strong>3</strong> La persona que me necesita no siempre es la que quiero que me necesite. <strong>4</strong> Voy de todos modos, algunos días. Otros días no, y el sol se pone igual.</p>
+</section>
+<section id="ch017.xhtml#section-199" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> Le di gracias al campo antes de comer y maldije al vecino antes de dormir. <strong>2</strong> Escribí versos amables y no los viví. <strong>3</strong> Los versos no se vuelven falsos por esto. <strong>4</strong> Yo tampoco pierdo mi valor. Ambas cosas son verdad, y ninguna es cómoda.</p>
+</section>
+<section id="ch017.xhtml#section-200" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> Este libro tiene los límites de quien lo cargó: algunos días delgado, algunos días sentimental. <strong>2</strong> Donde se quede corto, añade una línea. <strong>3</strong> Donde ayude, da las gracias a quien te trajo pan hoy.</p>
+</section>
+<section id="ch017.xhtml#section-201" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> No todos quieren ser parte del Todo. <strong>2</strong> Algunos quieren ser una sola cosa con nombre que se recuerda y no se disuelve. <strong>3</strong> El libro dice que el regreso no es una pérdida. <strong>4</strong> A quien quiere ser recordado por su nombre: tu nombre es una cosa real, y el libro no te lo quita.</p>
+</section>
+<section id="ch017.xhtml#section-202" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> Aquí la página se deja como está.</p>
+</section>
+<section id="ch017.xhtml#section-203" class="level2">
+<h2>14</h2>
+<p><strong>1</strong> Tener esperanza es entregarle un rehén al mundo. <strong>2</strong> El mundo puede quedárselo. <strong>3</strong> Yo tengo esperanza de todos modos. Esto no es sabiduría. Es costumbre, y también es lo mejor que hago.</p>
+</section>
+<section id="ch017.xhtml#section-204" class="level2">
+<h2>15</h2>
+<p><strong>1</strong> El libro dice: No apuramos a quien está de duelo. <strong>2</strong> El libro dice: No esperes mucho para remendar un agravio. <strong>3</strong> Estas dos cosas tiran en sentidos opuestos. <strong>4</strong> Ambas se guardan. Quien lee debe hallar el día en que cada una es verdad.</p>
+</section>
+<section id="ch017.xhtml#section-205" class="level2">
+<h2>16</h2>
+<p><strong>1</strong> Dijimos: «Hay lugar para uno más». <strong>2</strong> Hubo una noche en que no lo hubo. <strong>3</strong> El forastero siguió su camino en el frío, y nosotros comimos, y no he olvidado el sonido del portón.</p>
+</section>
+<section id="ch017.xhtml#section-206" class="level2">
+<h2>17</h2>
+<p><strong>1</strong> ¿Qué sale y vuelve y nunca es lo mismo? <strong>2</strong> ¿Qué se gasta y no se pierde? <strong>3</strong> ¿Qué se comparte y crece? <strong>4</strong> El niño dice: el aliento. El viejo dice: el amor. El agricultor dice: el agua. <strong>5</strong> Todos tienen razón, y a nadie se le dice lo contrario.</p>
+</section>
+<section id="ch017.xhtml#section-207" class="level2">
+<h2>18</h2>
+<p><strong>1</strong> No sé qué hacer. <strong>2</strong> El libro ofrece versículos, y los versículos no encajan con la hora. <strong>3</strong> Haré la siguiente cosa pequeña: hervir agua, abrir la ventana, llamar a alguien. <strong>4</strong> La siguiente cosa pequeña es una clase de escritura sagrada.</p>
+</section>
+<section id="ch017.xhtml#section-208" class="level2">
+<h2>19</h2>
+<p><strong>1</strong> No me han convencido, y no me han descartado. <strong>2</strong> Llevaré el libro como se lleva una concha de una playa: por su peso, y por el mar de donde vino. <strong>3</strong> No necesito que sea verdad en cada línea. Necesito que esté cerca.</p>
+</section>
+</section>
+<section id="ch018.xhtml#las-páginas-en-blanco" class="level1">
+<h1 id="b18">Las Páginas en Blanco</h1>
+<section id="ch018.xhtml#section-209" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> <strong>2</strong> <strong>3</strong></p>
+</section>
+<section id="ch018.xhtml#section-210" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> <strong>2</strong> <strong>3</strong></p>
+</section>
+<section id="ch018.xhtml#section-211" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> <strong>2</strong> <strong>3</strong></p>
+</section>
+<section id="ch018.xhtml#section-212" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> <strong>2</strong> <strong>3</strong></p>
+</section>
+<section id="ch018.xhtml#section-213" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> <strong>2</strong> <strong>3</strong></p>
+</section>
+<section id="ch018.xhtml#section-214" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> <strong>2</strong> <strong>3</strong></p>
+</section>
+<section id="ch018.xhtml#section-215" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> <strong>2</strong> <strong>3</strong></p>
+</section>
+<section id="ch018.xhtml#section-216" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> <strong>2</strong> <strong>3</strong></p>
+</section>
+</section>
+
+<nav class="end"><a class="btn secondary" href="es.html">Volver</a> <a class="btn primary" href="El_Libro_de_Todos.pdf" data-goatcounter-click="download-pdf-es" data-goatcounter-title="PDF download (es)">Descargar (PDF)</a></nav>
+</main>
+<script>(function(){var b=document.querySelector(".theme-toggle"),r=document.documentElement;function sync(){b.textContent=r.getAttribute("data-theme")==="dark"?"☀":"☾"}sync();b.addEventListener("click",function(){var d=r.getAttribute("data-theme")==="dark";if(d)r.removeAttribute("data-theme");else r.setAttribute("data-theme","dark");try{localStorage.setItem("theme",d?"light":"dark")}catch(e){}sync()})})();</script>
+<script data-goatcounter="https://thebookofall.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

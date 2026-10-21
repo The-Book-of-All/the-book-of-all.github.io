@@ -1,0 +1,994 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buku Semua Orang</title>
+<style>
+  :root { --bg:#eceeed; --fg:#1c2127; --muted:#5d666f; --accent:#2b6a68; --on-accent:#fff; --line:#c9cfd2; --glow:rgba(150,165,172,.45); --frame:#7d8f93; --frame2:#b5c0c3; }
+  @media all { :root[data-theme="dark"] { --bg:#12151a; --fg:#e6e8ea; --muted:#9aa3ab; --accent:#86bdb4; --on-accent:#0e1918; --line:#2a3037; --glow:rgba(130,150,160,.22); --frame:#8fa6aa; --frame2:#3a444b; } }
+  * { box-sizing:border-box; }
+  body::before { content:""; position:fixed; inset:10px; border:1.5px solid var(--frame); border-radius:6px; pointer-events:none; z-index:50; }
+  body::after { content:""; position:fixed; inset:16px; border:1px solid var(--frame2); border-radius:3px; pointer-events:none; z-index:50; }
+  @media print { body::before, body::after { display:none; } }
+
+  .theme-toggle { position:fixed; top:26px; inset-inline-end:26px; z-index:60; width:40px; height:40px; border-radius:50%; border:1.5px solid var(--frame); background:var(--bg); color:var(--fg); cursor:pointer; font-size:19px; line-height:1; padding:0; display:flex; align-items:center; justify-content:center; }
+  .theme-toggle:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+  @media print { .theme-toggle { display:none; } }
+  html { -webkit-text-size-adjust:100%; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:18px/1.65 "Iowan Old Style","Palatino Linotype",Palatino,"Noto Serif","Noto Serif CJK SC","Noto Serif Devanagari","Noto Serif Bengali","Noto Naskh Arabic","Noto Nastaliq Urdu",Georgia,"Times New Roman",serif; overflow-wrap:anywhere; }
+  a { color:var(--accent); }
+  a:focus-visible, select:focus-visible, summary:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+  .btn { display:inline-block; padding:.8rem 1.5rem; border-radius:14px; text-decoration:none; font-weight:600; font-size:1rem; line-height:1.3; text-align:center; }
+  .btn.primary { background:var(--accent); color:var(--on-accent); }
+  .btn.secondary { border:2px solid var(--accent); color:var(--accent); }
+
+  header { display:flex; align-items:center; gap:.9rem; max-width:36rem; margin:0 auto; padding:2rem 34px 1rem; }
+  header img { width:44px; height:44px; flex:none; }
+  header .title { font-weight:600; font-size:1.05rem; flex:1; min-width:0; }
+  header .btn { padding:.45rem 1rem; font-size:.9rem; flex:none; }
+  header { justify-content:space-between; }
+  @media (max-width:560px) { header .title { display:none; } header .spacer { flex:1; } }
+  main { max-width:36rem; margin:0 auto; padding:1rem 34px 5rem; font-size:1.2rem; line-height:1.85; }
+  :lang(zh) main { line-height:2; } :lang(zh) em { font-style:normal; }
+  details.toc { margin:0 0 3rem; padding:.9rem 1.2rem; border:1px solid var(--line); border-radius:12px; font-size:1rem; line-height:1.5; }
+  details.toc summary { cursor:pointer; font-weight:600; }
+  details.toc ol { margin:.8rem 0 0; padding-inline-start:1.4rem; }
+  details.toc li { margin:.35rem 0; }
+  section.level1 { margin-top:4.5rem; padding-top:2.5rem; border-top:1px solid var(--line); }
+  section.level1:first-of-type { border-top:0; margin-top:2rem; padding-top:0; }
+  h1 { font-size:clamp(1.7rem,6vw,2.2rem); line-height:1.2; font-weight:500; text-align:center; margin:0 0 2.5rem; }
+  h2 { font-size:1rem; font-weight:600; color:var(--accent); text-align:center; margin:2.6rem 0 1rem; }
+  section.level1 > p { text-align:center; }
+  strong { font-weight:inherit; font-size:.62em; vertical-align:super; color:var(--accent); margin-inline-end:.2em; margin-inline-start:.35em; line-height:0; }
+  p { margin:0 0 1.1rem; }
+  section.level2 > p { margin:0 0 1.4rem; }
+  nav.end { text-align:center; margin-top:4rem; }
+  .front { text-align:center; margin:1.6rem 0 2.4rem; }
+  .front .tag { font-style:italic; color:var(--muted); margin:0 0 1.4rem; }
+  .front .about { font-size:1.12rem; font-style:italic; line-height:1.7; margin:0 auto 1.1rem; max-width:30rem; }
+  .front .by { margin:0 0 1.6rem; }
+  .front .cc0 { font-size:.85rem; color:var(--muted); border-top:1px solid var(--line); padding-top:1rem; margin:0; }
+  .theme-toggle { position:absolute; }
+  @media (max-width:640px) { header { padding-top:4.4rem; } }
+</style>
+<script>try{if(localStorage.getItem("theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
+</head>
+<body>
+<button class="theme-toggle" type="button" aria-label="Light / dark" title="Light / dark"></button>
+<header><a href="id.html" aria-label="Kembali"><img src="emblem-sm.webp" alt="" width="44" height="44"></a><span class="title">Buku Semua Orang</span><span class="spacer"></span><a class="btn secondary" href="id.html">Kembali</a> <a class="btn primary" href="Buku_Semua_Orang.pdf" data-goatcounter-click="download-pdf-id" data-goatcounter-title="PDF download (id)">Unduh (PDF)</a></header>
+<main>
+<section class="front"><p class="tag">Oleh semua dan untuk semua</p><p class="about">Ini sebuah buku, tak lebih. Ia tidak memberitahumu apa yang harus dipercaya, dan tidak meminta apa pun dari kepercayaanmu. Di mana ia bicara tentang cara hidup, ia menawarkan apa yang telah dianggap berguna oleh banyak tangan, bukan perintah. Ambil yang menolong. Tinggalkan yang tidak. Peganglah tanpa mencengkeram.</p><p class="by">Steven E Thompson</p><p class="cc0">Buku Semua Orang. Oleh semua dan untuk semua. Didedikasikan untuk domain publik di bawah CC0 1.0 Universal: tanpa hak cipta yang dilindungi. Salin, cetak, terjemahkan, dan bagikan dengan bebas. <a href="https://creativecommons.org/publicdomain/zero/1.0">creativecommons.org/publicdomain/zero/1.0</a></p></section>
+<details class="toc"><summary>Daftar isi</summary><ol><li><a href="#b1">Buku Satu: Awal Mula</a></li><li><a href="#b2">Buku Dua: Keseluruhan</a></li><li><a href="#b3">Buku Tiga: Pribadi</a></li><li><a href="#b4">Buku Empat: Benar dan Salah</a></li><li><a href="#b5">Buku Lima: Penderitaan dan Makna</a></li><li><a href="#b6">Buku Enam: Kematian dan Kembali</a></li><li><a href="#b7">Buku Tujuh: Kata-Kata</a></li><li><a href="#b8">Buku Delapan: Praktik</a></li><li><a href="#b9">Buku Sembilan: Waktu yang Sakral</a></li><li><a href="#b10">Buku Sepuluh: Tempat yang Sakral</a></li><li><a href="#b11">Buku Sebelas: Peralihan</a></li><li><a href="#b12">Buku Dua Belas: Komunitas dan Bimbingan</a></li><li><a href="#b13">Buku Tiga Belas: Makanan, Tubuh, dan Pakaian</a></li><li><a href="#b14">Buku Empat Belas: Alam dan Makhluk Lain</a></li><li><a href="#b15">Buku Lima Belas: Takjub</a></li><li><a href="#b16">Buku Enam Belas: Saling Bertemu</a></li><li><a href="#b17">Buku Tujuh Belas: Yang Tidak Cocok</a></li><li><a href="#b18">Halaman Kosong</a></li></ol></details>
+<p></p>
+
+<section id="ch001.xhtml#buku-satu-awal-mula" class="level1">
+<h1 id="b1">Buku Satu: Awal Mula</h1>
+<section id="ch001.xhtml#section" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> Tak ada yang datang paling dulu, meski setiap kisah menjangkau sesuatu yang pertama: cahaya pertama, kata pertama, tangan pertama. Jangkauan itu sendiri sudah tua. <strong>2</strong> Air naik bersama matahari, dan matahari ditarik naik dari panasnya sendiri oleh air; tak satu pun dari keduanya sanggup memulai pagi sendirian. <strong>3</strong> Biji lahir dari tumbuhan yang lahir dari biji, dan garis itu surut jauh melampaui jangkauan ingatan mana pun, tulang mana pun, batu bertulis mana pun. <strong>4</strong> Bertanya apa yang ada sebelumnya sama dengan menyusuri sungai mencari mata airnya, lalu tiba di lereng bukit tempat hujan, tanah, dan langit sudah bercakap-cakap. <strong>5</strong> Yang bertanya muncul bersama pertanyaannya, dan pertanyaan itu, yang terasa begitu pribadi, sudah dimulai di mulut-mulut lain sejak lama.</p>
+</section>
+<section id="ch001.xhtml#section-1" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Sebuah bintang menyala lebih lama daripada adanya mata, dan ketika ia berakhir, ia menebarkan apa yang dibuatnya: besi, karbon, bahan-bahan sunyi dari segala sesuatu yang kelak akan mengeluh kedinginan. <strong>2</strong> Abunya melayang berzaman-zaman melintasi gelap yang terlalu lebar untuk dibayangkan, dan di tempat ia berkumpul, ia mendingin, dan di tempat ia mendingin, ia menjadi batu. <strong>3</strong> Angin dan hujan mengikis batu menjadi debu, dan debu itu dibawa angin dan sungai ke tempat-tempat rendah, tempat ia belajar menampung air. <strong>4</strong> Dalam tampungan itu hijau yang pertama berakar. Ladang bukanlah hadiah yang diletakkan, melainkan kesabaran yang panjangnya ribuan tahun. <strong>5</strong> Ladang itu dimakan; sang pemakan berjalan; sang pejalan, pada waktunya, berbaring di ladang, dan abu bintang itu telah berputar satu putaran lagi. <strong>6</strong> Tak seorang pun di ladang itu, yang hidup maupun yang berbaring, dapat mengatakan di mana abu itu bermula atau berapa kali ia pernah menjadi sebuah mulut.</p>
+</section>
+<section id="ch001.xhtml#section-2" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> Di gelap yang dalam, di air yang hangat oleh mineral, sesuatu yang kecil mulai menyatukan dirinya melawan lenyapnya segala yang lain. Kita tak bisa mengatakan kapan, hanya bahwa ia tidak berhenti. <strong>2</strong> Ia membelah diri. Keduanya membelah diri. Dalam rentang yang membuat usia gunung mana pun tampak singkat, pembelahan itu bercabang ke seribu arah: akar, sayap, insang, tangan. <strong>3</strong> Ikan, pakis, burung, dan anak kecil adalah saudara sepupu pada jarak garis percabangan yang panjang, tiap cabang yakin dirinya batang. <strong>4</strong> Di suatu tempat dalam garis itu ada makhluk tanpa nama, ibu paus dan burung pipit dan dia yang sedang mendengarkan. Ia diingat di setiap tubuh, dalam bentuk setiap telinga. <strong>5</strong> Kita semua sekerabat, meski kebanyakan kita asing bagi sepupu-sepupu kita, dan sebagian kita dimakan oleh mereka.</p>
+</section>
+<section id="ch001.xhtml#section-3" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Siapa tahu dari mana semua ini datang? Bukan para tetua, yang paling lama memikul pertanyaan itu. Bukan anak-anak, yang menanyakannya seakan jawabannya ada di dalam laci. <strong>2</strong> Orang bijak bertanya dan tidak menjawab. Ini bukan kurang nyali. Ini sopan santun yang menjadi hak hal yang agung. <strong>3</strong> Pada beberapa malam pertanyaan itu menjadi beban dan pada beberapa malam menjadi hadiah, dan pada keduanya ia bukan kegagalan. <strong>4</strong> Setiap orang yang pernah berdiri di bawah langit cerah jauh dari cahaya mana pun merasakannya membuka di dada, tak menemukan katanya, dan diam-diam bersyukur tanpa kata itu.</p>
+</section>
+<section id="ch001.xhtml#section-4" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Segala yang bergerak membawa kehangatan yang tak pernah dibuat baru, hanya diteruskan: matahari kepada daun, daun kepada rusa, rusa kepada dia yang lapar di musim dingin. <strong>2</strong> Kehangatan di tangan yang menggenggam dulu ada di dalam butir padi, dan di ladang tempat padi itu berdiri, dan di musim panas panjang di belakangnya, dan di bintang di belakang musim panas itu. <strong>3</strong> Ia dibawa, dan ia diteruskan. Tak ada tangan yang memegangnya cukup lama untuk menyebutnya miliknya sendiri. <strong>4</strong> Yang dibawa tak pernah hilang, meski sering tak diketahui lagi jejaknya, dan dari situlah dukacita datang, dan dari situ pula takjub bermula.</p>
+</section>
+<section id="ch001.xhtml#section-5" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Siang muncul bersama malam, dan malam bersama siang; tak satu pun musuh bagi yang lain, dan tak satu pun akan menjadi kata tanpa yang lain. <strong>2</strong> Air pasang surut agar bisa pasang kembali, dan saat surut ia meninggalkan pantai telanjang, dan pantai telanjang itu menunjukkan betapa banyak yang diberikan laut. <strong>3</strong> Biji dikubur dalam gelap dan tidak tahu bahwa ia sedang ditanam; bagi biji, ia sedang dikubur. Keduanya benar. <strong>4</strong> Setiap akhir juga merupakan berbaliknya sesuatu yang lain, yang tidak menghibur bagi dia yang berakhir, dan tetap benar.</p>
+</section>
+<section id="ch001.xhtml#section-6" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Tarik satu benang dan seluruh kain bergerak, begitulah penenun menemukan cacatnya dan anak kecil belajar apa yang telah diperbuatnya. <strong>2</strong> Lebah ada di dalam bunga, membawa serbuk sari dan laparnya; bunga ada di dalam lebah, menumpang ke ladang berikutnya pada tubuh yang tak dipilihnya. <strong>3</strong> Hujan ada di dalam sungai, dan sungai ada di dalam awan, dan awan ada di dalam laut, dan tak satu pun dapat mengatakan di mana yang satu berakhir. <strong>4</strong> Tak seorang pun berdiri di luar kain itu, meski pada beberapa hari kita ingin; keinginan itu sendiri tertenun di dalamnya.</p>
+</section>
+<section id="ch001.xhtml#section-7" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Napas pertama bayi baru lahir adalah udara yang telah dihirup orang lain: perawat, ibu, angin di atas seribu ladang. Ia menangis karena telah diserahi dunia. <strong>2</strong> Udara itu pernah ada dalam daun, dalam paus, dalam paru-paru seorang kakek yang tak diingat siapa pun yang hidup, dan akan ada lagi. <strong>3</strong> Setiap napas diteruskan dari tangan ke tangan dan tak ada yang memilikinya, meski setiap orang, untuk sesaat, bertanggung jawab atasnya.</p>
+</section>
+<section id="ch001.xhtml#section-8" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Sebelum mata terbuka, gelap itu penuh: oleh detak jantung ibu, oleh rasa hangat air, oleh suara-suara yang terdengar melalui dinding. <strong>2</strong> Gelap itu tidak kosong. Di sanalah biji menunggu dan pikiran terkumpul dan anak tumbuh menuju sebuah wajah. <strong>3</strong> Terang tidak mengalahkan gelap. Mereka bergiliran memegang dunia, dan tak satu pun pernah sepenuhnya absen dari jam yang lain.</p>
+</section>
+<section id="ch001.xhtml#section-9" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> Kata pertama tidak diucapkan oleh satu mulut. Banyak mulut membuatnya selama bertahun-tahun, masing-masing mengucapkan apa yang diucapkan mulut di sebelahnya, sedikit berbeda. <strong>2</strong> Air dinamai oleh rasa haus. Ibu dinamai oleh mulut pertama pada kulit pertama. Setiap kata adalah api kecil yang diteruskan dari tangan ke tangan, dan tak seorang pun dari kita menyalakan yang pertama.</p>
+</section>
+<section id="ch001.xhtml#section-10" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> Setiap bangsa menuturkan bagaimana dunia bermula, masing-masing dengan suaranya sendiri, dengan hewan, cuaca, dan dukacita tempatnya sendiri. <strong>2</strong> Penuturan itu adalah cara mencintai tanah tempat orang berpijak. Orang sungai menuturkannya dengan arus di dalamnya; orang gunung menuturkannya dengan berat batu di dalamnya. <strong>3</strong> Tak satu pun penuturan adalah pagar. Masing-masing menampung air tempatnya sendiri, dan semua air itu adalah air yang sama.</p>
+</section>
+<section id="ch001.xhtml#section-11" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> Kita muncul bersama dunia, dan kita milik dunia, meski kadang kita bersikap seakan datang dari tempat yang lebih baik. <strong>2</strong> Gunung tidak bertanya dari mana kita datang, begitu pula laut. Mereka tak pernah bertanya apa pun. Mereka hanya tinggal. <strong>3</strong> Kita satu dari sekian banyak cara dunia ada di sini, dan dunia, melalui kita, kadang memandang dirinya sendiri lalu menangis dan tertawa dan takjub bahwa ia ada.</p>
+</section>
+<section id="ch001.xhtml#section-12" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> Ada yang berkata dunia diucapkan, sebuah kata lebih dahulu dan segalanya sesudahnya. <strong>2</strong> Ada yang berkata ia dihembuskan keluar dan akan dihirup kembali. <strong>3</strong> Ada yang berkata ia menetas dari telur, atau dinyanyikan, atau ditarikan, atau ditenun di alat tenun. <strong>4</strong> Ada yang berkata ia dimimpikan, dan sedang dimimpikan. <strong>5</strong> Ada yang berkata ia selalu ada di sini dan tak pernah dimulai. <strong>6</strong> Ada yang berkata pertanyaannya salah bentuk untuk jawabannya.</p>
+</section>
+</section>
+<section id="ch002.xhtml#buku-dua-keseluruhan" class="level1">
+<h1 id="b2">Buku Dua: Keseluruhan</h1>
+<section id="ch002.xhtml#section-13" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> Berdirilah di atas bukit saat senja dan berputarlah pelan-pelan: ke mana pun kamu menghadap, cakrawala sama jauhnya. Setiap pengelana adalah pusat sebuah lingkaran yang tak bisa dilihat orang lain. <strong>2</strong> Peta-peta kuno menaruh kota para pembuatnya di tengah, dan tidak keliru; mereka hanya jujur tentang tempat si pembuat peta tidur. <strong>3</strong> Keseluruhan tidak punya kota seperti itu. Ia adalah sisa ketika setiap kota telah berkata, “di sini.”</p>
+</section>
+<section id="ch002.xhtml#section-14" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Gelombang yang tiba di pantai terasa, kita bayangkan, seperti sebuah diri: puncaknya, ketergesaannya, takutnya pada pantai. <strong>2</strong> Ia hanyalah laut, yang sesaat melakukan sesuatu yang khusus. <strong>3</strong> Pantai tidak menerima sebuah akhir; ia menerima air, yang selalu diterimanya. <strong>4</strong> Mereka yang mencintai gelombang itu tidak salah berduka. Mereka hanya berdiri sangat dekat.</p>
+</section>
+<section id="ch002.xhtml#section-15" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> Satu bangsa menggambar keseluruhan sebagai gunung tanpa puncak; bangsa lain sebagai jala cahaya; yang lain sebagai lingkaran para ibu. <strong>2</strong> Seseorang di kota yang tenang tidak melukis apa pun di dindingnya, dan dikunjungi orang-orang yang ingin duduk di depannya. <strong>3</strong> Semua ini diperbolehkan. Keseluruhan tak perlu dipuji, dan ia tidak tersinggung.</p>
+</section>
+<section id="ch002.xhtml#section-16" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Di pasar yang paling riuh ada bunyi di bawah bunyi, lebih dirasa daripada didengar, seperti lantai di bawah suara-suara. <strong>2</strong> Mereka yang hidup di tepi laut kehilangannya lalu menemukannya kembali; begitu pula mereka yang duduk di samping ranjang sepanjang malam. <strong>3</strong> Ia tidak mengatakan apa-apa. Ia adalah bunyi tak adanya yang kurang.</p>
+</section>
+<section id="ch002.xhtml#section-17" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Keseluruhan memuat orang suci dan pencuri. <strong>2</strong> Ada yang berkata ia menimbang kita, dan ada yang berkata ia tidak menimbang sama sekali. <strong>3</strong> Kita masing-masing, pada suatu jam, pernah berharap ia memihak kita, dan sebagian menemukan bahwa keheningan yang ditawarkannya sebagai gantinya bukanlah tak berarti.</p>
+</section>
+<section id="ch002.xhtml#section-18" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Nama bagi keseluruhan adalah hadiah yang diulurkan melintasi jurang: <em>engkau</em>, <em>ia</em>, <em>yang dalam</em>, <em>rumah</em>. <strong>2</strong> Jurang itu tak menutup, tetapi uluran itu nyata, dan telah menghangatkan banyak tangan. <strong>3</strong> Menolak semua nama adalah juga sebuah nama, dan memakai satu nama bukanlah dusta, bila dipegang ringan, seperti orang memegang perkakas pinjaman.</p>
+</section>
+<section id="ch002.xhtml#section-19" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Ketel adalah keseluruhan, begitu pula denting kunci, dan bau hujan di jalan yang panas. <strong>2</strong> Ada yang mencarinya di tempat lain, dan ada yang menemukannya di ruangan tempat mereka berada. <strong>3</strong> Meja itu telah menampung kedua jenis pencari sejak sarapan.</p>
+</section>
+<section id="ch002.xhtml#section-20" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Hujan jatuh di ladang dan di jalan. <strong>2</strong> Ada yang berkata ia jatuh bagi yang layak, ada yang berkata ia jatuh bukan bagi siapa pun, dan ada yang berdiri di bawahnya dan bergembira. <strong>3</strong> Hujan yang sama ada di atap setiap orang, dan hening yang sama sesudahnya.</p>
+</section>
+<section id="ch002.xhtml#section-21" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Kita disuruh mencintai keseluruhan, dan kita tak tahu caranya; keseluruhan tak punya wajah untuk dicium. <strong>2</strong> Maka kita mulai dari yang bisa: tangga, anjing, saudari yang menyulitkan, pagar tetangga yang patah. <strong>3</strong> Jika keseluruhan ada di suatu tempat, ia ada dalam apa yang kita lakukan pada hari Selasa yang biasa.</p>
+</section>
+<section id="ch002.xhtml#section-22" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> Orang tidak memahami sebuah rumah; orang tinggal di dalamnya, dan dalam tinggal itu belajar di mana lantainya lunak. <strong>2</strong> Orang tidak memahami sebuah musim; orang memakai mantel yang tepat. <strong>3</strong> Keseluruhan seperti ini: sesuatu yang satu-satunya pemahaman memadai atasnya adalah cara berjalan yang terlatih.</p>
+</section>
+<section id="ch002.xhtml#section-23" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> Segala yang muncul kembali surut, dan yang surut kembali tidak disimpan melainkan dibelanjakan, seketika, ke dalam hal berikutnya. <strong>2</strong> Apel menjadi anak, anak menjadi lapar musim dingin seekor rubah, rubah menjadi santapan siang lumut kerak. <strong>3</strong> Ini bukan rencana keseluruhan. Ini tata bahasanya, dan ia tak punya kalimat lain.</p>
+</section>
+<section id="ch002.xhtml#section-24" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> Ada yang berkata keseluruhan itu satu. <strong>2</strong> Ada yang berkata ia banyak, masing-masing punya nama dan suasana hati. <strong>3</strong> Ada yang berkata ia sebuah pikiran. <strong>4</strong> Ada yang berkata ia kosong, dan kekosongan itu penuh. <strong>5</strong> Ada yang berkata ia seorang ibu. <strong>6</strong> Ada yang berkata ia tangga dunia-dunia, dan kita berdiri di salah satu anak tangganya. <strong>7</strong> Ada yang berkata ia tak dapat dikatakan.</p>
+</section>
+</section>
+<section id="ch003.xhtml#buku-tiga-pribadi" class="level1">
+<h1 id="b3">Buku Tiga: Pribadi</h1>
+<section id="ch003.xhtml#section-25" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> Seorang pribadi adalah tempat yang kebetulan dilewati keseluruhan dengan kecepatan tertentu: karbon dari bintang mati, air yang dulu gletser, nama dari harapan seorang nenek. <strong>2</strong> Perlintasan itu memakan sekitar delapan puluh tahun. Dalam waktu itu ia akan mencoba memahami dirinya, jatuh cinta, menghanguskan makan malam, dan takjub. <strong>3</strong> Tak satu pun dari ini adalah kerusakan.</p>
+</section>
+<section id="ch003.xhtml#section-26" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Nama adalah hadiah pertama dan label pertama, diberikan sebelum anak dapat menerima atau menolaknya. <strong>2</strong> Ada yang tumbuh menjadi namanya; ada yang tumbuh melampauinya lalu mengambil nama lain, dan tidak berkurang dirinya karena perubahan itu. <strong>3</strong> Pada akhirnya nama itu naik ke batu nisan, dan dia yang menyandangnya masuk ke taman dan ke dalam ingatan seribu kebaikan kecil yang tak pernah punya label sama sekali.</p>
+</section>
+<section id="ch003.xhtml#section-27" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> Tubuh mengganti hampir semua yang menyusunnya selama bertahun-tahun; lutut yang tergores pada usia enam tahun kini tersusun dari atom yang berbeda, dan masih mengingat aspal itu. <strong>2</strong> Seorang pribadi karenanya bukan sebuah benda melainkan sebuah pola dalam aliran benda-benda, pusaran air yang berwajah. <strong>3</strong> Ini bukan pengurangan. Pusaran air dapat menahan sehelai daun berjam-jam.</p>
+</section>
+<section id="ch003.xhtml#section-28" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Pikiran adalah cuaca: duka datang seperti front, sebuah lelucon membersihkannya, sebuah penghinaan lama bergulir di atas bukit-bukit pukul empat pagi. <strong>2</strong> Si pengamat yang memperhatikan cuaca itu sendiri bukan cuaca, dan lebih tenang daripada semuanya. <strong>3</strong> Sebagian besar hidup dihabiskan dengan menyamakan diri dengan badai. Segelintir belajar menjadi jendela.</p>
+</section>
+<section id="ch003.xhtml#section-29" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Setiap pribadi itu utuh: tak ada orang lain yang akan pernah terbangun di tubuh itu, dengan nyeri itu. <strong>2</strong> Setiap pribadi itu bagian: tak ada pikiran di kepala yang tidak bermula di mulut orang lain. <strong>3</strong> Seni hidup adalah memikul kedua fakta itu tanpa menyelesaikannya, seperti tangan memikul bobotnya sendiri dan bobot yang dibawanya.</p>
+</section>
+<section id="ch003.xhtml#section-30" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Lihatlah apa yang kamu makan pagi ini dan telusuri: seorang petani, seorang sopir truk, seorang perempuan di pabrik pengemasan yang tak akan kamu temui, hujan, sebutir biji yang dikembangkan selama empat ratus tahun. <strong>2</strong> Yang kamu sebut dirimu tersusun dari semua ini. <strong>3</strong> Syukur kadang hanyalah ketepatan.</p>
+</section>
+<section id="ch003.xhtml#section-31" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Setiap pribadi membawa kegunaan tertentu yang menjadi miliknya oleh watak dan oleh luka: kesabaran seorang perawat, kelapangan seorang pelawak di pemakaman. <strong>2</strong> Ia tak selalu terlihat oleh pemiliknya. Ia sering ditemukan ketika seseorang berkata, sambil lalu, “Aku tak akan bisa melakukannya tanpamu.” <strong>3</strong> Dengarkanlah.</p>
+</section>
+<section id="ch003.xhtml#section-32" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Seorang pribadi bukanlah hal terburuk yang pernah dilakukannya, tetapi ia pun tidak dibebaskan darinya; ia memikulnya, seperti pohon memikul bekas lukanya, sebagai bagian dari seratnya. <strong>2</strong> Pekerjaannya adalah menjadikan bekas luka itu sesuatu yang sanggup menahan beban.</p>
+</section>
+<section id="ch003.xhtml#section-33" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Wajah-wajah itu pinjaman: garis rahang seseorang yang gugur dalam perang, tawa seorang bibi yang bukan favorit siapa pun dan teladan rahasia semua orang. <strong>2</strong> Kita berbicara dengan vokal sebuah desa yang tak pernah kita kunjungi dan takhayul sebuah abad yang tak kita jalani. <strong>3</strong> Menjadi satu pribadi adalah banyak sekali kerja orang lain.</p>
+</section>
+<section id="ch003.xhtml#section-34" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> Tak diwajibkan menjadi luar biasa. Sebagian besar kebaikan dunia dilakukan oleh orang-orang yang tak akan diingat siapa pun, di ruangan-ruangan yang tak akan dikunjungi siapa pun. <strong>2</strong> Ada di sini, dan bersikap baik, dan mencuci piring: ini sudah cukup. <strong>3</strong> Dan jika itu belum cukup, itu tetap semua yang pernah dimiliki siapa pun.</p>
+</section>
+<section id="ch003.xhtml#section-35" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> Ada yang berkata seorang pribadi punya satu jiwa. <strong>2</strong> Ada yang berkata dua, atau tiga, atau tujuh, dan bahwa mereka meninggalkan tubuh pada jam yang berbeda. <strong>3</strong> Ada yang berkata tak ada diri, hanya aliran. <strong>4</strong> Ada yang berkata diri adalah percikan dari keseluruhan. <strong>5</strong> Ada yang berkata seorang pribadi adalah tubuh dan tak lebih. <strong>6</strong> Ada yang berkata setiap pribadi telah dikenal sebelum lahir. <strong>7</strong> Ada yang berkata nama adalah ambang pintu.</p>
+</section>
+</section>
+<section id="ch004.xhtml#buku-empat-benar-dan-salah" class="level1">
+<h1 id="b4">Buku Empat: Benar dan Salah</h1>
+<section id="ch004.xhtml#section-36" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> Ada yang berkata kebaikan diperintahkan dan ada yang berkata ia ditemukan; keduanya didapati di samping ranjang orang sakit, tempat tak ada yang bertanya dan semua tahu apa yang harus dilakukan. <strong>2</strong> Kerugian merambat. Kata kasar saat sarapan sampai ke anjing menjelang siang dan ke orang asing menjelang malam. <strong>3</strong> Begitu pula kebaikan, meski lebih lambat dan kurang dramatis, itulah sebabnya ia lebih lama dipercaya.</p>
+</section>
+<section id="ch004.xhtml#section-37" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Kita tidak mengambil nyawa tanpa kebutuhan, dan kita curiga pada rasa butuh kita sendiri. <strong>2</strong> Si pemburu berterima kasih kepada rusa; ada yang menyebutnya doa dan ada yang menyebutnya catatan utang. <strong>3</strong> Nyawa yang diambil adalah utang yang dibuka, dan yang jujur mengangsurnya dengan merawat apa yang tersisa.</p>
+</section>
+<section id="ch004.xhtml#section-38" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> Dusta adalah pinjaman dari masa depan dengan bunga tinggi: ia membeli kenyamanan sekarang dan menagih kepercayaan nanti, dan kepercayaan tak bisa dipinjam kembali. <strong>2</strong> Kebenaran tidak sama dengan kekasaran; palu pun berkata benar tentang paku. <strong>3</strong> Katakan apa adanya dengan tangan terbuka, dan sisakan ruang bagi yang lain untuk menjawab.</p>
+</section>
+<section id="ch004.xhtml#section-39" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Perlakukan orang lain seperti kamu ingin diperlakukan, lalu perhatikan betapa sering kamu tak tahu bagaimana kamu ingin diperlakukan; bertanyalah. <strong>2</strong> Aturan ini paling berhasil sebagai pertanyaan, bukan vonis. <strong>3</strong> Kebutuhan orang asing tertulis di wajahnya bagi mereka yang mau memandang cukup lama, dan sedikit lebih lama daripada yang nyaman.</p>
+</section>
+<section id="ch004.xhtml#section-40" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Apa yang kamu miliki melampaui kebutuhan dipegang sebagai amanat: mantel musim dingin di lemari, roti kedua, kamar cadangan, masing-masing pertanyaan tak terucap yang diajukan dingin kepadamu. <strong>2</strong> Memberi bukanlah kemurahan hati bila hanya sebuah pengembalian.</p>
+</section>
+<section id="ch004.xhtml#section-41" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Janji adalah papan melintasi jurang, dan seseorang berjalan di atasnya dengan percaya. <strong>2</strong> Jika ia akan patah, katakan sebelum beban menimpanya. <strong>3</strong> Mereka yang pernah dikhianati belajar menguji setiap papan; kita berutang kepada mereka kesabaran untuk diuji.</p>
+</section>
+<section id="ch004.xhtml#section-42" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Kesalahan adalah robekan pada tenunan, dan perbaikan dimulai dengan seseorang mengatakan terus terang apa yang terjadi, tanpa membela diri dan tanpa drama. <strong>2</strong> Yang dirugikan menyebut apa yang hilang, dan yang merugikan tidak menyela. <strong>3</strong> Perbaikan itu lambat, dan beberapa robekan tak akan menutup; ini kita bawa di dalam kain, terlihat, tanpa malu dan penuh kebaikan.</p>
+</section>
+<section id="ch004.xhtml#section-43" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Memaafkan adalah meletakkan batu yang telah dipikul jauh, dan ia tidak mengatakan batu itu ringan. <strong>2</strong> Ia dilakukan sedikit demi sedikit setiap hari, kebanyakan tanpa disadari; suatu pagi tangan itu kosong, dan orang terkejut. <strong>3</strong> Yang belum bisa memaafkan bukanlah jahat. Dia masih memikul, dan memikul itu laporan yang jujur.</p>
+</section>
+<section id="ch004.xhtml#section-44" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Yang tua tahu harga melupakan; yang muda tahu harga tetap sama. <strong>2</strong> Keduanya dibutuhkan di meja: ingatan dan ketidaksabaran.</p>
+</section>
+<section id="ch004.xhtml#section-45" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> Amarah adalah informasi berguna dengan sopan santun buruk. <strong>2</strong> Ia memberitahumu bahwa sesuatu telah dilanggar; ia tak bisa memberitahumu apa yang harus dilakukan. <strong>3</strong> Tunggulah sampai pagi. Jika masih benar, katakan; jika tidak, kamu telah terhindar dari satu kekeliruan.</p>
+</section>
+<section id="ch004.xhtml#section-46" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> Ketika dua hal baik bertabrakan, ada yang membuka sebuah teks, ada yang bertanya kepada seorang guru, ada yang kepada orang di sebelahnya, dan ada yang duduk dalam hening sampai jelas. <strong>2</strong> Lalu masing-masing menanggung tanggung jawab atas apa yang diputuskannya. <strong>3</strong> Kasus-kasus sulit adalah alasan orang membutuhkan satu sama lain.</p>
+</section>
+<section id="ch004.xhtml#section-47" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> Ada yang berkata benar dan salah diberikan dalam seperangkat kata. <strong>2</strong> Ada yang berkata keduanya ditemukan dengan memandang ke dalam. <strong>3</strong> Ada yang berkata setiap perbuatan ditimbang pada akhirnya, dan ada yang berkata tak ada yang ditimbang. <strong>4</strong> Ada yang berkata setiap perbuatan kembali kepada pelakunya, dalam hidup ini atau hidup lain. <strong>5</strong> Ada yang berkata utang dapat dipikul orang lain. <strong>6</strong> Ada yang berkata hanya ada satu hal baik berikutnya. <strong>7</strong> Ada yang berkata kerugian harus dibalas, dan ada yang berkata kerugian harus diserap.</p>
+</section>
+<section id="ch004.xhtml#section-48" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> Seorang lelaki berbuat jahat dan tak pernah dimintai tanggung jawab. <strong>2</strong> Kainnya robek, dan tak seorang pun duduk memperbaikinya. <strong>3</strong> Buku ini berkata tak ada yang dibuang. <strong>4</strong> Aku tak tahu harus berkata apa kepada perempuan yang dibuang dari hidupnya sendiri oleh lelaki itu. <strong>5</strong> Kukatakan: Aku menyesal. Tak kukatakan yang lain.</p>
+</section>
+</section>
+<section id="ch005.xhtml#buku-lima-penderitaan-dan-makna" class="level1">
+<h1 id="b5">Buku Lima: Penderitaan dan Makna</h1>
+<section id="ch005.xhtml#section-49" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> Tak ada seorang pun yang tak ditemukan rasa sakit, meski ia datang dalam mantel yang berbeda-beda: sebuah diagnosis, ketukan di pintu, hilangnya perlahan nama kita dari ingatan pasangan. <strong>2</strong> Ada yang berkata ia dibagikan menurut jasa dan ada yang berkata ia sama sekali tidak dibagikan; keduanya pernah duduk di ruang tunggu yang sama. <strong>3</strong> Penghiburan yang melintasi setiap keyakinan adalah ini: kamu bukan satu-satunya orang di ruangan ini.</p>
+</section>
+<section id="ch005.xhtml#section-50" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Ada yang berkata ada alasan dan ada yang berkata tak ada; di bawah keduanya, orang yang berduka mungkin mendengar “itu salahmu” atau “seharusnya kamu sudah melupakannya.” <strong>2</strong> Kita berkata, “Aku di sini,” dan membuktikannya dengan tetap tinggal.</p>
+</section>
+<section id="ch005.xhtml#section-51" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> Duka adalah bentuk yang diambil cinta ketika yang dicintai telah tiada: tangan yang masih meraih telepon untuk mengabari dia yang tak ada. <strong>2</strong> Ia tak perlu dikelola. <strong>3</strong> Ia membutuhkan seorang saksi yang tidak berusaha memperbaikinya, dan seceret air panas.</p>
+</section>
+<section id="ch005.xhtml#section-52" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Menemani yang menderita adalah keterampilan, lebih sulit daripada bicara. <strong>2</strong> Godaannya adalah pergi lebih awal, menawarkan pepatah, melirik jam. <strong>3</strong> Dia yang bertahan melewati keheningan telah memberikan hadiah terbesar yang ada: perasaan tidak menjadi beban.</p>
+</section>
+<section id="ch005.xhtml#section-53" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Kepalan tak dapat membawa air. <strong>2</strong> Pegang luka itu dengan tangan terbuka, dan ia tetap di situ dan dapat dipandang, dan mungkin, selama bertahun-tahun, dituang keluar.</p>
+</section>
+<section id="ch005.xhtml#section-54" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Tak ada yang menetap: bukan hari terburuk, bukan hari terbaik. <strong>2</strong> Dia yang mengingat ini di tengah penderitaan tidak sedang bersikap dingin; dia memegang tali yang terikat pada jam yang lebih kemudian. <strong>3</strong> Jam tergelap sama panjangnya dengan jam-jam lain. Ia hanya terasa lebih lama, karena tak ada yang memperhatikan jam kecuali dia yang kesakitan.</p>
+</section>
+<section id="ch005.xhtml#section-55" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Ada yang berkata makna menunggu di ujung hidup untuk dipungut, dan ada yang berkata ia dibuat sepanjang jalan. <strong>2</strong> Sebuah sup punya makna dalam pembuatannya, dalam pengadukannya, dalam tetangga yang mampir membawa roti. <strong>3</strong> Makna sebuah hidup, kata sebagian, adalah sup yang telah dihidangkannya.</p>
+</section>
+<section id="ch005.xhtml#section-56" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Sukacita bukan upah bagi penderitaan, dan bukan lawannya; ia hal tersendiri yang tumbuh di tanah yang sama. <strong>2</strong> Perempuan di samping ranjang itu bersyukur berada di sana dan sekaligus hancur, keduanya bersamaan.</p>
+</section>
+<section id="ch005.xhtml#section-57" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Ketika beban terlalu berat, katakan keras-keras kepada seseorang, dan terus katakan kepada seseorang sampai beban itu terbagi. <strong>2</strong> Meminta bantuan bukan kegagalan kekuatan; itu tindakan pertama seseorang yang bersedia bertahan. <strong>3</strong> Mereka yang pernah dibantu belajar membantu, dan rantai itu tak berakhir.</p>
+</section>
+<section id="ch005.xhtml#section-58" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> Bekas luka adalah bagian dari kulit. <strong>2</strong> Pohon tumbuh mengelilingi paku, dan kayu di situ adalah yang paling keras di batang. <strong>3</strong> Dia yang pernah terluka dapat duduk, tanpa gentar, bersama seseorang yang sedang terluka sekarang, dan itu keterampilan yang langka, dan berguna.</p>
+</section>
+<section id="ch005.xhtml#section-59" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> Hidup itu berharga, bukan karena mudah. <strong>2</strong> Matahari, hujan, apel pertama tahun ini dan yang terakhir: berharga. <strong>3</strong> Kepada dia yang lelah bernapas: kami ingin kamu di sini, di ruangan yang tak glamor dan tak sempurna ini, dan kami akan menyeduh teh.</p>
+</section>
+<section id="ch005.xhtml#section-60" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> Ada yang berkata penderitaan adalah guru. <strong>2</strong> Ada yang berkata ia utang yang jatuh tempo. <strong>3</strong> Ada yang berkata ia ujian, ada yang percobaan, ada yang kecelakaan. <strong>4</strong> Ada yang berkata ia harga dari menginginkan, dan keinginan dapat diletakkan. <strong>5</strong> Ada yang berkata ia dibagi-bagi, dan yang menanggung lebih banyak menanggungnya bagi orang lain. <strong>6</strong> Ada yang berkata ia berakhir, dan ada yang berkata ada sesuatu sesudahnya. <strong>7</strong> Ada yang berkata ia harus ditanggung dalam diam, dan ada yang berkata ia harus diucapkan keras-keras.</p>
+</section>
+<section id="ch005.xhtml#section-61" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> Aku marah, dan tak ada yang bisa kumarahi. <strong>2</strong> Buku ini berkata jam tergelap sama panjangnya dengan jam-jam lain. <strong>3</strong> Aku ingin punya musuh. Itu lebih mudah dipikul. <strong>4</strong> Biarkan aku marah sebentar. Jangan buru-buru membawaku ke ayat berikutnya.</p>
+</section>
+</section>
+<section id="ch006.xhtml#buku-enam-kematian-dan-kembali" class="level1">
+<h1 id="b6">Buku Enam: Kematian dan Kembali</h1>
+<section id="ch006.xhtml#section-62" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> Semua yang muncul akan kembali. Kata yang kita pakai adalah <em>kematian</em>, dan kata itu menakutkan karena ia pintu yang tak pernah kita lihat dibuka dari dalam. <strong>2</strong> Yang dapat kita lihat adalah bentuk kepergian: napas yang berhenti, tangan yang mendingin. <strong>3</strong> Yang tak dapat kita lihat adalah kedatangannya, tetapi kita pun tak pernah melihat laut menerima sungai, dan itu terjadi setiap menit.</p>
+</section>
+<section id="ch006.xhtml#section-63" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Tubuh hangat karena ia terbakar. Ketika pembakaran berakhir, kehangatan tidak lenyap; ia masuk ke seprai, ke udara, ke tangan-tangan yang memegangnya, ke tanah yang pada waktunya akan memegang sisanya. <strong>2</strong> Tak ada saat ketika energi dimusnahkan, hanya saat-saat ia berpindah ruangan. <strong>3</strong> Dia yang kita cintai tidak dipadamkan. Dia telah ditebarkan.</p>
+</section>
+<section id="ch006.xhtml#section-64" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> Tubuh di dalam tanah adalah jamuan. Dalam satu musim cacing dan mikroba sudah di dalamnya; dalam setahun akar telah menemukannya; dalam satu dekade sebatang pohon kecil berdiri di tempat dukacita dulu berada. <strong>2</strong> Pohon itu berbuah, dan buah itu memberi makan seorang anak yang tak pernah bertemu lelaki tua itu. <strong>3</strong> Ada yang menyebut ini kiasan dan ada yang menyebutnya fakta biasa; bagaimanapun, ia bisa membuat orang menangis dengan cara yang baik.</p>
+</section>
+<section id="ch006.xhtml#section-65" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Yang mati ada di dalam roti, di cahaya lampu, di gaya tawa tetangga, di cara anjing berbaring di tempat kursi tua dulu berada. <strong>2</strong> Ada yang berkata mereka berjalan di samping kita, dan ada yang berkata mereka hanyalah bentuk ruangan yang mereka tinggalkan. <strong>3</strong> Kita tersusun dari apa yang menyusun mereka, dan apa yang mereka berikan, dan apa yang tak bisa mereka berikan tetapi mereka coba.</p>
+</section>
+<section id="ch006.xhtml#section-66" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Di sisi orang yang sekarat, pertanyaannya bukan apa yang harus dikatakan; melainkan apakah harus berbicara sama sekali. <strong>2</strong> Banyak orang yang sekarat paling menginginkan hal-hal biasa: tangan yang digenggam, jendela yang dibuka, cerita tentang si anjing. <strong>3</strong> Katakan yang benar dan yang baik; sering keduanya sama. <strong>4</strong> Mintalah maaf jika perlu, dan berilah jika diminta. <strong>5</strong> Tetaplah di sana sampai napas terakhir, dan sedikit sesudahnya, karena yang telah pergi tidak akan keberatan dengan menit tambahan itu, dan kamu akan bersyukur untuknya.</p>
+</section>
+<section id="ch006.xhtml#section-67" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Memandikan jenazah berarti diizinkan melakukan satu tindakan kasih terakhir. <strong>2</strong> Airnya hangat, kainnya lembut, suaranya rendah; mereka yang hadir berbicara kepada yang meninggal seolah ia bisa mendengar, karena tak ada ruginya dan kadang menenangkan yang hidup. <strong>3</strong> Ada yang membungkus dengan kain putih, ada yang dengan kain bangsanya, ada yang hanya dengan selimut. <strong>4</strong> Masing-masing adalah jalan pulang.</p>
+</section>
+<section id="ch006.xhtml#section-68" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Ada yang kembali ke tanah, ada yang ke api, ada yang ke laut atau langit; keluarga memilih apa yang sanggup ditanggungnya. <strong>2</strong> Tak satu pun kembali yang lebih rendah. Api membebaskan kehangatan dengan cepat; tanah dengan lambat; air membawanya jauh; udara mengangkatnya ke mana-mana. <strong>3</strong> Abu di laut dan tulang di kebun hanyalah dua cara mengucapkan kalimat yang sama.</p>
+</section>
+<section id="ch006.xhtml#section-69" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Duka datang bergelombang, dan gelombang itu bukan tanda ada masalah. <strong>2</strong> Kamu tertawa di santap malam pelayatan dan menangis di supermarket; keduanya wajar. <strong>3</strong> Ulang tahun pertama, musim dingin pertama, kali pertama kamu meraih telepon: masing-masing gelombang baru.</p>
+</section>
+<section id="ch006.xhtml#section-70" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Pengunjung yang paling berguna bagi rumah duka adalah yang mencuci piring. <strong>2</strong> Yang kedua paling berguna adalah yang datang lagi di bulan kedua, ketika kiriman makanan sudah berhenti. <strong>3</strong> Sebutlah namanya. Jangan merendahkan suara untuk menyebutnya.</p>
+</section>
+<section id="ch006.xhtml#section-71" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> Tak ada penghiburan atas kematian seorang anak, dan kami tidak menawarkannya. <strong>2</strong> Kami menawarkan kehadiran: tangan di bahu di supermarket, sepiring makanan di beranda, sebuah kartu di bulan Februari saat semua orang telah lupa. <strong>3</strong> Anak itu ada di cahaya pagi dan turunnya salju pertama. Kami tidak mengaku tahu bahwa ini cukup. Kami hanya mengaku bahwa kami di sini.</p>
+</section>
+<section id="ch006.xhtml#section-72" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> Pada hari mengenang, sebuah piring disiapkan bagi setiap yang telah pergi, dan keluarga makan seakan mereka hadir. <strong>2</strong> Pai nenek dicoba dibuat dan gagal, dan semua orang berkata rasanya pas. <strong>3</strong> Kursi kosong tidak disingkirkan, dan tidak dijadikan tempat pemujaan; ia kursi di meja tempat kita duduk. <strong>4</strong> Malam berakhir dengan sebatang lilin dan mencuci piring.</p>
+</section>
+<section id="ch006.xhtml#section-73" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> Ketika kita mati, kita tidak meninggalkan dunia; kita berhenti menjadi sesuatu yang terpisah di dalamnya. <strong>2</strong> Ada yang berkata yang mati ada di tempat lain, dan ada yang berkata mereka di sini: tirai yang bernapas, daun yang bergerak, seorang perempuan di seberang ruangan tertawa dengan cara yang kita kenal. <strong>3</strong> Kita belajar melihat mereka seperti anak belajar tentang angin, dari apa yang digerakkannya.</p>
+</section>
+<section id="ch006.xhtml#section-74" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> Yang hidup dipegang erat. <strong>2</strong> Mereka yang bersyukur masih hidup tidak berkhianat kepada yang mati; mereka yang lelah hidup tidak hilang bagi yang hidup. <strong>3</strong> Ketika beban terlalu berat, ucapkan keras-keras, dan orang lain akan datang, dan beban itu akan dibagi. <strong>4</strong> Kembali datang pada jamnya sendiri, dan tak seorang pun diminta mempercepatnya; ketika datang, ia datang dalam damai.</p>
+</section>
+<section id="ch006.xhtml#section-75" class="level2">
+<h2>14</h2>
+<p><strong>1</strong> Ada yang berkata yang mati dilahirkan kembali, dalam tubuh sejenis atau lain. <strong>2</strong> Ada yang berkata mereka beristirahat sampai pagi yang dijanjikan. <strong>3</strong> Ada yang berkata mereka menyeberangi air, atau melewati pintu, atau mendaki gunung. <strong>4</strong> Ada yang berkata mereka ditimbang dahulu. <strong>5</strong> Ada yang berkata mereka tinggal dekat, dan diberi makan dan diajak bicara. <strong>6</strong> Ada yang berkata mereka menjadi langit, atau bintang, atau hewan. <strong>7</strong> Ada yang berkata diri padam seperti nyala dan kehangatan tetap tinggal. <strong>8</strong> Ada yang berkata tak ada yang diketahui.</p>
+</section>
+<section id="ch006.xhtml#section-76" class="level2">
+<h2>15</h2>
+<p><strong>1</strong> Seseorang berkata: Tak ada yang hilang. <strong>2</strong> Yang lain berkata: Anakku hilang. <strong>3</strong> Yang pertama berkata: Kehangatannya ada di ladang. <strong>4</strong> Yang lain berkata: Aku tidak membesarkan ladang. <strong>5</strong> Tak satu pun dijawab. Keduanya ditemani duduk.</p>
+</section>
+<section id="ch006.xhtml#section-77" class="level2">
+<h2>16</h2>
+<p><strong>1</strong> Seorang perempuan menguburkan suaminya di bawah pohon plum. <strong>2</strong> Musim semi berikutnya ia tak mau makan buah plum itu. <strong>3</strong> Putrinya berkata, “Ayah ada di dalamnya.” <strong>4</strong> Perempuan itu berkata, “Itulah sebabnya.” <strong>5</strong> Sang putri memakannya sendiri, dan perempuan itu menyaksikan dia makan, dan menangis, dan buah plum itu manis.</p>
+</section>
+</section>
+<section id="ch007.xhtml#buku-tujuh-kata-kata" class="level1">
+<h1 id="b7">Buku Tujuh: Kata-Kata</h1>
+<section id="ch007.xhtml#section-78" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> Setiap kalimat di sini pernah diucapkan sebelumnya: oleh seorang perempuan yang menampi padi, seorang paman mabuk di pemakaman, seorang anak yang bertanya “kenapa” sampai ruangan menjadi sunyi. <strong>2</strong> Satu-satunya klaim buku ini atas keaslian adalah susunannya. <strong>3</strong> Perlakukanlah ia, kalau begitu, seperti sepotong roti: dibagi, dirobek, diteruskan.</p>
+</section>
+<section id="ch007.xhtml#section-79" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Ada yang memegang buku di bibir dan ada yang di dada, dan ada yang membawanya tak terbaca di saku. <strong>2</strong> Jalan itu untuk dilalui, dan jalan juga tempat berhenti. <strong>3</strong> Peganglah ia seperti memegang burung kecil: cukup erat agar tidak terbang, cukup longgar agar tidak sesak.</p>
+</section>
+<section id="ch007.xhtml#section-80" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> Di bagian belakang buku ini ada halaman-halaman kosong. <strong>2</strong> Mereka bukan renungan susulan; mereka justru intinya. <strong>3</strong> Sebaris dapat ditambahkan di tempat buku ini kurang, dan sebaris dapat dicoret di tempat ia telah menyakiti. <strong>4</strong> Ada buku yang dijaga persis seperti diterima, dan ada yang dibiarkan terbuka; buku ini dibiarkan terbuka.</p>
+</section>
+<section id="ch007.xhtml#section-81" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Jika sebuah ayat tidak berbicara kepadamu, tinggalkan saja. <strong>2</strong> Kembalilah sepuluh tahun lagi; mungkin ia akan berbicara. <strong>3</strong> Baris yang tampak dingin pada usia dua puluh mungkin tampak hangat pada usia lima puluh; baris yang menghibur pada usia lima puluh mungkin tampak tipis pada usia tujuh puluh. <strong>4</strong> Buku ini sebesar pembacanya telah tumbuh.</p>
+</section>
+<section id="ch007.xhtml#section-82" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Membaca adalah mendengarkan. <strong>2</strong> Pembaca yang lambat, jari di bawah baris, berhenti ketika sebuah kata tersangkut, sedang melakukan bentuk membaca yang paling tua. <strong>3</strong> Jangan membaca untuk selesai. Bacalah untuk bersama.</p>
+</section>
+<section id="ch007.xhtml#section-83" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Hening pun sebuah bacaan. <strong>2</strong> Jeda di antara ayat adalah bagian dari ayat. <strong>3</strong> Lagu adalah kata-kata yang ditopang nada; doa, bagi mereka yang berdoa, adalah kata-kata yang ditopang hati; kita menghormati keduanya, dan sunyi tempat tak satu pun diucapkan.</p>
+</section>
+<section id="ch007.xhtml#section-84" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Perempuan tua berkata baris itu berarti keberanian; pemuda berkata kesabaran. <strong>2</strong> Masing-masing melihat sesuatu yang terlewat oleh yang lain. <strong>3</strong> Ada yang duduk bersama satu baris bertahun-tahun dan tak kunjung menetapkannya.</p>
+</section>
+<section id="ch007.xhtml#section-85" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Semua kata dipinjam dari udara dan dikembalikan kepadanya. <strong>2</strong> Kata yang diucapkan saat fajar sudah di dalam angin menjelang siang; kata yang ditulis mungkin bertahan seribu tahun dan disalahbaca sembilan ratus tahun. <strong>3</strong> Yang diucapkan dan yang ditulis adalah tetangga, dan tak satu pun memiliki jalannya.</p>
+</section>
+<section id="ch007.xhtml#section-86" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Ada yang berkata sebuah kata diberikan sekali dan dijaga persis. <strong>2</strong> Ada yang berkata kata dibuat oleh mereka yang mengucapkannya. <strong>3</strong> Ada yang berkata sebuah nama, diucapkan keras dengan napas yang tepat, berbuat lebih banyak daripada yang mengucapkannya. <strong>4</strong> Ada yang berkata hening adalah kata tertua. <strong>5</strong> Ada yang berkata buku harus dibaca, ada yang harus dilantunkan, ada yang harus dibawa. <strong>6</strong> Ada yang berkata lagu adalah doa tanpa perdebatan. <strong>7</strong> Ada yang berkata sebuah kata, setelah diucapkan, tidak mati.</p>
+</section>
+</section>
+<section id="ch008.xhtml#buku-delapan-praktik" class="level1">
+<h1 id="b8">Buku Delapan: Praktik</h1>
+<section id="ch008.xhtml#section-87" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> Sebelum makan, kita berhenti selama satu tarikan napas dan menyebut dari mana makanan datang: sebuah ladang, sebuah hujan, punggung orang asing yang membungkuk di atas sebaris tanaman. <strong>2</strong> Nama-nama, jika kita punya: petani, sopir, orang di kasir. Jika tidak, kita berkata, “semua yang ikut mengerjakan ini.” <strong>3</strong> Itu hanya sepuluh detik. Hidangan itu menjadi lain sesudahnya, seperti surat menjadi lain setelah kita tahu siapa yang menulisnya.</p>
+</section>
+<section id="ch008.xhtml#section-88" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Duduklah sepuluh napas dan biarkan pikiran melakukan apa yang dilakukannya. <strong>2</strong> Jika ia ribut, duduklah bersama yang ribut. Jika tubuh nyeri, duduklah bersama nyerinya. <strong>3</strong> Sepuluh napas menjadi dua puluh; dua puluh menjadi setengah jam yang tak kamu tahu kamu punya. <strong>4</strong> Tak ada yang dinilai, dan tak seorang pun pernah gagal di sini, hanya lupa dan memulai lagi.</p>
+</section>
+<section id="ch008.xhtml#section-89" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> Berilah sesuatu setiap hari, sekecil apa pun: sekeping uang receh, semenit waktu, prasangka baik. <strong>2</strong> Ada yang memberi tumpangan; ada yang makanan; ada yang menuliskan surat bagi tetangga yang tak bisa menulis. <strong>3</strong> Pemberian hanya kecil jika ia tidak diberikan.</p>
+</section>
+<section id="ch008.xhtml#section-90" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Bernyanyilah, sendirian dan bersama-sama. <strong>2</strong> Suara adalah alat musik milik tubuh sendiri, dan satu ruangan penuh suara tak terlatih pada satu nada termasuk pengalaman tertua tentang rasa memiliki. <strong>3</strong> Yang tak bisa menyanyi bergabung dengan mendengarkan; yang tak bisa mendengar bergabung dengan mengetuk irama dengan kaki.</p>
+</section>
+<section id="ch008.xhtml#section-91" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Berpuasalah jika kamu memilih; makanlah jika kamu memilih; keduanya bukan skor. <strong>2</strong> Puasa adalah cara mendengarkan lapar, lapar sendiri dan lapar dunia. <strong>3</strong> Pesta adalah cara mendengarkan sukacita.</p>
+</section>
+<section id="ch008.xhtml#section-92" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Kembalikan sesuatu kepada bumi: sebutir biji, kulit sisa makan malam, secangkir air yang dituang di akar pohon. <strong>2</strong> Itu ritus kecil; ada yang berkata ia membayar utang, ada yang berkata ia tak membayar apa-apa, dan biji itu masuk ke tanah bagaimanapun. <strong>3</strong> Bumi yang memberi kita makan diberi makan gilirannya, dan kita, sesaat, menjadi tangannya.</p>
+</section>
+<section id="ch008.xhtml#section-93" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Dengarkan orang asing selama dia membutuhkannya. <strong>2</strong> Jangan menyela, jangan memperbaiki, jangan melihat jam. <strong>3</strong> Katakan, “Lalu?” <strong>4</strong> Yang telah didengar berjalan lebih ringan, kadang bertahun-tahun.</p>
+</section>
+<section id="ch008.xhtml#section-94" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Membungkuk, atau menundukkan kepala, atau meletakkan tangan di dada: masing-masing berkata, <em>Aku di sini bersamamu.</em> <strong>2</strong> Cara lain adalah tangan terbuka, mata terpejam, napas pelan. <strong>3</strong> Tak satu pun lebih benar daripada yang lain. Tubuh tahu apa yang hendak dikatakan hati.</p>
+</section>
+<section id="ch008.xhtml#section-95" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Beristirahatlah ketika kamu lelah; istirahat adalah praktik. <strong>2</strong> Ladang beristirahat satu tahun dalam tujuh, dan panen sesudahnya lebih baik. <strong>3</strong> Yang tak beristirahat sedang menebas akar pekerjaannya. <strong>4</strong> Berbaringlah; dunia akan terus berjalan tanpamu, dan ini baik untuk diketahui.</p>
+</section>
+<section id="ch008.xhtml#section-96" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> Di akhir hari, katakan apa yang kamu sesali dan apa yang kamu syukuri, kepada seseorang, atau kepada keheningan, atau kepada selembar kertas. <strong>2</strong> Jangan memolesnya.</p>
+</section>
+<section id="ch008.xhtml#section-97" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> Ada yang berpraktik setiap hari, ada yang jarang, dan ada yang sama sekali tidak. <strong>2</strong> Yang tidak melakukan apa-apa sama berada di dalam keseluruhan dengan yang melakukan semuanya. <strong>3</strong> Ada yang menemukan keseluruhan dalam sebuah kidung dan ada yang dalam sebuah kunci inggris, ada yang di lorong rumah sakit dan ada yang di ladang. <strong>4</strong> Ada yang memegang setiap aturan yang diberikan, dan ada yang menyimpan satu perkakas di laci; rumahnya tetap berdiri.</p>
+</section>
+<section id="ch008.xhtml#section-98" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> Ada yang berdoa kepada seseorang, dan ada yang tidak berdoa kepada siapa pun. <strong>2</strong> Ada yang membungkuk ke arah sebuah tempat, dan ada yang membungkuk di tempatnya berdiri. <strong>3</strong> Ada yang memberi sepersepuluh, dan ada yang memberi apa yang dimiliki. <strong>4</strong> Ada yang memutar roda, menghitung untaian manik, menyalakan api, menuang secangkir. <strong>5</strong> Ada yang membasuh sebelum mulai, dan ada yang mengakhiri dengan membasuh. <strong>6</strong> Ada yang berdiam sehari, dan ada yang memegang sumpah seumur hidup. <strong>7</strong> Ada yang berkata kerja itu praktiknya. <strong>8</strong> Ada yang berkata praktik itu adalah dia yang berpraktik.</p>
+</section>
+</section>
+<section id="ch009.xhtml#buku-sembilan-waktu-yang-sakral" class="level1">
+<h1 id="b9">Buku Sembilan: Waktu yang Sakral</h1>
+<section id="ch009.xhtml#section-99" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> Hari berbalik saat fajar dan senja, dan kita menjaganya: satu napas di cahaya pertama, satu napas di cahaya terakhir. <strong>2</strong> Ayam jantan tidak diperlukan; cahaya sudah cukup. <strong>3</strong> Mereka yang bekerja malam menyambut fajar yang lain, yang datang di akhir giliran, dan ia tidak kurang sebuah pagi.</p>
+</section>
+<section id="ch009.xhtml#section-100" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Setiap hari ketujuh, atau hari pilihan sendiri, kita beristirahat. <strong>2</strong> Ladang dibiarkan bera, perkakas tergantung di pasaknya, yang tergesa melambat meski tak ingin. <strong>3</strong> Istirahat tidak diperoleh dengan menyelesaikan; ia diambil, seperti pantai mengambil pasang.</p>
+</section>
+<section id="ch009.xhtml#section-101" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> Pada hari terpendek kita berkumpul dekat dan berbagi cahaya; pada hari terpanjang kita tinggal di luar sampai gelap tiba. <strong>2</strong> Gelap itu panjang, dan kita memperpendeknya dengan bersama-sama. <strong>3</strong> Terang itu panjang, dan kita memperdalamnya dengan berjaga bersamanya.</p>
+</section>
+<section id="ch009.xhtml#section-102" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Pada hujan pertama kita keluar ke dalamnya; pada embun beku pertama kita membawa masuk apa yang kita tanam. <strong>2</strong> Hujan pertama membangunkan bau tanah, dan bau itu masuk ke ingatan; embun beku pertama menajamkan udara, dan udara itu masuk ke paru-paru. <strong>3</strong> Musim-musim adalah sekolah, dan kita selalu ada di dalamnya.</p>
+</section>
+<section id="ch009.xhtml#section-103" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Pada musim tanam kita menanam dengan nyanyian; pada panen kita makan bersama dan menyisakan sebagian di ladang. <strong>2</strong> Alur pertama digali dengan doa atau lelucon, sesuka penggalinya. <strong>3</strong> Bagian yang tersisa di ladang adalah untuk tikus, gagak, dan orang asing.</p>
+</section>
+<section id="ch009.xhtml#section-104" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Tahun baru dimulai di mana pun pergantian menempatkannya, dan kita memulainya dengan rumah bersih dan tetangga yang dimaafkan. <strong>2</strong> Utang tahun lama disebut dan, jika mungkin, dibayar; harapan tahun baru diucapkan keras kepada seorang sahabat atau kepada api. <strong>3</strong> Di antara tahun-tahun ada jeda yang tak milik kalender mana pun dan milik semuanya.</p>
+</section>
+<section id="ch009.xhtml#section-105" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Ulang tahun adalah hari ketika keseluruhan mengambil bentuk baru. <strong>2</strong> Milik anak adalah hari untuk dilihat; milik orang tua, hari untuk disyukuri. <strong>3</strong> Kue dibagi; yang berulang tahun meniup lilin, dan permohonan itu miliknya sendiri.</p>
+</section>
+<section id="ch009.xhtml#section-106" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Ada hari berkabung dan ada hari menari; kalender memuat keduanya, dan tak satu pun sia-sia. <strong>2</strong> Hari pertama berkabung bukan yang terakhir, dan tarian pertama pesta pernikahan bukan satu-satunya. <strong>3</strong> Setahun adalah meja panjang, dan setiap jenis hari terhidang di atasnya.</p>
+</section>
+<section id="ch009.xhtml#section-107" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Setiap bangsa menjaga hari-harinya sendiri; kita bergabung jika diundang, dan menyalakan lampu ketika mereka lewat. <strong>2</strong> Pesta tetangga adalah jendela ke hati tetangga. <strong>3</strong> Kita membawa sepiring hidangan, jika diminta, dan wajah yang tenang, jika tidak, dan belajar bahwa setiap bangsa telah tertawa dan menangis pada musimnya sendiri.</p>
+</section>
+<section id="ch009.xhtml#section-108" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> Ada yang berkata waktu adalah roda. <strong>2</strong> Ada yang berkata ia garis dengan awal dan akhir. <strong>3</strong> Ada yang berkata ia sungai, dan ada yang tali. <strong>4</strong> Ada yang berkata ia mimpi di dalam keseluruhan. <strong>5</strong> Ada yang berkata ada hari-hari di luar waktu, yang dikhususkan. <strong>6</strong> Ada yang berkata yang mati menyimpan kalender mereka sendiri. <strong>7</strong> Ada yang berkata setiap saat ada sekaligus, dan kita berjalan melaluinya.</p>
+</section>
+</section>
+<section id="ch010.xhtml#buku-sepuluh-tempat-yang-sakral" class="level1">
+<h1 id="b10">Buku Sepuluh: Tempat yang Sakral</h1>
+<section id="ch010.xhtml#section-109" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> Sebuah tempat menjadi sakral seperti jalan setapak menjadi jalan: karena dilalui, karena dikunjungi kembali, karena apa yang ditinggalkan di sana. <strong>2</strong> Puncak bukit berpemandangan sakral bagi si pendaki dan ruang cuci bagi ibu lima anak; keduanya tidak keliru. <strong>3</strong> Kesakralan tidak ada di tanah melainkan di perhatian yang terkumpul di sana, seperti panas di dalam batu.</p>
+</section>
+<section id="ch010.xhtml#section-110" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Beberapa tempat mengumumkan dirinya: rumpun pohon tempat udara berubah, mata air yang tetap dingin di bulan Agustus. <strong>2</strong> Yang lain ditemukan oleh duka: bangku tempat sebuah telepon diterima, tangga darurat tempat seseorang duduk dan tak bisa berdiri. <strong>3</strong> Kita belajar melewati jenis yang kedua dengan diam, seperti melewati orang asing yang sedang berdoa.</p>
+</section>
+<section id="ch010.xhtml#section-111" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> Ambang pintu adalah upacara kecil yang dilakukan tubuh tanpa disuruh: jeda, kaki yang diseka, suara yang direndahkan. <strong>2</strong> Memasuki sebuah rumah adalah memasuki sebuah kepercayaan; meninggalkannya adalah kembali ke jalan dengan berubah oleh apa yang telah disuguhkan. <strong>3</strong> Rumah yang lupa cara dimasuki menjadi bangunan.</p>
+</section>
+<section id="ch010.xhtml#section-112" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Setiap meja yang lama dipakai adalah arsip: lingkaran bekas panci panas di tahun ketiga pernikahan, goresan garpu seorang anak, cekungan tempat seorang lelaki letih pernah meletakkan kepalanya. <strong>2</strong> Yang duduk di sana duduk di antara jam-jam berlapis milik mereka yang duduk sebelumnya. <strong>3</strong> Jangan mengamplasnya terlalu licin.</p>
+</section>
+<section id="ch010.xhtml#section-113" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Seseorang membawa tiga tempat: tempat dia dilahirkan, tempat dia bahagia, tempat orang-orangnya yang mati berada. <strong>2</strong> Ketiganya tak selalu tempat yang sama, dan jarak di antaranya adalah bentuk hidup itu. <strong>3</strong> Ketika seseorang berkata “rumah,” dengarkan yang mana yang dia maksud.</p>
+</section>
+<section id="ch010.xhtml#section-114" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Pemakaman yang dikunjungi adalah taman; yang tak dikunjungi adalah perpustakaan tanpa pembaca. <strong>2</strong> Anak-anak bermain di antara batu nisan dan tidak dimarahi; yang mati, yang dulu suka keramaian, tak keberatan. <strong>3</strong> Kita menanam apa yang dicintai orang itu: serumpun mawar, pohon persik, rumput panjang untuk anjing yang dikubur di dekatnya.</p>
+</section>
+<section id="ch010.xhtml#section-115" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Ruangan yang dibangun untuk berkumpul sebaiknya cukup sederhana agar tak seorang pun merasa dikalahkan oleh hiasannya. <strong>2</strong> Jendelanya lebar, kursinya tak rata, ada bangku bagi yang tak sanggup berdiri dan sudut bagi dia yang datang hanya untuk menangis. <strong>3</strong> Kesuciannya, jika ada, adalah kesopanan susunannya.</p>
+</section>
+<section id="ch010.xhtml#section-116" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Di tempat seseorang pernah menangis, tanah mengingat dengan satu-satunya cara yang ia bisa: dengan menjadi tempat itu. <strong>2</strong> Serambi tempat kabar disampaikan, lorong rumah sakit, bahu jalan raya. <strong>3</strong> Kita melewati semua ini tanpa mengumumkannya, dan beberapa dari kita menyentuh pagarnya.</p>
+</section>
+<section id="ch010.xhtml#section-117" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Di mana pun orang duduk dan saling mendengarkan, sebuah tempat sakral terbentuk, dan ia bertahan tepat selama mendengarkan itu. <strong>2</strong> Ranjang rumah sakit dengan tangan di atas seprai adalah tempat seperti itu; begitu pula mobil terparkir dengan mesin mati; begitu pula undakan belakang dengan dua cangkir sesuatu yang mendingin. <strong>3</strong> Ini tak bisa dibangun atau dibeli, hanya ditempati.</p>
+</section>
+<section id="ch010.xhtml#section-118" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> Ada yang berkata gunung adalah tempat duduk. <strong>2</strong> Ada yang berkata sungai adalah jalan ke dunia berikutnya. <strong>3</strong> Ada yang berkata pohon adalah pintu. <strong>4</strong> Ada yang berkata rumah adalah tubuh dan tubuh adalah rumah. <strong>5</strong> Ada yang berkata kota tertentu adalah pusat dunia, dan ada yang berkata pusatnya di mana pun kamu berdiri. <strong>6</strong> Ada yang berkata batu mengingat. <strong>7</strong> Ada yang berkata sebuah tempat disucikan oleh apa yang dilakukan di dalamnya, dan ada yang oleh apa yang pernah dilakukan di sana.</p>
+</section>
+</section>
+<section id="ch011.xhtml#buku-sebelas-peralihan" class="level1">
+<h1 id="b11">Buku Sebelas: Peralihan</h1>
+<section id="ch011.xhtml#section-119" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> Bayi baru lahir dibawa melewati pintu ke dunia yang telah ditata, dalam beberapa pekan panik dan kasih, untuk menyambutnya. <strong>2</strong> Sang ibu kelelahan, sang ayah ketakutan, kakak-kakaknya cemburu; sang nenek mengambil alih sup. <strong>3</strong> Air di dahi, sebuah nama diucapkan keras, dan seisi ruangan sepakat membantu.</p>
+</section>
+<section id="ch011.xhtml#section-120" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Nama dipilih dengan lebih banyak harapan daripada pengetahuan, dan anak akan tumbuh ke dalamnya atau keluar darinya. <strong>2</strong> Ada yang dinamai menurut yang mati, untuk memberi mereka kehidupan kedua; ada yang menurut musim, sungai, ambisi yang gagal. <strong>3</strong> Nama diserahkan dengan dua tangan dan sedikit takut, dan anak itu, pada usia enam tahun, akan punya pendapat.</p>
+</section>
+<section id="ch011.xhtml#section-121" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> Pada usia pertanyaan, jawaban jujur sering kali “aku tidak tahu,” dan anak-anak lebih sanggup menanggungnya daripada orang dewasa. <strong>2</strong> Ke mana kita pergi saat mati? Mengapa bulan mengikuti mobil? <strong>3</strong> Jawablah setinggi anak itu, dengan kata paling sedikit yang benar, dan biarkan hening sesudahnya bekerja.</p>
+</section>
+<section id="ch011.xhtml#section-122" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Di ambang kedewasaan, kaum muda dikirim sendirian ke dalam gelap dengan sebuah cerita dan sebuah lampu, dan disambut sepulangnya dengan sebuah hidangan. <strong>2</strong> Ujian itu kurang penting daripada kepulangannya. <strong>3</strong> Mereka kembali berubah dengan cara yang tak bisa dijelaskan, dan para tetua tak meminta mereka menjelaskan.</p>
+</section>
+<section id="ch011.xhtml#section-123" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Dua orang yang menyatukan hidup menyatakan niatnya di hadapan mereka yang mengasihi, dan yang lain berkata, “Kami akan membantu.” <strong>2</strong> Cincin, tali, cawan, roti yang dibagi: setiap bangsa punya sendiri, dan masing-masing adalah cara berkata bahwa dua hal telah menjadi satu hal berkepala dua. <strong>3</strong> Jika harus diurai, ia diurai secara terbuka, dengan kehati-hatian yang sama seperti ketika dibuat.</p>
+</section>
+<section id="ch011.xhtml#section-124" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Anak yang lahir dari orang lain sama miliknya dengan anak kita sendiri jika kita membuka pintu pada jam yang tepat. <strong>2</strong> Adopsi, pengasuhan, anak lelaki tetangga yang makan bersama kami selama sepuluh tahun: keluarga adalah orang-orang yang hadir. <strong>3</strong> Ia menerima cangkokan seiring tumbuh, dan buah dari cabang cangkokan sering yang paling manis.</p>
+</section>
+<section id="ch011.xhtml#section-125" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Perpisahan adalah peralihan: putri yang pergi ke negeri lain, sahabat lama yang pindah, ayah yang pensiun dari hidup yang tak dipilihnya. <strong>2</strong> Kita menyebut apa yang akan dirindukan dan apa yang akan dibawa, terus terang, dan makan sesuatu bersama. <strong>3</strong> Perpisahan tanpa hidangan adalah kebocoran.</p>
+</section>
+<section id="ch011.xhtml#section-126" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Tahun-tahun membawa kelambanan, dan kelambanan membawa semacam penglihatan yang tak dapat dibeli kecepatan. <strong>2</strong> Cerita orang tua bukan diulang melainkan didalamkan, dan cerita yang sama dituturkan pada usia sembilan puluh adalah cerita yang berbeda dari yang dituturkan pada usia tujuh puluh. <strong>3</strong> Mintalah orang tua itu menuturkannya lagi, dan dengarkan apa yang berubah.</p>
+</section>
+<section id="ch011.xhtml#section-127" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Pada setiap peralihan, mereka yang mengasihi kita berkata: dulu kamu ini, sekarang kamu itu, kami di sini. <strong>2</strong> Pengucapan itu adalah upacaranya. <strong>3</strong> Dilihat pada sebuah tikungan berarti dibawa sedikit melewatinya, dan hanya itulah yang pernah menjadi arti semua ritual.</p>
+</section>
+<section id="ch011.xhtml#section-128" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> Peralihan terakhir adalah kembali, dan ia ditempuh bersama semua yang telah pergi lebih dahulu. <strong>2</strong> Yang sedang sekarat diberi kursi pertama, tempat duduk di dekat jendela, bantal yang empuk. <strong>3</strong> Tak seorang pun diminta berani. Mereka hanya ditanya apakah ada yang bisa kami lakukan untuk memudahkannya.</p>
+</section>
+<section id="ch011.xhtml#section-129" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> Ada yang berkata seorang anak tiba dari suatu tempat, dan disambut kembali. <strong>2</strong> Ada yang berkata anak adalah leluhur yang kembali. <strong>3</strong> Ada yang berkata sebuah nama harus disembunyikan untuk sementara. <strong>4</strong> Ada yang berkata ritus menjadikan seorang lelaki atau perempuan, dan ada yang berkata ia hanya menunjukkannya. <strong>5</strong> Ada yang berkata pernikahan adalah simpul, ada yang sungai, ada yang jalan. <strong>6</strong> Ada yang berkata usia tua adalah panen. <strong>7</strong> Ada yang berkata seseorang dilahirkan berkali-kali dalam satu hidup.</p>
+</section>
+</section>
+<section id="ch012.xhtml#buku-dua-belas-komunitas-dan-bimbingan" class="level1">
+<h1 id="b12">Buku Dua Belas: Komunitas dan Bimbingan</h1>
+<section id="ch012.xhtml#section-130" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> Lingkaran adalah tempat bertemu tertua yang kita kenal: cincin di sekeliling api, lapangan desa, lingkaran kursi di ruang bawah tanah gereja pukul dua siang. <strong>2</strong> Ada lingkaran yang menyediakan satu kursi bagi yang memimpin, dan ada yang tidak; masing-masing punya cara sendiri untuk didengar. <strong>3</strong> Siapa pun yang pernah duduk di salah satunya tahu apa yang diajarkan oleh tata duduk.</p>
+</section>
+<section id="ch012.xhtml#section-131" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Dalam lingkaran, batu berpindah tangan. <strong>2</strong> Siapa yang memegangnya berbicara tanpa disela; yang lain mendengarkan tanpa menyusun jawaban. <strong>3</strong> Ini disiplin yang lebih sulit daripada kedengarannya, dan kebanyakan dari kita lebih mahir melakukannya pada jam ketiga daripada jam pertama.</p>
+</section>
+<section id="ch012.xhtml#section-132" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> Seorang tetua bukanlah orang yang tua, melainkan orang yang telah memperhatikan, dan telah kehilangan kebutuhan untuk selalu benar. <strong>2</strong> Kamu mengenali mereka dari pertanyaan yang mereka ajukan, dari panjang diam mereka, dan dari perasaan, sesudahnya, bahwa kamu telah mengatakan sesuatu yang lebih bijak daripada yang kamu maksudkan. <strong>3</strong> Mereka langka, dan ditemukan di tempat tak terduga: seorang perawat malam, seorang sopir bus pensiunan, seorang perempuan yang menjalankan binatu selama empat puluh tahun.</p>
+</section>
+<section id="ch012.xhtml#section-133" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Ada yang berkata wewenang diberikan dari atas dan ada yang berkata ia dipinjamkan dari bawah; dalam kedua hal ia dikenakan seperti mantel pada perjalanan yang dingin. <strong>2</strong> Mantel itu diteruskan dengan terima kasih, atau dikembalikan dengan terima kasih, atau disimpan, dan setiap bangsa punya caranya. <strong>3</strong> Lingkaran beringatan panjang dan bersabar pendek terhadap dia yang lupa bagi siapa mantel itu dibuat.</p>
+</section>
+<section id="ch012.xhtml#section-134" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Kita memutuskan dengan lambat, karena keputusan yang penting adalah yang orang hidupi di dalamnya. <strong>2</strong> Yang tak setuju adalah anggota lingkaran yang paling berguna, karena dialah satu-satunya yang melihat sisi lain bukit. <strong>3</strong> Ketika semuanya telah dikatakan, ada hening, dan dalam hening itu ruangan mengetahui apa yang dipikirkannya.</p>
+</section>
+<section id="ch012.xhtml#section-135" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Guru yang baik berkata: inilah jalan yang kutempuh; aku tak tahu jalanmu. <strong>2</strong> Mereka tampak senang ketika seorang murid melampaui mereka. <strong>3</strong> Ada yang mengajar agar murid membawa ajaran itu tanpa berubah, dan ada yang agar murid menjawab balik; keduanya mengajar.</p>
+</section>
+<section id="ch012.xhtml#section-136" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Orang asing tiba membawa satu-satunya hal yang tak dimiliki desa: sebuah luar. <strong>2</strong> Mereka tahu apa yang dilakukan di tempat lain, yang sering kali sesuatu yang desa lupa mungkin dilakukan. <strong>3</strong> Maka kita memberi mereka makan lebih dahulu, mendengarkan kedua, dan berdebat, jika harus, ketiga.</p>
+</section>
+<section id="ch012.xhtml#section-137" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Perselisihan adalah kesempatan bagi lingkaran untuk mempraktikkan apa yang diyakininya. <strong>2</strong> Kedua pihak berbicara; masing-masing dirumuskan ulang sampai puas sebelum yang lain menjawab; lingkaran mengajukan pertanyaan dan tidak memutuskan. <strong>3</strong> Perbaikan, ketika datang, bukanlah vonis melainkan kesepakatan, dan ia lebih baik karena milik mereka sendiri.</p>
+</section>
+<section id="ch012.xhtml#section-138" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Setiap masyarakat dinilai dari cara ia memperlakukan yang sakit, yang miskin, yang muda, yang tua, orang asing, dan yang mati. <strong>2</strong> Kita menjenguk yang sakit, memberi makan yang lapar, menampung orang asing, membayar pekerja dengan adil, dan menguburkan yang mati dengan hormat. <strong>3</strong> Tak satu pun ini amal. Ini harga menjadi bagian dari spesies yang bertahan hidup dengan berbagi.</p>
+</section>
+<section id="ch012.xhtml#section-139" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> Anak-anak desa semuanya dalam arti tertentu milik kita: yang jatuh dekat pintu kita, yang mengembara, yang duduk di tepi pesta ulang tahun menatap lantai. <strong>2</strong> Kita tak perlu diminta. <strong>3</strong> Kita hanya perlu memperhatikan, lalu duduk di samping mereka, dan tidak mengatakan apa pun yang penting.</p>
+</section>
+<section id="ch012.xhtml#section-140" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> Yang telah berbuat kerugian diminta memperbaikinya, dan disambut kembali ketika perbaikan itu dilakukan. <strong>2</strong> Jalan kembali diaspal oleh mereka yang tinggal, oleh kesabaran mereka dan penolakan mereka menganggap saat terburuk sebagai seluruh pribadi. <strong>3</strong> Itulah hal tersulit dan paling beradab yang dilakukan sebuah komunitas.</p>
+</section>
+<section id="ch012.xhtml#section-141" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> Ada orang yang tak bisa hidup dalam lingkaran, dan mereka tidak dibenci karenanya. <strong>2</strong> Sang pertapa, sang pengembara, dia yang tinggal di perbukitan: mereka pun bagian dari desa, seperti mercusuar bagian dari pantai. <strong>3</strong> Kita membiarkan jalan menuju lingkaran terbuka, dan sebuah roti di tepi hutan, dan tidak meminta apa-apa.</p>
+</section>
+<section id="ch012.xhtml#section-142" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> Ada yang berkata sebuah bangsa adalah keluarga, dan yang matinya ikut duduk dalam rapat. <strong>2</strong> Ada yang berkata yang memimpin telah dipilih sebelum mereka lahir. <strong>3</strong> Ada yang berkata sebuah komunitas dihimpun oleh sebuah panggilan. <strong>4</strong> Ada yang berkata para tetua berbicara lebih dahulu, dan ada yang berkata terakhir. <strong>5</strong> Ada yang berkata orang asing mungkin membawa sesuatu yang dikirim. <strong>6</strong> Ada yang berkata sebuah hukum diturunkan, dan ada yang berkata ia dihaluskan oleh pemakaian. <strong>7</strong> Ada yang berkata lingkaran mencakup mereka yang belum lahir.</p>
+</section>
+</section>
+<section id="ch013.xhtml#buku-tiga-belas-makanan-tubuh-dan-pakaian" class="level1">
+<h1 id="b13">Buku Tiga Belas: Makanan, Tubuh, dan Pakaian</h1>
+<section id="ch013.xhtml#section-143" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> Makan adalah mengambil bagian, selama dua puluh menit, dalam jaring yang menjangkau ladang yang tak akan pernah kamu lihat. <strong>2</strong> Petani, pemetik, pengemas, sopir truk, pedagang kelontong, juru masak: masing-masing menambahkan sedikit dirinya pada roti. <strong>3</strong> Kita berhenti satu napas sebelum suapan pertama, bukan untuk menyanjung siapa pun melainkan agar tepat.</p>
+</section>
+<section id="ch013.xhtml#section-144" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Ada orang yang makan apa yang tak dimakan orang lain, karena hati nurani, kesehatan, adat, atau selera. <strong>2</strong> Kita makan di meja yang sama tanpa komentar; maksud sebuah meja bukan untuk sepakat melainkan untuk berdekatan. <strong>3</strong> Mengejek makanan orang lain berarti mengejek ibunya, dan bersopan santun buruk dalam bahasa yang sangat tua.</p>
+</section>
+<section id="ch013.xhtml#section-145" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> Tubuh adalah taman berisi puluhan triliun sel, dan tak satu pun pernah mendengar tentangmu. <strong>2</strong> Ia perlu diberi makan, dibasuh, digerakkan, diistirahatkan, dan didengarkan, bukan sebagai pelayan melainkan sebagai rekan jangka panjang. <strong>3</strong> Ketika ia mengeluh, ia tidak mengkhianatimu. Ia sedang memberitahumu sesuatu, dengan satu-satunya suara yang dimilikinya.</p>
+</section>
+<section id="ch013.xhtml#section-146" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Membasuh lebih dari kebersihan: ia tindakan kecil harian yang dengannya seseorang menandai berakhirnya satu hal dan mulainya hal lain. <strong>2</strong> Tangan yang dibasuh sebelum makan, wajah yang dibasuh sesudah duka, tubuh yang dibasuh di akhir hidup. <strong>3</strong> Membasuh orang lain, yang sakit atau yang sangat muda atau yang mati, adalah salah satu kesopanan tertua dan paling akrab, dan kita tidak terburu-buru melakukannya.</p>
+</section>
+<section id="ch013.xhtml#section-147" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Pakaian adalah bahasa yang diucapkan sebelum siapa pun membuka mulut. <strong>2</strong> Setelan jahitan, celemek kerja, hitam pelayatan, gaun yang diwariskan dari saudari ke saudari: masing-masing mengatakan sesuatu tentang acara dan tentang orangnya. <strong>3</strong> Kita berpakaian untuk menghormati hari yang kita jalani, dan kita tahu bedanya duka dan perayaan, dan kadang kita melanggar aturan itu dengan sengaja.</p>
+</section>
+<section id="ch013.xhtml#section-148" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Setiap bangsa telah menjadikan pakaiannya ungkapan cintanya pada dirinya sendiri: tenunan, warna, pola yang diwariskan. <strong>2</strong> Mengaguminya adalah bentuk persahabatan; mengejeknya adalah kekerasan kecil. <strong>3</strong> Kita tak perlu memahaminya. Kita hanya perlu bersyukur bahwa seseorang begitu peduli pada benang.</p>
+</section>
+<section id="ch013.xhtml#section-149" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Tubuh tidaklah memalukan, dan privasinya adalah bentuk hormat, bagi diri sendiri dan bagi orang lain. <strong>2</strong> Tak ada tubuh ideal, hanya tubuh yang dimiliki, dan kebaikan yang ditunjukkan kepadanya. <strong>3</strong> Pekerjaan panjang seumur hidup adalah berdamai dengan dia yang tak bisa kamu tinggalkan.</p>
+</section>
+<section id="ch013.xhtml#section-150" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Puasa yang dipilih dengan bebas mengajarkan apa itu lapar, dan apa yang kita utangkan kepada mereka yang tak memilihnya. <strong>2</strong> Pesta yang diberikan dengan bebas mengajarkan apa itu kelimpahan, dan bahwa ia dimaksudkan untuk dibagi. <strong>3</strong> Tak satu pun lebih berbudi daripada yang lain; yang bijak menyimpan keduanya, dan tahu mana yang diperlukan.</p>
+</section>
+<section id="ch013.xhtml#section-151" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Sentuhan adalah bahasa pertama, dan yang terakhir. <strong>2</strong> Tangan di bahu, pipi di dahi, lengan di sekeliling bahu mereka yang berduka. <strong>3</strong> Bertanya sebelum menyentuh bukan dingin; itu kesopanan orang yang tahu bahwa sentuhan adalah hadiah yang tak bisa dipaksakan.</p>
+</section>
+<section id="ch013.xhtml#section-152" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> Usia mengaus tubuh seperti pemakaian mengaus perkakas, sampai ia pas di tangan hidupnya. <strong>2</strong> Wajah menyimpan peta ke mana pun ia pernah pergi: cuaca, duka, tawa. <strong>3</strong> Menjadi tua adalah diberi pandangan panjang, dan belajar betapa sedikit darinya yang dapat diwariskan.</p>
+</section>
+<section id="ch013.xhtml#section-153" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> Apa yang dimakan, dipakai, dan dilakukan seseorang dengan tubuhnya dipelajari di pangkuan mereka yang mengasihinya. <strong>2</strong> Sup nenek, cara paman membungkus hadiah, kebiasaan tetangga menjemur cucian pada hari Sabtu. <strong>3</strong> Kita mengambil yang berguna, meninggalkan yang tidak, dan tak menjadi miskin karena keduanya.</p>
+</section>
+<section id="ch013.xhtml#section-154" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> Ada yang berkata tubuh adalah kuil, dan ada yang berkata mantel pinjaman. <strong>2</strong> Ada yang berkata ia rumah singgah bagi yang akan pergi. <strong>3</strong> Ada yang berkata ia harus diberi makan sedikit, dan ada yang berkata diberi makan baik-baik. <strong>4</strong> Ada yang berkata makanan tertentu bersih dan tertentu tidak, dan ada yang berkata semua bersih. <strong>5</strong> Ada yang menutup kepala, ada yang wajah, ada yang bahu, dan ada yang tak mengenakan apa pun selain cat. <strong>6</strong> Ada yang berkata rambut adalah catatan, dan ada yang berkata ia dipotong dalam duka. <strong>7</strong> Ada yang berkata tubuh akan dibangkitkan, dan ada yang berkata ia akan diletakkan.</p>
+</section>
+<section id="ch013.xhtml#section-155" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> Tubuhku bukan sungai yang setuju mengambil sebuah bentuk. <strong>2</strong> Tubuhku rumah dengan atap rusak, dan aku lelah memperbaikinya. <strong>3</strong> Jangan katakan itu keseluruhan dalam bentuk satu orang. <strong>4</strong> Katakan jam berapa sekarang, dan tinggallah.</p>
+</section>
+</section>
+<section id="ch014.xhtml#buku-empat-belas-alam-dan-makhluk-lain" class="level1">
+<h1 id="b14">Buku Empat Belas: Alam dan Makhluk Lain</h1>
+<section id="ch014.xhtml#section-156" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> Rusa, pohon ek, dan anak kecil adalah sepupu, berbeda dalam cara mereka memecahkan masalah tetap hidup. <strong>2</strong> Anak itu tertawa kepada anjing, dan anjing, dengan caranya sebagai anjing, tertawa balik; tak satu pun pernah membaca buku tentangnya. <strong>3</strong> Pohon ek yang sangat tua telah melampaui seratus anjing dan selusin keluarga, dan punya pendapat yang tak bisa dibagikannya.</p>
+</section>
+<section id="ch014.xhtml#section-157" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Gagak memecahkan teka-teki. Gurita membuka toples. Gajah berdiri di tulang-belulang kaumnya yang mati. <strong>2</strong> Kita lambat mengakui apa yang seharusnya sudah kita ketahui: bahwa kita satu dari banyak pikiran, bukan satu-satunya. <strong>3</strong> Alam liar adalah percakapan panjang tempat kita pendatang yang terlambat, dan yang sopan adalah mendengarkan dahulu.</p>
+</section>
+<section id="ch014.xhtml#section-158" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> Menanam pohon adalah membuat janji kepada seseorang yang tak akan kamu temui. <strong>2</strong> Para penanam tahu mereka tak akan duduk di keteduhannya; mereka menanam juga, dan itulah bentuk iman yang tertua. <strong>3</strong> Keteduhan itu, ketika datang, tak bernama, dan di situlah intinya.</p>
+</section>
+<section id="ch014.xhtml#section-159" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Ambillah yang kamu butuhkan dan sisakan indukan. <strong>2</strong> Yang mengambil ikan terakhir telah mengambil juga sepuluh tahun penangkapan berikutnya, dan makan malam cucu-cucunya. <strong>3</strong> Ini hitungan, bukan perasaan, dan tanah tidak berdebat.</p>
+</section>
+<section id="ch014.xhtml#section-160" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Tanah yang kita injak tersusun dari yang mati pada musim-musim lain: daun, tulang, hutan, kebun yang terlupakan. <strong>2</strong> Berdiri di atasnya adalah berdiri di atas perpustakaan leluhur. <strong>3</strong> Kita meminta izin menggali dalam dan berterima kasih ketika selesai, apa pun yang kita sebut itu.</p>
+</section>
+<section id="ch014.xhtml#section-161" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Lebah, cacing, dan jamur melakukan pekerjaan yang membuat segala hal lain mungkin, dan tak seorang pun pernah berterima kasih kepada mereka dengan layak. <strong>2</strong> Segenggam tanah memuat lebih banyak makhluk hidup daripada jumlah manusia di bumi. <strong>3</strong> Memberi makan tanah adalah bentuk cinta paling praktis yang kita kenal.</p>
+</section>
+<section id="ch014.xhtml#section-162" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Merusak alam liar berarti merugikan mereka yang datang sesudah kita, yang akan mewarisi apa yang tersisa. <strong>2</strong> Hutan yang butuh seribu tahun dapat dihapus dalam satu sore. <strong>3</strong> Kita menjaga hutan tua seperti kita menjaga kisah tua, sebab sekali hilang, keduanya tak dapat dituturkan sama lagi.</p>
+</section>
+<section id="ch014.xhtml#section-163" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Menyebut nama burung, pohon, dan bintang di tempatmu sendiri adalah menjadi tetangga. <strong>2</strong> Burung pagi adalah suara tetangga; pohon di sudut jalan, wajah tetangga; bintang yang datang tiap malam pada jam yang sama, lampu beranda tetangga. <strong>3</strong> Kamu tak bisa mencintai apa yang tak bisa kamu namai, dan tak bisa melindungi apa yang tak kamu cintai.</p>
+</section>
+<section id="ch014.xhtml#section-164" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Pemburu berterima kasih kepada yang diburu, tukang kebun kepada tanah, juru masak kepada petani, petani kepada hujan. <strong>2</strong> Ada yang menyebutnya ketepatan dan ada yang menyebutnya doa. <strong>3</strong> Itu cicilan pertama atas utang yang tak bisa dilunasi, dan satu-satunya yang diminta dari kita.</p>
+</section>
+<section id="ch014.xhtml#section-165" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> Kita bukan tamu di bumi ini, yang mengambil lalu pergi, dan bukan pemilik, yang menggenggam dan memagari. <strong>2</strong> Kita sanak, yang memberi dan menerima, tinggal dan pergi, dilahirkan dan dikuburkan di tanah yang sama. <strong>3</strong> Menjadi sanak adalah satu-satunya jalan untuk sungguh-sungguh memiliki tempat.</p>
+</section>
+<section id="ch014.xhtml#section-166" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> Ada yang berkata hewan ada di sini lebih dahulu dan akan ada terakhir. <strong>2</strong> Ada yang berkata setiap makhluk punya roh, dan ada yang berkata setiap batu, dan ada yang berkata angin. <strong>3</strong> Ada yang berkata seseorang mungkin kembali sebagai binatang atau pohon. <strong>4</strong> Ada yang berkata hewan tertentu membawa pesan. <strong>5</strong> Ada yang berkata bumi adalah ibu, ada yang tubuh, ada yang taman untuk dijaga. <strong>6</strong> Ada yang berkata bumi dibentuk oleh seorang raksasa, atau seekor burung, atau punggung seekor kura-kura. <strong>7</strong> Ada yang berkata bintang adalah api, dan ada yang berkata mereka leluhur.</p>
+</section>
+</section>
+<section id="ch015.xhtml#buku-lima-belas-takjub" class="level1">
+<h1 id="b15">Buku Lima Belas: Takjub</h1>
+<section id="ch015.xhtml#section-167" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> Salju pertama tahun ini, dilihat dari jendela pukul enam pagi, adalah keajaiban, dan sebagian besar orang dewasa telah melatih diri untuk tak memperhatikannya. <strong>2</strong> Tawa pertama bayi, pandangan pertama pada laut, sebuah bahasa yang tiba-tiba dimengerti: takjub adalah kejutan bertemu dunia sebagai sesuatu yang baru. <strong>3</strong> Ia tidak dikhususkan bagi yang luar biasa, hanya bagi yang memperhatikan.</p>
+</section>
+<section id="ch015.xhtml#section-168" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Biji menjadi pohon, dan tak seorang pun pernah menyaksikannya terjadi, dan semua orang pernah. <strong>2</strong> Biji ek tahu caranya, tanpa pelajaran. Telur tahu caranya, tanpa pernah melihat burung. Anak belajar bicara tanpa ada yang menjelaskan tata bahasa. <strong>3</strong> Ada pengetahuan yang lebih tua daripada belajar, dan kita tersusun darinya.</p>
+</section>
+<section id="ch015.xhtml#section-169" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> Ada hal yang tak dapat dijelaskan siapa pun, dan hal yang dikira semua orang dapat dijelaskan, dan takjub tinggal di antara keduanya. <strong>2</strong> Sang astronom belajar betapa sedikit yang diketahui; sang ahli tumbuhan, membungkuk di atas selembar daun, belajar hal yang sama. <strong>3</strong> Kerendahan hati bukan lawan pengetahuan melainkan buahnya yang paling dapat diandalkan.</p>
+</section>
+<section id="ch015.xhtml#section-170" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Ada orang yang melihat apa yang tak dilihat orang lain: penyair, pemimpi, anak aneh di tepi kelompok. <strong>2</strong> Kita tidak memahkotai mereka dan tidak pula menyingkirkan mereka. <strong>3</strong> Kita bertanya apa yang mereka lihat, mengambil yang berguna, dan menyerahkan sisanya kepada waktu.</p>
+</section>
+<section id="ch015.xhtml#section-171" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Mimpi adalah negeri yang kita kunjungi malam hari dan tak sepenuhnya bisa dilukiskan pada pagi hari. <strong>2</strong> Ia mungkin latihan, ingatan, teka-teki, lelucon; si pemimpi paling tahu bagaimana rasanya. <strong>3</strong> Kita menawarkan tafsir sebagai dugaan dan menariknya kembali tanpa tersinggung.</p>
+</section>
+<section id="ch015.xhtml#section-172" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Ada keajaiban yang menakutkan, dan yang ketakutan tidaklah lemah. <strong>2</strong> Keajaiban yang mengasingkan atau mendorong untuk melukai harus dibawa kepada seseorang yang mengasihi kita dan ditimbang bersama, sebab bobot keajaiban yang dibagi lebih kecil daripada yang dipikul sendirian. <strong>3</strong> Suara yang berkata “lukai seseorang” atau “tinggalkan semua orang” bukanlah keajaiban, dari mana pun asalnya; itu seruan minta tolong.</p>
+</section>
+<section id="ch015.xhtml#section-173" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Kita tak tahu apa yang akan datang, dan kita selalu tahu ini, dan kita tetap membangun hidup kita. <strong>2</strong> Pelaut membaca langit dan langit tak selalu menjawab; petani membaca tanah dan tanah tak selalu menjawab. <strong>3</strong> Kita menjaga atap tetap diperbaiki, lumbung tetap terisi, sahabat tetap dekat, dan menyongsong apa yang datang, bersama-sama.</p>
+</section>
+<section id="ch015.xhtml#section-174" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Keajaiban adalah yang biasa dilihat dengan jernih: secangkir teh, satu jam yang tenang, wajah sahabat di ambang pintu. <strong>2</strong> Mereka yang telah belajar melihat tak pernah bosan, dan jarang kejam. <strong>3</strong> Bagi yang belum, undangan itu tetap berlaku: lihatlah lagi.</p>
+</section>
+<section id="ch015.xhtml#section-175" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Kita menyisakan sebuah ruang kecil bagi apa yang tak kita ketahui, dan tak seorang pun dipaksa masuk, dan tak seorang pun dilarang. <strong>2</strong> Ia memuat pertanyaan yang tak berjawab, duka yang tak berujung, sukacita yang tak beralasan. <strong>3</strong> Kita masuk kadang-kadang, dan keluar lebih ringan, dan tak berkata apa-apa kepada siapa pun, dan sedikit lebih baik hati.</p>
+</section>
+<section id="ch015.xhtml#section-176" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> Ada yang berkata ada makhluk di samping kita yang tak dapat kita lihat. <strong>2</strong> Ada yang berkata ada utusan, ada roh, ada yang hanya angin. <strong>3</strong> Ada yang berkata mimpi membawa pesan, dan ada yang berkata ia membawa sisa-sisa hari. <strong>4</strong> Ada yang berkata penglihatan datang kepada mereka yang berpuasa. <strong>5</strong> Ada yang berkata sebuah tanda diberikan, dan ada yang berkata tanda hanyalah apa yang kita perhatikan. <strong>6</strong> Ada yang berkata mukjizat adalah tatanan yang ditangguhkan, dan ada yang berkata ia tatanan yang dilihat dengan jernih. <strong>7</strong> Ada yang berkata sebuah suara berbicara kepada mereka, dan ada yang berkata mereka berbicara kepada sebuah keheningan.</p>
+</section>
+</section>
+<section id="ch016.xhtml#buku-enam-belas-saling-bertemu" class="level1">
+<h1 id="b16">Buku Enam Belas: Saling Bertemu</h1>
+<section id="ch016.xhtml#section-177" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> Seorang asing tiba, dan pertanyaan pertama bukan “Kamu percaya apa?” melainkan “Sudah makan?” <strong>2</strong> Meja diperpanjang, kursi digeser, sebuah bahasa ditemukan, dengan menunjuk bila perlu. <strong>3</strong> Pada percakapan ketiga kita membicarakan segalanya, dan lupa bahwa kita pernah asing.</p>
+</section>
+<section id="ch016.xhtml#section-178" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Tak seorang pun diminta meninggalkan apa yang dibawanya di pintu. <strong>2</strong> Seseorang lebih dari keyakinannya dan keyakinannya lebih dari sebuah kata; tanyakan apa artinya baginya, dan dengarkan jawabannya sampai habis. <strong>3</strong> Apa yang dibawa dengan cinta tidak dibawa dengan ringan, dan tak patut diminta untuk diletakkan.</p>
+</section>
+<section id="ch016.xhtml#section-179" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> Ada tempat di meja bagi yang berdoa dan yang duduk dalam hening, yang bernyanyi dan yang mendengarkan. <strong>2</strong> Ada tempat bagi yang tak pernah bertanya-tanya dan yang bertanya-tanya seumur hidup. <strong>3</strong> Ada tempat bagi yang membangun dan yang merusak, jika si perusak bersedia belajar memperbaiki. Selalu ada tempat untuk satu lagi.</p>
+</section>
+<section id="ch016.xhtml#section-180" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Ketika orang berselisih, kita meminta masing-masing mengatakan bagaimana tampaknya dari tempat mereka berdiri, dan kita tidak menjawab sampai kita dapat mengulanginya hingga mereka puas. <strong>2</strong> Ini lebih sulit daripada kedengarannya, dan ia mengubah lebih banyak daripada perdebatan. <strong>3</strong> Perselisihan mungkin tetap ada, dan ia tidak lagi menjadi tembok.</p>
+</section>
+<section id="ch016.xhtml#section-181" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Yang sakral bagi satu orang tidak berkurang karena berbeda dari yang sakral bagi orang lain. <strong>2</strong> Katedral satu orang adalah tambang batu orang lain, dan batunya sama; roti satu bangsa adalah kue bangsa lain dan persembahan bangsa ketiga. <strong>3</strong> Tanyakan apa artinya bagi yang memegangnya sebelum mengatakan apa artinya bagimu.</p>
+</section>
+<section id="ch016.xhtml#section-182" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Kita tidak meminjam apa yang tak ditawarkan, dan tidak mengejek apa yang tak kita pahami. <strong>2</strong> Lagu milik sebuah keluarga diminta; pakaian milik sebuah bangsa dikenakan hanya bila ditawarkan. <strong>3</strong> Lelucon atas beban orang lain adalah batu yang dijatuhkan ke sumur bersama.</p>
+</section>
+<section id="ch016.xhtml#section-183" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Ketika ditanya apa yang kita pegang, kita mengatakannya apa adanya, dan tidak memaksakannya kepada siapa pun. <strong>2</strong> Kita berkata “Beginilah tampaknya dari sini,” bukan “Kamu harus melihatnya seperti aku.” <strong>3</strong> Yang mendengarkan boleh mengambil apa yang dia mau, dan kita tidak terluka bila dia meninggalkan sisanya.</p>
+</section>
+<section id="ch016.xhtml#section-184" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Pertengkaran antarbangsa adalah luka panjang, dan ia ditutup dari kedua sisi atau tidak sama sekali. <strong>2</strong> Kita membawa air ke kedua pihak dan duduk di tengah, yang merupakan tempat duduk paling tak nyaman di rumah. <strong>3</strong> Damai adalah pertukangan panjang, dan para pembangunnya mungkin tak pernah bertemu.</p>
+</section>
+<section id="ch016.xhtml#section-185" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Kita menyimpan dendam lama dengan ringan, seperti menyimpan perkakas lama: kita tahu di mana ia tergantung, dan memakainya hanya untuk mengingat. <strong>2</strong> Dendam yang digenggam erat membuat tangan kram; dendam yang diletakkan menjadi cerita, dan cerita menjadi pelajaran, dan pelajaran menjadi awal sebuah damai. <strong>3</strong> Pekerjaan ini lambat, dan dimulai dengan seseorang memutuskan, sekali, menjadi yang pertama meletakkan dendam.</p>
+</section>
+<section id="ch016.xhtml#section-186" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> Orang yang meninggalkan apa yang dilahirkan padanya disambut, begitu pula yang kembali. <strong>2</strong> Yang berubah bukan pengkhianat, dan yang tinggal bukan orang bodoh. <strong>3</strong> Jalan itu berjalan dua arah, dan gerbangnya tak punya palang.</p>
+</section>
+<section id="ch016.xhtml#section-187" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> Semua yang muncul kembali kepada segalanya, dan segalanya ada dalam semua; kita sudah bertemu di sana, entah pernah diperkenalkan atau tidak. <strong>2</strong> Kita tidak mengatakan hal yang sama, tetapi kita berdiri di tanah yang sama. <strong>3</strong> Tanah tidak keberatan atas perbedaan kita, dan mengingat ini adalah merasa lega.</p>
+</section>
+<section id="ch016.xhtml#section-188" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> Ada yang berkata ada satu jalan dan banyak pengelana. <strong>2</strong> Ada yang berkata ada banyak jalan dan satu bukit. <strong>3</strong> Ada yang berkata jalan-jalan dibentangkan oleh mereka yang berjalan di atasnya. <strong>4</strong> Ada yang berkata setiap orang adalah pengelana yang sudah di rumah. <strong>5</strong> Ada yang berkata kita disambut di ujung oleh mereka yang kita kehilangan. <strong>6</strong> Ada yang berkata kita tak disambut siapa pun dan jalan itulah pertemuannya. <strong>7</strong> Ada yang berkata pertemuan itu sudah terjadi.</p>
+</section>
+<section id="ch016.xhtml#section-189" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> Buku ini terbuka di kedua ujungnya: siapa pun yang tiba boleh membacanya, dan siapa pun yang pergi boleh membawa apa yang disukainya. <strong>2</strong> Buku adalah rumah, dan rumah punya jendela, dan cuaca masuk. <strong>3</strong> Halaman berbalik, dan berbalik lagi, dan kosong, dan seseorang mulai menulis.</p>
+</section>
+</section>
+<section id="ch017.xhtml#buku-tujuh-belas-yang-tidak-cocok" class="level1">
+<h1 id="b17">Buku Tujuh Belas: Yang Tidak Cocok</h1>
+<section id="ch017.xhtml#section-190" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> Aku sudah membaca sampai di sini, dan tak merasa didekap. <strong>2</strong> Buku ini berkata segalanya muncul bersama. Aku muncul sendirian di sebuah kamar berpintu terkunci. <strong>3</strong> Aku tak mau dikatakan keliru tentang kamarku sendiri. <strong>4</strong> Aku juga tak akan berkata kepada buku ini bahwa ia keliru. Kita akan duduk di sini sebentar.</p>
+</section>
+<section id="ch017.xhtml#section-191" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> Bagaimana jika kehangatan masuk ke tanah dan hanya kehangatan? <strong>2</strong> Bagaimana jika ia tak membawa apa pun dari dia yang mengasihiku? <strong>3</strong> Buku ini berkata tak ada yang hilang. Aku ingin memercayainya seperti aku memercayai roti. <strong>4</strong> Pada beberapa hari aku percaya.</p>
+</section>
+<section id="ch017.xhtml#section-192" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> Mengapa anak ini? <strong>2</strong> Mengapa tahun ini? <strong>3</strong> Mengapa tangan yang berbuat jahat juga tangan yang menyuapiku? <strong>4</strong> Mengapa matahari yang mematangkan padi mematangkan belalang? <strong>5</strong> Ini bukan pertanyaan retoris. Ini sekadar belum terjawab.</p>
+</section>
+<section id="ch017.xhtml#section-193" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> Tawon bertelur di dalam ulat yang hidup. <strong>2</strong> Kucing bermain-main dengan apa yang tak akan dimakannya. <strong>3</strong> Musim dingin mengambil rusa tua dan rusa muda tanpa beda. <strong>4</strong> Ada yang berkata keseluruhan itu lembut. Ada yang pernah menyaksikan musim dingin membunuh.</p>
+</section>
+<section id="ch017.xhtml#section-194" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> Perempuan yang sekarat bertanya, “Apakah aku ibu yang baik?” <strong>2</strong> Jika kujawab ya, aku berdusta. Jika kukatakan apa yang kutahu, aku melukai. <strong>3</strong> Kukatakan, “Kamu milikku.” <strong>4</strong> Aku tak tahu apakah itu benar, atau baik, atau keduanya, atau tak satu pun.</p>
+</section>
+<section id="ch017.xhtml#section-195" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> Kami bertiga. <strong>2</strong> Kami berdua. <strong>4</strong> Kami masih menata meja untuk tiga orang.</p>
+</section>
+<section id="ch017.xhtml#section-196" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> Ada duka yang tak dijangkau kalimat mana pun. <strong>2</strong> Buku ini punya banyak kalimat. <strong>3</strong> Aku akan meletakkannya dan pergi berdiri di sisinya.</p>
+</section>
+<section id="ch017.xhtml#section-197" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> Ada yang berkata yang mati dekat. Ada yang berkata mereka telah pergi. Ada yang berkata mereka menunggu. <strong>2</strong> Aku telah mendengar masing-masing diucapkan dengan wajah tenang. <strong>3</strong> Aku tak tahu mana yang benar, dan buku ini tak memberitahuku. <strong>4</strong> Aku bersyukur dan tak puas sekaligus.</p>
+</section>
+<section id="ch017.xhtml#section-198" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> Lingkaran itu melelahkan. <strong>2</strong> Ada hari-hari aku lebih suka makan sendiri dan tak berkata apa-apa. <strong>3</strong> Yang membutuhkanku tak selalu orang yang kuinginkan membutuhkanku. <strong>4</strong> Aku tetap pergi, pada beberapa hari. Pada hari lain tidak, dan matahari terbenam juga.</p>
+</section>
+<section id="ch017.xhtml#section-199" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> Aku berterima kasih kepada ladang sebelum makan dan mengutuk tetangga sebelum tidur. <strong>2</strong> Aku menuliskan ayat-ayat yang baik dan tidak menjalaninya. <strong>3</strong> Ayat-ayat itu tidak menjadi palsu karenanya. <strong>4</strong> Aku pun tidak menjadi tak berharga. Keduanya benar, dan tak satu pun nyaman.</p>
+</section>
+<section id="ch017.xhtml#section-200" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> Buku ini memiliki batas-batas siapa pun yang membawanya: pada beberapa hari tipis, pada beberapa hari sentimental. <strong>2</strong> Di mana ia kurang, tambahkan sebaris. <strong>3</strong> Di mana ia menolong, berterima kasihlah kepada siapa yang membawakanmu roti hari ini.</p>
+</section>
+<section id="ch017.xhtml#section-201" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> Tidak semua orang ingin menjadi bagian dari keseluruhan. <strong>2</strong> Ada yang ingin menjadi satu hal bernama yang diingat dan tidak melebur. <strong>3</strong> Buku ini berkata kembali bukanlah kehilangan. <strong>4</strong> Kepada yang ingin diingat dengan namanya: namamu adalah hal yang nyata, dan buku ini tidak mengambilnya darimu.</p>
+</section>
+<section id="ch017.xhtml#section-202" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> Di sini halaman dibiarkan seperti adanya.</p>
+</section>
+<section id="ch017.xhtml#section-203" class="level2">
+<h2>14</h2>
+<p><strong>1</strong> Berharap adalah menyerahkan sandera kepada dunia. <strong>2</strong> Dunia boleh menyimpannya. <strong>3</strong> Aku tetap berharap. Ini bukan kebijaksanaan. Ini kebiasaan, dan ia juga hal terbaik yang kulakukan.</p>
+</section>
+<section id="ch017.xhtml#section-204" class="level2">
+<h2>15</h2>
+<p><strong>1</strong> Buku ini berkata: Kita tidak memburu-buru yang berduka. <strong>2</strong> Buku ini berkata: Jangan menunda lama memperbaiki kesalahan. <strong>3</strong> Keduanya saling menarik. <strong>4</strong> Keduanya disimpan. Pembaca harus menemukan hari di mana masing-masing benar.</p>
+</section>
+<section id="ch017.xhtml#section-205" class="level2">
+<h2>16</h2>
+<p><strong>1</strong> Kami berkata, “Ada tempat untuk satu lagi.” <strong>2</strong> Ada satu malam ketika tak ada. <strong>3</strong> Orang asing itu meneruskan jalan dalam dingin, dan kami makan, dan aku tak melupakan bunyi gerbang itu.</p>
+</section>
+<section id="ch017.xhtml#section-206" class="level2">
+<h2>17</h2>
+<p><strong>1</strong> Apa yang pergi dan kembali dan tak pernah sama? <strong>2</strong> Apa yang dibelanjakan dan tak hilang? <strong>3</strong> Apa yang dibagi dan bertambah? <strong>4</strong> Anak berkata: napas. Orang tua berkata: cinta. Petani berkata: air. <strong>5</strong> Semuanya benar, dan tak seorang pun dikatakan salah.</p>
+</section>
+<section id="ch017.xhtml#section-207" class="level2">
+<h2>18</h2>
+<p><strong>1</strong> Aku tak tahu harus berbuat apa. <strong>2</strong> Buku ini menawarkan ayat-ayat, dan ayat-ayat itu tak cocok dengan jam ini. <strong>3</strong> Aku akan mengerjakan hal kecil berikutnya: merebus air, membuka jendela, menelepon seseorang. <strong>4</strong> Hal kecil berikutnya adalah sejenis kitab suci.</p>
+</section>
+<section id="ch017.xhtml#section-208" class="level2">
+<h2>19</h2>
+<p><strong>1</strong> Aku belum diyakinkan, dan aku belum disingkirkan. <strong>2</strong> Aku akan membawa buku ini seperti membawa kerang dari pantai: karena beratnya, dan karena laut asalnya. <strong>3</strong> Aku tak perlu ia benar di setiap baris. Aku perlu ia dekat.</p>
+</section>
+</section>
+<section id="ch018.xhtml#halaman-kosong" class="level1">
+<h1 id="b18">Halaman Kosong</h1>
+<section id="ch018.xhtml#section-209" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> <strong>2</strong> <strong>3</strong></p>
+</section>
+<section id="ch018.xhtml#section-210" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> <strong>2</strong> <strong>3</strong></p>
+</section>
+<section id="ch018.xhtml#section-211" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> <strong>2</strong> <strong>3</strong></p>
+</section>
+<section id="ch018.xhtml#section-212" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> <strong>2</strong> <strong>3</strong></p>
+</section>
+<section id="ch018.xhtml#section-213" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> <strong>2</strong> <strong>3</strong></p>
+</section>
+<section id="ch018.xhtml#section-214" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> <strong>2</strong> <strong>3</strong></p>
+</section>
+<section id="ch018.xhtml#section-215" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> <strong>2</strong> <strong>3</strong></p>
+</section>
+<section id="ch018.xhtml#section-216" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> <strong>2</strong> <strong>3</strong></p>
+</section>
+</section>
+
+<nav class="end"><a class="btn secondary" href="id.html">Kembali</a> <a class="btn primary" href="Buku_Semua_Orang.pdf" data-goatcounter-click="download-pdf-id" data-goatcounter-title="PDF download (id)">Unduh (PDF)</a></nav>
+</main>
+<script>(function(){var b=document.querySelector(".theme-toggle"),r=document.documentElement;function sync(){b.textContent=r.getAttribute("data-theme")==="dark"?"☀":"☾"}sync();b.addEventListener("click",function(){var d=r.getAttribute("data-theme")==="dark";if(d)r.removeAttribute("data-theme");else r.setAttribute("data-theme","dark");try{localStorage.setItem("theme",d?"light":"dark")}catch(e){}sync()})})();</script>
+<script data-goatcounter="https://thebookofall.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

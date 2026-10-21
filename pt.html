@@ -6,40 +6,64 @@
 <title>O Livro de Todos</title>
 <meta name="description" content="O Livro de Todos: por todos e para todos. Grátis para ler, compartilhar e imprimir.">
 <style>
-  :root { --bg:#faf8f3; --fg:#1d2433; --accent:#1f3358; --muted:#5b6475; }
-  @media (prefers-color-scheme: dark) { :root { --bg:#12161f; --fg:#e8e6df; --accent:#9db4e0; --muted:#98a0b0; } }
-  body { margin:0; background:var(--bg); color:var(--fg); font:18px/1.6 Georgia,"Times New Roman",serif; }
-  main { max-width:34rem; margin:0 auto; padding:3rem 16px 4rem; text-align:center; }
-  img { width:200px; max-width:60%; height:auto; }
-  h1 { letter-spacing:.12em; margin:1rem 0 .2rem; font-size:2rem; }
-  .sub { font-style:italic; color:var(--muted); margin:0 0 2rem; }
-  .btn { display:inline-block; padding:.7rem 1.4rem; border-radius:6px; text-decoration:none; font-weight:bold; margin:.3rem; }
-  .primary { background:var(--accent); color:var(--bg); }
-  .secondary { border:2px solid var(--accent); color:var(--accent); }
-  p { margin:1.4rem 0; }
-  small { color:var(--muted); }
+  :root { --bg:#eceeed; --fg:#1c2127; --muted:#5d666f; --accent:#2b6a68; --on-accent:#fff; --line:#c9cfd2; --glow:rgba(150,165,172,.45); --frame:#7d8f93; --frame2:#b5c0c3; }
+  @media all { :root[data-theme="dark"] { --bg:#12151a; --fg:#e6e8ea; --muted:#9aa3ab; --accent:#86bdb4; --on-accent:#0e1918; --line:#2a3037; --glow:rgba(130,150,160,.22); --frame:#8fa6aa; --frame2:#3a444b; } }
+  * { box-sizing:border-box; }
+  body::before { content:""; position:fixed; inset:10px; border:1.5px solid var(--frame); border-radius:6px; pointer-events:none; z-index:50; }
+  body::after { content:""; position:fixed; inset:16px; border:1px solid var(--frame2); border-radius:3px; pointer-events:none; z-index:50; }
+  @media print { body::before, body::after { display:none; } }
+
+  .theme-toggle { position:fixed; top:26px; inset-inline-end:26px; z-index:60; width:40px; height:40px; border-radius:50%; border:1.5px solid var(--frame); background:var(--bg); color:var(--fg); cursor:pointer; font-size:19px; line-height:1; padding:0; display:flex; align-items:center; justify-content:center; }
+  .theme-toggle:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+  @media print { .theme-toggle { display:none; } }
+  html { -webkit-text-size-adjust:100%; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:18px/1.65 "Iowan Old Style","Palatino Linotype",Palatino,"Noto Serif","Noto Serif CJK SC","Noto Serif Devanagari","Noto Serif Bengali","Noto Naskh Arabic","Noto Nastaliq Urdu",Georgia,"Times New Roman",serif; overflow-wrap:anywhere; }
   a { color:var(--accent); }
-  .lang { margin:1.4rem 0; }
-  .lang select { font:inherit; font-size:.9rem; padding:.35rem .6rem; border:2px solid var(--accent); border-radius:6px; background:var(--bg); color:var(--fg); }
+  a:focus-visible, select:focus-visible, summary:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+  .btn { display:inline-block; padding:.8rem 1.5rem; border-radius:14px; text-decoration:none; font-weight:600; font-size:1rem; line-height:1.3; text-align:center; }
+  .btn.primary { background:var(--accent); color:var(--on-accent); }
+  .btn.secondary { border:2px solid var(--accent); color:var(--accent); }
+
+  body { min-height:100vh; overflow-x:clip; }
+  main { max-width:30rem; margin:0 auto; padding:3.2rem 34px 3.5rem; text-align:center; }
+  .hero { position:relative; padding:1rem 0 .5rem; }
+  .hero::before { content:""; position:absolute; left:0; right:0; top:-5%; height:110%; background:radial-gradient(closest-side, var(--glow), transparent 72%); z-index:0; }
+  .hero img { position:relative; z-index:1; width:min(360px,84%); height:auto; display:block; margin:0 auto; filter:drop-shadow(0 10px 16px rgba(0,0,0,.30)); }
+  h1 { font-size:clamp(2.3rem,10vw,3.4rem); line-height:1.1; font-weight:500; margin:1.4rem 0 .4rem; letter-spacing:-.01em; }
+  .sub { font-style:italic; color:var(--muted); margin:0 0 1.6rem; font-size:1.1rem; }
+  .lede { font-size:1.28rem; line-height:1.55; margin:0 auto 1.8rem; max-width:22rem; }
+  .lang { margin:0 0 1.6rem; }
   .lang label { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+  .lang select { font:inherit; font-size:.95rem; padding:.45rem 1rem; border:1px solid var(--line); border-radius:999px; background:transparent; color:var(--fg); }
+  .actions { display:grid; gap:.8rem; margin:0 auto 1.8rem; max-width:20rem; }
+  .actions .btn.primary { font-size:1.15rem; padding:1rem 1.5rem; }
+  .downloads { display:grid; grid-template-columns:1fr 1fr; gap:.8rem; }
+  .downloads .btn { padding:.7rem .6rem; font-size:.95rem; }
+  .free { margin:0 0 1.2rem; }
+  small { color:var(--muted); font-size:.85rem; line-height:1.5; }
+  .kofi { margin:0 0 1.4rem; padding-top:1.2rem; border-top:1px solid var(--line); }
+  .note { margin-top:1.4rem; }
+  @media (max-width:360px) { .downloads { grid-template-columns:1fr; } }
 </style>
+<script>try{if(localStorage.getItem("theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
 </head>
 <body>
+<button class="theme-toggle" type="button" aria-label="Light / dark" title="Light / dark"></button>
 <main>
-  <img src="emblem.png" alt="O emblema do Uróboro Infinito e Inclusivo">
+  <div class="hero"><img src="emblem.webp" alt="Uma fita infinita dentro de um anel, gravada com símbolos de muitas crenças" width="360" height="360"></div>
   <h1>O LIVRO DE TODOS</h1>
   <p class="sub">Por todos e para todos</p>
-  <p>Isto é um livro, e nada mais. Ele não diz em que você deve acreditar. Leve o que ajuda. Deixe o que não ajuda.</p>
+  <p class="lede">Isto é um livro, e nada mais. Ele não diz em que você deve acreditar. Leve o que ajuda. Deixe o que não ajuda.</p>
   <p class="lang"><label for="lang">Language</label><select id="lang" aria-label="Language" onchange="location.href=this.value"><option value="index.html" lang="en">English</option><option value="es.html" lang="es">Español</option><option value="zh.html" lang="zh">中文</option><option value="hi.html" lang="hi">हिन्दी</option><option value="ar.html" lang="ar">العربية</option><option value="fr.html" lang="fr">Français</option><option value="pt.html" lang="pt" selected>Português</option><option value="id.html" lang="id">Bahasa Indonesia</option><option value="bn.html" lang="bn">বাংলা</option><option value="ur.html" lang="ur">اردو</option></select><noscript><br><small><a href="index.html">English</a> · <a href="es.html">Español</a> · <a href="zh.html">中文</a> · <a href="hi.html">हिन्दी</a> · <a href="ar.html">العربية</a> · <a href="fr.html">Français</a> · <a href="id.html">Bahasa Indonesia</a> · <a href="bn.html">বাংলা</a> · <a href="ur.html">اردو</a></small></noscript></p>
-  <p><a class="btn primary" href="O_Livro_de_Todos.pdf" data-goatcounter-click="download-pdf-pt" data-goatcounter-title="PDF download (pt)">Baixar o livro (PDF)</a></p>
-  <p><a class="btn secondary" href="O_Livro_de_Todos.epub" data-goatcounter-click="download-epub-pt" data-goatcounter-title="EPUB download (pt)">Baixar para e-reader (EPUB)</a></p>
-  <p>Grátis para ler, compartilhar e imprimir. Formato de bolso, 3&Prime; &times; 4&Prime;.<br><small>Dedicado ao domínio público sob <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.pt">CC0 1.0</a>. Nenhum direito reservado.</small></p>
-  <p>
-    <a class="btn secondary" href="https://ko-fi.com/thebookofall" data-goatcounter-click="kofi-pt" data-goatcounter-title="Ko-fi click (pt)">Ajude a imprimir os primeiros exemplares</a><br>
-    <small>As doações financiam a primeira impressão de O Livro de Todos.</small>
-  </p>
-  <p><small>Este site conta as visitas de forma anônima e não guarda nenhum dado pessoal.</small></p>
+  <div class="actions">
+    <a class="btn primary" href="pt-read.html" data-goatcounter-click="read-pt" data-goatcounter-title="Read online (pt)">Ler online</a>
+    <div class="downloads"><a class="btn secondary" href="O_Livro_de_Todos.pdf" data-goatcounter-click="download-pdf-pt" data-goatcounter-title="PDF download (pt)">Baixar o livro (PDF)</a><a class="btn secondary" href="O_Livro_de_Todos.epub" data-goatcounter-click="download-epub-pt" data-goatcounter-title="EPUB download (pt)">Baixar para e-reader (EPUB)</a></div>
+  </div>
+  <p class="free">Grátis para ler, compartilhar e imprimir. Formato de bolso, 3&Prime; &times; 4&Prime;.<br><small>Dedicado ao domínio público sob <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.pt">CC0 1.0</a>. Nenhum direito reservado.</small></p>
+  <div class="kofi"><a class="btn secondary" href="https://ko-fi.com/thebookofall" data-goatcounter-click="kofi-pt" data-goatcounter-title="Ko-fi click (pt)">Ajude a imprimir os primeiros exemplares</a><br><small>As doações financiam a primeira impressão de O Livro de Todos.</small></div>
+  <p class="note"><small>Este site conta as visitas de forma anônima e não guarda nenhum dado pessoal.</small></p>
 </main>
+<script>(function(){var b=document.querySelector(".theme-toggle"),r=document.documentElement;function sync(){b.textContent=r.getAttribute("data-theme")==="dark"?"☀":"☾"}sync();b.addEventListener("click",function(){var d=r.getAttribute("data-theme")==="dark";if(d)r.removeAttribute("data-theme");else r.setAttribute("data-theme","dark");try{localStorage.setItem("theme",d?"light":"dark")}catch(e){}sync()})})();</script>
 <script data-goatcounter="https://thebookofall.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 </body>

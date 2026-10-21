@@ -1,0 +1,966 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>万有之书</title>
+<style>
+  :root { --bg:#eceeed; --fg:#1c2127; --muted:#5d666f; --accent:#2b6a68; --on-accent:#fff; --line:#c9cfd2; --glow:rgba(150,165,172,.45); --frame:#7d8f93; --frame2:#b5c0c3; }
+  @media all { :root[data-theme="dark"] { --bg:#12151a; --fg:#e6e8ea; --muted:#9aa3ab; --accent:#86bdb4; --on-accent:#0e1918; --line:#2a3037; --glow:rgba(130,150,160,.22); --frame:#8fa6aa; --frame2:#3a444b; } }
+  * { box-sizing:border-box; }
+  body::before { content:""; position:fixed; inset:10px; border:1.5px solid var(--frame); border-radius:6px; pointer-events:none; z-index:50; }
+  body::after { content:""; position:fixed; inset:16px; border:1px solid var(--frame2); border-radius:3px; pointer-events:none; z-index:50; }
+  @media print { body::before, body::after { display:none; } }
+
+  .theme-toggle { position:fixed; top:26px; inset-inline-end:26px; z-index:60; width:40px; height:40px; border-radius:50%; border:1.5px solid var(--frame); background:var(--bg); color:var(--fg); cursor:pointer; font-size:19px; line-height:1; padding:0; display:flex; align-items:center; justify-content:center; }
+  .theme-toggle:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+  @media print { .theme-toggle { display:none; } }
+  html { -webkit-text-size-adjust:100%; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:18px/1.65 "Iowan Old Style","Palatino Linotype",Palatino,"Noto Serif","Noto Serif CJK SC","Noto Serif Devanagari","Noto Serif Bengali","Noto Naskh Arabic","Noto Nastaliq Urdu",Georgia,"Times New Roman",serif; overflow-wrap:anywhere; }
+  a { color:var(--accent); }
+  a:focus-visible, select:focus-visible, summary:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+  .btn { display:inline-block; padding:.8rem 1.5rem; border-radius:14px; text-decoration:none; font-weight:600; font-size:1rem; line-height:1.3; text-align:center; }
+  .btn.primary { background:var(--accent); color:var(--on-accent); }
+  .btn.secondary { border:2px solid var(--accent); color:var(--accent); }
+
+  header { display:flex; align-items:center; gap:.9rem; max-width:36rem; margin:0 auto; padding:2rem 34px 1rem; }
+  header img { width:44px; height:44px; flex:none; }
+  header .title { font-weight:600; font-size:1.05rem; flex:1; min-width:0; }
+  header .btn { padding:.45rem 1rem; font-size:.9rem; flex:none; }
+  header { justify-content:space-between; }
+  @media (max-width:560px) { header .title { display:none; } header .spacer { flex:1; } }
+  main { max-width:36rem; margin:0 auto; padding:1rem 34px 5rem; font-size:1.2rem; line-height:1.85; }
+  :lang(zh) main { line-height:2; } :lang(zh) em { font-style:normal; }
+  details.toc { margin:0 0 3rem; padding:.9rem 1.2rem; border:1px solid var(--line); border-radius:12px; font-size:1rem; line-height:1.5; }
+  details.toc summary { cursor:pointer; font-weight:600; }
+  details.toc ol { margin:.8rem 0 0; padding-inline-start:1.4rem; }
+  details.toc li { margin:.35rem 0; }
+  section.level1 { margin-top:4.5rem; padding-top:2.5rem; border-top:1px solid var(--line); }
+  section.level1:first-of-type { border-top:0; margin-top:2rem; padding-top:0; }
+  h1 { font-size:clamp(1.7rem,6vw,2.2rem); line-height:1.2; font-weight:500; text-align:center; margin:0 0 2.5rem; }
+  h2 { font-size:1rem; font-weight:600; color:var(--accent); text-align:center; margin:2.6rem 0 1rem; }
+  section.level1 > p { text-align:center; }
+  strong { font-weight:inherit; font-size:.62em; vertical-align:super; color:var(--accent); margin-inline-end:.2em; margin-inline-start:.35em; line-height:0; }
+  p { margin:0 0 1.1rem; }
+  section.level2 > p { margin:0 0 1.4rem; }
+  nav.end { text-align:center; margin-top:4rem; }
+  .front { text-align:center; margin:1.6rem 0 2.4rem; }
+  .front .tag { font-style:italic; color:var(--muted); margin:0 0 1.4rem; }
+  .front .about { font-size:1.12rem; font-style:italic; line-height:1.7; margin:0 auto 1.1rem; max-width:30rem; }
+  .front .by { margin:0 0 1.6rem; }
+  .front .cc0 { font-size:.85rem; color:var(--muted); border-top:1px solid var(--line); padding-top:1rem; margin:0; }
+  .theme-toggle { position:absolute; }
+  @media (max-width:640px) { header { padding-top:4.4rem; } }
+</style>
+<script>try{if(localStorage.getItem("theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
+</head>
+<body>
+<button class="theme-toggle" type="button" aria-label="Light / dark" title="Light / dark"></button>
+<header><a href="zh.html" aria-label="返回"><img src="emblem-sm.webp" alt="" width="44" height="44"></a><span class="title">万有之书</span><span class="spacer"></span><a class="btn secondary" href="zh.html">返回</a> <a class="btn primary" href="万有之书.pdf" data-goatcounter-click="download-pdf-zh" data-goatcounter-title="PDF download (zh)">下载 (PDF)</a></header>
+<main>
+<section class="front"><p class="tag">出于众人，为了众人</p><p class="about">这是一本书，仅此而已。它不告诉你该信什么，也不要求你的信仰。凡谈到如何生活之处，它提供的是许多双手发现有用的东西，而不是命令。拿走有帮助的。留下没有帮助的。握得松一些。</p><p class="by">Steven E Thompson</p><p class="cc0">万有之书。出于众人，为了众人。本书依据 CC0 1.0 通用公共领域贡献宣告，归入公有领域：不保留任何权利。欢迎自由复制、印刷、翻译与分享。<br />
+<a href="https://creativecommons.org/publicdomain/zero/1.0">creativecommons.org/publicdomain/zero/1.0</a></p></section>
+<details class="toc"><summary>目录</summary><ol><li><a href="#b1">关于本书</a></li><li><a href="#b2">第一卷：开端</a></li><li><a href="#b3">第二卷：整全</a></li><li><a href="#b4">第三卷：人</a></li><li><a href="#b5">第四卷：善恶</a></li><li><a href="#b6">第五卷：苦难与意义</a></li><li><a href="#b7">第六卷：死亡与归返</a></li><li><a href="#b8">第七卷：言语</a></li><li><a href="#b9">第八卷：践行</a></li><li><a href="#b10">第九卷：神圣的时间</a></li><li><a href="#b11">第十卷：神圣的处所</a></li><li><a href="#b12">第十一卷：人生的门槛</a></li><li><a href="#b13">第十二卷：共同体与指引</a></li><li><a href="#b14">第十三卷：饮食、身体与衣着</a></li><li><a href="#b15">第十四卷：自然与其他生灵</a></li><li><a href="#b16">第十五卷：惊奇</a></li><li><a href="#b17">第十六卷：彼此相遇</a></li><li><a href="#b18">第十七卷：不合之处</a></li></ol></details>
+<p></p>
+
+<section id="ch001.xhtml#关于本书" class="level1">
+<h1 id="b1">关于本书</h1>
+<p><em>这是一本书，仅此而已。它不告诉你该信什么，也不要求你的信仰。凡谈到如何生活之处，它提供的是许多双手发现有用的东西，而不是命令。拿走有帮助的。留下没有帮助的。握得松一些。</em></p>
+<p>Steven E Thompson</p>
+<p><em>本书依据 CC0 1.0 通用公共领域贡献宣告，归入公有领域：不保留任何权利。欢迎自由复制、印刷、翻译与分享。https://creativecommons.org/publicdomain/zero/1.0/deed.zh</em></p>
+</section>
+<section id="ch002.xhtml#第一卷开端" class="level1">
+<h1 id="b2">第一卷：开端</h1>
+<section id="ch002.xhtml#section" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> 没有什么是最先的，尽管每一种讲述都伸手去够一个“最先”：最初的光，最初的话语，最初的手。这伸手去够的动作本身就已很古老。<strong>2</strong> 水随太阳升起，太阳又被水从自身的热里托起；二者缺一，都无法独自开启清晨。<strong>3</strong> 种子生自一株植物，那植物又生自一粒种子，这条线向后延伸，越过任何记忆、任何骨骼、任何刻着字的石头所能及之处。<strong>4</strong> 追问此前有什么，就如逆河而上去寻它的源头，结果走到一面山坡，雨、土地与天空早已在那里交谈。<strong>5</strong> 发问的人与问题一同出现，而这问题，虽然觉得那样私密，其实早在很久以前就从别人的口中开始了。</p>
+</section>
+<section id="ch002.xhtml#section-1" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> 一颗恒星燃烧的时间比世上有眼睛的时间还要长，它熄灭时，把自己造出的东西撒向四方：铁、碳，以及日后一切会抱怨寒冷之物的那些沉默的原料。<strong>2</strong> 灰烬在一片宽得无法想象的黑暗里漂流了许多个纪元，聚拢的地方，它冷却，冷却的地方，它成了石头。<strong>3</strong> 风和雨把石头磨成尘土，尘土被风与河带到低洼之处，在那里学会了留住水。<strong>4</strong> 就在这留住之中，最初的绿意扎下了根。田野不是谁放下的礼物，而是延续了数千年的耐心。<strong>5</strong> 田野被吃掉；吃的人行走；行走的人终有一天躺进田野，星辰的灰烬于是又转了一圈。<strong>6</strong> 田野里的任何人，无论活着还是躺下，都说不出灰烬从哪里开始，也说不出它已经做过多少张嘴。</p>
+</section>
+<section id="ch002.xhtml#section-2" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> 在深邃的黑暗里，在温热的富含矿物的水中，有个小小的东西开始把自己聚在一起，抵抗其余一切的消散。我们说不出是在何时，只知道它从未停下。<strong>2</strong> 它分裂了。分出的两个又分裂。在一段使任何山岳的年岁都显得短暂的时间里，这分裂向千百个方向分出枝杈：一条根，一只翅膀，一片鳃，一只手。<strong>3</strong> 鱼、蕨、鸟和孩子，是隔着一条漫长分枝之线的表亲，而每一根枝杈都确信自己才是树干。<strong>4</strong> 在这条线的某处，有一个没有名字的生灵，她是鲸鱼的母亲，是麻雀的母亲，也是此刻正在倾听的人的母亲。她被记在每一具身体里，记在每一只耳朵的形状里。<strong>5</strong> 我们都是亲族，尽管多数人对自己的表亲形同陌路，还有些人被他们吃掉。</p>
+</section>
+<section id="ch002.xhtml#section-3" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> 它从哪里来？谁知道？不是老人，他们把这个问题背负得最久。也不是孩子，他们问起它，仿佛答案就在某个抽屉里。<strong>2</strong> 智者发问而不作答。这并非缺乏勇气，而是对一件伟大之物应有的礼数。<strong>3</strong> 有些夜晚，这问题是重负；有些夜晚，是馈赠；无论哪一夜，它都不是失败。<strong>4</strong> 凡是站在远离一切灯火的晴朗天空下的人，都曾感到它在胸中打开，找不到词来说它，并悄悄庆幸自己没有那个词。</p>
+</section>
+<section id="ch002.xhtml#section-4" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> 凡会动的东西都带着一份热，这热从来不是新造的，只是传下来的：太阳传给叶子，叶子传给鹿，鹿传给冬天里饥饿的人。<strong>2</strong> 一只握着的手里的暖，曾在谷粒里，在谷粒生长的田里，在其后漫长的夏天里，在夏天背后的那颗星里。<strong>3</strong> 它被携带着，又被传下去。没有哪只手握得足够久，能称它为自己的。<strong>4</strong> 被携带的东西从不会丢失，尽管常常失去了踪迹，悲伤由此而来，惊奇也由此开始。</p>
+</section>
+<section id="ch002.xhtml#section-5" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> 白昼与黑夜同时升起，黑夜与白昼亦然；彼此不是对方的仇敌，缺了一方，另一方也不会成为一个词。<strong>2</strong> 潮水退去，是为了再来；退去时它让海岸裸露，裸露的海岸显示了大海给予多少。<strong>3</strong> 种子被埋进黑暗，不知道自己正在被种下；对种子来说，它是在被埋葬。两种说法都是真的。<strong>4</strong> 每一次结束，也是别的什么转身的时刻，这对正在结束的人毫无安慰，却依然是真的。</p>
+</section>
+<section id="ch002.xhtml#section-6" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> 扯动一根线，整块布都会动，织布的人这样找到瑕疵，孩子这样明白自己做了什么。<strong>2</strong> 蜜蜂在花里，带着它的花粉和它的饥饿；花在蜜蜂里，乘着一副它没有选择的身体去往下一片田野。<strong>3</strong> 雨在河里，河在云里，云在海里，没有谁说得出一个在哪里终结。<strong>4</strong> 没有人站在这块布之外，尽管有些日子我们希望如此；这希望本身也织在布里。</p>
+</section>
+<section id="ch002.xhtml#section-7" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> 新生儿的第一口气，是别人呼吸过的空气：护士的，母亲的，吹过千亩田野的风的。她啼哭，因为世界被交到了她手上。<strong>2</strong> 那空气曾在一片叶子里，在一头鲸里，在一位已无人记得的祖父的肺里，它还会再去那些地方。<strong>3</strong> 每一口气都从手到手传递，无人拥有，尽管每个人都在片刻之间对它负有责任。</p>
+</section>
+<section id="ch002.xhtml#section-8" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> 在眼睛睁开之前，黑暗是满的：满是母亲的心跳，水温热的滋味，隔着一堵墙听到的声音。<strong>2</strong> 黑暗不是空的。它是种子等待的地方，是念头聚拢的地方，是孩子朝着一张脸生长的地方。<strong>3</strong> 光并不战胜黑暗。它们轮流托着世界，谁也不曾在对方的时辰里完全缺席。</p>
+</section>
+<section id="ch002.xhtml#section-9" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> 第一个词不是一张嘴说出的。许多张嘴在许多年里造出了它，每一张嘴都说着身边那张嘴所说的话，只是略有不同。<strong>2</strong> 水是被渴命名的。母亲是被第一张嘴贴上第一寸肌肤时命名的。每一个词都是一小簇火，从手传到手，而我们中没有谁点燃过第一簇。</p>
+</section>
+<section id="ch002.xhtml#section-10" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> 每一个民族都讲述世界如何开始，各用各的声音，带着自己那片土地上的动物、天气和悲伤。<strong>2</strong> 讲述是爱脚下土地的一种方式。河边的人讲述时，里面有水流；山里的人讲述时，里面有岩石的重量。<strong>3</strong> 没有一种讲述是篱笆。每一种都盛着自己那个地方的水，而所有的水是同一种水。</p>
+</section>
+<section id="ch002.xhtml#section-11" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> 我们与世界一同升起，我们属于它，尽管有时举止仿佛是从某个更好的地方来的。<strong>2</strong> 山不问我们从哪里来，海也不问。它们从未问过任何事。它们只是留在那里。<strong>3</strong> 我们是世界在此的许多方式之一，而世界借着我们，有时端详自己，哭，笑，并为自己的存在而惊异。</p>
+</section>
+<section id="ch002.xhtml#section-12" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> 有人说，世界是被说出来的，先有一个词，其后才有一切。<strong>2</strong> 有人说，它是被呼出的，也将被吸回。<strong>3</strong> 有人说，它从一枚卵里孵出，或是被唱出来的，或是被舞出来的，或是在织机上织成的。<strong>4</strong> 有人说，它是被梦见的，仍在被梦见。<strong>5</strong> 有人说，它一直在这里，从未开始。<strong>6</strong> 有人说，这个问题的形状配不上答案。</p>
+</section>
+</section>
+<section id="ch003.xhtml#第二卷整全" class="level1">
+<h1 id="b3">第二卷：整全</h1>
+<section id="ch003.xhtml#section-13" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> 黄昏时站在山丘上，缓缓转身：无论面向哪里，地平线都恰好一样远。每一位旅人都是一个无人能见的圆的中心。<strong>2</strong> 古老的地图把绘图者的城镇画在中央，也没有错；它们只是诚实地交代了绘图者睡在哪里。<strong>3</strong> 整全没有这样的城镇。它是所有城镇都说过“在这里”之后所剩下的东西。</p>
+</section>
+<section id="ch003.xhtml#section-14" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> 一朵拍向岸边的浪，我们想象，会觉得自己是一个“我”：它的浪尖，它的匆忙，它对沙滩的恐惧。<strong>2</strong> 它只是大海，在一瞬间做着某件特别的事。<strong>3</strong> 海岸接受的不是一个终结；它接受的是水，那是它一直在接受的东西。<strong>4</strong> 爱过那朵浪的人为它哀悼，并没有错。他们只是站得很近。</p>
+</section>
+<section id="ch003.xhtml#section-15" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> 有一个民族把整全画成没有顶峰的山；另一个画成一张光织成的网；另一个画成一圈母亲。<strong>2</strong> 安静的城里有个人，在墙上什么也没画，来的人都想坐在那面墙前。<strong>3</strong> 这些都被允许。整全不需要被奉承，也不会被冒犯。</p>
+</section>
+<section id="ch003.xhtml#section-16" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> 在最喧闹的集市里，有一种底下的声音，与其说是听见，不如说是感到，像人声之下的一层地板。<strong>2</strong> 住在海边的人失去它，又重新找回；整夜守在床边的人也是。<strong>3</strong> 它什么也不说。它是什么都不缺的那种声音。</p>
+</section>
+<section id="ch003.xhtml#section-17" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> 整全容纳圣人，也容纳盗贼。<strong>2</strong> 有人说它在称量我们，有人说它根本不称量。<strong>3</strong> 我们每个人都曾在某个时辰盼它站到我们这一边，而有些人发现，它转而赠与的那份安静，并不算什么也没有。</p>
+</section>
+<section id="ch003.xhtml#section-18" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> 给整全起的名字，是越过一道缝隙递出的礼物：「你」，「它」，「深处」，「家」。<strong>2</strong> 缝隙不会合拢，但递出这份礼物是真实的，已经温暖过许多双手。<strong>3</strong> 拒绝一切名字本身也是一个名字，而用一个名字并不是谎言，只要握得松，像握着一件借来的工具。</p>
+</section>
+<section id="ch003.xhtml#section-19" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> 水壶是整全，一串钥匙的叮当声是整全，热街上雨的气味也是。<strong>2</strong> 有人去别处寻它，有人在自己所在的房间里找到它。<strong>3</strong> 这张桌子从早餐起，就一直接待着这两种寻找的人。</p>
+</section>
+<section id="ch003.xhtml#section-20" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> 雨落在田里，也落在路上。<strong>2</strong> 有人说它为值得的人而落，有人说它不为任何人而落，也有人站在雨里，感到欢喜。<strong>3</strong> 同一场雨落在每个人的屋顶，雨后是同一种寂静。</p>
+</section>
+<section id="ch003.xhtml#section-21" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> 有人告诉我们要爱整全，可我们不知道怎么爱；整全没有可以亲吻的脸。<strong>2</strong> 于是我们从能做到的地方开始：楼梯，狗，难相处的姐妹，邻居家坏掉的篱笆。<strong>3</strong> 如果整全在任何地方，它就在我们如何过一个寻常的星期二里。</p>
+</section>
+<section id="ch003.xhtml#section-22" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> 人不是去理解一座房子；人是住在里面，在住的过程中学会哪块地板是软的。<strong>2</strong> 人不是去理解一个季节；人是穿上合适的外套。<strong>3</strong> 整全就是这样：对它而言，唯一足够的领会，是一种练熟了的行走方式。</p>
+</section>
+<section id="ch003.xhtml#section-23" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> 凡升起的都要回归，而回归的并不被储存，而是当即被花在下一样东西里。<strong>2</strong> 苹果变成孩子，孩子变成狐狸冬日的饥饿，狐狸变成地衣的午餐。<strong>3</strong> 这不是整全的计划。这是整全的语法，而它没有别的句子。</p>
+</section>
+<section id="ch003.xhtml#section-24" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> 有人说整全是一。<strong>2</strong> 有人说它是多，每一个都有名字和脾气。<strong>3</strong> 有人说它是一个心灵。<strong>4</strong> 有人说它是空，而这空是满的。<strong>5</strong> 有人说它是一位母亲。<strong>6</strong> 有人说它是一架世界的阶梯，我们站在其中一级。<strong>7</strong> 有人说它无法被说出。</p>
+</section>
+</section>
+<section id="ch004.xhtml#第三卷人" class="level1">
+<h1 id="b4">第三卷：人</h1>
+<section id="ch004.xhtml#section-25" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> 人是整全以某个特定速度穿行而过的一个地方：来自一颗死去恒星的碳，曾是冰川的水，出自祖母期望的一个名字。<strong>2</strong> 这一穿行约需八十年。在这段时间里，它会试着理解自己，坠入爱河，把晚饭烧糊，并感到惊讶。<strong>3</strong> 这些都不是故障。</p>
+</section>
+<section id="ch004.xhtml#section-26" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> 名字是第一份礼物，也是第一张标签，在孩子能接受或拒绝之前就已给出。<strong>2</strong> 有些人长成了自己的名字；有些人长出了它，另取一个，也并不因这改变而少了自己几分。<strong>3</strong> 最后，名字上了石头，而曾背负它的那个人，走进花园，走进一千件从未有标签的小小善意的记忆里。</p>
+</section>
+<section id="ch004.xhtml#section-27" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> 身体在岁月里几乎替换掉自己的全部构成；六岁时擦破的膝盖，如今由不同的原子构成，却仍记得那片柏油路面。<strong>2</strong> 因此，人不是一件东西，而是一条由许多东西构成的溪流中的一种形态，是一个有脸的漩涡。<strong>3</strong> 这并不是贬低。漩涡可以托住一片叶子好几个小时。</p>
+</section>
+<section id="ch004.xhtml#section-28" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> 心是天气：悲伤像锋面一样来到，一个笑话驱散它，一桩旧日的羞辱凌晨四点翻过山冈。<strong>2</strong> 留意天气的那个观察者本身不是天气，比这一切都安静。<strong>3</strong> 人生的大部分时间，都花在认同风暴上。少数人学会成为窗子。</p>
+</section>
+<section id="ch004.xhtml#section-29" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> 每个人都是完整的：再没有别人会在那具身体里醒来，带着那样的疼痛。<strong>2</strong> 每个人又是一部分：头脑里没有一个念头不是从别人的口中开始的。<strong>3</strong> 生活的艺术，是承受这两件事实而不去化解它们，就像一只手承受自己的重量，也承受它所托之物的重量。</p>
+</section>
+<section id="ch004.xhtml#section-30" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> 看看你今天早晨吃了什么，顺着它往回找：一位农夫，一位卡车司机，一位你永远不会遇见的包装车间里的女工，雨水，一粒经过四百年培育的种子。<strong>2</strong> 你称作自己的那个东西，就是由这些构成的。<strong>3</strong> 感恩有时不过是准确。</p>
+</section>
+<section id="ch004.xhtml#section-31" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> 每个人都带着一种独有的用处，那出于性情，也出于创伤：护士的耐心，爱开玩笑的人在葬礼上的从容。<strong>2</strong> 它的主人并不总能看见。往往是有人顺口说一句“没有你，我做不到”，它才被发现。<strong>3</strong> 听听那句话。</p>
+</section>
+<section id="ch004.xhtml#section-32" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> 一个人不等于自己做过的最坏的事，但也并未因此被免罪；人带着它，如同一棵树带着自己的伤疤，成了纹理的一部分。<strong>2</strong> 要做的是把伤疤变成可以承重的东西。</p>
+</section>
+<section id="ch004.xhtml#section-33" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> 面孔是借来的：一位死于战争的人的下颌线，一位谁也不最喜欢却是每个人暗中榜样的姑姑的笑声。<strong>2</strong> 我们说话时带着一个从未去过的村庄的元音，和一个未曾生活过的世纪的迷信。<strong>3</strong> 做一个人，要用到很多别人的功夫。</p>
+</section>
+<section id="ch004.xhtml#section-34" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> 并不要求人非同凡响。世上大部分的善，是由无人会记得的人，在无人会去的房间里做成的。<strong>2</strong> 人在这里，心存善意，洗好碗碟：这就够了。<strong>3</strong> 即便不够，这也仍是任何人曾经拥有过的全部。</p>
+</section>
+<section id="ch004.xhtml#section-35" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> 有人说，一个人有一个灵魂。<strong>2</strong> 有人说两个，或三个，或七个，它们在不同的时辰离开身体。<strong>3</strong> 有人说没有自我，只有一条溪流。<strong>4</strong> 有人说自我是整全的一粒火花。<strong>5</strong> 有人说人是一具身体，别无其他。<strong>6</strong> 有人说每个人在出生之前就已被知晓。<strong>7</strong> 有人说名字是一道门。</p>
+</section>
+</section>
+<section id="ch005.xhtml#第四卷善恶" class="level1">
+<h1 id="b5">第四卷：善恶</h1>
+<section id="ch005.xhtml#section-36" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> 有人说善是被命令的，有人说善是被发现的；二者都能在病榻前找到，那里没人发问，人人都知道该做什么。<strong>2</strong> 伤害会传播。早餐桌上一句刻薄的话，中午传到狗那里，傍晚传到陌生人那里。<strong>3</strong> 善意也一样，只是更慢，更不戏剧化，所以人们要更久才肯相信。</p>
+</section>
+<section id="ch005.xhtml#section-37" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> 我们不无故夺取生命，而且我们怀疑自己对“需要”的判断。<strong>2</strong> 猎人向鹿道谢；有人称之为祈祷，有人称之为一笔记着的账。<strong>3</strong> 夺走的一条生命是一笔打开的债，诚实的人用对余下之物的照料来偿还。</p>
+</section>
+<section id="ch005.xhtml#section-38" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> 谎言是向未来借的一笔高利贷：它换来此刻的安慰，付出的是日后的信任，而信任是借不回来的。<strong>2</strong> 真话不等于生硬；锤子对钉子说的也是真话。<strong>3</strong> 摊开手掌说出事实，并给对方留出回应的余地。</p>
+</section>
+<section id="ch005.xhtml#section-39" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> 你希望别人怎样待你，就怎样待人；然后留意，你有多少次其实不知道自己希望被怎样对待；那就去问。<strong>2</strong> 这条规则最好当作一个问题来用，而不是一个裁决。<strong>3</strong> 陌生人的需要写在脸上，写给那些肯看得足够久、比舒服的程度再久一点的人。</p>
+</section>
+<section id="ch005.xhtml#section-40" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> 你所拥有的超出需要的部分，是被托付给你的：衣橱里的冬衣，第二块面包，多余的房间，每一样都是寒冷向你提出的一个没有说出口的问题。<strong>2</strong> 给予，如果只是归还，就算不得慷慨。</p>
+</section>
+<section id="ch005.xhtml#section-41" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> 承诺是横在深渊上的一块木板，有人信任地走上去。<strong>2</strong> 如果它要断了，趁重量还没压上去就说出来。<strong>3</strong> 曾被背叛过一次的人学会了试探每一块木板；我们欠他们被试探的耐心。</p>
+</section>
+<section id="ch005.xhtml#section-42" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> 过错是织物上的一道裂口，修补从有人坦白地说出发生了什么开始，不辩解，不戏剧化。<strong>2</strong> 受伤的一方说出失去的是什么，造成伤害的一方不插话。<strong>3</strong> 修补是缓慢的，有些裂口不会合上；这些我们带在布上，看得见，不羞愧，并怀着善意。</p>
+</section>
+<section id="ch005.xhtml#section-43" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> 宽恕是把背了很远的一块石头放下，这并不是说石头很轻。<strong>2</strong> 它一天做一点，多半不知不觉；某个早晨手是空的，人吃了一惊。<strong>3</strong> 还不能宽恕的人并不邪恶。他们仍在背着，而这背负是一份诚实的报告。</p>
+</section>
+<section id="ch005.xhtml#section-44" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> 老人知道遗忘的代价；年轻人知道一成不变的代价。<strong>2</strong> 桌边两者都需要：记忆和不耐烦。</p>
+</section>
+<section id="ch005.xhtml#section-45" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> 愤怒是礼貌很差的有用信息。<strong>2</strong> 它告诉你有什么被越过了；它不能告诉你该怎么办。<strong>3</strong> 等到早晨。如果它依然是真的，就说出来；如果不是，你就免于犯了一个错。</p>
+</section>
+<section id="ch005.xhtml#section-46" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> 两件好事相撞时，有人去请教经典，有人去请教老师，有人去问身边的人，还有人静坐，直到事情明朗。<strong>2</strong> 然后各人为自己的决定负责。<strong>3</strong> 艰难的案例，正是人需要彼此的理由。</p>
+</section>
+<section id="ch005.xhtml#section-47" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> 有人说善与恶是以一组话语给出的。<strong>2</strong> 有人说它们要向内看才能找到。<strong>3</strong> 有人说每一个行为终将被称量，也有人说什么都不被称量。<strong>4</strong> 有人说每一个行为都会回到做它的人身上，在今生或另一世。<strong>5</strong> 有人说债可以由别人来背。<strong>6</strong> 有人说只有下一件善意的事。<strong>7</strong> 有人说伤害要被回应，也有人说伤害要被承受。</p>
+</section>
+<section id="ch005.xhtml#section-48" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> 有个男人做了恶，却从未被要求交代。<strong>2</strong> 布被撕裂，没有人坐下来缝补。<strong>3</strong> 书上说，没有人被逐出。<strong>4</strong> 我不知道该对那个被他逐出自己人生的女人说什么。<strong>5</strong> 我说：对不起。我不再说别的。</p>
+</section>
+</section>
+<section id="ch006.xhtml#第五卷苦难与意义" class="level1">
+<h1 id="b6">第五卷：苦难与意义</h1>
+<section id="ch006.xhtml#section-49" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> 没有谁是痛苦找不到的，尽管它穿着不同的外套来到：一纸诊断，一阵敲门声，伴侣一点点忘了该怎么叫你。<strong>2</strong> 有人说痛苦是按功过分配的，有人说它根本没有分配；两种人都坐过同一间候诊室。<strong>3</strong> 贯穿一切信仰的安慰是这个：这间屋子里，你不是唯一的一个。</p>
+</section>
+<section id="ch006.xhtml#section-50" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> 有人说有原因，有人说没有；无论哪种说法之下，悲痛的人都可能听成“是你的错”或“你早该走出来了”。<strong>2</strong> 我们说：“我在这里”，并以留下来证明这话是认真的。</p>
+</section>
+<section id="ch006.xhtml#section-51" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> 哀恸是爱在所爱之物离去后所取的形状：一只手仍伸向电话，想告诉那个已不在的人一件事。<strong>2</strong> 它不需要被管理。<strong>3</strong> 它需要一个不试图修好它的见证者，和一把水壶。</p>
+</section>
+<section id="ch006.xhtml#section-52" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> 陪着受苦的人坐着是一门技艺，比说话更难。<strong>2</strong> 诱惑是早早离开，递上一句谚语，看看手表。<strong>3</strong> 陪着熬过沉默的人，给出了所能给的最大的礼物：不觉得自己是负担的那种感觉。</p>
+</section>
+<section id="ch006.xhtml#section-53" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> 攥紧的拳头盛不了水。<strong>2</strong> 把伤痛放在摊开的手里，它留下来，可以被看着，也许多年之后，被倾倒出去。</p>
+</section>
+<section id="ch006.xhtml#section-54" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> 什么都不会停留：最坏的日子不会，最好的日子也不会。<strong>2</strong> 在苦难中间记得这一点的人并不冷漠；他们握着一根系向稍后时辰的绳子。<strong>3</strong> 最黑暗的时辰和别的时辰一样长。它只是感觉更长，因为除了受苦的人，没人在盯着钟。</p>
+</section>
+<section id="ch006.xhtml#section-55" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> 有人说意义在一生的尽头等着被领取，有人说它是一路上做出来的。<strong>2</strong> 一锅汤的意义，在煮的过程里，在搅动里，在顺路送面包来的邻居里。<strong>3</strong> 有人说，一个人一生的意义，就是它喂饱过的那锅汤。</p>
+</section>
+<section id="ch006.xhtml#section-56" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> 喜悦不是苦难的回报，也不是它的对立面；它是另一样东西，在同一片土壤里生长。<strong>2</strong> 守在病床边的那个女人，既高兴自己在那里，又心力交瘁，两样同时。</p>
+</section>
+<section id="ch006.xhtml#section-57" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> 当重担太重时，大声对某个人说出来，并一直对某个人说下去，直到重担被分担。<strong>2</strong> 求助不是力量的失败；它是愿意留下来的人迈出的第一步。<strong>3</strong> 得到过帮助的人学会帮助别人，这条链子不会断。</p>
+</section>
+<section id="ch006.xhtml#section-58" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> 疤痕是皮肤的一部分。<strong>2</strong> 树围着钉子生长，那里的木头是整根树干里最硬的。<strong>3</strong> 受过伤的人，可以不退缩地坐在此刻正在受伤的人身边，这是一种罕见的本领，也是有用的本领。</p>
+</section>
+<section id="ch006.xhtml#section-59" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> 生命是珍贵的，并不因为它容易。<strong>2</strong> 太阳，雨，一年里的第一个苹果和最后一个：都珍贵。<strong>3</strong> 对厌倦了呼吸的人：我们想要你在这里，在这间并不光鲜、并不完美的屋子里，我们会泡茶。</p>
+</section>
+<section id="ch006.xhtml#section-60" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> 有人说苦难是老师。<strong>2</strong> 有人说它是到期的债。<strong>3</strong> 有人说它是考验，有人说是磨难，有人说是意外。<strong>4</strong> 有人说它是渴望的代价，而渴望是可以放下的。<strong>5</strong> 有人说它是被分摊的，承受更多的人是在替别人承受。<strong>6</strong> 有人说它会结束，有人说其后还有什么。<strong>7</strong> 有人说它该默默承受，有人说它该大声说出。</p>
+</section>
+<section id="ch006.xhtml#section-61" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> 我很愤怒，却没有人可以怪。<strong>2</strong> 书上说，最黑暗的时辰和别的时辰一样长。<strong>3</strong> 我想要一个敌人。那样更容易背。<strong>4</strong> 让我愤怒一会儿。不要催我去读下一节。</p>
+</section>
+</section>
+<section id="ch007.xhtml#第六卷死亡与归返" class="level1">
+<h1 id="b7">第六卷：死亡与归返</h1>
+<section id="ch007.xhtml#section-62" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> 所有升起的都要归返。我们用的那个词是“死”，它作为一个词令我们害怕，因为那是一扇我们从未见过从里面打开的门。<strong>2</strong> 我们能看见的是离去的形状：停住的呼吸，变凉的手。<strong>3</strong> 我们看不见的是抵达，可我们也从未见过大海接纳一条河，而它每一分钟都在发生。</p>
+</section>
+<section id="ch007.xhtml#section-63" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> 身体是暖的，因为它在燃烧。燃烧结束时，暖意并不消失；它进入床单，进入空气，进入握着它的手，进入终将承载其余部分的泥土。<strong>2</strong> 能量从没有被毁灭的时刻，只有换了一个房间的时刻。<strong>3</strong> 我们爱过的人没有熄灭，而是散开了。</p>
+</section>
+<section id="ch007.xhtml#section-64" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> 埋在地里的身体是一场盛宴。一个季节之内，蛆虫和微生物就在其中；一年之内，树根找到了它；十年之内，悲伤曾在的地方站着一棵小树。<strong>2</strong> 树结果，果实喂养一个从未见过那位老人的孩子。<strong>3</strong> 有人称这是一种修辞，有人称这是平实的事实；无论哪种，它都能让人流泪，是好的那种流泪。</p>
+</section>
+<section id="ch007.xhtml#section-65" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> 逝者在面包里，在灯光里，在邻居笑起来的样子里，在狗躺在旧椅子曾经所在之处的姿态里。<strong>2</strong> 有人说他们走在我们身边，有人说他们只是他们离开的那个房间的形状。<strong>3</strong> 我们由他们所由之而成的东西构成，由他们给过的东西构成，由他们给不了却试过的东西构成。</p>
+</section>
+<section id="ch007.xhtml#section-66" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> 在临终的床边，问题不是说什么，而是要不要开口。<strong>2</strong> 许多将死的人最想要的是平常的东西：一只握着的手，一扇打开的窗，一个关于狗的故事。<strong>3</strong> 说真的，说善意的；两者往往是一回事。<strong>4</strong> 需要的话，请求原谅；被请求的话，就给予。<strong>5</strong> 留到最后一口气，再多留一会儿，因为离去的人不会介意多出来的几分钟，而你会为它们庆幸。</p>
+</section>
+<section id="ch007.xhtml#section-67" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> 为一具遗体清洗，是被允许做最后一次照料。<strong>2</strong> 水是温的，布是软的，声音是低的；在场的人对逝者说话，仿佛逝者听得见，因为这不费什么，有时能让活着的人安定。<strong>3</strong> 有人裹白布，有人裹本族的布，有人只裹一条毯子。<strong>4</strong> 每一种都是一种回家的方式。</p>
+</section>
+<section id="ch007.xhtml#section-68" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> 有人归于土，有人归于火，归于海，归于天空；家人选择自己承受得了的。<strong>2</strong> 没有哪一种是较小的归返。火让热很快释放；土，缓慢；水把它带得很远；风把它托向各处。<strong>3</strong> 海里的骨灰和花园里的遗骨，不过是对同一句话的两种说法。</p>
+</section>
+<section id="ch007.xhtml#section-69" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> 哀恸一阵阵涌来，这些浪头并不是出了问题的信号。<strong>2</strong> 你在葬礼后的饭桌上笑，在超市里哭；两者都恰当。<strong>3</strong> 第一个生日，第一个冬天，第一次伸手去拿电话：每一次都是一个新的浪。</p>
+</section>
+<section id="ch007.xhtml#section-70" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> 对一间服丧的屋子来说，最有用的访客是洗碗的那个人。<strong>2</strong> 第二有用的，是第二个月又来的那个人，那时已不再有人送来饭菜。<strong>3</strong> 说出那个名字。不要压低声音去说。</p>
+</section>
+<section id="ch007.xhtml#section-71" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> 孩子的死没有安慰，我们也不提供任何安慰。<strong>2</strong> 我们提供陪伴：超市里搭在肩上的一只手，门廊上留下的一盘食物，二月里寄来的一张卡片，那时其他所有人都已忘了。<strong>3</strong> 那个孩子在早晨的光里，在第一场雪里。我们不敢说知道这样就够了。我们只说，我们在这里。</p>
+</section>
+<section id="ch007.xhtml#section-72" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> 在纪念的日子里，为每一位已故的人摆一副碗碟，一家人吃饭，仿佛他们在场。<strong>2</strong> 有人试着做祖母的派，做砸了，大家都说味道正好。<strong>3</strong> 空椅子不撤走，也不被供成神龛；它是一张桌边的一把椅子，我们坐在这张桌子旁。<strong>4</strong> 夜晚以一支蜡烛和洗碗碟作结。</p>
+</section>
+<section id="ch007.xhtml#section-73" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> 我们死时，并不离开世界；我们不再是世界里一个分开的东西。<strong>2</strong> 有人说逝者在别处，有人说他们在这里：窗帘的呼吸里，树叶的轻颤里，房间那头一个女人笑起来的样子里，那样子我们认得。<strong>3</strong> 我们学着看见他们，就像孩子学着认识风，凭它推动的东西。</p>
+</section>
+<section id="ch007.xhtml#section-74" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> 活着的人是被珍爱的。<strong>2</strong> 为活着而高兴的人并没有背叛逝者；厌倦活着的人并没有从活人中失去。<strong>3</strong> 重担太重时，大声说出来，就会有人来，重担便被分担。<strong>4</strong> 归返在它自己的时辰到来，没有人被要求催促它；它来的时候，是平安地来。</p>
+</section>
+<section id="ch007.xhtml#section-75" class="level2">
+<h2>14</h2>
+<p><strong>1</strong> 有人说逝者会再次出生，生在同类的或别样的身体里。<strong>2</strong> 有人说他们安息，直到被应许的那个早晨。<strong>3</strong> 有人说他们渡水，或穿过一道门，或攀上一座山。<strong>4</strong> 有人说他们先要被称量。<strong>5</strong> 有人说他们留在附近，被喂养，被说话。<strong>6</strong> 有人说他们变成天空，或星辰，或一只动物。<strong>7</strong> 有人说自我像火焰一样熄灭，而热留了下来。<strong>8</strong> 有人说什么都不知道。</p>
+</section>
+<section id="ch007.xhtml#section-76" class="level2">
+<h2>15</h2>
+<p><strong>1</strong> 一个说：什么都没有丢失。<strong>2</strong> 另一个说：我的儿子丢了。<strong>3</strong> 第一个说：他的热在田里。<strong>4</strong> 另一个说：我养的不是一片田。<strong>5</strong> 没有一个得到回答。两个都有人陪着坐下。</p>
+</section>
+<section id="ch007.xhtml#section-77" class="level2">
+<h2>16</h2>
+<p><strong>1</strong> 一个女人把丈夫葬在一棵李树下。<strong>2</strong> 第二年春天，她不肯吃李子。<strong>3</strong> 女儿说：“他在里面。”<strong>4</strong> 女人说：“所以才不吃。”<strong>5</strong> 女儿自己吃了，女人看着她吃，哭了，李子是甜的。</p>
+</section>
+</section>
+<section id="ch008.xhtml#第七卷言语" class="level1">
+<h1 id="b8">第七卷：言语</h1>
+<section id="ch008.xhtml#section-78" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> 这里的每一句话都曾被说过：被簸谷的女人，被葬礼上喝醉的叔叔，被一个问“为什么”问到满屋安静的孩子。<strong>2</strong> 这本书唯一可称原创的，是它的编排。<strong>3</strong> 那么，就把它当作一块面包来对待：分享，掰开，传下去。</p>
+</section>
+<section id="ch008.xhtml#section-79" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> 有人把书贴在唇边，有人贴在胸口，有人不读，只把它揣在口袋里。<strong>2</strong> 路是用来走的，路也是用来停下的地方。<strong>3</strong> 拿着它，要像拿着一只小鸟：紧到不让它飞走，松到不让它窒息。</p>
+</section>
+<section id="ch008.xhtml#section-80" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> 这本书的末尾是空白页。<strong>2</strong> 它们不是事后补上的；它们是要点所在。<strong>3</strong> 书有不足的地方，可以添一行；书造成伤害的地方，可以划去一行。<strong>4</strong> 有的书保持收到时的原样，有的书保持敞开；这一本保持敞开。</p>
+</section>
+<section id="ch008.xhtml#section-81" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> 如果某一节对你没有话说，就放下它。<strong>2</strong> 十年后再来；也许那时它会说。<strong>3</strong> 二十岁时显得冷的那一行，五十岁时可能显得暖；五十岁时给过安慰的那一行，七十岁时可能显得单薄。<strong>4</strong> 书有多大，取决于读者长到了多大。</p>
+</section>
+<section id="ch008.xhtml#section-82" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> 读就是听。<strong>2</strong> 慢慢读的人，手指压在行下，遇到字词牵住了就停下，做的是最古老的一种阅读。<strong>3</strong> 不要为读完而读。要为与它同在而读。</p>
+</section>
+<section id="ch008.xhtml#section-83" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> 沉默也是一种阅读。<strong>2</strong> 两节之间的停顿是这一节的一部分。<strong>3</strong> 歌是由曲调托起的话语；祈祷，对祈祷的人来说，是由心托起的话语；我们尊重两者，也尊重两者都不出声的那份安静。</p>
+</section>
+<section id="ch008.xhtml#section-84" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> 老妇人说那一行的意思是勇气；年轻人说是耐心。<strong>2</strong> 各人看见了对方错过的东西。<strong>3</strong> 有人对着一行字坐上许多年，也没有定论。</p>
+</section>
+<section id="ch008.xhtml#section-85" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> 所有的词都是从空气里借来的，又还给空气。<strong>2</strong> 黎明时说出的一个词，中午已在风里；写下的一个词也许能留一千年，被误读九百年。<strong>3</strong> 说出的和写下的是邻居，谁也不拥有这条路。</p>
+</section>
+<section id="ch008.xhtml#section-86" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> 有人说一个词曾被赐下一次，并被原样保存。<strong>2</strong> 有人说词是由说它们的人造出来的。<strong>3</strong> 有人说一个名字，以恰当的气息大声说出，所成之事比说它的人更大。<strong>4</strong> 有人说沉默是最古老的词。<strong>5</strong> 有人说书是用来读的，有人说是用来诵的，有人说是用来带着的。<strong>6</strong> 有人说歌是不带争论的祈祷。<strong>7</strong> 有人说一个词一旦说出，就不会死去。</p>
+</section>
+</section>
+<section id="ch009.xhtml#第八卷践行" class="level1">
+<h1 id="b9">第八卷：践行</h1>
+<section id="ch009.xhtml#section-87" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> 吃饭之前，我们停下一口气的时间，说出食物从哪里来：一片田，一场雨，一位陌生人在一垄地上弯着的背。<strong>2</strong> 有名字的，说出名字：农夫，司机，收银台后的那个人。没有名字的，我们说：“对此出过力的所有人。”<strong>3</strong> 这只要十秒钟。饭之后便有所不同，就像一封信，在你知道是谁写的之后就不同了。</p>
+</section>
+<section id="ch009.xhtml#section-88" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> 坐着，数十次呼吸，让心去做它要做的事。<strong>2</strong> 如果它很吵，就和吵坐在一起。如果身体疼，就和疼坐在一起。<strong>3</strong> 十次呼吸变成二十次；二十次变成你不知道自己有过的半个小时。<strong>4</strong> 没有人打分，也从没有人在这上面失败过，只是忘记了，又重新开始。</p>
+</section>
+<section id="ch009.xhtml#section-89" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> 每天给出一点什么，无论多小：一枚硬币，一分钟，一次往好处想的宽容。<strong>2</strong> 有人给人搭一程车；有人给一顿饭；有人替不会写字的邻居写一封信。<strong>3</strong> 一份礼物只有在没有被送出时才算小。</p>
+</section>
+<section id="ch009.xhtml#section-90" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> 唱歌，独自唱，也一起唱。<strong>2</strong> 声音是身体自己的乐器，一屋子未经训练的人声合在一个音上，是最古老的归属体验之一。<strong>3</strong> 不会唱的人用倾听加入；听不见的人用脚打拍子加入。</p>
+</section>
+<section id="ch009.xhtml#section-91" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> 愿意就禁食；愿意就吃；两者都不是分数。<strong>2</strong> 禁食是倾听饥饿的一种方式，既听自己的，也听世界的。<strong>3</strong> 盛宴是倾听喜悦的一种方式。</p>
+</section>
+<section id="ch009.xhtml#section-92" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> 还给大地一点什么：一粒种子，晚饭的果皮，一杯浇在树根上的水。<strong>2</strong> 这是一个小小的仪式；有人说它偿还一笔债，有人说它什么也不偿还，而种子无论如何都落了进去。<strong>3</strong> 喂养过我们的大地也轮到被喂养，而我们，在片刻之间，是那只手。</p>
+</section>
+<section id="ch009.xhtml#section-93" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> 倾听一个陌生人，他需要多久，就听多久。<strong>2</strong> 不要打断，不要想着去修好他，不要看时间。<strong>3</strong> 说：“然后呢？”<strong>4</strong> 被听见的人走起路来更轻，有时一轻就是许多年。</p>
+</section>
+<section id="ch009.xhtml#section-94" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> 鞠躬，或低头，或把手放在心口：每一种都是在说，「我与你同在。」<strong>2</strong> 另一种方式是摊开的手，闭上的眼，缓慢的呼吸。<strong>3</strong> 这些没有哪一种比别的更正确。身体知道心想说什么。</p>
+</section>
+<section id="ch009.xhtml#section-95" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> 累了就休息；休息也是践行。<strong>2</strong> 田地每七年休耕一年，之后的收成更好。<strong>3</strong> 不休息的人是在砍断工作的根。<strong>4</strong> 躺下吧；世界没有你也会照常运转，知道这一点是好事。</p>
+</section>
+<section id="ch009.xhtml#section-96" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> 一天结束时，说出你后悔什么、庆幸什么，说给某个人，或说给安静，或写在一页纸上。<strong>2</strong> 不要修饰。</p>
+</section>
+<section id="ch009.xhtml#section-97" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> 有人天天修行，有人偶尔，有人根本不修。<strong>2</strong> 什么都不做的人，与什么都做的人一样，身在整全之中。<strong>3</strong> 有人在一首赞歌里找到整全，有人在一把扳手里；有人在医院的走廊里，有人在田野里。<strong>4</strong> 有人遵守得到的每一条规矩，有人只在抽屉里留一件工具；房子都立着。</p>
+</section>
+<section id="ch009.xhtml#section-98" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> 有人向某位祈祷，有人向无人祈祷。<strong>2</strong> 有人朝着一个地方叩拜，有人就站在原地叩拜。<strong>3</strong> 有人奉献十分之一，有人奉献自己所有。<strong>4</strong> 有人转动经轮，数一串念珠，点亮一盏灯，斟一杯水。<strong>5</strong> 有人开始前先洗，有人以洗作结。<strong>6</strong> 有人静默一天，有人守一个誓守一生。<strong>7</strong> 有人说工作就是修行。<strong>8</strong> 有人说修行就是那个修行的人。</p>
+</section>
+</section>
+<section id="ch010.xhtml#第九卷神圣的时间" class="level1">
+<h1 id="b10">第九卷：神圣的时间</h1>
+<section id="ch010.xhtml#section-99" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> 白昼在黎明与黄昏转向，我们守住这两个时刻：晨光初现时一口气，最后一缕光时一口气。<strong>2</strong> 不需要公鸡；光就够了。<strong>3</strong> 上夜班的人迎接的是另一个黎明，那个在下班时到来的黎明，它并不因此少一分清晨的味道。</p>
+</section>
+<section id="ch010.xhtml#section-100" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> 每逢第七天，或自己选定的某一天，我们休息。<strong>2</strong> 田地休耕，工具挂在钩上，匆忙的人不由自主地慢下来。<strong>3</strong> 休息不是靠做完而赚来的；它是被取用的，就像海岸取用潮水。</p>
+</section>
+<section id="ch010.xhtml#section-101" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> 在最短的一天，我们靠拢在一起，分享光；在最长的一天，我们待在外面，直到黑夜来临。<strong>2</strong> 黑夜很长，我们靠相聚把它缩短。<strong>3</strong> 白昼很长，我们靠熬夜相伴把它加深。</p>
+</section>
+<section id="ch010.xhtml#section-102" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> 第一场雨来时，我们走进雨里；第一场霜降时，我们收进所种的东西。<strong>2</strong> 第一场雨唤醒泥土的气味，气味进入记忆；第一场霜让空气变得锋利，空气进入肺里。<strong>3</strong> 季节是一所学校，我们始终在里面。</p>
+</section>
+<section id="ch010.xhtml#section-103" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> 播种时我们唱着歌种；收获时我们一起吃，并在田里留下一份。<strong>2</strong> 第一道犁沟，以一句祈祷或一个玩笑开出，随挖的人喜欢哪样。<strong>3</strong> 留在田里的那一份，是给老鼠、乌鸦和过路人的。</p>
+</section>
+<section id="ch010.xhtml#section-104" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> 新年在转折所在之处开始，我们以干净的屋子和被原谅的邻居开启它。<strong>2</strong> 旧年的债被说出，能还的就还；新年的盼望，大声说给一位朋友或说给火。<strong>3</strong> 两年之间有一段停顿，不属于任何历法，又属于所有历法。</p>
+</section>
+<section id="ch010.xhtml#section-105" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> 生日是整全呈现出一个新形状的日子。<strong>2</strong> 孩子的生日是一个被看见的日子；老人的生日是一个被感谢的日子。<strong>3</strong> 蛋糕是分享的；过生日的人吹灭蜡烛，愿望只属于那个人自己。</p>
+</section>
+<section id="ch010.xhtml#section-106" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> 有哀悼的日子，也有跳舞的日子；历法同时容纳两者，没有一种被浪费。<strong>2</strong> 哀悼的第一天不是最后一天，婚礼上的第一支舞也不是唯一的一支。<strong>3</strong> 一年是一张长桌，每一种日子都摆在上面。</p>
+</section>
+<section id="ch010.xhtml#section-107" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> 每个民族都守着自己的日子；受邀我们就加入，他们经过时我们留一盏灯。<strong>2</strong> 邻居的节日是一扇通向邻居内心的窗。<strong>3</strong> 被要求时带一道菜，没被要求时带一张安静的脸，由此明白每个民族都在自己的季节里笑过哭过。</p>
+</section>
+<section id="ch010.xhtml#section-108" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> 有人说时间是一个轮。<strong>2</strong> 有人说它是有起点和终点的一条线。<strong>3</strong> 有人说它是一条河，有人说是一条绳。<strong>4</strong> 有人说它是整全之内的一场梦。<strong>5</strong> 有人说有些日子在时间之外，被分别出来。<strong>6</strong> 有人说逝者有他们自己的历法。<strong>7</strong> 有人说每一刻同时存在，我们在其间行走。</p>
+</section>
+</section>
+<section id="ch011.xhtml#第十卷神圣的处所" class="level1">
+<h1 id="b11">第十卷：神圣的处所</h1>
+<section id="ch011.xhtml#section-109" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> 一个地方变得神圣，就像一条路成为路：因为被走过，被一再回来，因为留在那里的东西。<strong>2</strong> 有景的山顶对攀登者是神圣的，洗衣间对五个孩子的母亲是神圣的；都没有错。<strong>3</strong> 神圣不在泥土里，而在聚集在那里的专注里，就像热在石头里。</p>
+</section>
+<section id="ch011.xhtml#section-110" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> 有些地方会自我宣告：空气变了的那片树林，八月里依旧冰凉的泉水。<strong>2</strong> 另一些地方是被悲伤发现的：接过一个电话的那条长凳，有人坐下就站不起来的楼梯间。<strong>3</strong> 我们学会安静地走过后一种地方，就像走过一位正在祈祷的陌生人身旁。</p>
+</section>
+<section id="ch011.xhtml#section-111" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> 门槛是身体无需吩咐就会做的一场小小仪式：停一停，擦擦脚，放低声音。<strong>2</strong> 走进一个家，是走进一份信任；离开时，是带着被款待后的不同回到街上。<strong>3</strong> 忘了怎样被走进的房子，就成了建筑。</p>
+</section>
+<section id="ch011.xhtml#section-112" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> 每一张用了很久的桌子都是一份档案：婚后第三年一口热锅留下的圈，孩子的叉子划出的痕，疲惫的人曾把头靠下的那一处凹陷。<strong>2</strong> 坐在桌边的人，坐在先前坐过的人层层叠叠的时辰之中。<strong>3</strong> 不要把它打磨得太光滑。</p>
+</section>
+<section id="ch011.xhtml#section-113" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> 一个人带着三个地方：出生的地方，快乐过的地方，逝者所在的地方。<strong>2</strong> 它们并不总是同一个地方，它们之间的距离，就是那一生的形状。<strong>3</strong> 一个人说“家”时，听听那个人指的是哪一个。</p>
+</section>
+<section id="ch011.xhtml#section-114" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> 有人探望的墓园是花园；无人探望的墓园是没有读者的图书馆。<strong>2</strong> 孩子们在墓碑间玩耍，没有人责骂；喜欢热闹的逝者并不介意。<strong>3</strong> 我们种下那个人喜爱的东西：一丛玫瑰，一棵桃树，给埋在附近的那条狗的长草。</p>
+</section>
+<section id="ch011.xhtml#section-115" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> 为聚会而建的房间应当朴素到没有人觉得被装饰压过一头。<strong>2</strong> 窗子宽，座位不齐，有一条长凳给站不住的人，有一个角落给只为哭泣而来的人。<strong>3</strong> 它的神圣，如果有的话，是它布置里的那份体贴。</p>
+</section>
+<section id="ch011.xhtml#section-116" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> 一个人哭过的地方，大地以它唯一能做到的方式记住：成为那个地方。<strong>2</strong> 一道传来消息的门廊，一条医院的走廊，一条公路的路肩。<strong>3</strong> 我们经过这些地方，不加宣告，有几个人会摸一下栏杆。</p>
+</section>
+<section id="ch011.xhtml#section-117" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> 只要人们坐下来彼此倾听，一个神圣的地方就形成了，它恰好持续到倾听结束为止。<strong>2</strong> 医院病床上，一只手搭在床单上，就是这样的地方；熄了火的停着的车是；后门台阶上两杯渐渐变凉的什么也是。<strong>3</strong> 这些地方不能建造，也不能购买，只能居住。</p>
+</section>
+<section id="ch011.xhtml#section-118" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> 有人说一座山是一个座位。<strong>2</strong> 有人说一条河是通往下一个世界的路。<strong>3</strong> 有人说一棵树是一道门。<strong>4</strong> 有人说一座房子是一具身体，一具身体是一座房子。<strong>5</strong> 有人说某座城市是世界的中心，有人说中心就在你站的地方。<strong>6</strong> 有人说一块石头有记忆。<strong>7</strong> 有人说一个地方因在其中所做之事而成圣，也有人说因曾在那里做过的事。</p>
+</section>
+</section>
+<section id="ch012.xhtml#第十一卷人生的门槛" class="level1">
+<h1 id="b12">第十一卷：人生的门槛</h1>
+<section id="ch012.xhtml#section-119" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> 新生儿被抱着穿过门，进入一个世界，那个世界已在几周的慌乱与爱里安排停当，来迎接这个孩子。<strong>2</strong> 母亲精疲力竭，父亲惊慌失措，兄姐妒忌；祖母接管了汤。<strong>3</strong> 额头上的水，一声说出的名字，屋子里的人同意帮忙。</p>
+</section>
+<section id="ch012.xhtml#section-120" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> 一个名字是怀着比知识更多的希望选出的，孩子会长成它，或长出它。<strong>2</strong> 有些名字取自逝者，给他们第二次生命；有些取自一个季节，一条河，一桩落空的志向。<strong>3</strong> 名字被双手捧着、带着一点害怕交出去，而孩子到了六岁，会有自己的看法。</p>
+</section>
+<section id="ch012.xhtml#section-121" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> 在追问的年纪，诚实的回答常常是“我不知道”，孩子比大人更承受得了这个。<strong>2</strong> 我们死后去哪里？月亮为什么跟着车走？<strong>3</strong> 在孩子的高度作答，用最少的、属实的话，让之后的沉默去做它的工作。</p>
+</section>
+<section id="ch012.xhtml#section-122" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> 在成年的门槛上，年轻人带着一个故事和一盏灯被独自送进黑暗，归来时被一顿饭迎接。<strong>2</strong> 磨难不如归来重要。<strong>3</strong> 他们回来时改变了，那种改变无法解释，长辈们也不要求他们解释。</p>
+</section>
+<section id="ch012.xhtml#section-123" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> 两个人把生命合在一起，在爱他们的人面前说出自己的打算，其他人说：“我们会帮你们。”<strong>2</strong> 戒指，绳结，杯子，分食的面包：每个民族各有自己的，每一种都是在说，两样东西已经成了一样东西，长着两个头。<strong>3</strong> 如果必须解开，就公开地解开，带着当初缔结时同样的用心。</p>
+</section>
+<section id="ch012.xhtml#section-124" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> 别人生下的孩子，只要我们在恰当的时辰打开门，就和我们亲生的一样是我们的。<strong>2</strong> 收养，寄养，邻居家那个在我们家吃了十年饭的男孩：家人就是出现的人。<strong>3</strong> 它随着生长接受嫁接，而嫁接的枝上结的果，往往最甜。</p>
+</section>
+<section id="ch012.xhtml#section-125" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> 离别是一道门槛：女儿离开去另一个国家，老朋友搬走，父亲从一种并非自己选择的生活中退休。<strong>2</strong> 我们直截了当地说出会想念什么、会带走什么，然后一起吃点东西。<strong>3</strong> 没有一顿饭的告别，是一处漏。</p>
+</section>
+<section id="ch012.xhtml#section-126" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> 岁月带来缓慢，缓慢带来一种速度买不到的目光。<strong>2</strong> 老人的故事不是重复，而是加深，同一个故事在九十岁讲，与七十岁讲，是不同的故事。<strong>3</strong> 请老人再讲一遍，听听有什么变了。</p>
+</section>
+<section id="ch012.xhtml#section-127" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> 在每一道门槛上，爱我们的人说：你曾是这个，你现在是那个，我们在这里。<strong>2</strong> 说出来本身就是仪式。<strong>3</strong> 在转折处被看见，就是被带着走过去一小段，这就是一切仪式一直以来的意思。</p>
+</section>
+<section id="ch012.xhtml#section-128" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> 最后的门槛是归返，在所有先行者的陪伴下踏上。<strong>2</strong> 将死的人被给予第一把椅子，靠窗的座位，柔软的枕头。<strong>3</strong> 没有人被要求勇敢。只被问是否有什么我们能做的，让它更容易一些。</p>
+</section>
+<section id="ch012.xhtml#section-129" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> 有人说孩子从某处来，被迎回。<strong>2</strong> 有人说孩子是归来的祖先。<strong>3</strong> 有人说名字必须隐藏一段时间。<strong>4</strong> 有人说仪式造就一个男人或女人，有人说仪式只是显示出来。<strong>5</strong> 有人说婚姻是一个结，有人说是一条河，有人说是一条路。<strong>6</strong> 有人说老年是一场收获。<strong>7</strong> 有人说一个人在一生中出生许多次。</p>
+</section>
+</section>
+<section id="ch013.xhtml#第十二卷共同体与指引" class="level1">
+<h1 id="b13">第十二卷：共同体与指引</h1>
+<section id="ch013.xhtml#section-130" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> 圆圈是我们所知最古老的聚会之处：篝火四周的一圈，村子里的绿地，下午两点教堂地下室里的一圈椅子。<strong>2</strong> 有的圆圈给带领者留一个座位，有的一个也不留；各自有各自被听见的方式。<strong>3</strong> 凡在任一种里坐过的人，都知道座位的安排教会了什么。</p>
+</section>
+<section id="ch013.xhtml#section-131" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> 在圆圈里，石头传下去。<strong>2</strong> 谁握着它，谁就不被打断地说；其余的人听，不在心里编织回答。<strong>3</strong> 这种修炼比听起来难，我们大多数人在第三个小时比在第一个小时做得更好。</p>
+</section>
+<section id="ch013.xhtml#section-132" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> 长者不是年纪大的人，而是一直在留心、并且已不再需要自己正确的人。<strong>2</strong> 你从他们提的问题、沉默的长短，以及事后那种“我说出了比本意更智慧的话”的感觉里认出他们。<strong>3</strong> 他们稀少，出现在意想不到的地方：一位上夜班的护士，一位退休的公交司机，一位开了四十年干洗店的女人。</p>
+</section>
+<section id="ch013.xhtml#section-133" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> 有人说权威从上方赐下，有人说它从下方借来；无论哪种，它都像寒冷路途上的一件外套，穿在身上。<strong>2</strong> 外套被感激地传下去，或被感激地交回，或被留着，各个民族有各自的做法。<strong>3</strong> 圆圈记性长，对那个忘了这件外套是为谁做的人，没什么耐心。</p>
+</section>
+<section id="ch013.xhtml#section-134" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> 我们慢慢做决定，因为重要的决定，是人要住在里面的那种。<strong>2</strong> 持异议的人是圆圈里最有用的成员，因为只有他们看得见山丘的另一面。<strong>3</strong> 一切说完之后，是一阵沉默，在沉默里，屋子里的人弄清了自己的想法。</p>
+</section>
+<section id="ch013.xhtml#section-135" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> 好老师说：这是我走过的路；我不知道你的路。<strong>2</strong> 学生超过他们时，他们明显很高兴。<strong>3</strong> 有的人教，是为了让学生原样带走所教的；有的人教，是为了让学生回嘴；两者都是在教。</p>
+</section>
+<section id="ch013.xhtml#section-136" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> 陌生人到来，带着村子缺少的唯一一样东西：一个外面。<strong>2</strong> 他们知道别处是怎么做的，而那往往是村子已忘记原本可能的事。<strong>3</strong> 所以我们先给他们吃的，其次倾听，如果非争不可，第三才争。</p>
+</section>
+<section id="ch013.xhtml#section-137" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> 纠纷是圆圈实践所信之事的一次机会。<strong>2</strong> 双方都说；每一方的话被复述到他们满意，对方才回答；圆圈提问，不作裁决。<strong>3</strong> 缝补到来时，不是一纸裁决，而是一份协议，因为是他们自己的，所以更好。</p>
+</section>
+<section id="ch013.xhtml#section-138" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> 每个社会都以它如何对待病人、穷人、年轻人、老人、陌生人和逝者来评判。<strong>2</strong> 我们探望病人，给饥饿的人饭吃，让陌生人有处可住，公道地付给劳动者报酬，用心安葬逝者。<strong>3</strong> 这些都不是慈善。这是属于一个靠分享而存活的物种所要付的代价。</p>
+</section>
+<section id="ch013.xhtml#section-139" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> 村里的孩子在某种意义上都是我们的：那个在我们门前摔倒的，那个四处游荡的，那个坐在生日聚会边缘低头看地板的。<strong>2</strong> 我们不需要被要求。<strong>3</strong> 我们只需要留意到，然后在他们身边坐下，什么要紧的话也不说。</p>
+</section>
+<section id="ch013.xhtml#section-140" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> 做了伤害的人被要求去修复，修复完成后被欢迎回来。<strong>2</strong> 回来的路是由留下的人铺成的，铺的是他们的耐心，和他们拒绝把最糟的那一刻当作整个人。<strong>3</strong> 这是一个共同体所做的最难、也最文明的事。</p>
+</section>
+<section id="ch013.xhtml#section-141" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> 有些人无法生活在圆圈里，并不因此被憎恨。<strong>2</strong> 隐士，漂泊者，守着山丘的人：他们也是村子的一部分，就像灯塔是海岸的一部分。<strong>3</strong> 我们给通往圆圈的路留着，在林子边上放一块面包，什么也不要求。</p>
+</section>
+<section id="ch013.xhtml#section-142" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> 有人说一个民族是一个家，它的逝者也列席会议。<strong>2</strong> 有人说带领者在出生之前就已被选定。<strong>3</strong> 有人说一个共同体是被一声召唤聚在一起的。<strong>4</strong> 有人说长者先说，有人说最后说。<strong>5</strong> 有人说一个陌生人可能带着被送来的东西。<strong>6</strong> 有人说一条法律是被传下来的，有人说它是被使用磨光的。<strong>7</strong> 有人说圆圈包括那些尚未出生的人。</p>
+</section>
+</section>
+<section id="ch014.xhtml#第十三卷饮食身体与衣着" class="level1">
+<h1 id="b14">第十三卷：饮食、身体与衣着</h1>
+<section id="ch014.xhtml#section-143" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> 吃，就是在二十分钟里参与一张网，这张网延伸到一片你永远不会看见的田。<strong>2</strong> 农夫，采摘的人，包装的人，开卡车的人，杂货店的人，做饭的人：每个人都往面包里添了一点自己。<strong>3</strong> 我们在第一口之前停一口气，不是为了奉承谁，而是为了准确。</p>
+</section>
+<section id="ch014.xhtml#section-144" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> 有些人吃别人不吃的东西，出于良心、健康、习俗或口味。<strong>2</strong> 我们在同一张桌边吃，不加评论；桌子的意义不在于一致，而在于靠近。<strong>3</strong> 嘲笑别人的食物，就是嘲笑他们的母亲，也是在一种很古老的语言里失了礼。</p>
+</section>
+<section id="ch014.xhtml#section-145" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> 身体是一座有数十万亿个细胞的花园，其中没有一个听说过你。<strong>2</strong> 它需要喂养，清洗，活动，休息，被倾听，不是当仆人，而是当长期的合作者。<strong>3</strong> 它抱怨时，并不是在背叛你。它在告诉你什么，用它仅有的那种声音。</p>
+</section>
+<section id="ch014.xhtml#section-146" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> 洗不只是卫生：它是一个人每天做的小小举动，借此标记一件事的结束和另一件事的开始。<strong>2</strong> 饭前洗的手，哀伤后洗的脸，一生终了时洗的身体。<strong>3</strong> 为别人洗，为病人，为幼小的，为逝者，是最古老、最亲密的礼数之一，我们不赶。</p>
+</section>
+<section id="ch014.xhtml#section-147" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> 衣着是一种在任何人开口之前就已说出的语言。<strong>2</strong> 量身裁的西装，劳作的围裙，葬礼的黑，姐妹之间传穿的裙子：每一件都在诉说场合和那个人。<strong>3</strong> 我们穿衣是为了尊重所处的这一天，我们知道哀悼和庆祝的区别，有时也故意打破这条规矩。</p>
+</section>
+<section id="ch014.xhtml#section-148" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> 每个民族都把自己的服饰变成对自身之爱的一种表达：织法，颜色，代代相传的纹样。<strong>2</strong> 欣赏它是一种友谊；嘲笑它是一种小小的暴力。<strong>3</strong> 我们不必理解它。我们只需为有人曾那样用心于一根线而高兴。</p>
+</section>
+<section id="ch014.xhtml#section-149" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> 身体并不可耻，它的隐私是一种尊重，对自己，也对别人。<strong>2</strong> 没有理想的身体，只有人所拥有的这一具，和人对它所施的善意。<strong>3</strong> 一生漫长的功课，是与那个你无法离开的东西和平相处。</p>
+</section>
+<section id="ch014.xhtml#section-150" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> 一次自由选择的禁食，教人明白饥饿是什么，也教人明白我们对那些并非自愿挨饿的人亏欠什么。<strong>2</strong> 一次自由给予的盛宴，教人明白丰盛是什么，以及它本就是用来分享的。<strong>3</strong> 两者没有哪个更有德；智者两者都留着，并知道何时需要哪一个。</p>
+</section>
+<section id="ch014.xhtml#section-151" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> 触摸是第一种语言，也是最后一种。<strong>2</strong> 一只手搭在肩上，脸颊贴着前额，一条手臂环住悲伤的人的肩膀。<strong>3</strong> 触碰之前先问，并不是冷淡；这是一种礼数，来自知道触碰是一份无法强求的礼物的人。</p>
+</section>
+<section id="ch014.xhtml#section-152" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> 岁月把身体磨合，就像使用把工具磨合，直到它合于自己一生的那只手。<strong>2</strong> 脸保存着一张它去过的所有地方的地图：天气，悲伤，欢笑。<strong>3</strong> 变老，是被给予长远的眼光，并学到其中能传下去的是多么少。</p>
+</section>
+<section id="ch014.xhtml#section-153" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> 一个人吃什么，穿什么，怎样对待自己的身体，都是在爱他们的人膝下学来的。<strong>2</strong> 祖母的汤，叔叔包礼物的方式，邻居每到星期六就晒衣服的习惯。<strong>3</strong> 我们拿走有帮助的，留下没有帮助的，两者都不使我们变穷。</p>
+</section>
+<section id="ch014.xhtml#section-154" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> 有人说身体是一座殿宇，有人说是一件借来的外衣。<strong>2</strong> 有人说它是一间客舍，给将要离开的人。<strong>3</strong> 有人说它应少喂，有人说应喂好。<strong>4</strong> 有人说某些食物洁净，某些不洁，有人说一切都洁净。<strong>5</strong> 有人遮头，有人遮脸，有人遮肩，有人除了彩绘什么也不穿。<strong>6</strong> 有人说头发是一份记录，有人说头发要在哀悼时剪去。<strong>7</strong> 有人说身体将被唤起，有人说它将被放下。</p>
+</section>
+<section id="ch014.xhtml#section-155" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> 我的身体不是一条同意了取一个形状的河。<strong>2</strong> 我的身体是一座屋顶坏了的房子，我补得累了。<strong>3</strong> 别告诉我它是整全取了一个人的形状。<strong>4</strong> 告诉我现在几点了，然后留下。</p>
+</section>
+</section>
+<section id="ch015.xhtml#第十四卷自然与其他生灵" class="level1">
+<h1 id="b15">第十四卷：自然与其他生灵</h1>
+<section id="ch015.xhtml#section-156" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> 鹿、橡树和孩子是表亲，不同之处只在于它们各自如何解决了活下去这个难题。<strong>2</strong> 孩子对着狗笑，狗以狗所能的方式笑回去；两者都没读过关于这件事的书。<strong>3</strong> 一棵很老的橡树比一百条狗、十几个家庭活得更久，有些想法，它却无法分享。</p>
+</section>
+<section id="ch015.xhtml#section-157" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> 乌鸦会解谜题。章鱼会拧开罐子。大象会站在亡者的骨骸前。<strong>2</strong> 我们迟迟才承认本该早就知道的事：我们是许多心智中的一种，而不是唯一的。<strong>3</strong> 荒野是一场漫长的交谈，我们是晚到的人，礼貌的做法是先听。</p>
+</section>
+<section id="ch015.xhtml#section-158" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> 种一棵树，是对一个你不会遇见的人许下的承诺。<strong>2</strong> 种树的人知道自己不会坐在它的荫下；他们照样种，这是最古老的信念。<strong>3</strong> 荫凉到来时，上面没有名字，这正是要点所在。</p>
+</section>
+<section id="ch015.xhtml#section-159" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> 取你所需，留下能繁衍的。<strong>2</strong> 捕走最后一条鱼的人，也一并拿走了此后十年的捕鱼，和孙辈的晚饭。<strong>3</strong> 这是算术，不是感伤，而土地不争辩。</p>
+</section>
+<section id="ch015.xhtml#section-160" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> 我们脚下的土壤，是由别的季节的逝者构成的：叶，骨，森林，被遗忘的花园。<strong>2</strong> 站在它上面，就是站在一座祖先的图书馆上。<strong>3</strong> 我们请求许可深挖，挖完后道谢，无论我们怎样称呼这件事。</p>
+</section>
+<section id="ch015.xhtml#section-161" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> 蜜蜂、蚯蚓和真菌做着使其他一切成为可能的工作，而从来没有人好好谢过它们。<strong>2</strong> 一捧土里的生灵，比地球上的人还多。<strong>3</strong> 喂养土壤，是我们所知最实际的一种爱。</p>
+</section>
+<section id="ch015.xhtml#section-162" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> 伤害荒野，就是伤害后来的人，他们将继承所剩下的。<strong>2</strong> 一片用了一千年长成的森林，可以在一个下午被毁掉。<strong>3</strong> 我们守护古老的森林，就像守护古老的故事，因为一旦失去，二者都无法被讲得一模一样。</p>
+</section>
+<section id="ch015.xhtml#section-163" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> 说得出你所在之处的鸟、树和星星的名字，就是成为一个邻居。<strong>2</strong> 清晨的鸟是邻居的声音；街角的树，是邻居的脸；每晚同一时刻到来的那颗星，是邻居门廊的灯。<strong>3</strong> 你无法爱你叫不出名字的东西，也无法保护你不爱的东西。</p>
+</section>
+<section id="ch015.xhtml#section-164" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> 猎人感谢被猎者，园丁感谢土壤，厨师感谢农夫，农夫感谢雨。<strong>2</strong> 有人称之为准确，有人称之为祈祷。<strong>3</strong> 这是一笔还不清的债的第一次偿付，也是我们被要求做的唯一一次。</p>
+</section>
+<section id="ch015.xhtml#section-165" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> 我们不是这片大地上的客人，拿了就走；也不是主人，占有并圈起。<strong>2</strong> 我们是亲族，给予也接受，留下也离去，在同一片土地里出生，也被埋葬。<strong>3</strong> 成为亲族，是真正归属的唯一方式。</p>
+</section>
+<section id="ch015.xhtml#section-166" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> 有人说动物先来，也会最后留下。<strong>2</strong> 有人说每一种生灵都有灵，有人说每一块石头也有，有人说风也有。<strong>3</strong> 有人说一个人可能作为野兽或一棵树回来。<strong>4</strong> 有人说某些动物传递信息。<strong>5</strong> 有人说大地是母亲，有人说是身体，有人说是一座要守护的花园。<strong>6</strong> 有人说大地是由一个巨人，或一只鸟，或一只龟的背塑成的。<strong>7</strong> 有人说星星是火，有人说它们是祖先。</p>
+</section>
+</section>
+<section id="ch016.xhtml#第十五卷惊奇" class="level1">
+<h1 id="b16">第十五卷：惊奇</h1>
+<section id="ch016.xhtml#section-167" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> 一年里的第一场雪，清晨六点从窗口看见，是一桩奇迹，而大多数成年人早已训练自己不去留意。<strong>2</strong> 婴儿的第一次笑，第一次看见大海，一种语言忽然被听懂：惊奇是遇见焕然一新的世界时的那份意外。<strong>3</strong> 它不专属于非凡之物，只属于留意的人。</p>
+</section>
+<section id="ch016.xhtml#section-168" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> 一粒种子变成一棵树，没有人看见过它发生，而每个人都看见过。<strong>2</strong> 橡子不用上课就知道怎么做。蛋没见过鸟，也知道怎么做。孩子学说话，无人讲解语法。<strong>3</strong> 有一种先于学习的知，我们由它构成。</p>
+</section>
+<section id="ch016.xhtml#section-169" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> 有些事没有人能解释，有些事人人都觉得自己能解释，惊奇就住在两者之间。<strong>2</strong> 天文学家学会的是已知多么少；植物学家，俯身在一片叶子上，学会的也一样。<strong>3</strong> 谦卑不是知识的反面，而是知识最可靠的果实。</p>
+</section>
+<section id="ch016.xhtml#section-170" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> 有些人看见别人看不见的：诗人，做梦的人，站在人群边缘的那个古怪孩子。<strong>2</strong> 我们既不为他们加冕，也不打发他们。<strong>3</strong> 我们问他们看见了什么，拿走有帮助的，其余的交给时间。</p>
+</section>
+<section id="ch016.xhtml#section-171" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> 梦是一个我们夜里造访、早晨却无法完全描述的国度。<strong>2</strong> 它也许是一场预演，一段记忆，一个谜，一个玩笑；做梦的人最清楚它是什么感觉。<strong>3</strong> 我们把解释当作猜测提出，又毫无芥蒂地收回。</p>
+</section>
+<section id="ch016.xhtml#section-172" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> 有些奇异令人害怕，而害怕的人并不软弱。<strong>2</strong> 一个使人孤立或催人伤害的奇异，应当带给一个爱我们的人，两个人一起掂量，因为被分担的奇异的重量，比独自背负的小。<strong>3</strong> 一个说“去伤害谁”或“离开所有人”的声音，无论来自何处，都不是奇迹；它是一声求救。</p>
+</section>
+<section id="ch016.xhtml#section-173" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> 我们不知道将来会怎样，我们一直都知道这一点，而我们还是建起了自己的生活。<strong>2</strong> 水手读天，天并不总是回答；农夫读土，土并不总是回答。<strong>3</strong> 我们把屋顶修好，把储藏室备足，把朋友留在身边，一起迎接将来的一切。</p>
+</section>
+<section id="ch016.xhtml#section-174" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> 奇迹就是看得清楚的寻常：一杯茶，一个安静的时辰，门口朋友的脸。<strong>2</strong> 学会看的人从不无聊，也很少残忍。<strong>3</strong> 对尚未学会的人，邀请依然有效：再看一遍。</p>
+</section>
+<section id="ch016.xhtml#section-175" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> 我们为我们所不知道的留一间小屋，没人被迫进入，也没人被禁止。<strong>2</strong> 它容纳没有答案的问题，没有尽头的悲伤，没有缘由的喜悦。<strong>3</strong> 我们有时走进去，出来时更轻，对谁也不说什么，而且稍稍更善良一些。</p>
+</section>
+<section id="ch016.xhtml#section-176" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> 有人说我们身边有我们看不见的存在。<strong>2</strong> 有人说有使者，有人说有灵，有人说只有风。<strong>3</strong> 有人说梦带着信息，有人说梦只带着一天的剩余。<strong>4</strong> 有人说异象降给禁食的人。<strong>5</strong> 有人说有预兆被赐下，有人说预兆只是我们注意到的东西。<strong>6</strong> 有人说奇迹是秩序被暂停，有人说它是秩序被看清。<strong>7</strong> 有人说有一个声音对他们说话，有人说他们对一片沉默说话。</p>
+</section>
+</section>
+<section id="ch017.xhtml#第十六卷彼此相遇" class="level1">
+<h1 id="b17">第十六卷：彼此相遇</h1>
+<section id="ch017.xhtml#section-177" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> 一个陌生人来了，第一个问题不是“你信什么？”而是“吃过了吗？”<strong>2</strong> 桌子被拉长，椅子被挪近，一种语言被找到，必要时用手指。<strong>3</strong> 到第三次交谈，我们什么都在谈，忘了我们曾是陌生人。</p>
+</section>
+<section id="ch017.xhtml#section-178" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> 没有人被要求把自己所带的东西留在门口。<strong>2</strong> 一个人比他的信仰多，他的信仰也比一个词多；问问它对他意味着什么，并把回答一直听到最后。<strong>3</strong> 以爱承载的东西，承载起来并不轻，不应被要求放下。</p>
+</section>
+<section id="ch017.xhtml#section-179" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> 桌边有位置给祈祷的人，也给静坐的人，给唱歌的人，也给倾听的人。<strong>2</strong> 有位置给从未疑惑过的人，也给疑惑了一辈子的人。<strong>3</strong> 有位置给建造的人，也给破坏的人，只要破坏的人愿意学着修补。始终有位置再多容一个人。</p>
+</section>
+<section id="ch017.xhtml#section-180" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> 人们意见不合时，我们请每一方说出从自己所站之处看是什么样子，在我们能把它复述到对方满意之前，我们不作回答。<strong>2</strong> 这比听起来难，它改变的比争论多。<strong>3</strong> 分歧也许还在，但它不再是一堵墙。</p>
+</section>
+<section id="ch017.xhtml#section-181" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> 对一个人神圣的东西，不因与对另一个人神圣的东西不同而减损。<strong>2</strong> 一个人的大教堂是另一个人的采石场，石头是同一块；一个民族的面饼是另一个民族的糕点，又是第三个民族的供品。<strong>3</strong> 先问它对持有它的人意味着什么，再说它对你意味着什么。</p>
+</section>
+<section id="ch017.xhtml#section-182" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> 我们不借用没有被提供的东西，也不嘲笑我们不理解的东西。<strong>2</strong> 属于一个家庭的歌，要先去求；属于一个民族的服饰，只在被邀请时才穿。<strong>3</strong> 以别人为代价开的玩笑，是丢进一口共用的井里的石头。</p>
+</section>
+<section id="ch017.xhtml#section-183" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> 被问到我们所持何物时，我们平实地说出，而不强加于任何人。<strong>2</strong> 我们说“从这里看是这样”，而不说“你应当像我一样看”。<strong>3</strong> 倾听的人可以取走他们想要的，他们留下其余时，我们并不受伤。</p>
+</section>
+<section id="ch017.xhtml#section-184" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> 民族之间的争吵是一道长长的伤口，要从两边合拢，否则就合不上。<strong>2</strong> 我们给两边都送水，自己坐在中间，那是屋子里最不舒服的座位。<strong>3</strong> 和平是一门漫长的木工活，它的建造者也许永远不会见面。</p>
+</section>
+<section id="ch017.xhtml#section-185" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> 我们轻轻地留着旧怨，就像留着旧工具：知道它们挂在哪里，只在为了记住时才用。<strong>2</strong> 攥紧的怨恨使手抽筋；放下的怨恨成了故事，故事成了教训，教训成了和平的开端。<strong>3</strong> 这工作很慢，开始于有人决定，一次，做第一个放下怨恨的人。</p>
+</section>
+<section id="ch017.xhtml#section-186" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> 离开自己所出生之处的人受到欢迎，回来的人也一样。<strong>2</strong> 改变的人不是叛徒，留下的人不是傻瓜。<strong>3</strong> 路是双向的，门上没有门闩。</p>
+</section>
+<section id="ch017.xhtml#section-187" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> 所有升起的都归返万物，而万物在每一个之中；我们在那里已经相遇，不论有没有被介绍过。<strong>2</strong> 我们说的不是同一件事，但我们站在同一片土地上。<strong>3</strong> 土地不在意我们的差异，记住这一点，就是放松。</p>
+</section>
+<section id="ch017.xhtml#section-188" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> 有人说只有一条路，有许多旅人。<strong>2</strong> 有人说有许多条路，只有一座山。<strong>3</strong> 有人说路是由走过的人开出来的。<strong>4</strong> 有人说每个人都是一位已经在家的旅人。<strong>5</strong> 有人说到了终点，迎接我们的是我们失去的人。<strong>6</strong> 有人说没有人迎接，路本身就是相遇。<strong>7</strong> 有人说相遇已经发生了。</p>
+</section>
+<section id="ch017.xhtml#section-189" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> 这本书两头都开着：来的人可以读它，走的人可以带走他们喜欢的。<strong>2</strong> 书是一座房子，房子有窗，天气就进来了。<strong>3</strong> 页翻过去，又翻过去，是空白的，有人开始写。</p>
+</section>
+</section>
+<section id="ch018.xhtml#第十七卷不合之处" class="level1">
+<h1 id="b18">第十七卷：不合之处</h1>
+<section id="ch018.xhtml#section-190" class="level2">
+<h2>1</h2>
+<p><strong>1</strong> 我读到这里，并不觉得被托住。<strong>2</strong> 书上说一切一同升起。我却是独自在一间锁了门的屋子里升起的。<strong>3</strong> 我不愿被人说我弄错了自己的房间。<strong>4</strong> 我也不会说这本书错了。我们就在这里坐一会儿。</p>
+</section>
+<section id="ch018.xhtml#section-191" class="level2">
+<h2>2</h2>
+<p><strong>1</strong> 如果暖意进入土里，只是暖意而已呢？<strong>2</strong> 如果它丝毫不带着爱过我的那个人呢？<strong>3</strong> 书上说什么都没有丢失。我想像相信面包那样相信它。<strong>4</strong> 有些日子我信。</p>
+</section>
+<section id="ch018.xhtml#section-192" class="level2">
+<h2>3</h2>
+<p><strong>1</strong> 为什么是这个孩子？<strong>2</strong> 为什么是这一年？<strong>3</strong> 为什么施害的那双手，也是喂过我的手？<strong>4</strong> 为什么让谷粒成熟的太阳，也让蝗虫成熟？<strong>5</strong> 这些不是修辞。它们只是没有答案。</p>
+</section>
+<section id="ch018.xhtml#section-193" class="level2">
+<h2>4</h2>
+<p><strong>1</strong> 黄蜂把卵产在活着的毛虫身上。<strong>2</strong> 猫玩弄自己不吃的东西。<strong>3</strong> 冬天带走老鹿，也带走小鹿。<strong>4</strong> 有人说整全是温和的。有人见过一个冬天杀生。</p>
+</section>
+<section id="ch018.xhtml#section-194" class="level2">
+<h2>5</h2>
+<p><strong>1</strong> 垂死的女人问：“我是个好母亲吗？”<strong>2</strong> 如果我说是，就是撒谎。如果我说我所知道的，就是伤害。<strong>3</strong> 我说：“你是我的。”<strong>4</strong> 我不知道那是否真，是否善，是否两者皆是，还是两者皆非。</p>
+</section>
+<section id="ch018.xhtml#section-195" class="level2">
+<h2>6</h2>
+<p><strong>1</strong> 我们曾是三个人。<strong>2</strong> 我们现在是两个人。<strong>4</strong> 我们仍然为三个人摆桌子。</p>
+</section>
+<section id="ch018.xhtml#section-196" class="level2">
+<h2>7</h2>
+<p><strong>1</strong> 有些悲痛，没有一句话能触及。<strong>2</strong> 这本书有许多句子。<strong>3</strong> 我想把它放下，走过去站在她身边。</p>
+</section>
+<section id="ch018.xhtml#section-197" class="level2">
+<h2>8</h2>
+<p><strong>1</strong> 有人说逝者就在附近。有人说他们已经走了。有人说他们在等。<strong>2</strong> 我听过每一种说法，都是神色平静地说出的。<strong>3</strong> 我不知道哪一种对，书也没有告诉我。<strong>4</strong> 我既感激，又不满足。</p>
+</section>
+<section id="ch018.xhtml#section-198" class="level2">
+<h2>9</h2>
+<p><strong>1</strong> 圆圈让人疲惫。<strong>2</strong> 有些日子我宁愿一个人吃饭，什么也不说。<strong>3</strong> 需要我的人，并不总是我愿意被他需要的那个人。<strong>4</strong> 有些日子我还是去了。另一些日子我没有去，太阳照样落下。</p>
+</section>
+<section id="ch018.xhtml#section-199" class="level2">
+<h2>10</h2>
+<p><strong>1</strong> 我吃饭前感谢了田地，睡觉前咒骂了邻居。<strong>2</strong> 我写下良善的诗句，却没有照着去活。<strong>3</strong> 这些诗句并不因此变假。<strong>4</strong> 我也不因此变得一文不值。两者都是真的，没有一个让人舒服。</p>
+</section>
+<section id="ch018.xhtml#section-200" class="level2">
+<h2>11</h2>
+<p><strong>1</strong> 这本书带着背着它的人的局限：有些日子单薄，有些日子煽情。<strong>2</strong> 它不足的地方，添一行。<strong>3</strong> 它有帮助的地方，感谢今天给你带来面包的人。</p>
+</section>
+<section id="ch018.xhtml#section-201" class="level2">
+<h2>12</h2>
+<p><strong>1</strong> 不是每个人都想成为整全的一部分。<strong>2</strong> 有些人想成为一件有名字的、被记住而不被融化的东西。<strong>3</strong> 书说归返不是损失。<strong>4</strong> 对那个想被人记着名字的人：你的名字是一件真实的东西，这本书不会把它从你这里拿走。</p>
+</section>
+<section id="ch018.xhtml#section-202" class="level2">
+<h2>13</h2>
+<p><strong>1</strong> 这里，这一页保持原样。</p>
+</section>
+<section id="ch018.xhtml#section-203" class="level2">
+<h2>14</h2>
+<p><strong>1</strong> 怀抱希望，就是把一个人质交给世界。<strong>2</strong> 世界也许会留着它。<strong>3</strong> 我仍然怀抱希望。这不是智慧。这是习惯，也是我所做的最好的事。</p>
+</section>
+<section id="ch018.xhtml#section-204" class="level2">
+<h2>15</h2>
+<p><strong>1</strong> 书说：我们不催促哀痛的人。<strong>2</strong> 书说：不要拖太久才去修补过错。<strong>3</strong> 这两句相互拉扯。<strong>4</strong> 两者都保留。读者须自己找出每一句成立的那一天。</p>
+</section>
+<section id="ch018.xhtml#section-205" class="level2">
+<h2>16</h2>
+<p><strong>1</strong> 我们说过：“还有位置，再容一个人。”<strong>2</strong> 有一个夜晚，没有了。<strong>3</strong> 陌生人在寒冷中继续赶路，我们吃了饭，而我没有忘记那一声院门响。</p>
+</section>
+<section id="ch018.xhtml#section-206" class="level2">
+<h2>17</h2>
+<p><strong>1</strong> 什么出去又回来，却永远不一样？<strong>2</strong> 什么被花掉却没有丢失？<strong>3</strong> 什么被分享反而增长？<strong>4</strong> 孩子说：呼吸。老人说：爱。农夫说：水。<strong>5</strong> 都对，也没有人被告知不对。</p>
+</section>
+<section id="ch018.xhtml#section-207" class="level2">
+<h2>18</h2>
+<p><strong>1</strong> 我不知道该怎么办。<strong>2</strong> 书里有一节一节的话，那些话与此刻不合。<strong>3</strong> 我要做下一件小事：烧水，开窗，给某个人打电话。<strong>4</strong> 下一件小事，是一种经文。</p>
+</section>
+<section id="ch018.xhtml#section-208" class="level2">
+<h2>19</h2>
+<p><strong>1</strong> 我没有被说服，也没有被打发。<strong>2</strong> 我要带着这本书，像带着从海滩上拾来的一枚贝壳：为它的分量，也为它来自的海。<strong>3</strong> 我不需要它每一行都是真的。我需要它在近旁。</p>
+</section>
+</section>
+
+<nav class="end"><a class="btn secondary" href="zh.html">返回</a> <a class="btn primary" href="万有之书.pdf" data-goatcounter-click="download-pdf-zh" data-goatcounter-title="PDF download (zh)">下载 (PDF)</a></nav>
+</main>
+<script>(function(){var b=document.querySelector(".theme-toggle"),r=document.documentElement;function sync(){b.textContent=r.getAttribute("data-theme")==="dark"?"☀":"☾"}sync();b.addEventListener("click",function(){var d=r.getAttribute("data-theme")==="dark";if(d)r.removeAttribute("data-theme");else r.setAttribute("data-theme","dark");try{localStorage.setItem("theme",d?"light":"dark")}catch(e){}sync()})})();</script>
+<script data-goatcounter="https://thebookofall.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
